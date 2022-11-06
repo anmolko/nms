@@ -15,18 +15,17 @@ class CreateJobsTable extends Migration
     {
         Schema::create('jobs', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('job_category_id');
             $table->string('lt_number')->nullable();
             $table->string('name');
             $table->string('slug');
             $table->string('code')->nullable();
-            $table->string('required_number');
-            $table->string('salary');
-            $table->string('min_qualification');
-            $table->string('image');
-            $table->longText('description');
-            $table->date('start_date');
-            $table->date('end_date');
+            $table->string('required_number')->nullable();
+            $table->string('salary')->nullable();
+            $table->string('min_qualification')->nullable();
+            $table->string('image')->nullable();
+            $table->longText('description')->nullable();
+            $table->date('start_date')->nullable();
+            $table->date('end_date')->nullable();
             $table->enum('status',['publish','draft'])->default('publish');
             $table->string('meta_title')->nullable();
             $table->text('meta_tags')->nullable();
@@ -35,7 +34,6 @@ class CreateJobsTable extends Migration
             $table->unsignedBigInteger('updated_by')->nullable();
             $table->foreign('created_by')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('updated_by')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('job_category_id')->references('id')->on('job_categories')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -1,5 +1,5 @@
 @extends('backend.layouts.master')
-@section('title', "Jobs")
+@section('title', "Demands")
 @section('css')
     <link rel="stylesheet" href="{{asset('assets/backend/css/jquery.dataTables.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/backend/custom_css/datatable_style.css')}}">
@@ -14,12 +14,12 @@
             <div class="row">
                 <div class="col-12">
                     <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                        <h4 class="mb-sm-0">Jobs</h4>
+                        <h4 class="mb-sm-0">Demands</h4>
 
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
                                 <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Dashboard</a></li>
-                                <li class="breadcrumb-item active">Jobs</li>
+                                <li class="breadcrumb-item active">Demands</li>
                             </ol>
                         </div>
 
@@ -35,13 +35,13 @@
                         <div class="card-header">
                             <div class="row g-4">
                                 <div class="col-sm-auto">
-                                    <h4 class="card-title mb-0">Job List</h4>
+                                    <h4 class="card-title mb-0">Demand List</h4>
 
                                 </div>
                                 <div class="col-sm">
                                     <div class="d-flex justify-content-sm-end">
                                         <div>
-                                            <a href="{{route('job.create')}}" class="btn btn-success"><i class="ri-add-line align-bottom me-1"></i> Add Job</a>
+                                            <a href="{{route('job.create')}}" class="btn btn-success"><i class="ri-add-line align-bottom me-1"></i> Add Demand</a>
                                         </div>
                                     </div>
                                 </div>
@@ -57,8 +57,8 @@
                                         <tr>
                                             <th>Feature Image</th>
                                             <th>Name</th>
-                                            <th>Job Code</th>
-                                            <th>Category</th>
+                                            <th>Slug</th>
+                                            <th>Demand Code</th>
                                             <th>Status</th>
                                             <th class="text-right">Action</th>
                                         </tr>
@@ -73,10 +73,12 @@
                                                     <td>
                                                         {{ ucwords(@$job->name) }}
                                                     </td>
-                                                    <td >
-                                                        {{ ucwords(@$job->code) }}
+                                                    <td>
+                                                        {{ @$job->slug }}
                                                     </td>
-                                                    <td>{{ucfirst(@$job->category->name)}}</td>
+                                                    <td >
+                                                        {{ @$job->code }}
+                                                    </td>
                                                     <td>
                                                         <div class="btn-group view-btn" id="job-status-button-{{$job->id}}">
                                                             <button class="btn btn-light dropdown-toggle" style="width: 10em;" type="button" id="dropdownMenuClickableInside" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">

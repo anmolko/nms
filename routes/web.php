@@ -193,26 +193,15 @@ Route::group(['prefix' => 'auth', 'middleware' => ['auth']], function () {
     Route::get('/clients/{clients}/edit', 'App\Http\Controllers\ClientController@edit')->name('clients.edit');
 
 
-    //job categories
-
-    Route::get('/job-category', 'App\Http\Controllers\JobCategoryController@index')->name('jobcategory.index');
-    Route::get('/job-category/create', 'App\Http\Controllers\JobCategoryController@create')->name('jobcategory.create');
-    Route::post('/job-category', 'App\Http\Controllers\JobCategoryController@store')->name('jobcategory.store');
-    Route::put('/job-category/{category}', 'App\Http\Controllers\JobCategoryController@update')->name('jobcategory.update');
-    Route::delete('/job-category/{category}', 'App\Http\Controllers\JobCategoryController@destroy')->name('jobcategory.destroy');
-    Route::get('/job-category/{category}/edit', 'App\Http\Controllers\JobCategoryController@edit')->name('jobcategory.edit');
-
-    //End of job categories
-
     //jobs
 
-    Route::get('/jobs', 'App\Http\Controllers\JobController@index')->name('job.index');
-    Route::get('/jobs/create', 'App\Http\Controllers\JobController@create')->name('job.create');
-    Route::post('/jobs', 'App\Http\Controllers\JobController@store')->name('job.store');
-    Route::put('/jobs/{jobs}', 'App\Http\Controllers\JobController@update')->name('job.update');
-    Route::delete('/jobs/{jobs}', 'App\Http\Controllers\JobController@destroy')->name('job.destroy');
-    Route::get('/jobs/{jobs}/edit', 'App\Http\Controllers\JobController@edit')->name('job.edit');
-    Route::patch('/jobs/{id}/update', 'App\Http\Controllers\JobController@updateStatus')->name('job-status.update');
+    Route::get('/demands', 'App\Http\Controllers\JobController@index')->name('job.index');
+    Route::get('/demands/create', 'App\Http\Controllers\JobController@create')->name('job.create');
+    Route::post('/demands', 'App\Http\Controllers\JobController@store')->name('job.store');
+    Route::put('/demands/{demand}', 'App\Http\Controllers\JobController@update')->name('job.update');
+    Route::delete('/demands/{jobs}', 'App\Http\Controllers\JobController@destroy')->name('job.destroy');
+    Route::get('/demands/{jobs}/edit', 'App\Http\Controllers\JobController@edit')->name('job.edit');
+    Route::patch('/demands/{id}/update', 'App\Http\Controllers\JobController@updateStatus')->name('job-status.update');
 
     //End jobs
 });

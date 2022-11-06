@@ -26,11 +26,10 @@ class JobController extends Controller
     public function index()
     {
 
-        $categories         = JobCategory::all();
-        $jobs               = Job::with('category')->get();
+        $jobs               = Job::all();
         $countries          = CountryState::getCountries();
         $clients            = Client::all();
-        return view('backend.job.index',compact('categories','jobs','countries','clients'));
+        return view('backend.job.index',compact('jobs','countries','clients'));
     }
 
     /**
@@ -40,8 +39,7 @@ class JobController extends Controller
      */
     public function create()
     {
-        $categories = JobCategory::orderBy('name', 'asc')->get();
-        return view('backend.job.create',compact('categories'));
+        return view('backend.job.create');
     }
 
     /**
@@ -54,16 +52,13 @@ class JobController extends Controller
     {
         $end     = Carbon::createFromFormat('d/m/Y', $request->end_date)->format('Y-m-d');
         $start   = Carbon::createFromFormat('d/m/Y', $request->start_date)->format('Y-m-d');
-        $code    = strtok($request->input('name'), " ").'-SRCJOB-'.rand(1,500);
+        $code    = strtok($request->input('name'), " ").'-NMS-'.rand(1,500);
         $data = [
             'lt_number'            => $request->input('lt_number'),
-            'job_category_id'      => $request->input('job_category_id'),
             'name'                 => $request->input('name'),
             'slug'                 => $request->input('slug'),
             'code'                 => $code,
-            'client_id'            => $request->input('client_id'),
             'required_number'      => $request->input('required_number'),
-            'salary'               => $request->input('salary'),
             'min_qualification'    => $request->input('min_qualification'),
             'description'          => $request->input('description'),
             'start_date'           => $start,
@@ -79,7 +74,7 @@ class JobController extends Controller
             $image        = $request->file('image');
             $name         = uniqid().'_job_'.$image->getClientOriginalName();
             $path         = base_path().'/public/images/job/';
-            $moved        = Image::make($image->getRealPath())->resize(1280, 720)->orientate()->save($path.$name);
+            $moved        = Image::make($image->getRealPath())->fit(770, 426)->orientate()->save($path.$name);
             if ($moved){
                 $data['image']= $name;
             }
@@ -87,10 +82,10 @@ class JobController extends Controller
 
         $status = Job::create($data);
         if($status){
-            Session::flash('success','Job details Created Successfully');
+            Session::flash('success','Demand details Created Successfully');
         }
         else{
-            Session::flash('error','Job details Creation Failed');
+            Session::flash('error','Demand details Creation Failed');
         }
         return redirect()->route('job.index');
     }
@@ -115,10 +110,9 @@ class JobController extends Controller
     public function edit($id)
     {
         $edit           = Job::find($id);
-        $categories     = JobCategory::orderBy('name', 'asc')->get();
         $end            = Carbon::createFromFormat('Y-m-d', $edit->end_date)->format('d/m/Y');
         $start          = Carbon::createFromFormat('Y-m-d', $edit->start_date)->format('d/m/Y');
-        return view('backend.job.edit',compact('edit','categories','start','end'));
+        return view('backend.job.edit',compact('edit','start','end'));
     }
 
     /**
@@ -140,7 +134,6 @@ class JobController extends Controller
         $code                       = strtok($request->input('name'), " ").$removed;
         $finalcode                  = str_replace(" ","-", $code);
 
-        $job->job_category_id       = $request->input('job_category_id');
         $job->name                  = $request->input('name');
         $job->slug                  = $request->input('slug');
         $job->lt_number             = $request->input('lt_number');
@@ -161,7 +154,7 @@ class JobController extends Controller
             $image                = $request->file('image');
             $name                 = uniqid().'_'.$image->getClientOriginalName();
             $path                 = base_path().'/public/images/job/';
-            $moved                = Image::make($image->getRealPath())->resize(1280, 720)->orientate()->save($path.$name);
+            $moved                = Image::make($image->getRealPath())->fit(770, 426)->orientate()->save($path.$name);
             if ($moved){
                 $job->image = $name;
                 if (!empty($oldimage) && file_exists(public_path().'/images/job/'.$oldimage)){
@@ -172,10 +165,10 @@ class JobController extends Controller
 
         $status                     = $job->update();
         if($status){
-            Session::flash('success','Job details was updated Successfully');
+            Session::flash('success','Demand details was updated Successfully');
         }
         else{
-            Session::flash('error','Something Went Wrong. Job details could not be Updated');
+            Session::flash('error','Something Went Wrong. Demand details could not be Updated');
         }
         return redirect()->route('job.index');
     }
@@ -196,10 +189,10 @@ class JobController extends Controller
         $recuuu          = $delete->delete();
         if($recuuu){
             $status ='success';
-            return response()->json(['status'=>$status,'message'=>'Job details has been removed! ']);        }
+            return response()->json(['status'=>$status,'message'=>'Demand details has been removed! ']);        }
         else{
             $status ='error';
-            return response()->json(['status'=>$status,'message'=>'Job details  could not be removed. Try Again later !']);
+            return response()->json(['status'=>$status,'message'=>'Demand details could not be removed. Try Again later !']);
         }
     }
 

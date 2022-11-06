@@ -159,7 +159,7 @@ function statusupdate(url,status){
         success: function(response){
             if(response.status == "success"){
                 var oldstatus         = (status == 'draft') ? "Published" :  "Draft";
-                var status_url        = "/auth/jobs/"+response.id+"/update/";
+                var status_url        = "/auth/demands/"+response.id+"/update/";
                 var replacementblock  = '#job-status-button-'+response.id;
                 var replacement = '<button class="btn btn-light dropdown-toggle" style="width: 10em;" type="button" id="dropdownMenuClickableInside" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false"> '
                     +
@@ -180,7 +180,7 @@ function statusupdate(url,status){
                         '<div class="mt-4 pt-2 fs-15">' +
                         '<h4>Success !</h4>' +
                         '<p class="text-muted mx-4 mb-0">' +
-                        'Job Status has been updated .</p>' +
+                        'Demand Status has been updated .</p>' +
                         '</div>' +
                         '</div>',
                     timerProgressBar: !0,
@@ -201,7 +201,7 @@ function statusupdate(url,status){
                         '<div class="mt-4 pt-2 fs-15">' +
                         '<h4>Oops...! </h4>' +
                         '<p class="text-muted mx-4 mb-0">' +
-                        'Job status could not be changed at the moment .</p>' +
+                        'Demand status could not be changed at the moment .</p>' +
                         '</div>' +
                         '</div>',
                     timerProgressBar: !0,
@@ -221,7 +221,7 @@ function statusupdate(url,status){
                     '<div class="mt-4 pt-2 fs-15">' +
                     '<h4>Warning...! </h4>' +
                     '<p class="text-muted mx-4 mb-0">' +
-                    'Could not confirm the status of the Job.</p>' +
+                    'Could not confirm the status of the Demand.</p>' +
                     '</div>' +
                     '</div>',
                 timerProgressBar: !0,

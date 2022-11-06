@@ -1,5 +1,5 @@
 @extends('backend.layouts.master')
-@section('title', "Add Job")
+@section('title', "Add Demand")
 @section('css')
 
     <link href="{{asset('assets/backend/libs/sweetalert2/sweetalert2.min.css')}}" rel="stylesheet" type="text/css" />
@@ -26,13 +26,13 @@
             <div class="row">
                 <div class="col-12">
                     <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                        <h4 class="mb-sm-0">Job</h4>
+                        <h4 class="mb-sm-0">Demand</h4>
 
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
                                 <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Dashboard</a></li>
-                                <li class="breadcrumb-item"><a href="{{route('job.index')}}">Job</a></li>
-                                <li class="breadcrumb-item active">Create job</li>
+                                <li class="breadcrumb-item"><a href="{{route('job.index')}}">Demand</a></li>
+                                <li class="breadcrumb-item active">Create Demand</li>
                             </ol>
                         </div>
 
@@ -49,17 +49,17 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="mb-3">
-                                    <label>Job Name <span class="text-muted text-danger">*</span></label>
+                                    <label>Name <span class="text-muted text-danger">*</span></label>
                                     <input type="text" class="form-control" name="name" id="job_name" onclick="slugMaker('job_name','job_slug')" required>
                                     <div class="invalid-feedback">
-                                        Please enter the job name.
+                                        Please enter the demand name.
                                     </div>
                                 </div>
                                 <div class="mb-3">
                                     <label>Slug <span class="text-muted text-danger">*</span></label>
                                     <input type="text" class="form-control" name="slug" id="job_slug" required>
                                     <div class="invalid-feedback">
-                                        Please enter the job Slug.
+                                        Please enter the demand Slug.
                                     </div>
                                     @if($errors->has('slug'))
                                         <div class="invalid-feedback">
@@ -68,34 +68,18 @@
                                     @endif
                                 </div>
                                 <div class="form-group mb-3">
-                                    <label>Required Number of Jobs <span class="text-muted text-danger">*</span></label>
-                                    <input type="text" class="form-control" name="required_number" required>
+                                    <label>Required Number of demand </label>
+                                    <input type="text" class="form-control" name="required_number">
                                     <div class="invalid-feedback">
                                         Please enter the required number of jobs.
                                     </div>
                                 </div>
-                                <div class="form-group mb-3">
-                                    <label>LT Number </label>
-                                    <input type="text" class="form-control" name="lt_number">
-                                    <div class="invalid-feedback">
-                                        Please enter the LT Number.
-                                    </div>
-                                </div>
-
-                                <div class="form-group mb-3">
-                                    <label>Salary <span class="text-muted text-danger">*</span></label>
-                                    <input type="text" min="1" class="form-control" name="salary" required>
-                                    <div class="invalid-feedback">
-                                        Please enter the salary.
-                                    </div>
-                                </div>
 
                                 <div class="mb-3">
-                                    <label>Job Description</label>
-
-                                    <textarea class="form-control" id="ckeditor-classic-blog" name="description" placeholder="Enter job description" rows="3" required></textarea>
+                                    <label>Demand Description</label>
+                                    <textarea class="form-control" id="ckeditor-classic-blog" name="description" placeholder="Enter demand description" rows="3"></textarea>
                                     <div class="invalid-tooltip">
-                                        Please enter the job description.
+                                        Please enter the demand description.
                                     </div>
 
                                 </div>
@@ -163,24 +147,6 @@
                 <div class="col-lg-4 ">
                     <div class="sticky-side-div">
 
-                        <div class="card">
-                            <div class="card-header">
-                                <h5 class="card-title mb-0">Job Categories</h5>
-                            </div>
-                            <div class="card-body">
-                                <p class="text-muted mb-2"> Select job category</p>
-                                <select class="form-select" name="job_category_id" data-choices data-choices-search-true >
-                                    @if(!empty(@$categories))
-                                        @foreach(@$categories as $categoryList)
-                                            <option value="{{ @$categoryList->id }}" >{{ ucwords(@$categoryList->name) }}</option>
-                                        @endforeach
-                                    @endif
-                                </select>
-
-                            </div>
-                            <!-- end card body -->
-                        </div>
-
                         <div class="card ">
                             <div class="card-header">
                                 <h5 class="card-title mb-0">Select Options</h5>
@@ -196,8 +162,8 @@
                                 </div>
 
                                 <div class="form-group mb-3">
-                                    <label>Min Qualification <span class="text-muted text-danger">*</span></label>
-                                    <select class="form-control shadow-none" name="min_qualification" required>
+                                    <label>Min Qualification </label>
+                                    <select class="form-control shadow-none" name="min_qualification">
                                         <option value disabled selected> Select Min Qualification</option>
                                         <option value="none">None</option>
                                         <option value="primary education">Primary Education </option>
@@ -212,7 +178,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group mb-3">
-                                    <label for="start_date" class="form-label">Start Date <span class="text-muted text-danger">*</span></label>
+                                    <label for="start_date" class="form-label">Start Date </label>
                                     <input type="text" class="form-control" name="start_date" id="start_date">
                                     <div class="invalid-feedback">
                                         Please Select the start date.
@@ -220,7 +186,7 @@
                                 </div>
 
                                 <div class="form-group mb-3">
-                                    <label for="end_date" class="form-label">End Date <span class="text-muted text-danger">*</span></label>
+                                    <label for="end_date" class="form-label">End Date </label>
                                     <input type="text" class="form-control" name="end_date" id="end_date">
                                     <div class="invalid-feedback">
                                         Please Select the end date.
@@ -243,7 +209,7 @@
                                         id="profile-foreground-img-file-input" onchange="loadFile(event)" name="image" required
                                        class="profile-foreground-img-file-input" >
 
-                                    <figcaption class="figure-caption">*use image minimum of 1280 x 720px </figcaption>
+                                    <figcaption class="figure-caption">*use image minimum of 770 x 426px </figcaption>
                                     <div class="invalid-feedback" >
                                             Please select a image.
                                         </div>
