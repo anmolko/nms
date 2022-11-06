@@ -57,6 +57,7 @@
                                     <tr>
                                         <th>Feature Image</th>
                                         <th>Title</th>
+                                        <th>Slug</th>
                                         <th>Category</th>
                                         <th>Status</th>
                                         <th class="text-right">Action</th>
@@ -67,10 +68,13 @@
                                             @foreach($blogs as  $blog)
                                                 <tr id="blog-individual-{{@$blog->id}}">
                                                     <td >
-                                                        <img src="{{asset('/images/blog/'.@$blog->image)}}" alt="{{@$blog->slug}}" class="figure-img rounded-circle avatar-lg">
+                                                        <img src="{{asset('/images/blog/'.@$blog->image)}}" alt="{{@$blog->slug}}" class="figure-img avatar-lg">
                                                     </td>
                                                     <td >
                                                     {{ ucwords(@$blog->title) }}
+                                                    </td>
+                                                    <td >
+                                                    {{ @$blog->slug }}
                                                     </td>
                                                     <td>{{ucfirst(@$blog->category->name)}}</td>
                                                     <td>
