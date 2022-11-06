@@ -54,7 +54,6 @@ class SliderController extends Controller
             'button'            => $request->input('button'),
             'link'              => $request->input('link'),
             'status'            => $request->input('status'),
-            'slider_link'       => $request->input('slider_link'),
             'created_by'        => Auth::user()->id,
         ];
 
@@ -62,7 +61,7 @@ class SliderController extends Controller
             $image        = $request->file('image');
             $name         = uniqid().'_'.$image->getClientOriginalName();
             $path         = base_path().'/public/images/sliders/';
-            $moved        = Image::make($image->getRealPath())->fit(1920, 884)->orientate()->save($path.$name);
+            $moved        = Image::make($image->getRealPath())->fit(1895, 970)->orientate()->save($path.$name);
             if ($moved){
                 $data['image']= $name;
             }
@@ -116,14 +115,13 @@ class SliderController extends Controller
         $slider->button           =  $request->input('button');
         $slider->link             =  $request->input('link');
         $slider->status           =  $request->input('status');
-        $slider->slider_link      =  $request->input('slider_link');
         $oldimage                 =  $slider->image;
 
         if (!empty($request->file('image'))){
             $image               =  $request->file('image');
             $name1               = uniqid().'_'.$image->getClientOriginalName();
             $path                = base_path().'/public/images/sliders/';
-            $moved               = Image::make($image->getRealPath())->resize(1920, 884)->orientate()->save($path.$name1);
+            $moved               = Image::make($image->getRealPath())->resize(1895, 970)->orientate()->save($path.$name1);
             if ($moved){
                 $slider->image = $name1;
                 if (!empty($oldimage) && file_exists(public_path().'/images/sliders/'.$oldimage)){
