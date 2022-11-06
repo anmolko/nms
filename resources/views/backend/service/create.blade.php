@@ -151,7 +151,7 @@
                         <div class="card-body">
                             <div>
                                 <label for="sub-title-status-input" class="form-label">Sub Description</label>
-                                <textarea class="form-control" maxlength="70" id="sub-title-status-input" placeholder="Enter sub description" name="sub_description" rows="4"></textarea>
+                                <textarea class="form-control" maxlength="80" id="sub-title-status-input" placeholder="Enter sub description" name="sub_description" rows="4"></textarea>
 
                             </div>
                         </div>
@@ -169,7 +169,7 @@
                                         id="profile-foreground-img-file-input" onchange="loadbasicFile('profile-foreground-img-file-input','current-img',event)" name="banner_image" required
                                         class="profile-foreground-img-file-input" >
 
-                                <figcaption class="figure-caption">Banner image for current service. (Size:  770 x 495px)</figcaption>
+                                <figcaption class="figure-caption">Banner image for current service. (Size:  770 x 416px)</figcaption>
                                 <div class="invalid-feedback" >
                                     Please select a image.
                                 </div>

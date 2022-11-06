@@ -68,7 +68,7 @@ class ServiceController extends Controller
                 mkdir($blog_path, 0777);
             }
             $path           = base_path().'/public/images/service/';
-            $moved          = Image::make($image->getRealPath())->fit(770, 495)->orientate()->save($path.$name);
+            $moved          = Image::make($image->getRealPath())->fit(770, 416)->orientate()->save($path.$name);
 
             if ($moved){
                 $data['banner_image']=$name;
@@ -132,7 +132,7 @@ class ServiceController extends Controller
         if (!empty($request->file('banner_image'))){
             $image       = $request->file('banner_image');
             $name1       = uniqid().'_banner_'.$image->getClientOriginalName();
-            $moved       = Image::make($image->getRealPath())->fit(770, 495)->orientate()->save($path.$name1);
+            $moved       = Image::make($image->getRealPath())->fit(770, 416)->orientate()->save($path.$name1);
 
             if ($moved){
                 $service->banner_image= $name1;
