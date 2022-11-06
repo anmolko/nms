@@ -83,8 +83,8 @@ class BlogController extends Controller
             $thumb          = 'thumb_'.$name;
             $path           = base_path().'/public/images/blog/';
             $thumb_path     = base_path().'/public/images/blog/thumb/';
-            $moved          = Image::make($image->getRealPath())->fit(770, 450)->orientate()->save($path.$name);
-            $thumb          = Image::make($image->getRealPath())->fit(85, 85)->orientate()->save($thumb_path.$thumb);
+            $moved          = Image::make($image->getRealPath())->fit(770, 445)->orientate()->save($path.$name);
+            $thumb          = Image::make($image->getRealPath())->resize(62, 61)->orientate()->save($thumb_path.$thumb);
 
             if ($moved && $thumb){
                 $data['image']=$name;
@@ -155,8 +155,8 @@ class BlogController extends Controller
             $thumb       = 'thumb_'.$name1;
             $path        = base_path().'/public/images/blog/';
             $thumb_path  = base_path().'/public/images/blog/thumb/';
-            $moved       = Image::make($image->getRealPath())->fit(770, 450)->orientate()->save($path.$name1);
-            $thumb       = Image::make($image->getRealPath())->fit(85, 85)->orientate()->save($thumb_path.$thumb);
+            $moved       = Image::make($image->getRealPath())->fit(770, 445)->orientate()->save($path.$name1);
+            $thumb       = Image::make($image->getRealPath())->resize(62, 61)->orientate()->save($thumb_path.$thumb);
 
             if ($moved && $thumb){
                 $blog->image= $name1;
