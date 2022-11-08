@@ -148,6 +148,24 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="card shadow-none">
+                                <div class="card-header">
+                                    <h5 class="card-title text-primary mb-0">Basic Section 2</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <label class="image-checkbox {{(in_array('basic_section2', $sections) ? "image-checkbox-checked":"")}}">
+                                                <img class="img-responsive" src="{{asset('assets/backend/img/page_sections/basic_section2.png')}}" width="100%"/>
+                                                <input type="checkbox" name="section[]" value="basic_section2" id="basic_section2.png" {{(in_array('basic_section2', $sections) ? "checked":"")}} />
+                                                <i class="ri ri-check-line hidden"></i>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="card shadow-none">
                                 <div class="card-header">
                                     <h5 class="card-title text-primary mb-0">Call to Action</h5>
@@ -165,7 +183,23 @@
 
                                 </div>
                             </div>
+                            <div class="card shadow-none">
+                                <div class="card-header">
+                                    <h5 class="card-title text-primary mb-0">Call to Action 2</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <label class="image-checkbox {{(in_array('call_to_action_2', $sections) ? "image-checkbox-checked":"")}}">
+                                                <img class="img-responsive" src="{{asset('assets/backend/img/page_sections/calltoaction2.png')}}"  width="100%"/>
+                                                <input type="checkbox" name="section[]" value="call_to_action_1" id="calltoaction2.png" {{(in_array('call_to_action_2', $sections) ? "checked":"")}} />
+                                                <i class="ri ri-check-line hidden"></i>
+                                            </label>
+                                        </div>
+                                    </div>
 
+                                </div>
+                            </div>
                             <div class="card shadow-none">
                                 <div class="card-header">
                                     <h5 class="card-title text-primary mb-0">Background Image Section</h5>
@@ -242,7 +276,7 @@
                                         <div class="col-md-12 mb-2">
                                             <div class="form-group">
                                                 <label>Number of Tab List <span class="text-muted text-danger">*</span></label>
-                                                <input type="number" min="1" class="form-control" name="list_number_2" value="{{$list2}}">
+                                                <input type="number" min="2" class="form-control" name="list_number_2" value="{{$list2}}">
                                                 <div class="invalid-feedback">
                                                     Please enter the Accordion tab number.
                                                 </div>
@@ -310,16 +344,16 @@
                             </div>
                             <div class="card shadow-none">
                                 <div class="card-header">
-                                    <h5 class="card-title text-primary mb-0">Box description</h5>
+                                    <h5 class="card-title text-primary mb-0">Simple accordion tab 2</h5>
                                 </div>
                                 <div class="card-body">
                                     <div class="row">
                                         <input type="hidden" name="process_sel_id" value="{{$process_id}}">
                                         <input type="hidden" name="list_number_3_process_sel" value="3">
                                         <div class="col-md-12">
-                                            <label class="image-checkbox {{(in_array('small_box_description', $sections) ? "image-checkbox-checked":"")}}">
-                                                <img class="img-responsive" src="{{asset('assets/backend/img/page_sections/small_box_description.png')}}" width="100%"/>
-                                                <input type="checkbox" name="section[]" id="small_box_description.png" value="small_box_description" {{(in_array('small_box_description', $sections) ? "checked":"")}} />
+                                            <label class="image-checkbox {{(in_array('simple_accordion_tab2', $sections) ? "image-checkbox-checked":"")}}">
+                                                <img class="img-responsive" src="{{asset('assets/backend/img/page_sections/simple_accordion_tab2.png')}}" width="100%"/>
+                                                <input type="checkbox" name="section[]" id="simple_accordion_tab2.png" value="simple_accordion_tab2" {{(in_array('simple_accordion_tab2', $sections) ? "checked":"")}} />
                                                 <i class="ri ri-check-line hidden"></i>
                                             </label>
                                         </div>
