@@ -1,31 +1,22 @@
 @extends('frontend.layouts.master')
 @section('title') {{ucwords(@$cat_name)}} | Blog @endsection
 @section('css')
+<link rel="stylesheet" id="jssDefault" href="{{asset('assets/frontend/css/pagination.css')}}">
 <style>
 </style>
 @endsection
 @section('content')
 
-        
         <!--Page Header Start-->
-        <section class="page-header">
-            <div class="page-header__bg" style="background-image: url({{asset('assets/frontend/images/backgrounds/page-header-bg.jpg')}});">
-            </div>
-            <div class="page-header__shape-one float-bob-x-2"></div>
-            <div class="page-header__shape-2 float-bob-y">
-                <img src="{{asset('assets/frontend/images/shapes/page-header-shape-2.png')}}" alt="">
-            </div>
-            <div class="page-header__shape-3 float-bob-x">
-                <img src="{{asset('assets/frontend/images/shapes/page-header-shape-3.png')}}" alt="">
-            </div>
-            <div class="page-header__shape-4 float-bob-y">
-                <img src="{{asset('assets/frontend/images/shapes/page-header-shape-4.png')}}" alt="">
-            </div>
+        <section class="page-header" style="background-image: url({{asset('assets/frontend/images/backgrounds/page-header-bg.jpg')}});">
+            <div class="page-header-shape-1"></div>
+            <div class="page-header-shape-2"></div>
             <div class="container">
-                <div class="page-header__inner text-left">
+                <div class="page-header__inner">
                     <ul class="thm-breadcrumb list-unstyled">
                         <li><a href="/">Home</a></li>
-                        <li> <a href="{{url('/blog')}}">Blog</a></li>
+                        <li><span>.</span></li>
+                        <li><a href="{{url('/blog')}}">Blog</a></li>
                     </ul>
                     <h2>Category : {{ucwords($cat_name)}}</h2>
                 </div>
@@ -34,79 +25,81 @@
         <!--Page Header End-->
 
     
-        <!--Blog Page Start-->
-        <div class="blog-page">
+        <!--Blog Sidebar Start-->
+        <section class="blog-sidebar">
             <div class="container">
                 <div class="row">
                     <div class="col-xl-8 col-lg-7">
-                        <div class="row">
-                        @if(count($allPosts) > 0)
+                        <div class="blog-sidebar__left">
+                            <div class="row">
+                           
+                            @if(count($allPosts) > 0)
 
-                            @foreach($allPosts as $post)
-                                <!--Blog Single Start-->
-                                <div class="col-xl-6 col-md-6 wow fadeInUp" data-wow-delay="100ms">
-                                    <div class="blog-three__single">
-                                        <div class="blog-three__img">
-                                            <img src="<?php if(@$post->image){?>{{asset('/images/blog/'.@$post->image)}}<?php }?>" alt="{{@$post->slug}}">
+                                @foreach($allPosts as $post)
+                                <div class="col-xl-6 col-lg-6 col-md-6">
+                                    <!--Blog One Single-->
+                                    <div class="blog-one__single wow fadeInUp" data-wow-delay="100ms">
+                                        <div class="blog-one__img-box">
+                                            <div class="blog-one__img">
+                                                <img src="<?php if(@$post->image){?>{{asset('/images/blog/'.@$post->image)}}<?php }?>" alt="{{@$post->slug}}">
+                                                <a href="{{route('blog.single',$post->slug)}}">
+                                                    <span class="blog-one__plus"></span>
+                                                </a>
+                                            </div>
+                                            <div class="blog-one__date-box">
+                                                <p><span>{{date('j',strtotime(@$post->created_at))}}</span> {{date('M',strtotime(@$post->created_at))}}</p>
+                                            </div>
                                         </div>
-                                        <div class="blog-three__content">
-
-                                            <div class="blog-three__date">
-                                                <span>{{date('j',strtotime(@$post->created_at))}}</span>
-                                                <p>{{date('M',strtotime(@$post->created_at))}}</p>
-                                            </div>
-                                            <div class="blog-three__title-box">
-                                                <h4 class="blog-three__title"><a href="{{route('blog.single',$post->slug)}}">
-                                                {!! ucwords(Str::limit(@$post->title, 45,'...')) !!}
-                                                </a></h4>
-                                            </div>
-                                           
-                                            <div class="blog-three__content-box">
-                                                <ul class="blog-three__meta list-unstyled">
-                                                    <li>
-                                                    <a href="{{url('/blog/categories/'.@$post->category->slug)}}"><i class="icon-tag-chevron-thin"></i>{{ucwords($post->category->name)}}</a>
-
-                                                    </li>
-                                                    
-                                                </ul>
-                                                <div class="blog-three__btn-box">
-                                                    <a href="{{route('blog.single',$post->slug)}}">Details<i
-                                                            class="icon-fast-forward-thin-double-arrows"></i></a>
+                                        <div class="blog-one__content">
+                                            <ul class="list-unstyled blog-one__meta">
+                                                <li><a href="{{url('/blog/categories/'.@$post->category->slug)}}"><i class="fas fa-th"></i> {{ucwords($post->category->name)}}</a></li>
+                                                </li>
+                                            </ul>
+                                            <h3 class="blog-one__title">
+                                                <a href="{{route('blog.single',$post->slug)}}">{!! ucwords(Str::limit(@$post->title, 40,'...')) !!}</a>
+                                            </h3>
+                                            <p class="blog-one__text">{!! Str::limit(@$post->description, 65,'...') !!}
+                                            </p>
+                                            <div class="blog-one__bottom">
+                                                <div class="blog-one__read-btn">
+                                                    <a href="{{route('blog.single',$post->slug)}}">Read more</a>
+                                                </div>
+                                                <div class="blog-one__arrow">
+                                                    <a href="{{route('blog.single',$post->slug)}}"><span class="icon-right-arrow"></span></a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <!--Blog Single end-->
-                            @endforeach
+                                @endforeach
 
-                            <div class="blog-page__pagination">
+                                <div class="blog-page__pagination">
 
-                                {{ $allPosts->links('vendor.pagination.default') }}
+                                    {{ $allPosts->links('vendor.pagination.default') }}
+
+
+                                </div>
+                            @else
+                                    <section class="no-results not-found">
+                                            <h2 class="page-title">Nothing Found</h2>
+                                        <div class="page-content">
+                                            <p>It seems we can not find what you are looking for.</p>
+                                        
+                                        </div>
+                                    </section>
+                            @endif
 
                             </div>
-                        @else
-                                <section class="no-results not-found">
-                                        <h2 class="page-title">Nothing Found</h2>
-                                    <div class="page-content">
-                                        <p>It seems we can not find what you are looking for.</p>
-                                    
-                                    </div>
-                                </section>
-                        @endif
-
+                          
                         </div>
                     </div>
                     <div class="col-xl-4 col-lg-5">
                         @include('frontend.pages.blogs.sidebar')
-
-
+                   
                     </div>
-
                 </div>
             </div>
-        </div>
-        <!--Blog Page End-->
-
+        </section>
+        <!--Blog Sidebar End-->
 
 @endsection

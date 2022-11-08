@@ -2,62 +2,79 @@
 
 @if ($paginator->hasPages())
 
-    <ul class="pg-pagination list-unstyled">
-        @if ($paginator->onFirstPage())
+    <nav class="Pager4" aria-label="pagination example">
+        <ul class="pagination pagination-circle justify-content-center">
 
-        <li class="prev disabled">
-            <a href="{{ $paginator->previousPageUrl() }}" class=""><i class="fa fa-angle-left"></i></a>
-        </li>
-        @else
-        <li class="page-item ">
-            <a href="{{ $paginator->previousPageUrl() }}" class=""><i class="fa fa-angle-left"></i></a>
-        </li>
-        @endif
+            <!--Arrow left-->
+            @if ($paginator->onFirstPage())
+            
+            <li class="page-item disabled">
+                <a href="{{ $paginator->previousPageUrl() }}" class="page-link prev" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                    <span class="sr-only">Previous</span>
+                </a>
+            </li>
 
-        @if($paginator->currentPage() > 3)
-        <li class="count"><a href="{{ $paginator->url(1) }}"> 1</a></li>
-        @endif
+            @else
+            
+            <li class="page-item">
+                <a href="{{ $paginator->previousPageUrl() }}" class="page-link prev" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                    <span class="sr-only">Previous</span>
+                </a>
+            </li>
+            @endif
 
+
+            @if($paginator->currentPage() > 3)
+                <li class="page-item"><a class="page-link" href="{{ $paginator->url(1) }}">1</a></li>
+            @endif
+
+            
+            @if($paginator->currentPage() > 4)
+                <li class="page-item"><a class="page-link">..</a></li>
         
-        @if($paginator->currentPage() > 4)
-            <li class="count disabled" aria-disabled="true"><span class="page-link seperate-pagination-link">...</span></li>
-    
-        @endif
-        
-        @foreach(range(1, $paginator->lastPage()) as $i)
+            @endif
+
+
+            @foreach(range(1, $paginator->lastPage()) as $i)
             @if($i >= $paginator->currentPage() - 2 && $i <= $paginator->currentPage() + 2)
                 @if ($i == $paginator->currentPage())
-                        <li class="count"><a href="#" class="active">{{ $i }}</a></li>
-                    
+                         <li class="page-item active"><a class="page-link">{{ $i }}</a></li>
                 @else
-                     <li class="count"><a href="{{ $paginator->url($i) }}" >{{ $i }}</a></li>
+                     <li class="page-item"><a class="page-link" href="{{ $paginator->url($i) }}" >{{ $i }}</a></li>
 
                 @endif
             @endif
         @endforeach
 
         @if($paginator->currentPage() < $paginator->lastPage() - 3)
-        <li class="count disabled" aria-disabled="true"><span class=" seperate-pagination-link">...</span></li>
-
+            <li class="page-item"><a class="page-link">..</a></li>
         @endif
 
         @if($paginator->currentPage() < $paginator->lastPage() - 2)
-            <li class="count"><a class="" href="{{ $paginator->url($paginator->lastPage()) }}">{{ $paginator->lastPage() }}</a></li>
+            <li class="page-item"><a class="page-link" href="{{ $paginator->url($paginator->lastPage()) }}">{{ $paginator->lastPage() }}</a></li>
 
         @endif
 
-
               
-    @if ($paginator->hasMorePages())
+        @if ($paginator->hasMorePages())
 
-        <li class="next">
-            <a href="{{ $paginator->nextPageUrl() }}" aria-label="Next"><i class="fa fa-angle-right"></i></a>
-        </li>
-    @else
+           
+            <li class="page-item">
+                <a class="page-link next"  href="{{ $paginator->nextPageUrl() }}" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </li>
+        @else
 
-    @endif
+        @endif
 
-    </ul>
+        
+        </ul>
+    </nav> 
+
 
 @endif
 

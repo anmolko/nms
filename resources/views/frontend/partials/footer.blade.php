@@ -13,7 +13,7 @@
                                     <a href="/"><img src="<?php if(@$setting_data->logo){?>{{asset('/images/settings/'.@$setting_data->logo)}}<?php } ?>" alt="Logo"></a>
 
                                 </div>
-                                <p class="footer-widget__about-text"> @if(!empty(@$setting_data->website_description)) {!! ucfirst(@$setting_data->website_description) !!} @else Win Recruit @endif</p>
+                                <p class="footer-widget__about-text"> @if(!empty(@$setting_data->website_description)) {!! ucfirst(@$setting_data->website_description) !!} @else NMS Recruitment Service @endif</p>
                                 <div class="footer-widget__about-social-list">
 
                                     @if(!empty(@$setting_data->facebook))
