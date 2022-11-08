@@ -1,34 +1,28 @@
 @extends('frontend.layouts.master')
 @section('title') Services @endsection
 @section('css')
-    <style>
-        .blog-page__pagination {
+<link rel="stylesheet" id="jssDefault" href="{{asset('assets/frontend/css/pagination.css')}}">
+
+<style>
+   .blog-page__pagination {
             text-align: center;
         }
+
 </style>
 @endsection
 @section('content')
 
-
+        
         <!--Page Header Start-->
-        <section class="page-header">
-            <div class="page-header__bg" style="background-image: url({{asset('assets/frontend/images/backgrounds/page-header-bg.jpg')}});">
-            </div>
-            <div class="page-header__shape-one float-bob-x-2"></div>
-            <div class="page-header__shape-2 float-bob-y">
-                <img src="{{asset('assets/frontend/images/shapes/page-header-shape-2.png')}}" alt="">
-            </div>
-            <div class="page-header__shape-3 float-bob-x">
-                <img src="{{asset('assets/frontend/images/shapes/page-header-shape-3.png')}}" alt="">
-            </div>
-            <div class="page-header__shape-4 float-bob-y">
-                <img src="{{asset('assets/frontend/images/shapes/page-header-shape-4.png')}}" alt="">
-            </div>
+        <section class="page-header" style="background-image: url({{asset('assets/frontend/images/backgrounds/page-header-bg.jpg')}});">
+            <div class="page-header-shape-1"></div>
+            <div class="page-header-shape-2"></div>
             <div class="container">
-                <div class="page-header__inner text-left">
+                <div class="page-header__inner">
                     <ul class="thm-breadcrumb list-unstyled">
                         <li><a href="/">Home</a></li>
-                        <li>Services</li>
+                        <li><span>.</span></li>
+                        <li>Services </li>
                     </ul>
                     <h2>Our Services</h2>
                 </div>
@@ -36,37 +30,35 @@
         </section>
         <!--Page Header End-->
 
-
-        <!--Services Page V 2 Start-->
-        <section class="services-page-v-2">
-            <div class="container">
-                
-                <div class="row">
+        <section class="service-two">
+			<div class="container">
+				<div class="row">
                 @if(count($allservices) > 0)
                     @foreach($allservices as $service)
-
-                    <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms">
-                        <div class="services-one__single">
-                            <div class="services-one__img">
-                                <img src="<?php if(@$service->banner_image){?>{{asset('/images/service/'.@$service->banner_image)}}<?php }?>" alt="">
-                            </div>
-                            <div class="services-one__content">
-                               
-                                <h3 class="services-one__title"><a href="{{route('service.single',$service->slug)}}">{!! ucwords(Str::limit(@$service->title, 20,'..')) !!}</a></h3>
-                                <p class="services-one__text">{{ Str::limit(@$service->sub_description, 70,'..') }}</p>
-                                <div class="services-one__arrow">
-                                    <a href="{{route('service.single',$service->slug)}}"><i class="icon-right-arrow-1"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+					<div class="col-md-6 col-lg-4">
+						<div class="service-two__card">
+							<div class="service-two__card__inner">
+								<div class="service-two__image">
+									<img src="<?php if(@$service->banner_image){?>{{asset('/images/service/'.@$service->banner_image)}}<?php }?>" alt="">
+								</div><!-- /.service-two__image -->
+								<div class="service-two__content">
+									<h3 class="service-two__title">{!! ucfirst(@$service->title) !!}</h3><!-- /.service-two__title -->
+									<p class="service-two__summery">{{ Str::limit(@$service->sub_description, 70,'..') }}
+									</p><!-- /.service-two__summery -->
+									<a href="{{route('service.single',$service->slug)}}" class="service-two__link">
+										<i class="icon-right-arrow"></i>
+									</a><!-- /.service-two__link -->
+								</div><!-- /.service-two__content -->
+							</div><!-- /.service-two__card__inner -->
+						</div><!-- /.service-two__card -->
+					</div>
                     @endforeach
 
                     <div class="blog-page__pagination">
                             {{ $allservices->links('vendor.pagination.default') }}
                     </div>
-               
-                    @else
+
+                @else
 
                     <section class="no-results not-found">
                             <h2 class="page-title">Nothing Found</h2>
@@ -75,11 +67,12 @@
                         
                         </div>
                     </section>
-                    @endif
+                @endif
+				
+				</div><!-- /.row -->
+			</div><!-- /.container -->
+		</section><!-- /.service-two -->
+        <!--Services Page V 2 Start-->
 
-                </div>
-            </div>
-        </section>
-        <!--Services Page V 2 End-->
 
 @endsection
