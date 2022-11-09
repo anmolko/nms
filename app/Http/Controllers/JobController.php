@@ -91,7 +91,7 @@ class JobController extends Controller
             $thumb        = 'thumb_'.$name;
             $path         = base_path().'/public/images/job/';
             $thumb_path   = base_path().'/public/images/job/thumb/';
-            $moved        = Image::make($image->getRealPath())->fit(770, 426)->orientate()->save($path.$name);
+            $moved        = Image::make($image->getRealPath())->fit(1770, 536)->orientate()->save($path.$name);
             $thumb        = Image::make($image->getRealPath())->resize(62, 61)->orientate()->save($thumb_path.$thumb);
 
             if ($moved  && $thumb){
@@ -176,7 +176,7 @@ class JobController extends Controller
             $thumb                = 'thumb_'.$name;
             $path                 = base_path().'/public/images/job/';
             $thumb_path           = base_path().'/public/images/job/thumb/';
-            $moved                = Image::make($image->getRealPath())->fit(770, 426)->orientate()->save($path.$name);
+            $moved                = Image::make($image->getRealPath())->fit(1770, 536)->orientate()->save($path.$name);
             $thumb                = Image::make($image->getRealPath())->resize(62, 61)->orientate()->save($thumb_path.$thumb);
 
             if ($moved  && $thumb){
