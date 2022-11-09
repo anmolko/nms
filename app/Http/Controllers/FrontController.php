@@ -321,10 +321,25 @@ class FrontController extends Controller
 
     public function demands(){
         $today = date('Y-m-d');
-        $alldemands = $this->demand->orderBy('created_at', 'asc')->paginate(6);
-        $latestDemands = $this->demand->orderBy('created_at', 'DESC')->take(3)->get();
+        $alldemands = $this->demand->orderBy('created_at', 'asc')->where('status','publish')->where('start_date','<=',$today)->where('end_date','>=',$today)->paginate(6);
+        $latestDemands = $this->demand->orderBy('created_at', 'DESC')->where('status','publish')->where('start_date','<=',$today)->where('end_date','>=',$today)->take(3)->get();
 
         return view('frontend.pages.demand.index',compact('alldemands','latestDemands'));
+    }
+
+
+    public function demandSingle($slug){
+
+        $singleDemand = $this->demand->where('slug', $slug)->first();
+        if (!$singleDemand) {
+            return abort(404);
+        }
+
+        $today = date('Y-m-d');
+       
+        $latestDemands = $this->demand->orderBy('created_at', 'DESC')->where('status','publish')->where('start_date','<=',$today)->where('end_date','>=',$today)->take(5)->get();
+
+        return view('frontend.pages.demand.single',compact('singleDemand','latestDemands'));
     }
 
 
