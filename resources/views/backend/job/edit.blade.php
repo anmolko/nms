@@ -166,13 +166,13 @@
                                     <label>Min Qualification </label>
                                     <select class="form-control shadow-none" name="min_qualification">
                                         <option value disabled> Select Min Qualification</option>
-                                        <option value="none"  @if(@$edit->status == "none") selected @endif>None</option>
-                                        <option value="primary education"  @if(@$edit->status == "primary education") selected @endif>Primary Education </option>
-                                        <option value="secondary education"  @if(@$edit->status == "secondary education") selected @endif>Secondary Education</option>
-                                        <option value="SEE pass"  @if(@$edit->status == "SEE pass") selected @endif>SEE Pass</option>
-                                        <option value="intermediate pass"  @if(@$edit->status == "intermediate pass") selected @endif>Intermediate Pass</option>
-                                        <option value="bachelor pass"  @if(@$edit->status == "bachelor pass") selected @endif>Bachelor Pass</option>
-                                        <option value="post graduate pass"  @if(@$edit->status == "post graduate pass") selected @endif>Post Graduate Pass</option>
+                                        <option value="none"  @if(@$edit->min_qualification == "none") selected @endif>None</option>
+                                        <option value="primary education"  @if(@$edit->min_qualification == "primary education") selected @endif>Primary Education </option>
+                                        <option value="secondary education"  @if(@$edit->min_qualification == "secondary education") selected @endif>Secondary Education</option>
+                                        <option value="SEE pass"  @if(@$edit->min_qualification == "SEE pass") selected @endif>SEE Pass</option>
+                                        <option value="intermediate pass"  @if(@$edit->min_qualification == "intermediate pass") selected @endif>Intermediate Pass</option>
+                                        <option value="bachelor pass"  @if(@$edit->min_qualification == "bachelor pass") selected @endif>Bachelor Pass</option>
+                                        <option value="post graduate pass"  @if(@$edit->min_qualification == "post graduate pass") selected @endif>Post Graduate Pass</option>
                                     </select>
                                     <div class="invalid-feedback">
                                         Please enter the Min Qualification.
