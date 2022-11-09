@@ -14,6 +14,7 @@ use App\Models\Slider;
 use App\Models\User;
 use App\Models\SectionElement;
 use App\Models\Page;
+use App\Models\Job;
 use App\Models\Client;
 use App\Models\PageSection;
 use App\Models\SectionGallery;
@@ -46,9 +47,10 @@ class FrontController extends Controller
     protected $pagesection = null;
     protected $client = null;
     protected $slider = null;
+    protected $demand = null;
+    
 
-
-    public function __construct(Slider $slider,HomePage $home_page,Client $client,PageSection $pagesection,Page $page,Service $service,Setting $setting,BlogCategory $bcategory,Blog $blog)
+    public function __construct(Job $demand,Slider $slider,HomePage $home_page,Client $client,PageSection $pagesection,Page $page,Service $service,Setting $setting,BlogCategory $bcategory,Blog $blog)
     {
         $this->setting = $setting;
         $this->bcategory = $bcategory;
@@ -59,6 +61,7 @@ class FrontController extends Controller
         $this->client = $client;
         $this->slider = $slider;
         $this->home_page = $home_page;
+        $this->demand = $demand;
     }
 
 
@@ -314,6 +317,14 @@ class FrontController extends Controller
      public function career(){
         $allcareers = $this->career->where('status','active')->get();
         return view('frontend.pages.careers.index',compact('allcareers'));
+    }
+
+    public function demands(){
+        $today = date('Y-m-d');
+        $alldemands = $this->demand->orderBy('created_at', 'asc')->paginate(6);
+        $latestDemands = $this->demand->orderBy('created_at', 'DESC')->take(3)->get();
+
+        return view('frontend.pages.demand.index',compact('alldemands','latestDemands'));
     }
 
 

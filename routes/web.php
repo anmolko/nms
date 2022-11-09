@@ -50,6 +50,12 @@ Route::get('/blog', 'App\Http\Controllers\FrontController@blogs')->name('blog.fr
 Route::get('/faq', 'App\Http\Controllers\FrontController@faq')->name('faq.frontend');
 
 
+//jobs
+Route::get('demand/search/', 'App\Http\Controllers\FrontController@searchDemand')->name('searchDemand');
+
+Route::get('/demand','App\Http\Controllers\FrontController@demands')->name('demand.list');
+Route::get('/demand/{slug}','App\Http\Controllers\FrontController@demandSingle')->name('demand.single');
+
 Route::get('/privacy-policy', 'App\Http\Controllers\FrontController@privacy')->name('privacy.frontend');
 Route::get('/terms-condition', 'App\Http\Controllers\FrontController@terms')->name('term.frontend');
 
