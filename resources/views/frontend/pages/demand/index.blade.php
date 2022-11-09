@@ -14,6 +14,9 @@
     .service-two__image {
         height: 300px;
     }
+    .service-two__card {
+        margin-bottom: 30px;
+    }
 </style>
 @endsection
 

@@ -17,7 +17,7 @@
                     </div>
                     <div class="sidebar__post-content">
                         <h3>
-                            <a href="{{route('demand.single',@$demand->slug)}}">{{ucwords(@$latest->name)}}</a>
+                            <a href="{{route('demand.single',@$latest->slug)}}">{{ucwords(@$latest->name)}}</a>
                         </h3>
                     </div>
                 </li>

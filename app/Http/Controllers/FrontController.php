@@ -343,6 +343,18 @@ class FrontController extends Controller
     }
 
 
+    public function searchDemand(Request $request)
+    {
+        $query = $request->s;
+        $today = date('Y-m-d');
+
+        $alldemands = $this->demand->where('name', 'LIKE', '%' . $query . '%')->where('status','publish')->orderBy('name', 'asc')->where('start_date','<=',$today)->where('end_date','>=',$today)->paginate(6);
+        $latestDemands = $this->demand->orderBy('created_at', 'DESC')->where('status','publish')->where('start_date','<=',$today)->where('end_date','>=',$today)->take(3)->get();
+
+        return view('frontend.pages.demand.search',compact('alldemands','query','latestDemands'));
+    }
+    
+
     public function careerStore(Request $request)
     {
 
