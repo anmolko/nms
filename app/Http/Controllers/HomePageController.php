@@ -78,7 +78,7 @@ class HomePageController extends Controller
             $path    = base_path().'/public/images/home/welcome/';
             $image   = $request->file('welcome_image');
             $name1   = uniqid().'_welcome_'.$image->getClientOriginalName();
-            $moved          = Image::make($image->getRealPath())->fit(375, 497)->orientate()->save($path.$name1);
+            $moved          = Image::make($image->getRealPath())->fit(530, 530)->orientate()->save($path.$name1);
             if ($moved){
                 $data['welcome_image']= $name1;
             }
@@ -215,6 +215,7 @@ class HomePageController extends Controller
         $update_theme                       =  HomePage::find($id);
         $update_theme->mv_heading           =  $request->input('mv_heading');
         $update_theme->mv_subheading        =  $request->input('mv_subheading');
+        $update_theme->mv_description       =  $request->input('mv_description');
         $update_theme->mission              =  $request->input('mission');
         $update_theme->vision               =  $request->input('vision');
         $update_theme->value                =  $request->input('value');
