@@ -18,6 +18,18 @@ use Intervention\Image\Facades\Image;
 
 class JobController extends Controller
 {
+
+    private $blog_path;
+    private $blog_thumb_path;
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->blog_thumb_path   = public_path('/images/job/thumb');
+
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -73,9 +85,16 @@ class JobController extends Controller
         if(!empty($request->file('image'))){
             $image        = $request->file('image');
             $name         = uniqid().'_job_'.$image->getClientOriginalName();
+            if (!is_dir($this->blog_thumb_path)) {
+                mkdir($this->blog_thumb_path, 0777);
+            }
+            $thumb        = 'thumb_'.$name;
             $path         = base_path().'/public/images/job/';
+            $thumb_path   = base_path().'/public/images/job/thumb/';
             $moved        = Image::make($image->getRealPath())->fit(770, 426)->orientate()->save($path.$name);
-            if ($moved){
+            $thumb        = Image::make($image->getRealPath())->resize(62, 61)->orientate()->save($thumb_path.$thumb);
+
+            if ($moved  && $thumb){
                 $data['image']= $name;
             }
         }
@@ -149,16 +168,24 @@ class JobController extends Controller
         $job->end_date              = $end;
         $job->updated_by            = Auth::user()->id;
         $oldimage                   = $job->image;
+        $thumbimage                 = 'thumb_'.$job->image;
 
         if (!empty($request->file('image'))){
             $image                = $request->file('image');
             $name                 = uniqid().'_'.$image->getClientOriginalName();
+            $thumb                = 'thumb_'.$name;
             $path                 = base_path().'/public/images/job/';
+            $thumb_path           = base_path().'/public/images/job/thumb/';
             $moved                = Image::make($image->getRealPath())->fit(770, 426)->orientate()->save($path.$name);
-            if ($moved){
+            $thumb                = Image::make($image->getRealPath())->resize(62, 61)->orientate()->save($thumb_path.$thumb);
+
+            if ($moved  && $thumb){
                 $job->image = $name;
                 if (!empty($oldimage) && file_exists(public_path().'/images/job/'.$oldimage)){
                     @unlink(public_path().'/images/job/'.$oldimage);
+                }
+                if (!empty($thumbimage) && file_exists(public_path().'/images/job/thumb/'.$thumbimage)){
+                    @unlink(public_path().'/images/job/thumb/'.$thumbimage);
                 }
             }
         }
@@ -181,10 +208,15 @@ class JobController extends Controller
      */
     public function destroy($id)
     {
-        $delete       = Job::find($id);
-        $rid          = $delete->id;
+        $delete         = Job::find($id);
+        $rid            = $delete->id;
+        $thumbimage     = 'thumb_'.$delete->image;
+
         if (!empty($delete->image) && file_exists(public_path().'/images/job/'.$delete->image)){
             @unlink(public_path().'/images/job/'.$delete->image);
+        }
+        if (!empty($thumbimage) && file_exists(public_path().'/images/job/thumb/'.$thumbimage)){
+            @unlink(public_path().'/images/job/thumb/'.$thumbimage);
         }
         $recuuu          = $delete->delete();
         if($recuuu){

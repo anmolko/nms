@@ -87,7 +87,7 @@ $(document).on('click','.cs-job-remove', function (e) {
             t.dismiss === Swal.DismissReason.cancel &&
             Swal.fire({
                 title: "Cancelled",
-                text: "Job details was not removed.",
+                text: "Demand details was not removed.",
                 icon: "error",
                 confirmButtonClass: "btn btn-primary mt-2",
                 buttonsStyling: !1
@@ -132,7 +132,7 @@ $(document).on('click','.change-status', function (e) {
                 t.dismiss === Swal.DismissReason.cancel &&
                 Swal.fire({
                     title: "Cancelled",
-                    text: "Job status was not changed.",
+                    text: "Demand status was not changed.",
                     icon: "error",
                     confirmButtonClass: "btn btn-primary mt-2",
                     buttonsStyling: !1
