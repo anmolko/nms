@@ -200,7 +200,7 @@ class SectionElementController extends Controller
                 $image        = $request->file('list_header');
                 $name         = uniqid().'_basic3_'.$image->getClientOriginalName();
                 $path         = base_path().'/public/images/section_elements/basic_section/';
-                $moved        = Image::make($image->getRealPath())->fit(600, 350)->orientate()->save($path.$name);
+                $moved        = Image::make($image->getRealPath())->fit(400, 350)->orientate()->save($path.$name);
                 if ($moved){
                     $data['list_header']= $name;
                 }
