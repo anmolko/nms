@@ -295,17 +295,6 @@
                                                                 Please enter the button link.
                                                             </div>
                                                         </div>
-                                                        <div class="form-group mb-3">
-                                                            <label>Image Alignment </label>
-                                                            <select class="form-control shadow-none" name="list_image" id="list_image_align" required>
-                                                                <option value disabled readonly> Select alignment</option>
-                                                                <option value="left" {{(@$basic_elements2->list_image == 'left') ? "selected":""}} selected> Left </option>
-                                                                <option value="right"  {{(@$basic_elements2->list_image == 'right') ? "selected":""}}> Right </option>
-                                                            </select>
-                                                            <div class="invalid-feedback">
-                                                                Please select the image alignment.
-                                                            </div>
-                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
