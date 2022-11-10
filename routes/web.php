@@ -210,6 +210,15 @@ Route::group(['prefix' => 'auth', 'middleware' => ['auth']], function () {
     Route::patch('/demands/{id}/update', 'App\Http\Controllers\JobController@updateStatus')->name('job-status.update');
 
     //End jobs
+
+    //Testimonial
+    Route::get('/testimonials', 'App\Http\Controllers\TestimonialController@index')->name('testimonials.index');
+    Route::get('/testimonials/create', 'App\Http\Controllers\TestimonialController@create')->name('testimonials.create');
+    Route::post('/testimonials', 'App\Http\Controllers\TestimonialController@store')->name('testimonials.store');
+    Route::put('/testimonials/{testimonial}', 'App\Http\Controllers\TestimonialController@update')->name('testimonials.update');
+    Route::delete('/testimonials/{testimonial}', 'App\Http\Controllers\TestimonialController@destroy')->name('testimonials.destroy');
+    Route::get('/testimonials/{testimonial}/edit', 'App\Http\Controllers\TestimonialController@edit')->name('testimonials.edit');
+
 });
 
 

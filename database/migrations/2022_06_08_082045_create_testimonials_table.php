@@ -17,7 +17,6 @@ class CreateTestimonialsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('position')->nullable();
-            $table->integer('rating')->nullable();
             $table->text('description');
             $table->string('image')->nullable();
             $table->unsignedBigInteger('created_by');

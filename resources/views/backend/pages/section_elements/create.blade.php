@@ -562,7 +562,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="form-group mb-3">
-                                                            <label>Button Link </label>
+                                                            <label>Box 2 Link </label>
                                                             <input type="text" class="form-control" value="{{@$call2_elements->button_link}}" name="button_link">
                                                             <div class="invalid-feedback">
                                                                 Please enter the button link.
