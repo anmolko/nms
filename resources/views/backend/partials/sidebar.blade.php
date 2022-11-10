@@ -91,6 +91,11 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link menu-link @if(\Request::route()->getName() == 'clients.index') active @endif" href="{{route('clients.index')}}">
+                        <i class="ri-user-2-line"></i> <span data-key="t-widgets">Clients</span>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link menu-link @if(\Request::route()->getName() == 'alluser') active @endif" href="{{route('alluser')}}">
                         <i class="ri-account-circle-line"></i> <span data-key="t-widgets">User Mgmt.</span>
                     </a>

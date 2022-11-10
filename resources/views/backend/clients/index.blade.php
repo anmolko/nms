@@ -30,7 +30,36 @@
 
             {!! Form::open(['route' => 'clients.store','method'=>'post','class'=>'needs-validation','novalidate'=>'','enctype'=>'multipart/form-data']) !!}
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-8">
+                    <div class="card ctm-border-radius shadow-sm grow flex-fill">
+                        <div class="card-header">
+                            <h4 class="card-title mb-0">
+                                Client details
+                            </h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group mb-3">
+                                <label>Company Name</label>
+                                <input type="text" class="form-control" name="country">
+
+                                <div class="invalid-feedback">
+                                    Please select the company name.
+                                </div>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label>Link </label>
+                                <input type="text" class="form-control" name="link">
+                                <div class="invalid-feedback">
+                                    Please enter the category name.
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-success w-sm mt-4" >Add Client</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
                     <div class="card ctm-border-radius shadow-sm grow flex-fill">
                         <div class="card-header">
                             <h4 class="card-title mb-0">
@@ -44,7 +73,7 @@
                                         id="profile-foreground-img-file-input" onchange="loadbasicFile('profile-foreground-img-file-input','current-img',event)" name="image" required
                                         class="profile-foreground-img-file-input" >
 
-                                <figcaption class="figure-caption">*use image minimum of 500px x 500px </figcaption>
+                                <figcaption class="figure-caption">*use image minimum of 250px x 250px </figcaption>
                                 <div class="invalid-feedback" >
                                     Please select a image.
                                 </div>
@@ -55,42 +84,6 @@
 
                         </div>
 
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="card ctm-border-radius shadow-sm grow flex-fill">
-                        <div class="card-header">
-                            <h4 class="card-title mb-0">
-                                Client details
-                            </h4>
-                        </div>
-                        <div class="card-body">
-                            <div class="form-group mb-3">
-                                <label>Link </label>
-                                <input type="text" class="form-control" name="link">
-                                <div class="invalid-feedback">
-                                    Please enter the category name.
-                                </div>
-                            </div>
-
-                            <div class="form-group mb-3">
-                                <label>Country</label>
-                                <select class="form-control select select2" name="country">
-                                    <option disabled>Select Country</option>
-                                    @foreach($countries as $key => $value)
-                                        <option value="{{$key}}">{{$value}}</option>
-                                    @endforeach
-                                </select>
-                                <div class="invalid-feedback">
-                                    Please select the country.
-                                </div>
-                            </div>
-
-
-                            <div class="text-center">
-                                <button type="submit" class="btn btn-success w-sm mt-4" >Add Client</button>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -124,15 +117,7 @@
 
                                                     </td>
                                                     <td>{{(!empty($client->link)) ?  $client->link:"Not Set"}}</td>
-                                                    <td><?php
-                                                        if(!empty($client->country)){
-                                                            foreach ($countries as $key=>$value){
-                                                                if($client->country == $key){
-                                                                    echo $value;
-                                                                }
-                                                            }
-                                                        }
-                                                        ?></td>
+                                                    <td>{{(!empty($client->country)) ?  $client->country:"Not Set"}}</td>
                                                     <td>
                                                         <div class="row">
 
@@ -180,7 +165,35 @@
                     <div class="modal-body">
                         <h4 class="modal-title mb-3">Edit Clients</h4>
                         <div class="row">
+
                             <div class="col-md-7">
+                                <div class="card ctm-border-radius shadow-sm flex-fill">
+                                    <div class="card-header">
+                                        <h4 class="card-title mb-0">
+                                            Client Details
+                                        </h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="form-group mb-3">
+                                            <label>Company Name</label>
+                                            <input type="text" class="form-control" name="country" id="country">
+
+                                            <div class="invalid-feedback">
+                                                Please select the company name.
+                                            </div>
+                                        </div>
+                                        <div class="form-group mb-3">
+                                            <label>Link </label>
+                                            <input type="text" class="form-control" name="link" id="link">
+                                            <div class="invalid-feedback">
+                                                Please enter the category name.
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
                                 <div class="card ctm-border-radius shadow-sm flex-fill">
                                     <div class="card-header">
                                         <h4 class="card-title mb-0">
@@ -195,7 +208,7 @@
                                                     id="image-edit" onchange="loadbasicFile('image-edit','current-edit-img',event)" name="image"
                                                     class="profile-foreground-img-file-input" >
 
-                                            <figcaption class="figure-caption">*use image minimum of 500px x 500px </figcaption>
+                                            <figcaption class="figure-caption">*use image minimum of 250px x 250px </figcaption>
                                             <div class="invalid-feedback" >
                                                 Please select a image.
                                             </div>
@@ -204,39 +217,6 @@
                                             </label>
                                         </div>
 
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-5">
-                                <div class="card ctm-border-radius shadow-sm flex-fill">
-                                    <div class="card-header">
-                                        <h4 class="card-title mb-0">
-                                            Client Details
-                                        </h4>
-                                    </div>
-                                    <div class="card-body">
-
-                                        <div class="form-group mb-3">
-                                            <label>Link </label>
-                                            <input type="text" class="form-control" name="link" id="link">
-                                            <div class="invalid-feedback">
-                                                Please enter the category name.
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group mb-3">
-                                            <label>Country</label>
-                                            <br>
-                                            <select class="form-control select select2" name="country" id="country">
-                                                <option disabled>Select Country</option>
-                                                @foreach($countries as $key => $value)
-                                                    <option value="{{$key}}">{{$value}}</option>
-                                                @endforeach
-                                            </select>
-                                            <div class="invalid-feedback">
-                                                Please select the country.
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -295,12 +275,7 @@
                         // $('#id').val(data.id);
                         $("#editClient").modal("toggle");
                         $('#link').attr('value', dataResult.edit.link);
-                        $.each(dataResult.countries, function (index, value) {
-                            if(index==dataResult.edit.country){
-                                $('#select2-country-container').text(value);
-                            }
-                        });
-                        $('#country option[value="'+dataResult.edit.country+'"]').prop('selected', true);
+                        $('#country').attr('value', dataResult.edit.country);
                         $('#current-edit-img').attr("src", '/images/clients/' + dataResult.edit.image);
                         $('.updateclient').attr('action', action);
 
