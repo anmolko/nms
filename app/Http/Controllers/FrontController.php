@@ -182,6 +182,7 @@ class FrontController extends Controller
         $list_3        = "";
         $process_num   = "";
         $basic_elements = "";
+        $basic_elements2 = "";
         $map_descp = "";
         $call1_elements = "";
         $call2_elements = "";
@@ -204,13 +205,22 @@ class FrontController extends Controller
                 $basic_elements = SectionElement::with('section')
                     ->where('page_section_id', $section->id)
                     ->first();
-            } else if($section->section_slug == 'map_and_description'){
+            }  else if($section->section_slug == 'basic_section2'){
+                $basic_elements2 = SectionElement::with('section')
+                    ->where('page_section_id', $section->id)
+                    ->first();
+            }else if($section->section_slug == 'map_and_description'){
                 $map_descp = SectionElement::with('section')
                     ->where('page_section_id', $section->id)
                     ->first();
             }
             else if ($section->section_slug == 'call_to_action_1'){
                 $call1_elements = SectionElement::with('section')
+                    ->where('page_section_id', $section->id)
+                    ->first();
+            }
+            else if ($section->section_slug == 'call_to_action_2'){
+                $call2_elements = SectionElement::with('section')
                     ->where('page_section_id', $section->id)
                     ->first();
             }
@@ -252,7 +262,8 @@ class FrontController extends Controller
                     ->get();
             }
 
-            else if ($section->section_slug == 'small_box_description'){
+         
+            else if ($section->section_slug == 'simple_accordion_tab2'){
                 $process_num = $section->list_number_3;
                 $process_elements = SectionElement::with('section')
                     ->where('page_section_id', $section->id)
@@ -260,7 +271,7 @@ class FrontController extends Controller
             }
         }
 
-        return view('frontend.pages.dynamic_page',compact( 'page_detail','sections','process_num','process_elements','map_descp','icon_title_elements','location_map','video_descp_elements','list_2','list_3','basic_elements','call1_elements','gallery2_elements','bgimage_elements','call2_elements','flash_elements','gallery_elements','header_descp_elements','accordian1_elements','accordian2_elements','slider_list_elements','contact_info_elements'));
+        return view('frontend.pages.dynamic_page',compact( 'basic_elements2','page_detail','sections','process_num','process_elements','map_descp','icon_title_elements','location_map','video_descp_elements','list_2','list_3','basic_elements','call1_elements','gallery2_elements','bgimage_elements','call2_elements','flash_elements','gallery_elements','header_descp_elements','accordian1_elements','accordian2_elements','slider_list_elements','contact_info_elements'));
 
     }
 

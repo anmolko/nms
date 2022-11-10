@@ -11,7 +11,10 @@
   .custom-editor .media{
         display: block;
     }
-
+    .gallery-one {
+      padding-top: 120px;
+      padding-bottom: 100px;
+  }
     .feature-item-three > img {
         width:60px;
         height:60px;
@@ -27,11 +30,11 @@
       margin-bottom: 30px;
   }
 
-      .project-two__img {
+      .gallery-one__card {
         height: 370px;
 
       }
-      .project-two__img img{
+      .gallery-one__card img{
         width: 100%;
           height: 100%;
           object-fit: cover;
@@ -41,7 +44,7 @@
       ul, ol{
         padding-left: 1rem;
       }
-
+/* 
     .winrecruit ul li::before,.winrecruit ol li::before {
       -webkit-box-flex: 0;
       -ms-flex: none;
@@ -59,8 +62,8 @@
       border-radius: 50%;
       color: #0066ff;
       font-family: 'Font Awesome 5 Pro';
-    }
-    .winrecruit ol li ol li::before,.winrecruit ol li ul li::before,.winrecruit ul li ol li::before ,.winrecruit ul li ul li::before {
+    } */
+    /* .winrecruit ol li ol li::before,.winrecruit ol li ul li::before,.winrecruit ul li ol li::before ,.winrecruit ul li ul li::before {
       -webkit-box-flex: 0;
       -ms-flex: none;
       flex: none;
@@ -77,7 +80,7 @@
       border-radius: 50%;
       color: #0066ff;
       font-family: 'Font Awesome 5 Pro';
-    }
+    } */
     .basic-section-container{
       margin-bottom: 35px;
     }
@@ -87,6 +90,21 @@
       color:var(--conalz-gray);
       text-align: justify;
     }
+
+    a.thm-btn.map-button {
+      font-size: 20px;
+      margin-right: -30px;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      border-radius: var(--moniz-border-radius, 10px);
+      text-align: center;
+      font-weight: bold;
+      color: #fff;
+      margin-top: 30px;
+      padding-left: 10px;
+      padding-right: 10px;
+      display: block;
+  }
 
     .basic-section-container .section-title__title  {
         text-decoration-line: underline;
@@ -101,101 +119,98 @@
 @endsection
 @section('content')
 
-      <!--Page Header Start-->
-        <section class="page-header">
-            <div class="page-header__bg" style="background-image: url({{asset('assets/frontend/images/backgrounds/page-header-bg.jpg')}});">
-            </div>
-            <div class="page-header__shape-one float-bob-x-2"></div>
-            <div class="page-header__shape-2 float-bob-y">
-                <img src="{{asset('assets/frontend/images/shapes/page-header-shape-2.png')}}" alt="">
-            </div>
-            <div class="page-header__shape-3 float-bob-x">
-                <img src="{{asset('assets/frontend/images/shapes/page-header-shape-3.png')}}" alt="">
-            </div>
-            <div class="page-header__shape-4 float-bob-y">
-                <img src="{{asset('assets/frontend/images/shapes/page-header-shape-4.png')}}" alt="">
-            </div>
-            <div class="container">
-                <div class="page-header__inner text-left">
-                    <ul class="thm-breadcrumb list-unstyled">
-                        <li><a href="/">Home</a></li>
-                        <li> <a href="#">{{ucwords(@$page_detail->name)}}</a></li>
-                    </ul>
-                    <h2>{{ucwords(@$page_detail->name)}}</h2>
-                </div>
-            </div>
-        </section>
+
+        <!--Page Header Start-->
+        <section class="page-header" style="background-image: url({{asset('assets/frontend/images/backgrounds/page-header-bg.jpg')}});">
+          <div class="page-header-shape-1"></div>
+          <div class="page-header-shape-2"></div>
+          <div class="container">
+              <div class="page-header__inner">
+                  <ul class="thm-breadcrumb list-unstyled">
+                      <li><a href="/">Home</a></li>
+                      <li><span>.</span></li>
+                      <li>{{ucwords(@$page_detail->name)}} </li>
+                  </ul>
+                  <h2>{{ucwords(@$page_detail->name)}}</h2>
+              </div>
+          </div>
+      </section>
       <!--Page Header End-->
-
-
+   
 
     @foreach($sections as $key=>$value)
 
         @if($value == "basic_section")
           <!--- Basic Section--->
-          <section class="why-choose-one">
+          
+          <section class="reasons">
             <div class="container">
               <div class="row">
+  
                 @if(@$basic_elements->list_image == "right")
 
-                  
-                  <div class="col-xl-6">
-                    <div class="why-choose-one__right">
-                      <div class="section-title basic-section-container" >
-                          @if(@$basic_elements->subheading)
+                <div class="col-xl-5 col-lg-6">
+                  <div class="reasons__right">
+                    <div class="section-title text-left">
+                      @if(@$basic_elements->subheading)
                           <span class="section-title__tagline">{{ucfirst(@$basic_elements->subheading)}}</span>
 
                           @endif
                           @if(@$basic_elements->heading)
                           <h2 class="section-title__title">{{ucwords(@$basic_elements->heading)}}</h2>
                           @endif
-                        </h2>
-                      </div>
-                      <p class="why-choose-one-text basic-section-description" >{!! @$basic_elements->description !!}</p>
-                      @if(@$basic_elements->button)
-                        <a href="{{@$basic_elements->button_link}}" class="thm-btn cta-one__right-btn">{{ucwords(@$basic_elements->button)}}</a>
+                    </div>
+                    <p class="reasons__text">
+                    {!! @$basic_elements->description !!}
+                    </p>
+                    @if(@$basic_elements->button)
+                        <a href="{{@$basic_elements->button_link}}" class="thm-btn reasons__btn" style="margin-top: 25px;"><span>{{ucwords(@$basic_elements->button)}}</span></a>
                       @endif
-                    
+                  </div>
+                </div>
+
+                <div class="col-xl-7 col-lg-6">
+                  <div class="reasons__left">
+                    <div class="reasons__img">
+                      <img src="{{asset('/images/section_elements/basic_section/'.@$basic_elements->image) }}" alt="">
+                      <div class="reasons__img-shape-1"></div>
+                      <div class="reasons__img-shape-2"></div>
                     </div>
                   </div>
-                  <div class="col-xl-6">
-                    <div class="why-choose-one__left">
-                      <div class="why-choose-one__img-box wow slideInLeft animated" data-wow-delay="100ms" data-wow-duration="2500ms" style="visibility: visible; animation-duration: 2500ms; animation-delay: 100ms; animation-name: slideInLeft;">
-                        <div class="why-choose-one__img">
-                          <img src="{{asset('/images/section_elements/basic_section/'.@$basic_elements->image) }}" alt="">
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                </div>
+              
+                 
                 @else
-                  <div class="col-xl-6">
-                    <div class="why-choose-one__left">
-                      <div class="why-choose-one__img-box wow slideInLeft animated" data-wow-delay="100ms" data-wow-duration="2500ms" style="visibility: visible; animation-duration: 2500ms; animation-delay: 100ms; animation-name: slideInLeft;">
-                        <div class="why-choose-one__img">
-                          <img src="{{asset('/images/section_elements/basic_section/'.@$basic_elements->image) }}" alt="">
-                        </div>
-                      </div>
+                  
+                <div class="col-xl-7 col-lg-6">
+                  <div class="reasons__left">
+                    <div class="reasons__img">
+                      <img src="{{asset('/images/section_elements/basic_section/'.@$basic_elements->image) }}" alt="">
+                      <div class="reasons__img-shape-1"></div>
+                      <div class="reasons__img-shape-2"></div>
                     </div>
                   </div>
-                  <div class="col-xl-6">
-                    <div class="why-choose-one__right">
-                      <div class="section-title basic-section-container" >
-                          @if(@$basic_elements->subheading)
+                </div>
+                <div class="col-xl-5 col-lg-6">
+                  <div class="reasons__right">
+                    <div class="section-title text-left">
+                      @if(@$basic_elements->subheading)
                           <span class="section-title__tagline">{{ucfirst(@$basic_elements->subheading)}}</span>
 
                           @endif
                           @if(@$basic_elements->heading)
                           <h2 class="section-title__title">{{ucwords(@$basic_elements->heading)}}</h2>
                           @endif
-                        </h2>
-                      </div>
-                      <p class="why-choose-one-text basic-section-description" >{!! @$basic_elements->description !!}</p>
-                      @if(@$basic_elements->button)
-                        <a href="{{@$basic_elements->button_link}}" class="thm-btn cta-one__right-btn">{{ucwords(@$basic_elements->button)}}</a>
-                      @endif
-                    
                     </div>
+                    <p class="reasons__text">
+                    {!! @$basic_elements->description !!}
+                    </p>
+                    @if(@$basic_elements->button)
+                        <a href="{{@$basic_elements->button_link}}" class="thm-btn reasons__btn" style="margin-top: 25px;"><span>{{ucwords(@$basic_elements->button)}}</span></a>
+                      @endif
                   </div>
+                </div>
+
                 @endif
 
 
@@ -206,143 +221,313 @@
 
         @if($value == "call_to_action_1")
           <!--- Call to Action--->
-          <div class="cta-one">
-              <div class="cta-one__bg-img" style="background-image: url({{asset('assets/frontend/images/backgrounds/cta-one-bg-1.jpg')}});">
-              </div>
-              <div class="container">
-                  <div class="cta-one__inner">
-                      <div class="cta-one__left">
-                          <div class="cta-one__img-box">
-                              <img src="{{asset('/images/section_elements/basic_section/'.@$call1_elements->image) }}" alt="">
-                          </div>
-                          <div class="cta-one__content">
-                              <h3 class="cta-one__title">
-                                {!! wordwrap(@$call1_elements->heading,22,"<br>\n",TRUE) !!}
-                              
-                              </h3>
-                              <p class="cta-one__text">
-                                {!! wordwrap(@$call1_elements->description,50,"<br>\n",TRUE) !!}
-                              </p>
-                          </div>
-                      </div>
-                      @if(@$call1_elements->button)
+          <section class="cta-two">
+            <div class="cta-two-shape-1"></div>
+            <div class="cta-two-shape-2"></div>
+            <div class="container">
+              <div class="row">
+                <div class="col-xl-12">
+                  <div class="cta-two__inner">
+                    <div class="cta-two__title">
+                      <h2>{!! @$call1_elements->heading !!}</h2>
+                    </div>
+                    @if(@$call1_elements->button)
+                      <div class="cta-two__btn-box">
+                        <span><a href="{{@$call1_elements->button_link}}" class="thm-btn cta-two__btn thm-btn--dark thm-btn--dark--light-hover"><span>
+                        {{ucwords(@$call1_elements->button)}}</span></a></span>
 
-                        <div class="cta-one__right">
-                      
-                            <div class="cta-one__right-button">
-                                <a href="{{@$call1_elements->button_link}}" class="thm-btn cta-one__right-btn">{{ucwords(@$call1_elements->button)}}</a>
-                            </div>
-                        </div>
-                      @endif
+                      </div>
+                    @endif
 
                   </div>
+                </div>
               </div>
-          </div>
-          <!--Cta One end-->
+            </div>
+          </section>
+
+        @endif
+
+        <!-- call2_elements -->
+        @if($value == "call_to_action_2")
+
+          <section class="two-boxes">
+            <div class="container">
+              <div class="two-boxes__inner">
+                <div class="row">
+                  <div class="col-xl-6 col-lg-6">
+                    <div class="two-boxes__single two-boxes__single-one">
+                      <div class="two-boxes__content">
+                        <div class="two-boxes__icon">
+                        </div>
+                        <div class="two-boxes__text">
+                          <p> {!! wordwrap(@$call2_elements->subheading,25,"<br>\n",TRUE) !!}</p>
+                        </div>
+                      </div>
+                      <div class="two-boxes__arrow">
+                        @if(@$call2_elements->button)
+                         
+                          <a href="{{@$call1_elements->button}}"><span class="icon-right-arrow"></span></a>
+                        @else
+                          <a href="{{route('contact')}}"><span class="icon-right-arrow"></span></a>
+
+                        @endif
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-xl-6 col-lg-6">
+                    <div class="two-boxes__single two-boxes__single-two">
+                      <div class="two-boxes__content">
+                        <div class="two-boxes__icon">
+                        </div>
+                        <div class="two-boxes__text">
+                            <p> {!! wordwrap(@$call2_elements->list_header,25,"<br>\n",TRUE) !!}</p>
+
+                        </div>
+                      </div>
+                      <div class="two-boxes__arrow">
+                        @if(@$call2_elements->button_link)
+                          
+                          <a href="{{@$call1_elements->button_link}}"><span class="icon-right-arrow"></span></a>
+                        @else
+                          <a href="{{route('contact')}}"><span class="icon-right-arrow"></span></a>
+
+                        @endif
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+            <!--Video One Start-->
+          <section class="video-one">
+              <div class="video-one-bg jarallax" data-jarallax data-speed="0.2" data-imgPosition="50% 0%"
+                  style="background-image: url({{asset('/images/section_elements/basic_section/'.@$call2_elements->image) }})"></div>
+              <div class="container">
+                  <div class="row">
+                      <div class="col-xl-12">
+                          <div class="video-one__inner">
+                            @if(@$call2_elements->description)
+
+                              <div class="video-one__link">
+                                <a href="{{@$call2_elements->description}}" class="video-one__btn video-popup">
+                                  <div class="video-one__video-icon">
+                                    <span class="icon-play-button"></span>
+                                    <i class="ripple"></i>
+                                  </div>
+                                </a>
+                              </div>
+                            @endif
+                            <h2 class="video-one__text">{!! wordwrap(@$call2_elements->heading,25,"<br>\n",TRUE) !!}</h2>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </section>
+          <!--Video One End-->
         @endif
 
         @if($value == "background_image_section")
           <!--- Background Image--->
-        <section class="cta-project">
-            <div class="cta-project-bg jarallax" data-jarallax data-speed="0.2" data-imgPosition="50% 0%"
-                style="background-image: url({{asset('/images/section_elements/bgimage_section/'.@$bgimage_elements->image)}});">
-            </div>
+          <section class="we-make">
+            <div class="we-make-bg" style="background-image: url({{asset('assets/frontend/images/backgrounds/we-make-bg.jpg')}})"></div>
             <div class="container">
-                <div class="cta-project__top">
-                    <div class="row">
-                        <div class="col-xl-9">
-                            <div class="cta-project__top-left">
-                                <p class="cta-project__tagline">  {!! wordwrap(@$bgimage_elements->heading,32,"<br>\n",TRUE) !!}</p>
-                                <h3 class="cta-project__title">{!! wordwrap(@$bgimage_elements->subheading,22,"<br>\n",TRUE) !!}</h3>
-                            </div>
-                        </div>
-                        <div class="col-xl-3">
-                          @if(@$bgimage_elements->list_description)
-                            <div class="cta-project__top-right">
-                                <div class="cta-project__video-link">
-                                    <a href="{{@$bgimage_elements->list_description}}" class="video-popup">
-                                        <div class="cta-project__video-icon">
-                                            <span class="fa fa-play"></span>
-                                            <i class="ripple"></i>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                          @endif
+              <div class="row">
+                <div class="col-xl-6 col-lg-6">
+                  <div class="core-features__left">
+                    <div class="section-title text-left">
+                      @if(@$bgimage_elements->subheading)
 
-                        </div>
+                      <span class="section-title__tagline">{!! @$bgimage_elements->subheading !!}</span>
+                      @endif
+                      <h2 class="section-title__title">{!! @$bgimage_elements->heading !!}</h2>
                     </div>
+                    <div class="core-features__left-bottom">
+                      <div class="core-features__left-bottom-img">
+                        <img src="{{asset('/images/section_elements/bgimage_section/'.@$bgimage_elements->image)}}" alt="">
+                      </div>
+                      <div class="core-features__left-bottom-text">
+                        <p>{{@$bgimage_elements->description}}</p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div class="cta-project__bottom" style="margin-top: 13px;">
-               
-                <p class="cta-one__text" >{{ucfirst(@$bgimage_elements->description)}}</p>
+                <div class="col-xl-6 col-lg-6">
+                  <div class="core-features__promicess">
+                    <ul class="list-unstyled core-features__promicess-list">
+                      <li>
+                        <div class="text">
+                          <p>{{@$bgimage_elements->list_description}}</p>
+                        </div>
+                        <div class="icon">
+                          <span class="icon-tick"></span>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="text">
+                          <p>{{@$bgimage_elements->list_header}}</p>
+                        </div>
+                        <div class="icon">
+                          <span class="icon-tick"></span>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="text">
+                          <p>{{@$bgimage_elements->list_image}}</p>
+                        </div>
+                        <div class="icon">
+                          <span class="icon-tick"></span>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
+              </div>
             </div>
-        </section>
-        <!--CTA Project End-->
+          </section>
         @endif
+
+        @if($value == "basic_section2")
+            <!--- Basic Section 2--->
+          <section class="reasons-one">
+            <div class="container">
+              <div class="row">
+                <div class="col-xl-5">
+                  <div class="reasons-one__left">
+                    <div class="section-title text-left">
+                         @if(@$basic_elements2->subheading)
+                          <span class="section-title__tagline">{{ucfirst(@$basic_elements2->subheading)}}</span>
+
+                          @endif
+                          @if(@$basic_elements2->heading)
+                          <h2 class="section-title__title">{{ucwords(@$basic_elements2->heading)}}</h2>
+                          @endif
+                    </div>
+                    <p class="reasons-one__text-1">{!! @$basic_elements2->description !!}</p>
+                    @if(@$basic_elements2->button)
+                        <a href="{{@$basic_elements2->button_link}}" class="thm-btn"><span>{{ucwords(@$basic_elements2->button)}}</span></a>
+                      @endif
+                  </div>
+                </div>
+                <div class="col-xl-7">
+                  <div class="reasons-one__img-box">
+                    <div class="reasons-one-img-box-bg"></div>
+                    <div class="row">
+                      <div class="col-xl-6 col-lg-6 col-md-6">
+                        <div class="reasons-one__img-one">
+                          <img src="{{asset('/images/section_elements/basic_section/'.@$basic_elements2->image) }}" alt="">
+                          <div class="reasons-one__shape-1"></div>
+                          <div class="reasons-one__shape-2"></div>
+                        </div>
+                      </div>
+                      <div class="col-xl-6 col-lg-6 col-md-6">
+                        <div class="reasons-one__img-two">
+                          <img src="{{asset('/images/section_elements/basic_section/'.@$basic_elements2->list_header) }}" alt="">
+                        </div>
+                        <div class="reasons-one__img-three reasons-one__img-two">
+                          <img src="{{asset('/images/section_elements/basic_section/'.@$basic_elements2->list_description) }}" alt="">
+                          <div class="reasons-one__shape-3"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        @endif
+
 
         @if($value == "flash_cards")
           <!--- Mission Vision--->
-          <section class="mission-one">
+          
+          <section class="web-solutions">
+            <div class="web-solutions-bg" style="background-image: url({{asset('assets/frontend/images/backgrounds/web-solutions-bg.jpg')}})">
+            </div>
             <div class="container">
+              <div class="section-title text-center">
+                @if(@$flash_elements[0]->subheading)
+                <span class="section-title__tagline">{{ucfirst(@$flash_elements[0]->subheading)}}</span>
+
+                @endif
+                @if(@$flash_elements[0]->heading)
+                <h2 class="section-title__title">{{ucwords(@$flash_elements[0]->heading)}}</h2>
+                @endif
+              </div>
               <div class="row">
-                <div class="col-xl-6">
-                  <div class="mission-one__left">
-                  @foreach(@$flash_elements as $flash_element)
-                    @if($loop->index == 0)
-                    <div class="section-title text-left" style="margin-bottom: 35px;">
-                      <span class="section-title__tagline">{{ucwords(@$flash_element->list_header)}}</span>
-                      <p class="mission-one__text-1" style="padding-top: 10px;">{{ucfirst(@$flash_element->list_description) }} </p>
-                    </div>
-                    @endif
-
-                    @if($loop->index == 1)
-                    <div class="section-title text-left mission-one__section-title">
-                      <span class="section-title__tagline">{{ucwords(@$flash_element->list_header)}}</span>
-                      <p class="mission-one__text-1" style="padding-top: 10px;">{{ucfirst(@$flash_element->list_description) }}
-                       </p>
-                    </div>
-                    @endif
-
-                    @if($loop->index == 2)
-                    <div class="section-title text-left" style="margin-top: 25px;">
-                      <span class="section-title__tagline">{{ucwords(@$flash_element->list_header)}}</span>
-                      <p class="mission-one__text-1" style="padding-top: 10px;">{{ucfirst(@$flash_element->list_description) }} </p>
-                    </div>
-                    @endif
-                    @endforeach
-
-                  </div>
-                </div>
-                <div class="col-xl-6">
-                  <div class="mission-one__right">
-                    <div class="mission-one__img-box wow slideInRight animated" data-wow-delay="100ms" data-wow-duration="2500ms" style="visibility: visible; animation-duration: 2500ms; animation-delay: 100ms; animation-name: slideInRight;">
+                <div class="col-xl-12">
+                  <div class="web-solutions__box tabs-box">
+                    <ul class="tab-btns tab-buttons clearfix list-unstyled">
+                      <li data-tab="#one" class="tab-btn active-btn"><span>{{ucwords(@$flash_elements[0]->list_header)}}</span></li>
+                      <li data-tab="#two" class="tab-btn"><span>{{ucwords(@$flash_elements[1]->list_header)}}</span></li>
+                      <li data-tab="#three" class="tab-btn"><span>{{ucwords(@$flash_elements[2]->list_header)}}</span></li>
+                    </ul>
+                    <div class="tabs-content">
                       @foreach(@$flash_elements as $flash_element)
-                        @if($loop->index == 2) 
-                          <div class="mission-one__img-one">
-                            <img src="{{asset('/images/section_elements/list_1/'.@$flash_element->image)}}" alt="">
-                          </div>
-                          @endif
-
-                          @if($loop->index == 1)
-                          <div class="mission-one__img-two">
-                            <img src="{{asset('/images/section_elements/list_1/'.@$flash_element->image)}}" alt="">
-                          </div>
-                          @endif
-
                         @if($loop->index == 0)
-                          <div class="mission-one__img-three">
-                            <img src="{{asset('/images/section_elements/list_1/'.@$flash_element->image)}}" alt="">
+                          <div class="tab active-tab" id="one" style="display: block;">
+                            <div class="web-solutions__content">
+                              <div class="row">
+                                <div class="col-xl-6 col-lg-6">
+                                  <div class="web-solutions__content-img">
+                                    <img src="{{asset('/images/section_elements/list_1/'.@$flash_element->image)}}" alt="">
+                                  </div>
+                                </div>
+                                <div class="col-xl-6 col-lg-6">
+                                  <div class="web-solutions__content-right">
+                                    <p class="web-solutions__content-desc">{{ucfirst(@$flash_element->list_description) }} </p>
+                                    
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        @endif
+
+                        @if($loop->index == 1)
+                          <div class="tab" id="two" style="display: none;">
+                            <div class="web-solutions__content">
+                              <div class="row">
+                                <div class="col-xl-6 col-lg-6">
+                                  <div class="web-solutions__content-img">
+                                    <img src="{{asset('/images/section_elements/list_1/'.@$flash_element->image)}}" alt="">
+                                    
+                                  </div>
+                                </div>
+                                <div class="col-xl-6 col-lg-6">
+                                  <div class="web-solutions__content-right">
+                                    <p class="web-solutions__content-desc">{{ucfirst(@$flash_element->list_description) }} </p>
+                                    
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        @endif
+
+                        @if($loop->index == 2)
+
+                          <div class="tab" id="three" style="display: none;">
+                            <div class="web-solutions__content">
+                              <div class="row">
+                                <div class="col-xl-6 col-lg-6">
+                                  <div class="web-solutions__content-img">
+                                    <img src="{{asset('/images/section_elements/list_1/'.@$flash_element->image)}}" alt="">
+                                    
+                                  </div>
+                                </div>
+                                <div class="col-xl-6 col-lg-6">
+                                  <div class="web-solutions__content-right">
+                                    <p class="web-solutions__content-desc">{{ucfirst(@$flash_element->list_description) }} </p>
+                                   
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
                           </div>
                         @endif
                       @endforeach
-                      <div class="mission-one__shape-1">
-                        <img src="{{asset('assets/frontend/images/shapes/mission-one-shape-1.png')}}" alt="">
-                      </div>
-                      <div class="mission-one__shape-2 float-bob-y">
-                        <img src="{{asset('assets/frontend/images/shapes/mission-one-shape-2.png')}}" alt="">
-                      </div>
                     </div>
                   </div>
                 </div>
@@ -353,20 +538,27 @@
 
         @if($value == "simple_header_and_description")
           <!--- Simple Header Description--->
-          <section class="service-details">
+          <section class="portfolio-fullwidth">
             <div class="container">
               <div class="row">
-                <div class="col-xl-12 col-lg-12">
-                  <div class="service-details__right">
-                    @if(@$header_descp_elements->heading)
-                      <h3 class="service-details__title-two" style="text-align: center;">{{ucwords(@$header_descp_elements->heading)}}</h3>
-                    @endif
+                <div class="col-xl-12">
+                  <div class="portfolio-fullwidth__img-box">
+                  </div>
+                  <div class="portfolio-fullwidth__content">
+                  @if(@$header_descp_elements->heading)
 
-                    <p class="service-details__text-1" style="text-align: justify;">
-                      <div class="winrecruit">
+                    <h2 class="portfolio-fullwidth__title" 
+                    style="margin: auto;
+                      width: 50%;
+                      text-align: center;
+                      margin-bottom: 40px;
+                      text-transform: uppercase;">
+                      {{ucwords(@$header_descp_elements->heading)}}</h2>
+                      @endif
+                    
+                      <div class="portfolio-fullwidth__text-1 winrecruit" style="text-align: justify;">
                         {!! @$header_descp_elements->description !!}
                       </div>
-                    </p>
                   </div>
                 </div>
               </div>
@@ -376,149 +568,119 @@
 
         @if($value == "map_and_description")
           <!--- Map & Description--->
-
-          <section class="mission-one">
+          <section class="about-two">
             <div class="container">
               <div class="row">
-                <div class="col-xl-6">
-                  <div class="mission-one__left">
-                    <div class="section-title text-left">
-                      @if(@$map_descp->subheading)
-
-                      <span class="section-title__tagline">{{@$map_descp->subheading}}</span>
-                      @endif
-
-                      @if(@$map_descp->heading)
-                        <h2 class="section-title__title"> <span>{{ucwords(@$map_descp->heading)}}</span>
-                        </h2>
-                      @endif
-
-                      <p class="mission-one__text-1" style="padding-top: 20px;">{{ ucfirst(@$map_descp->description) }}</p>
-                      @if(@$map_descp->button)
-                        <a href="{{@$map_descp->button_link}}" class="thm-btn cta-one__right-btn" style="margin-top: 20px;">{{ucwords(@$map_descp->button)}}</a>
-                      @endif
-                    
-                    </div>
-                  </div>
-                </div>
-                <div class="col-xl-6">
+                <div class="col-md-12 col-lg-5">
+                  <div class="about-two__image">
                     @if(@$map_descp->list_description)
-                    {!! @$map_descp->list_description !!}
-                    @elseif(@$setting_data->google_map)
-                      <iframe frameborder="0" width="100%" height="660px"scrolling="no" marginheight="0" marginwidth="0" src="{{@$setting_data->google_map}}"
+                      {!! @$map_descp->list_description !!}
+                      @elseif(@$setting_data->google_map)
+                        <iframe frameborder="0" width="100%" height="660px"scrolling="no" marginheight="0" marginwidth="0" src="{{@$setting_data->google_map}}"
                                   title="%3$s" aria-label="%3$s"></iframe>
                     @endif
-                          
-                </div>
-              </div>
-            </div>
+                    @if(@$map_descp->button)
+                        <a href="{{@$map_descp->button_link}}" class="thm-btn map-button"><span>{{ucwords(@$map_descp->button)}}</span></a>
+                      @endif
+                  </div><!-- /.about-two__image -->
+                </div><!-- /.col-md-12 -->
+                <div class="col-md-12 col-lg-7">
+                  <div class="about-two__content" style="padding: 50px;">
+                    <div class="section-title text-left">
+                        @if(@$map_descp->subheading)
+                          <span class="section-title__tagline">{{ucfirst(@$map_descp->subheading)}}</span>
+
+                          @endif
+                          @if(@$map_descp->heading)
+                          <h2 class="section-title__title">{{ucwords(@$map_descp->heading)}}</h2>
+                          @endif
+                    </div>
+                    <div class="about-two__box">
+                      <!-- /.about-two__box__icon -->
+                      <div class="about-two__box__content">
+                       {{ ucfirst(@$map_descp->description) }}
+                    </div><!-- /.about-two__box__content -->
+                    </div><!-- /.about-two__box -->
+                    <!-- /.about-two__summery -->
+                  </div><!-- /.about-two__content -->
+                </div><!-- /.col-md-12 -->
+              </div><!-- /.row -->
+            </div><!-- /.container -->
           </section>
+
+
 
         @endif
 
         @if($value == "accordion_section_2")
             <!-- FAQs Page Area start -->
-            <section class="faq-page">
-              <div class="container">
-                <div class="contact-form__title-box">
-                  <span>{{ucwords(@$accordian2_elements[0]->subheading)}}</span>
-                  <h3>{{ucwords(@$accordian2_elements[0]->heading)}}</h3>
-                </div>
-                <div class="faq-page__top">
-                  <div class="accrodion-grp faq-one-accrodion" data-grp-name="faq-one-accrodion">
-                  @foreach($accordian2_elements as  $accordian2_element)
+            <section class="faqs-page">
+                <div class="faqs-page-bg" style="background-image: url({{asset('assets/frontend/images/backgrounds/faqs-page-bg.jpg')}})"></div>
+                <div class="container">
+                  <div class="section-title text-center">
+                    <span class="section-title__tagline">{{ucwords(@$accordian2_elements[0]->subheading)}}</span>
+                    <h2 class="section-title__title">{{ucwords(@$accordian2_elements[0]->heading)}}</h2>
+                  </div>
+                  <div class="row">
+                    @foreach($accordian2_elements->chunk(2) as $index => $chunk )
 
-                    <div class="accrodion @if($loop->first) active @endif">
-                      <div class="accrodion-title">
-                        <h4> {{@$accordian2_element->list_header}}</h4>
+                      <div class="col-xl-6 col-lg-6">
+                        <div class="faqs-page__single">
+                          <div class="accrodion-grp faq-one-accrodion" data-grp-name="faq-one-accrodion">
+                            @foreach($chunk as  $accordian2_element)
+
+                                <div class="accrodion @if($loop->first) active @endif @if($loop->last) last-chiled @endif">
+                                  <div class="accrodion-title">
+                                    <h4>{{@$accordian2_element->list_header}}</h4>
+                                  </div>
+                                  <div class="accrodion-content" style="@if($loop->first)  @else display: none; @endif">
+                                    <div class="inner">
+                                      <p>{!! @$accordian2_element->list_description !!}</p>
+                                    </div><!-- /.inner -->
+                                  </div>
+                                </div>
+                            @endforeach
+                            
+                          </div>
+                        </div>
                       </div>
-                      <div class="accrodion-content" style="@if($loop->first)  @else display: none; @endif">
-                        <div class="inner">
-                          <p>{!! @$accordian2_element->list_description !!}</p>
-                        </div><!-- /.inner -->
-                      </div>
-                    </div>
                     @endforeach
+
                   
                   </div>
                 </div>
-        
-              </div>
-            </section>
+              </section>
           <!-- FAQs Page Area end -->
         @endif
 
 
-        @if($value == "small_box_description")
-
-          <!-- Small Box description start -->
-          <section class="address">
-            <div class="container">
-              <div class="row">
-              @for ($i = 1; $i <=@$process_num; $i++)
-
-                <div class="col-xl-4 col-lg-4 wow fadeInUp animated" data-wow-delay="100ms" style="visibility: visible; animation-delay: 100ms; animation-name: fadeInUp;">
-                  <div class="address__single">
-                    <div class="address__content">
-                      <h4 class="address__title">{{ucwords(@$process_elements[$i-1]->list_header)}}</h4>
-                      <div class="address__phone-email" style="padding: 0 22px;">
-                        <p style="font-size: 15px;">{{ucfirst(@$process_elements[$i-1]->list_description)}}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                @endfor
-                
-              </div>
-            </div>
-          </section>
-
-      
-          <!-- Feature Six Area end -->
-        @endif
 
         @if($value == "gallery_section")
           <!--- Gallery Section 1-->
 
-        <section class="project-page-v-1">
-            <div class="project-page-v-1-bg"
-                style="background-image: url({{asset('assets/frontend/images/backgrounds/project-page-v-1-bg.jpg')}});"></div>
-            <div class="container">
-                <div class="row">
-                @foreach(@$gallery_elements as $gallery_element)
 
-                    <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms">
-                        <div class="project-two__single">
-                            <div class="project-two__img-box">
-                                <div class="project-two__img">
-                                    <img src="{{asset('/images/section_elements/gallery/'.@$gallery_element->filename)}}" alt="">
-                                </div>
-                                <div class="project-two__content">
-                                    <div class="project-two__content-left">
-                                        <div class="project-two__title-box">
-                                            <p class="project-two__subtitle">{{ucwords(@$gallery_element->original_name)}}</p>
-                                           
-                                        </div>
-                                    </div>
-                                    <div class="project-two__details">
-                                        <div class="project-two__details-box">
-                                        
-                                            <a href="{{asset('/images/section_elements/gallery/'.@$gallery_element->filename)}}"
-                                                class="project-two__icon-2 img-popup"><i class="icon-zoom-in"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    @endforeach
-                 
-                </div>
-            </div>
-        </section>
+        <section class="gallery-one">
+          <div class="container-fluid">
+            <div class="row masonary-layout">
+            @foreach(@$gallery_elements as $gallery_element)
+              
+              <div class="col-md-6 col-lg-4">
+                <div class="gallery-one__card">
+                  <img src="{{asset('/images/section_elements/gallery/'.@$gallery_element->filename)}}" alt="">
+                  <a href="{{asset('/images/section_elements/gallery/'.@$gallery_element->filename)}}" class="img-popup">
+                    <span></span>
+                  </a>
+                </div><!-- /.gallery-one__card -->
+              </div><!-- /.col-md-6 col-lg-3 -->
+              @endforeach
+            
+
+            </div><!-- /.row -->
+          </div><!-- /.container-fluid -->
+        </section><!-- /.gallery-one -->
      
         @endif
+
 
         @if($value == "slider_list")
           <!-- Slider List Area start -->
@@ -588,6 +750,68 @@
           @endif
         @endif
 
+        @if($value == "simple_accordion_tab2")
+
+        <section class="we-change">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-6">
+                        <div class="we-change__left-faqs">
+                            <div class="section-title text-left">
+                              <span class="section-title__tagline">{{ucwords(@$process_elements[0]->description)}}</span>
+                              <h2 class="section-title__title">{{ucwords(@$process_elements[0]->heading)}}</h2>
+                            </div>
+                            <div class="we-change__faqs">
+                                <div class="accrodion-grp" data-grp-name="faq-one-accrodion">
+                                    <div class="accrodion active">
+                                        <div class="accrodion-title">
+                                            <h4>{{@$process_elements[0]->list_header}}</h4>
+                                        </div>
+                                        <div class="accrodion-content">
+                                            <div class="inner">
+                                                <p>{!! @$process_elements[0]->list_description !!}</p>
+                                            </div><!-- /.inner -->
+                                        </div>
+                                    </div>
+                                    <div class="accrodion">
+                                        <div class="accrodion-title">
+                                            <h4>{{@$process_elements[1]->list_header}}</h4>
+                                        </div>
+                                        <div class="accrodion-content">
+                                            <div class="inner">
+                                                <p>{!! @$process_elements[1]->list_description !!}</p>
+                                            </div><!-- /.inner -->
+                                        </div>
+                                    </div>
+                                    <div class="accrodion last-chiled">
+                                        <div class="accrodion-title">
+                                            <h4>{{@$process_elements[2]->list_header}}</h4>
+                                        </div>
+                                        <div class="accrodion-content">
+                                            <div class="inner">
+                                                <p>{!! @$process_elements[2]->list_description !!}</p>
+                                            </div><!-- /.inner -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6">
+                        <div class="we-change__right">
+                            <div class="we-change__right-img">
+                                <img src="{{asset('/images/section_elements/list_1/'.@$process_elements[0]->list_image)}}" alt="">
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        @endif
+
+
+        
     @endforeach
 
 
