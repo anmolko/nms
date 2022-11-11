@@ -105,7 +105,7 @@
                                         id="profile-foreground-img-file-input" onchange="loadbasicFile('profile-foreground-img-file-input','current-img',event)" name="image" required
                                         class="profile-foreground-img-file-input" >
 
-                                <figcaption class="figure-caption">*use image minimum of 1895px x 720px </figcaption>
+                                <figcaption class="figure-caption">*use image minimum of 1895px x 972px </figcaption>
                                 <div class="invalid-feedback" >
                                     Please select a image.
                                 </div>
@@ -262,7 +262,7 @@
                                         id="profile-foreground-img-file" onchange="loadbasicFile('profile-foreground-img-file','current-edit-img',event)" name="image"
                                         class="profile-foreground-img-file-input" >
 
-                                <figcaption class="figure-caption">*use image minimum of 1895px x 720px </figcaption>
+                                <figcaption class="figure-caption">*use image minimum of 1895px x 972px </figcaption>
                                 <div class="invalid-feedback" >
                                     Please select a image.
                                 </div>
