@@ -151,7 +151,7 @@
                         <div class="card-body">
                             <div>
                                 <label for="sub-title-status-input" class="form-label">Sub Description</label>
-                                <textarea class="form-control" maxlength="80" id="sub-title-status-input" placeholder="Enter sub description" name="sub_description" rows="4"></textarea>
+                                <textarea class="form-control" maxlength="350" id="sub-title-status-input" placeholder="Enter sub description" name="sub_description" rows="4"></textarea>
 
                             </div>
                         </div>
