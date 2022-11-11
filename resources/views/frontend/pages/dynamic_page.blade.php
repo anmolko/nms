@@ -685,67 +685,38 @@
         @if($value == "slider_list")
           <!-- Slider List Area start -->
           @if(@$slider_list_elements[0]->heading)
-          
-          <section class="services-one">
-              <div class="services-one__bg" style="background-image: url({{asset('assets/frontend/images/backgrounds/services-one-bg.jpg')}});">
-              </div>
-              <div class="container">
-                  <div class="services-one__top text-center">
-                      <div class="section-title">
-                          <span class="section-title__tagline">{{ucfirst(@$slider_list_elements[0]->description)}}</span>
-                          <h2 class="section-title__title"><span>{{ucwords(@$slider_list_elements[0]->heading)}}</span></h2>
-                      </div>
-                    
-                  </div>
+        
+            <!--Portfolio Two Start-->
+            <section class="portfolio-two">
+                <div class="container">
+                    <div class="section-title text-center">
+                        <span class="section-title__tagline">{{ucfirst(@$slider_list_elements[0]->description)}}</span>
+                        <h2 class="section-title__title">{{ucwords(@$slider_list_elements[0]->heading)}}</h2>
+                    </div>
+                    <div class="portfolio-two__carousel owl-theme owl-carousel">
+                      
+                      @for ($i = 1; $i <=@$list_3; $i++)
 
-                  <div class="services-one__bottom">
-                      <div class="services-one__carousel owl-carousel owl-theme thm-owl__carousel" data-owl-options='{
-                          "loop": true,
-                          "autoplay": false,
-                          "margin": 30,
-                          "nav": false,
-                          "dots": true,
-                          "smartSpeed": 500,
-                          "autoplayTimeout": 10000,
-                          "navText": ["<span class=\"fa fa-angle-left\"></span>","<span class=\"fa fa-angle-right\"></span>"],
-                          "responsive": {
-                              "0": {
-                                  "items": 1
-                              },
-                              "768": {
-                                  "items": 2
-                              },
-                              "992": {
-                                  "items": 2
-                              },
-                              "1200": {
-                                  "items": 3
-                              }
-                          }
-                      }'>
-                        @for ($i = 1; $i <=@$list_3; $i++)
-
-                          <div class="item">
-                              <div class="services-one__single">
-                                  <div class="services-one__img">
-                                      <img src="{{asset('/images/section_elements/list_1/'.@$slider_list_elements[$i-1]->list_image)}}" alt="">
-                                  </div>
-                                  <div class="services-one__content">
-                                     
-                                      <h3 class="services-one__title"><a href="{{route('slider.single',@$slider_list_elements[$i-1]->subheading)}}">{{ucwords(@$slider_list_elements[$i-1]->list_header)}}</a></h3>
-                                      <p class="services-one__text">{{ucfirst(Str::limit(@$slider_list_elements[$i-1]->list_description, 100,'...'))}}</p>
-                                      <div class="services-one__arrow">
-                                          <a href="{{route('slider.single',@$slider_list_elements[$i-1]->subheading)}}"><i class="icon-right-arrow-1"></i></a>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                          @endfor
-                
-                      </div>
-                  </div>
-              </div>
-          </section>
+                        <div class="portfolio-one__single">
+                            <div class="portfolio-one__img">
+                                <img src="{{asset('/images/section_elements/list_1/'.@$slider_list_elements[$i-1]->list_image)}}" alt="">
+                                <div class="portfolio-one__experience">
+                                    
+                                    <div class="portfolio-one__fimlor">
+                                        <p class="portfolio-one__fimlor-title"><a href="{{route('slider.single',@$slider_list_elements[$i-1]->subheading)}}">{{ucwords(@$slider_list_elements[$i-1]->list_header)}}</a></p>
+                                    </div>
+                                </div>
+                                <div class="portfolio-one__arrow">
+                                    <a href="{{route('slider.single',@$slider_list_elements[$i-1]->subheading)}}"><span class="icon-right-arrow"></span></a>
+                                </div>
+                            </div>
+                        </div>
+                        @endfor
+                      
+                    </div>
+                </div>
+            </section>
+            <!--Portfolio Two End-->
 
           @endif
         @endif

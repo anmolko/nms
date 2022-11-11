@@ -16,6 +16,7 @@ use App\Models\SectionElement;
 use App\Models\Page;
 use App\Models\Job;
 use App\Models\Client;
+use App\Models\Testimonial;
 use App\Models\PageSection;
 use App\Models\SectionGallery;
 use App\Notifications\NewCareerNotification;
@@ -50,7 +51,7 @@ class FrontController extends Controller
     protected $demand = null;
     
 
-    public function __construct(Job $demand,Slider $slider,HomePage $home_page,Client $client,PageSection $pagesection,Page $page,Service $service,Setting $setting,BlogCategory $bcategory,Blog $blog)
+    public function __construct(Testimonial $testimonial, Job $demand,Slider $slider,HomePage $home_page,Client $client,PageSection $pagesection,Page $page,Service $service,Setting $setting,BlogCategory $bcategory,Blog $blog)
     {
         $this->setting = $setting;
         $this->bcategory = $bcategory;
@@ -62,6 +63,8 @@ class FrontController extends Controller
         $this->slider = $slider;
         $this->home_page = $home_page;
         $this->demand = $demand;
+        $this->testimonial = $testimonial;
+        
     }
 
 
@@ -294,6 +297,12 @@ class FrontController extends Controller
     }
 
 
+    
+
+    public function testimonial(){
+        $testimonials = $this->testimonial->get();
+        return view('frontend.pages.testimonial',compact('testimonials'));
+    }
     public function blogs(){
         $bcategories = $this->bcategory->get();
         $allPosts = $this->blog->orderBy('created_at', 'DESC')->where('status','publish')->paginate(6);
