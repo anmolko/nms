@@ -74,6 +74,13 @@
                                         Please enter the required number of jobs.
                                     </div>
                                 </div>
+                                <div class="form-group mb-3">
+                                    <label>LT Number </label>
+                                    <input type="text" class="form-control" name="lt_number">
+                                    <div class="invalid-feedback">
+                                        Please enter the LT Number.
+                                    </div>
+                                </div>
 
                                 <div class="mb-3">
                                     <label>Demand Description</label>
@@ -146,7 +153,23 @@
 
                 <div class="col-lg-4 ">
                     <div class="sticky-side-div">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">Demand Categories</h5>
+                            </div>
+                            <div class="card-body">
+                                <p class="text-muted mb-2"> Select demand category</p>
+                                <select class="form-select" name="job_category_id" data-choices data-choices-search-true >
+                                    @if(!empty(@$categories))
+                                        @foreach(@$categories as $categoryList)
+                                            <option value="{{ @$categoryList->id }}" @if(@$edit->job_category_id == @$categoryList->id) selected @endif>{{ ucwords(@$categoryList->name) }}</option>
+                                        @endforeach
+                                    @endif
+                                </select>
 
+                            </div>
+                            <!-- end card body -->
+                        </div>
                         <div class="card ">
                             <div class="card-header">
                                 <h5 class="card-title mb-0">Select Options</h5>

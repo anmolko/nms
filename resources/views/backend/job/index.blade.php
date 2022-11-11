@@ -58,7 +58,7 @@
                                             <th>Feature Image</th>
                                             <th>Name</th>
                                             <th>Slug</th>
-                                            <th>Demand Code</th>
+                                            <th>Demand Category</th>
                                             <th>Status</th>
                                             <th class="text-right">Action</th>
                                         </tr>
@@ -76,9 +76,7 @@
                                                     <td>
                                                         {{ @$job->slug }}
                                                     </td>
-                                                    <td >
-                                                        {{ @$job->code }}
-                                                    </td>
+                                                    <td>{{ucfirst(@$job->category->name)}}</td>
                                                     <td>
                                                         <div class="btn-group view-btn" id="job-status-button-{{$job->id}}">
                                                             <button class="btn btn-light dropdown-toggle" style="width: 10em;" type="button" id="dropdownMenuClickableInside" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">

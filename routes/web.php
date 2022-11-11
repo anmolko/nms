@@ -199,6 +199,16 @@ Route::group(['prefix' => 'auth', 'middleware' => ['auth']], function () {
     Route::delete('/clients/{clients}', 'App\Http\Controllers\ClientController@destroy')->name('clients.destroy');
     Route::get('/clients/{clients}/edit', 'App\Http\Controllers\ClientController@edit')->name('clients.edit');
 
+    //job categories
+
+    Route::get('/demand-category', 'App\Http\Controllers\JobCategoryController@index')->name('jobcategory.index');
+    Route::get('/demand-category/create', 'App\Http\Controllers\JobCategoryController@create')->name('jobcategory.create');
+    Route::post('/demand-category', 'App\Http\Controllers\JobCategoryController@store')->name('jobcategory.store');
+    Route::put('/demand-category/{category}', 'App\Http\Controllers\JobCategoryController@update')->name('jobcategory.update');
+    Route::delete('/demand-category/{category}', 'App\Http\Controllers\JobCategoryController@destroy')->name('jobcategory.destroy');
+    Route::get('/demand-category/{category}/edit', 'App\Http\Controllers\JobCategoryController@edit')->name('jobcategory.edit');
+
+    //End of job categories
 
     //jobs
 

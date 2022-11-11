@@ -39,9 +39,10 @@ class JobController extends Controller
     {
 
         $jobs               = Job::all();
+        $categories         = JobCategory::all();
         $countries          = CountryState::getCountries();
         $clients            = Client::all();
-        return view('backend.job.index',compact('jobs','countries','clients'));
+        return view('backend.job.index',compact('jobs','countries','clients','categories'));
     }
 
     /**
@@ -51,7 +52,8 @@ class JobController extends Controller
      */
     public function create()
     {
-        return view('backend.job.create');
+        $categories = JobCategory::orderBy('name', 'asc')->get();
+        return view('backend.job.create',compact('categories'));
     }
 
     /**
@@ -64,12 +66,11 @@ class JobController extends Controller
     {
         $end     = Carbon::createFromFormat('d/m/Y', $request->end_date)->format('Y-m-d');
         $start   = Carbon::createFromFormat('d/m/Y', $request->start_date)->format('Y-m-d');
-        $code    = strtok($request->input('name'), " ").'-NMS-'.rand(1,500);
         $data = [
             'lt_number'            => $request->input('lt_number'),
             'name'                 => $request->input('name'),
             'slug'                 => $request->input('slug'),
-            'code'                 => $code,
+            'job_category_id'      => $request->input('job_category_id'),
             'required_number'      => $request->input('required_number'),
             'min_qualification'    => $request->input('min_qualification'),
             'description'          => $request->input('description'),
@@ -129,9 +130,10 @@ class JobController extends Controller
     public function edit($id)
     {
         $edit           = Job::find($id);
+        $categories     = JobCategory::orderBy('name', 'asc')->get();
         $end            = Carbon::createFromFormat('Y-m-d', $edit->end_date)->format('d/m/Y');
         $start          = Carbon::createFromFormat('Y-m-d', $edit->start_date)->format('d/m/Y');
-        return view('backend.job.edit',compact('edit','start','end'));
+        return view('backend.job.edit',compact('edit','start','end','categories'));
     }
 
     /**
@@ -147,16 +149,10 @@ class JobController extends Controller
         $end     = Carbon::createFromFormat('d/m/Y', $request->end_date)->format('Y-m-d');
         $start   = Carbon::createFromFormat('d/m/Y', $request->start_date)->format('Y-m-d');
         $job                        = Job::find($id);
-
-        $freecode                   = str_replace("-"," ", $job->code);
-        $removed                    = strstr($freecode," ");
-        $code                       = strtok($request->input('name'), " ").$removed;
-        $finalcode                  = str_replace(" ","-", $code);
-
         $job->name                  = $request->input('name');
         $job->slug                  = $request->input('slug');
+        $job->job_category_id       = $request->input('job_category_id');
         $job->lt_number             = $request->input('lt_number');
-        $job->code                  = $finalcode;
         $job->required_number       = $request->input('required_number');
         $job->salary                = $request->input('salary');
         $job->min_qualification     = $request->input('min_qualification');

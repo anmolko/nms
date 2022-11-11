@@ -75,6 +75,14 @@
                                     Please enter the required number of demands.
                                 </div>
                             </div>
+                            <div class="form-group mb-3">
+                                <label>LT Number </label>
+                                <input type="text" class="form-control" name="lt_number" value="{{@$edit->lt_number}}">
+                                <div class="invalid-feedback">
+                                    Please enter the LT Number.
+                                </div>
+                            </div>
+
                             <div class="mb-3">
                                 <label>Demand Description</label>
 
