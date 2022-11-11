@@ -77,9 +77,10 @@ class FrontController extends Controller
         $sliders =$this->slider->where('status','active')->orderBy('created_at', 'asc')->get();
         $homepage_info = $this->home_page->first();
         
+        $testimonials = $this->testimonial->get();
         $latestPosts = $this->blog->inRandomOrder()->take(3)->get();
 
-        return view('welcome',compact('clients','latestPosts','latestServices','countries','homepage_info','sliders'));
+        return view('welcome',compact('testimonials','clients','latestPosts','latestServices','countries','homepage_info','sliders'));
     }
 
 

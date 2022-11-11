@@ -12,6 +12,17 @@
         }
     }
 
+    .blog-one {
+      
+        background-color: #f1f1f5;
+    }
+
+    .mission .services-one__single {
+        height: 500px;
+    }
+    .mission .services-one__text {
+        margin-top: 20px;
+    }
     .author.post-category i {
         font-size: 40px;
         margin-right: 15px;
@@ -64,161 +75,161 @@
     .join-us__text-one {
         margin-bottom: 40px;
     }
+
+    p.welcome-one__right-text-2 {
+        text-align: justify;
+    }
+    a.thm-btn.testimonial-one__btn.welcome-button {
+        margin-top: 15px;
+    }
+    .brand-one .swiper-slide {
+        height:100px
+    }
+    .brand-one .swiper-slide img {
+            height: 100%;
+            object-fit: contain;
+        
+        }
 </style>
 @endsection
 @section('content')
 
     @if(count($sliders) > 0)
         <!--Main Slider Start-->
-        <section class="main-slider clearfix">
+        <section class="main-slider">
             <div class="swiper-container thm-swiper__slider" data-swiper-options='{"slidesPerView": 1, "loop": true,
-                "effect": "fade",
-                "pagination": {
-                "el": "#main-slider-pagination",
-                "type": "bullets",
-                "clickable": true
-                },
-                "navigation": {
-                "nextEl": "#main-slider__swiper-button-next",
-                "prevEl": "#main-slider__swiper-button-prev"
-                },
-                "autoplay": {
-                "delay": 5000
-                }}'>
+                    "effect": "fade",
+                    "pagination": {
+                        "el": "#main-slider-pagination",
+                        "type": "bullets",
+                        "clickable": true
+                    },
+                    "navigation": {
+                        "nextEl": "#main-slider__swiper-button-next",
+                        "prevEl": "#main-slider__swiper-button-prev"
+                    },
+                    "autoplay": {
+                        "delay": 5000
+                    }}'>
                 <div class="swiper-wrapper">
                     @foreach(@$sliders as $slider)
+
                         <div class="swiper-slide">
                             <div class="image-layer"
-                                style="background-image: url({{ asset('/images/sliders/'.$slider->image) }});"></div>
-                            <!-- /.image-layer -->
-                            <div class="main-slider-overly-one"></div>
-                            <div class="main-slider-overly-two"></div>
-                            <div class="main-slider-shape-1 float-bob-x">
-                                <img src="{{asset('assets/frontend/images/shapes/main-slider-shape-1.png')}}" alt="">
-                            </div>
-                            <div class="main-slider-shape-2 float-bob-y">
-                                <img src="{{asset('assets/frontend/images/shapes/main-slider-shape-2.png')}}" alt="">
-                            </div>
-                            <div class="main-slider-shape-3 float-bob-y">
-                                <img src="{{asset('assets/frontend/images/shapes/main-slider-shape-3.png')}}" alt="">
+                                style="background-image: url({{ asset('/images/sliders/'.$slider->image) }});">
                             </div>
 
+                            <div class="image-layer-overlay"></div>
+                            <div class="main-slider-shape-1"></div>
+                            <div class="main-slider-shape-2"></div>
+                            <div class="main-slider-shape-3"></div>
+                            <div class="main-slider-shape-4"></div>
+                            <!-- /.image-layer -->
                             <div class="container">
                                 <div class="row">
-                                    <div class="col-xl-10">
+                                    <div class="col-lg-12">
                                         <div class="main-slider__content">
-                                            @if(@$slider->slider_link)
-                                                <div class="main-slider__video-link">
-                                                    <a href="{{@$slider->slider_link}}" class="video-popup">
-                                                        <div class="main-slider__video-icon">
-                                                            <span class="fa fa-play"></span>
-                                                            <i class="ripple"></i>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            @endif
-                                            <p class="main-slider__sub-title">{{@$slider->subheading}}</p>
-                                            <h2 class="main-slider__title">{{@$slider->heading}}</h2>
-                                            <div class="main-slider__btn-box">
+                                            <p>{{@$slider->subheading}}</p>
+                                            <h2>{!! wordwrap(@$slider->heading,15,"<br>\n",TRUE) !!}</h2>
                                             @if(@$slider->button)
-                                                <a href="{{@$slider->link}}" class="thm-btn main-slider__btn">{{@$slider->button}}</a>
-                                            @endif
-                                            
-                                            </div>
+                                                    <a href="{{@$slider->link}}" class="thm-btn "><span>{{ucwords(@$slider->button)}}</span></a>
+                                                @endif
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     @endforeach
-
+                   
                 </div>
-
                 <!-- If we need navigation buttons -->
-                <div class="main-slider__nav">
-                    <div class="swiper-button-prev" id="main-slider__swiper-button-next">
-                        <i class="icon-up-arrow"></i>
-                    </div>
-                    <div class="swiper-button-next" id="main-slider__swiper-button-prev">
-                        <i class="icon-up-arrow"></i>
-                    </div>
-                </div>
+                <div class="slider-bottom-box clearfix">
 
+                    <div class="main-slider__nav">
+                        <div class="swiper-button-prev" id="main-slider__swiper-button-next"><i
+                                class="icon-right-arrow icon-left-arrow"></i>
+                        </div>
+                        <div class="swiper-button-next" id="main-slider__swiper-button-prev"><i
+                                class="icon-right-arrow"></i>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination" id="main-slider-pagination"></div>
+                </div>
             </div>
         </section>
-        <!--Main Slider End-->
-
+        <!--Banner One End-->
     @endif
 
 
     @if(!empty($homepage_info->welcome_description))
         <!-- Welcome section -->
-        <section class="join-us">
+
+        <section class="welcome-one">
             <div class="container">
                 <div class="row">
                     @if(@$homepage_info->welcome_side_image == "left") 
 
-                        <div class="col-xl-5 col-lg-5">
-                            <div class="join-us__left">
-                                <div class="join-us__img-box wow slideInLeft" data-wow-delay="100ms"
-                                    data-wow-duration="2500ms">
-                                    <div class="join-us__img">
-                                        <img src="<?php if(!empty(@$homepage_info->welcome_image)){ echo '/images/home/welcome/'.@$homepage_info->welcome_image; } ?>" alt="About us">
+                        <div class="col-xl-6">
+                            <div class="welcome-one__left wow fadeInLeft" data-wow-duration="1500ms">
+                                <div class="welcome-one__img-box">
+                                    <div class="welcome-one__img">
+                                        <img src="<?php if(!empty(@$homepage_info->welcome_image)){ echo '/images/home/welcome/'.@$homepage_info->welcome_image; } ?>" alt="">
+                                        <div class="welcome-one__shape-1"></div>
+                                        <div class="welcome-one__shape-2"></div>
                                     </div>
+                                
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-7 col-lg-7">
-                            <div class="join-us__right">
+                        
+                        <div class="col-xl-6">
+                            <div class="welcome-one__right">
                                 <div class="section-title text-left">
                                     @if(@$homepage_info->welcome_subheading)
-                                        <span class="section-title__tagline">{{ucfirst(@$homepage_info->welcome_subheading)}}</span>
+                                            <span class="section-title__tagline">{{ucfirst(@$homepage_info->welcome_subheading)}}</span>
                                     @endif
                                     @if(@$homepage_info->welcome_heading)
                                         <h2 class="section-title__title"><span>{{ucwords(@$homepage_info->welcome_heading)}}</span></h2>
                                     @endif
-                            
                                 </div>
-                                <p class="join-us__text-one">{{ ucfirst(@$homepage_info->welcome_description) }}</p>
                         
-                                    @if(@$homepage_info->welcome_button)
-                                            <a href="{{@$homepage_info->welcome_link}}" class="thm-btn join-us__right-btn">{{ucwords(@$homepage_info->welcome_button)}} </a>
-                                    @endif
-                        
+                                <p class="welcome-one__right-text-2">{{ ucfirst(@$homepage_info->welcome_description) }}</p>
+                                @if(@$homepage_info->welcome_button)
+                                    <a href="{{@$homepage_info->welcome_link}}" class="thm-btn testimonial-one__btn welcome-button"><span>{{ucwords(@$homepage_info->welcome_button)}}</span></a>
+                                @endif
                             </div>
                         </div>
                     @else
-                        <div class="col-xl-7 col-lg-7">
-                            <div class="join-us__right">
+                        <div class="col-xl-6">
+                            <div class="welcome-one__right">
                                 <div class="section-title text-left">
                                     @if(@$homepage_info->welcome_subheading)
-                                        <span class="section-title__tagline">{{ucfirst(@$homepage_info->welcome_subheading)}}</span>
+                                            <span class="section-title__tagline">{{ucfirst(@$homepage_info->welcome_subheading)}}</span>
                                     @endif
                                     @if(@$homepage_info->welcome_heading)
                                         <h2 class="section-title__title"><span>{{ucwords(@$homepage_info->welcome_heading)}}</span></h2>
                                     @endif
-                            
                                 </div>
-                                <p class="join-us__text-one">{{ ucfirst(@$homepage_info->welcome_description) }}</p>
                         
-                                    @if(@$homepage_info->welcome_button)
-                                            <a href="{{@$homepage_info->welcome_link}}" class="thm-btn join-us__right-btn">{{ucwords(@$homepage_info->welcome_button)}} </a>
-                                    @endif
-                        
-                            </div>
-                        </div>
-                        
-                        <div class="col-xl-5 col-lg-5">
-                            <div class="join-us__left">
-                                <div class="join-us__img-box wow slideInLeft" data-wow-delay="100ms"
-                                    data-wow-duration="2500ms">
-                                    <div class="join-us__img">
-                                        <img src="<?php if(!empty(@$homepage_info->welcome_image)){ echo '/images/home/welcome/'.@$homepage_info->welcome_image; } ?>" alt="About us">
-                                    </div>
-                                </div>
+                                <p class="welcome-one__right-text-2">{{ ucfirst(@$homepage_info->welcome_description) }}</p>
+                                @if(@$homepage_info->welcome_button)
+                                    <a href="{{@$homepage_info->welcome_link}}" class="thm-btn testimonial-one__btn"><span>{{ucwords(@$homepage_info->welcome_button)}}</span></a>
+                                @endif
                             </div>
                         </div>
 
+                        <div class="col-xl-6">
+                            <div class="welcome-one__left wow fadeInLeft" data-wow-duration="1500ms">
+                                <div class="welcome-one__img-box">
+                                    <div class="welcome-one__img">
+                                        <img src="<?php if(!empty(@$homepage_info->welcome_image)){ echo '/images/home/welcome/'.@$homepage_info->welcome_image; } ?>" alt="">
+                                        <div class="welcome-one__shape-1"></div>
+                                        <div class="welcome-one__shape-2"></div>
+                                    </div>
+                                
+                                </div>
+                            </div>
+                        </div>
                     @endif
 
                 </div>
@@ -227,416 +238,296 @@
         <!-- Welcome end -->
     @endif
 
-        <!--Status-->
-        <section class="newsletter-one about-status">
+        <!--Counter One Start-->
+        <section class="counters-one">
             <div class="container">
-                <div class="newsletter-one__inner">
-                    <div class="newsletter-one__left">
-                       
-                        <div class="cta-one__right-count">
-                            <div class="cta-one__right-count-box">
-                                <span class="fas fa-plane-departure cta-one__right-icon"></span>
-                                <h3 class="odometer odometer-auto-theme" data-count="{{ (@$homepage_info->project_completed) ? @$homepage_info->project_completed : '3670';}}">
-                                    <div class="odometer-inside">
-                                        <span class="odometer-digit">
-                                            <span class="odometer-digit-spacer">8</span>
-                                            <span class="odometer-digit-inner">
-                                                
-                                                <span class="odometer-ribbon">
-                                                    <span class="odometer-ribbon-inner">
-                                                        <span class="odometer-value">1</span>
-                                                    </span>
-                                                </span>
-                                            </span>
-                                        </span>
-                                        <span class="odometer-digit"><span class="odometer-digit-spacer">8</span>
-                                        <span class="odometer-digit-inner"><span class="odometer-ribbon">
-                                            <span class="odometer-ribbon-inner"><span class="odometer-value">7</span></span></span>
-                                        </span></span>
-                                    </div>
-                                </h3>
-                                <span class="cta-one__right-expert-plus">+</span>
-                            </div>
-                            <p class="cta-one__right-text">Projects Completed</p>
+                <ul class="counters-one__box list-unstyled">
+                    <li class="counter-one__single wow fadeInUp" data-wow-delay="100ms">
+                        <div class="counter-one__icon">
+                            <span class="icon-recommend"></span>
                         </div>
-                        
-                        <div class="cta-one__right-count">
-                            <div class="cta-one__right-count-box">
-                                <span class="fas fa-user-check cta-one__right-icon"></span>
-                                <h3 class="odometer odometer-auto-theme" data-count="{{ (@$homepage_info->visa_approved) ? @$homepage_info->visa_approved : '3670';}}">
-                                    <div class="odometer-inside">
-                                        <span class="odometer-digit">
-                                            <span class="odometer-digit-spacer">8</span>
-                                            <span class="odometer-digit-inner">
-                                                
-                                                <span class="odometer-ribbon">
-                                                    <span class="odometer-ribbon-inner">
-                                                        <span class="odometer-value">1</span>
-                                                    </span>
-                                                </span>
-                                            </span>
-                                        </span>
-                                        <span class="odometer-digit"><span class="odometer-digit-spacer">8</span>
-                                        <span class="odometer-digit-inner"><span class="odometer-ribbon">
-                                            <span class="odometer-ribbon-inner"><span class="odometer-value">7</span></span></span>
-                                        </span></span>
-                                    </div>
-                                </h3>
-                                <span class="cta-one__right-expert-plus">+</span>
-                            </div>
-                            <p class="cta-one__right-text">Visa Approved</p>
+                        <h3 class="odometer" data-count="{{ (@$homepage_info->project_completed) ? @$homepage_info->project_completed : '3670';}}">00</h3>
+                        <p class="counter-one__text">Projects completed</p>
+                    </li>
+                    <li class="counter-one__single wow fadeInUp" data-wow-delay="200ms">
+                        <div class="counter-one__icon">
+                            <span class="icon-recruit"></span>
                         </div>
+                        <h3 class="odometer" data-count="{{ (@$homepage_info->visa_approved) ? @$homepage_info->visa_approved : '3670';}}">00</h3>
+                        <p class="counter-one__text">Visa Approved</p>
+                    </li>
+                    <li class="counter-one__single wow fadeInUp" data-wow-delay="300ms">
+                        <div class="counter-one__icon">
+                            <span class="icon-coffee"></span>
+                        </div>
+                        <h3 class="odometer" data-count="{{ (@$homepage_info->success_stories) ? @$homepage_info->success_stories : '3670';}}">00</h3>
+                        <p class="counter-one__text">Success Stories</p>
+                    </li>
+                    <li class="counter-one__single wow fadeInUp" data-wow-delay="400ms">
+                        <div class="counter-one__icon">
+                            <span class="icon-customer-review"></span>
+                        </div>
+                        <h3 class="odometer" data-count="{{ (@$homepage_info->happy_clients) ? @$homepage_info->happy_clients : '3670';}}">00</h3>
+                        <p class="counter-one__text">Happy clients</p>
+                    </li>
+                    <li class="counter-one__shape wow fadeInUp" data-wow-delay="500ms"></li>
+                </ul>
+            </div>
+        </section>
+        <!--Counter One End-->
 
-                        <div class="cta-one__right-count">
-                            <div class="cta-one__right-count-box">
-                                <span class="far fa-smile cta-one__right-icon"></span>
-                                <h3 class="odometer odometer-auto-theme" data-count="{{ (@$homepage_info->happy_clients) ? @$homepage_info->happy_clients : '3670';}}">
-                                    <div class="odometer-inside">
-                                        <span class="odometer-digit">
-                                            <span class="odometer-digit-spacer">8</span>
-                                            <span class="odometer-digit-inner">
-                                                
-                                                <span class="odometer-ribbon">
-                                                    <span class="odometer-ribbon-inner">
-                                                        <span class="odometer-value">1</span>
-                                                    </span>
-                                                </span>
-                                            </span>
-                                        </span>
-                                        <span class="odometer-digit"><span class="odometer-digit-spacer">8</span>
-                                        <span class="odometer-digit-inner"><span class="odometer-ribbon">
-                                            <span class="odometer-ribbon-inner"><span class="odometer-value">7</span></span></span>
-                                        </span></span>
-                                    </div>
-                                </h3>
-                                <span class="cta-one__right-expert-plus">+</span>
-                            </div>
-                            <p class="cta-one__right-text">Happy Clients</p>
-                        </div>
-
-                        <div class="cta-one__right-count">
-                            <div class="cta-one__right-count-box">
-                                <span class="fas fa-thumbs-up cta-one__right-icon"></span>
-                                <h3 class="odometer odometer-auto-theme" data-count="{{ (@$homepage_info->success_stories) ? @$homepage_info->success_stories : '3670';}}">
-                                    <div class="odometer-inside">
-                                        <span class="odometer-digit">
-                                            <span class="odometer-digit-spacer">8</span>
-                                            <span class="odometer-digit-inner">
-                                                
-                                                <span class="odometer-ribbon">
-                                                    <span class="odometer-ribbon-inner">
-                                                        <span class="odometer-value">1</span>
-                                                    </span>
-                                                </span>
-                                            </span>
-                                        </span>
-                                        <span class="odometer-digit"><span class="odometer-digit-spacer">8</span>
-                                        <span class="odometer-digit-inner"><span class="odometer-ribbon">
-                                            <span class="odometer-ribbon-inner"><span class="odometer-value">7</span></span></span>
-                                        </span></span>
-                                    </div>
-                                </h3>
-                                <span class="cta-one__right-expert-plus">+</span>
-                            </div>
-                            <p class="cta-one__right-text">Success Stories</p>
+    @if(!empty($homepage_info->action_heading))
+        <!-- CTA Area start -->
+        <section class="cta-one">
+            <div class="cta-one-bg" style="background-image: url({{asset('/assets/frontend/images/backgrounds/cta-one-bg.jpg')}})"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="cta-one__inner">
+                            <p class="cta-one__tagline">{{@$homepage_info->action_heading2}}</p>
+                            <h2 class="cta-one__title">{!! wordwrap(@$homepage_info->action_heading,30,"<br>\n",TRUE) !!}</h2>
+                            @if(@$homepage_info->action_button)
+                          
+                                <a href="{{@$homepage_info->action_link}}" class="thm-btn cta-one__btn thm-btn--dark--light-hover"><span>{{@$homepage_info->action_button}}</span></a>
+                            @endif
                         </div>
                     </div>
-                    
                 </div>
             </div>
         </section>
-        <!--Status-->
+        <!-- CTA Area end -->
+    @endif
+
+
+
     @if(!empty($homepage_info->mv_heading))
         <!-- Mission Vision start -->
-        <section class="testimonials-one">
+        <section class="services-one mission">
+            <div class="services-one-bg" style="background-image: url({{asset('/assets/frontend/images/backgrounds/services-one-bg.jpg')}})">
+            </div>
             <div class="container">
                 <div class="section-title text-center">
-                  
+        
                     @if(@$homepage_info->mv_subheading)
                         <span class="section-title__tagline">{{ucfirst(@$homepage_info->mv_subheading)}}</span>
                     @endif
                     @if(@$homepage_info->mv_heading)
                         <h2 class="section-title__title"><span>{{ucwords(@$homepage_info->mv_heading)}}</span></h2>
                     @endif
+
+                    <p class="services-one__text">{{ ucfirst(@$homepage_info->mv_description) }}</p>
+
                 </div>
-                <div class="service-details__core-product-points-box">
-                    <div class="row">
-                        <div class="col-xl-4">
-                            <div class="service-details__core-product-points-single">
-                                <div class="service-details__core-product-icon-box">
-                                    <div class="service-details__core-product-icon">
-                                        <span class="icon-marketing-analysis-marketing-research"></span>
-                                    </div>
-                                    <div class="service-details__core-product-content">
-                                        <h4>Mission</h4>
-                                    </div>
-                                </div>
-                                <p class="service-details__core-product-text-2">{{ ucfirst(@$homepage_info->mission) }}</p>
+                <div class="row">
+                    <div class="col-xl-4 col-lg-4">
+                        <!--Services One Single-->
+                        <div class="services-one__single wow fadeInUp " data-wow-delay="100ms">
+                            <div class="services-one__icon">
+                                <span class="fas fa-trophy"></span>
                             </div>
+                            <h3 class="services-one__title"><a href="#">Mission</a></h3>
+                            <p class="services-one__text">{{ ucfirst(@$homepage_info->mission) }}</p>
+                     
                         </div>
-                        <div class="col-xl-4">
-                            <div class="service-details__core-product-points-single">
-                                <div class="service-details__core-product-icon-box">
-                                    <div class="service-details__core-product-icon">
-                                        <span class="fas fa-eye"></span>
-                                    </div>
-                                    <div class="service-details__core-product-content">
-                                        <h4>Vision</h4>
-                                    </div>
-                                </div>
-                                <p class="service-details__core-product-text-2">{{ ucfirst(@$homepage_info->vision) }}</p>
+                    </div>
+                    <div class="col-xl-4 col-lg-4">
+                        <!--Services One Single-->
+                        <div class="services-one__single wow fadeInUp" data-wow-delay="100ms">
+                            <div class="services-one__icon">
+                                <span class="far fa-eye"></span>
                             </div>
+                            <h3 class="services-one__title"><a href="#">Vision</a></h3>
+                            <p class="services-one__text">{{ ucfirst(@$homepage_info->vision) }}</p>
+                 
                         </div>
-                        <div class="col-xl-4">
-                            <div class="service-details__core-product-points-single">
-                                <div class="service-details__core-product-icon-box">
-                                    <div class="service-details__core-product-icon">
-                                        <span class="icon-protection-rain-umbrella"></span>
-                                    </div>
-                                    <div class="service-details__core-product-content">
-                                        <h4>Value</h4>
-                                    </div>
-                                </div>
-                                <p class="service-details__core-product-text-2">{{ ucfirst(@$homepage_info->value) }}</p>
+                    </div>
+                    <div class="col-xl-4 col-lg-4">
+                        <!--Services One Single-->
+                        <div class="services-one__single wow fadeInUp" data-wow-delay="100ms">
+                            <div class="services-one__icon">
+                                <span class="far fa-heart"></span>
                             </div>
+                            <h3 class="services-one__title"><a href="#">Value</a></h3>
+                            <p class="services-one__text">{{ ucfirst(@$homepage_info->value) }}</p>
+                        
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-      
         <!-- Mission Vision end -->
     @endif
 
-    @if(!empty($homepage_info->action_heading))
-        <!-- CTA Area start -->
-        <div class="cta-one">
-            <div class="cta-one__bg-img" style="background-image: url({{asset('/assets/frontend/images/background/cta-one-bg-1.jpg')}});">
-            </div>
-            <div class="container">
-                <div class="cta-one__inner">
-                    <div class="cta-one__left">
-                        <div class="cta-one__content">
-                            <h3 class="cta-one__title">{{@$homepage_info->action_heading}}</h3>
-                        </div>
-                    </div>
-                    <div class="cta-one__right">
-                        <div class="cta-one__right-button">
-                            <a href="{{@$homepage_info->action_link}}" class="thm-btn cta-one__right-btn">Learn More</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-     
-        <!-- CTA Area end -->
-    @endif
+  
+    @if(count($testimonials) > 2)
 
-
-
-    @if(!empty($homepage_info->core_main_heading))
-
-        <!-- Core value start -->
-        <section class="about-one">
+        <!--Testimonial One Start-->
+        <section class="testimonial-one">
             <div class="container">
                 <div class="row">
-                    <div class="col-xl-6">
-                        <div class="about-one__left">
+                    <div class="col-xl-4 col-lg-5">
+                        <div class="testimonial-one__left">
                             <div class="section-title text-left">
-                                <span class="section-title__tagline">{{ucwords(@$homepage_info->core_main_heading)}}</span>
-                                <h2 class="section-title__title"> <span>{{ucfirst(@$homepage_info->core_main_description)}}</span></h2>
+                                <span class="section-title__tagline">Customer feedback</span>
+                                <h2 class="section-title__title">What they are talking about NMS?</h2>
                             </div>
-                            <ul class="about-one__points list-unstyled">
-                                <li>
-                                    <div class="icon">
-                                        <span class="fas fa-handshake"></span>
-                                    </div>
-                                    <div class="content">
-                                        <h4>{{ucwords(@$homepage_info->core_heading1)}}</h4>
-                                        <p>{{ucfirst(@$homepage_info->core_description1)}}</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="icon">
-                                        <span class="icon-analysis-analytics-business"></span>
-                                    </div>
-                                    <div class="content">
-                                        <h4>{{ucwords(@$homepage_info->core_heading2)}}</h4>
-                                        <p>{{ucfirst(@$homepage_info->core_description2)}}</p>
-                                    </div>
-                                </li>
-                            </ul>
+                            <div class="testimonial-one__btn-box">
+                                <a href="{{route('testimonial')}}" class="thm-btn testimonial-one__btn"><span>All feedbacks</span></a>
+                                <div class="testimonial-one__btn-shape"></div>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-xl-6">
-                        <div class="about-one__right">
-                            <ul class="about-one__points list-unstyled">
-                                <li>
-                                    <div class="icon">
-                                        <span class="far fa-eye"></span>
-                                    </div>
-                                    <div class="content">
-                                        <h4>{{ucwords(@$homepage_info->core_heading3)}}</h4>
-                                        <p>{{ucfirst(@$homepage_info->core_description3)}}</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="icon">
-                                        <span class="fas fa-balance-scale"></span>
-                                    </div>
-                                    <div class="content">
-                                        <h4>{{ucwords(@$homepage_info->core_heading4)}}</h4>
-                                        <p>{{ucfirst(@$homepage_info->core_description4)}}</p>
-                                    </div>
-                                </li>
-                                 <li>
-                                    <div class="icon">
-                                        <span class="fas fa-network-wired"></span>
-                                    </div>
-                                    <div class="content">
-                                        <h4>{{ucwords(@$homepage_info->core_heading5)}}</h4>
-                                        <p>{{ucfirst(@$homepage_info->core_description5)}}</p>
-                                    </div>
-                                </li>
-                                 <li>
-                                    <div class="icon">
-                                        <span class="fas fa-user-shield"></span>
-                                    </div>
-                                    <div class="content">
-                                        <h4>{{ucwords(@$homepage_info->core_heading6)}}</h4>
-                                        <p>{{ucfirst(@$homepage_info->core_description6)}}</p>
-                                    </div>
-                                </li>
-                            </ul>
+                    <div class="col-xl-8 col-lg-7">
+                        <div class="testimonial-one__slider">
+
+
+                            <div class="swiper-container" id="testimonials-one__thumb">
+                                <div class="swiper-wrapper">
+                                    @foreach(@$testimonials as $testimonial)
+
+                                        <div class="swiper-slide">
+                                            <div class="testimonial-one__img-holder">
+                                                <img src="<?php if(!empty(@$testimonial->image)){ echo '/images/testimonial/'.@$testimonial->image; } ?>" alt="">
+                                                <div class="testimonial-one__quote">
+
+                                                </div>
+                                            </div>
+                                        </div><!-- /.swiper-slide -->
+                                    @endforeach
+                                   
+                                </div><!-- /.swiper-wrapper -->
+                            </div><!-- /#testimonials-one__thumb.swiper-container -->
+
+                            <div class="testimonials-one__main-content">
+                                <div class="swiper-container" id="testimonials-one__carousel">
+                                    <div class="swiper-wrapper">
+                                        @foreach(@$testimonials as $testimonial)
+
+                                            <div class="swiper-slide">
+                                                <div class="testimonial-one__conent-box">
+                                                    <p class="testimonial-one__text">{!! @$testimonial->description !!}</p>
+                                                    <div class="testimonial-one__client-details">
+                                                        <h4 class="testimonial-one__client-name">{{ucwords($testimonial->name)}}</h4>
+                                                        <span class="testimonial-one__clinet-title">{{ucwords($testimonial->position)}}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endforeach
+
+                                    </div><!-- /.swiper-wrapper -->
+                                    <div id="testimonials-one__carousel-pagination"></div>
+                                    <!-- /#testimonials-one__carousel-pagination -->
+                                </div><!-- /#testimonials-one__thumb.swiper-container -->
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        <!-- Core value end -->
+        <!--Testimonial One End-->
+
     @endif
-
-    @if(count($latestServices) > 2)
-        <!-- Services start -->
-
-        <section class="services-one">
-              <div class="services-one__bg" style="background-image: url(assets/images/backgrounds/services-one-bg.jpg);">
-              </div>
-              <div class="container">
-                  <div class="services-one__top text-center">
-                      <div class="section-title">
-                          <span class="section-title__tagline">Recent Services</span>
-                          <h2 class="section-title__title"><span>Look at our latest services</span></h2>
-                      </div>
-                    
-                  </div>
-
-                  <div class="services-one__bottom">
-                      <div class="services-one__carousel owl-carousel owl-theme thm-owl__carousel" data-owl-options='{
-                          "loop": true,
-                          "autoplay": false,
-                          "margin": 30,
-                          "nav": false,
-                          "dots": true,
-                          "smartSpeed": 500,
-                          "autoplayTimeout": 10000,
-                          "navText": ["<span class=\"fa fa-angle-left\"></span>","<span class=\"fa fa-angle-right\"></span>"],
-                          "responsive": {
-                              "0": {
-                                  "items": 1
-                              },
-                              "768": {
-                                  "items": 2
-                              },
-                              "992": {
-                                  "items": 2
-                              },
-                              "1200": {
-                                  "items": 3
-                              }
-                          }
-                      }'>
-                          @foreach(@$latestServices as $service)
-
-
-                          <div class="item">
-                              <div class="services-one__single">
-                                  <div class="services-one__img">
-                                      <img src="<?php if(@$service->banner_image){?>{{asset('/images/service/'.@$service->banner_image)}}<?php }?>" alt="">
-                                  </div>
-                                  <div class="services-one__content">
-                                     
-                                      <h3 class="services-one__title"><a href="{{route('service.single',$service->slug)}}">{{ucwords(@$service->title)}}</a></h3>
-                                      <p class="services-one__text">{{ucfirst(Str::limit(@$service->sub_description, 70,'...'))}}</p>
-                                      <div class="services-one__arrow">
-                                          <a href="{{route('service.single',$service->slug)}}"><i class="icon-right-arrow-1"></i></a>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                          @endforeach
-
-                
-                      </div>
-                  </div>
-              </div>
-          </section>
-
-
-        <!-- Services  end -->
-    @endif
-
-
 
 
     @if(count($latestPosts) > 2)
 
-        <!--Blog One Start-->
-        <section class="blog-three">
-            <div class="container">
-                <div class="section-title text-center">
-                    <span class="section-title__tagline">Our Blog List</span>
-                    <h2 class="section-title__title"><span>Latest Blog Post</span></h2>
-                </div>
-                <div class="row">
-                    @foreach(@$latestPosts as $post)
+      <!--Blog One Start-->
+      <section class="blog-one">
+        <div class="container">
+            <div class="section-title text-center">
+                <span class="section-title__tagline">Recent work completed</span>
+                <h2 class="section-title__title">Latest from the blog</h2>
+            </div>
+            <div class="row">
+                @foreach(@$latestPosts as $post)
 
-                    <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="100ms">
-                        <div class="blog-three__single">
-                            <div class="blog-three__img">
+                    <div class="col-xl-4 col-lg-4">
+                        <!--Blog One Single-->
+                        <div class="blog-one__single wow fadeInUp" data-wow-delay="100ms">
+                            <div class="blog-one__img-box">
+                                <div class="blog-one__img">
                                 <img src="<?php if(@$post->image){?>{{asset('/images/blog/'.@$post->image)}}<?php }?>" alt="">
+
+                                    <a href="{{route('blog.single',$post->slug)}}">
+                                        <span class="blog-one__plus"></span>
+                                    </a>
+                                </div>
+                                <div class="blog-one__date-box">
+                                    <p><span>{{date('j',strtotime(@$post->created_at))}}</span> {{date('M',strtotime(@$post->created_at))}}</p>
+                                </div>
                             </div>
-                            <div class="blog-three__content">
-                                <div class="blog-three__date">
-                                    <span>{{date('j',strtotime(@$post->created_at))}}</span>
-                                    <p>{{date('M',strtotime(@$post->created_at))}}</p>
-                                </div>
-                                <div class="blog-three__title-box">
-                                    
-                                    <h4 class="blog-three__title"><a href="{{route('blog.single',$post->slug)}}">{{ucwords($post->title)}}</a></h4>
-                                </div>
-                                <div class="blog-three__content-box">
-                                    <ul class="blog-three__meta list-unstyled">
-                                        <li>
-                                            <a href="{{url('/blog/categories/'.@$post->category->slug)}}"><i class="icon-tag-chevron-thin"></i>{{ucwords(@$post->category->name)}}</a>
-                                        </li>
-                                       
-                                    </ul>
-                                    <div class="blog-three__btn-box">
-                                        <a href="{{route('blog.single',$post->slug)}}">Details<i
-                                                class="icon-fast-forward-thin-double-arrows"></i></a>
+                            <div class="blog-one__content">
+                                <ul class="list-unstyled blog-one__meta">
+                                    <li><a href="{{url('/blog/categories/'.@$post->category->slug)}}"><i class="fas fa-th-large"></i> {{ucwords(@$post->category->name)}}</a></li>
+                                </ul>
+                                <h3 class="blog-one__title">
+                                    <a href="{{route('blog.single',$post->slug)}}">{{ucwords($post->title)}}</a>
+                                </h3>
+                                
+                                <div class="blog-one__bottom">
+                                    <div class="blog-one__read-btn">
+                                        <a href="{{route('blog.single',$post->slug)}}">Read more</a>
+                                    </div>
+                                    <div class="blog-one__arrow">
+                                        <a href="{{route('blog.single',$post->slug)}}"><span class="icon-right-arrow"></span></a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    @endforeach
-                    
+                @endforeach
+                
+            </div>
+        </div>
+    </section>
+    <!--Blog One End-->
+
+    @endif
+
+    
+    @if(count($clients) > 0)
+
+        <!--Brand Two-->
+        <section class="brand-one">
+            <div class="container">
+                <div class="thm-swiper__slider swiper-container" data-swiper-options='{"spaceBetween": 50, "slidesPerView": 5, "autoplay": { "delay": 5000 }, "breakpoints": {
+                    "0": {
+                        "spaceBetween": 30,
+                        "slidesPerView": 2
+                    },
+                    "375": {
+                        "spaceBetween": 30,
+                        "slidesPerView": 2
+                    },
+                    "575": {
+                        "spaceBetween": 30,
+                        "slidesPerView": 3
+                    },
+                    "767": {
+                        "spaceBetween": 50,
+                        "slidesPerView": 4
+                    },
+                    "991": {
+                        "spaceBetween": 50,
+                        "slidesPerView": 5
+                    },
+                    "1199": {
+                        "spaceBetween": 100,
+                        "slidesPerView": 5
+                    }
+                }}'>
+                    <div class="swiper-wrapper">
+                    @foreach(@$clients as $client)
+
+                        <div class="swiper-slide">
+                            <img src="<?php if(@$client->image){?>{{asset('/images/clients/'.@$client->image)}}<?php }?>" alt="{{ucwords($client->country)}}">
+                        </div><!-- /.swiper-slide -->
+                      @endforeach
+                    </div>
                 </div>
             </div>
         </section>
-  
+        <!--Brand Two End-->
     @endif
-
 
 @endsection

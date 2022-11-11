@@ -339,9 +339,9 @@
                     <div class="section-title text-left">
                       @if(@$bgimage_elements->subheading)
 
-                      <span class="section-title__tagline">{!! @$bgimage_elements->subheading !!}</span>
+                      <span class="section-title__tagline">{!! ucfirst(@$bgimage_elements->subheading) !!}</span>
                       @endif
-                      <h2 class="section-title__title">{!! @$bgimage_elements->heading !!}</h2>
+                      <h2 class="section-title__title">{!! ucfirst(@$bgimage_elements->heading) !!}</h2>
                     </div>
                     <div class="core-features__left-bottom">
                       <div class="core-features__left-bottom-img">
