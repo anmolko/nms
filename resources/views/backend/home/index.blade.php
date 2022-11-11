@@ -401,7 +401,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="position-relative mb-3">
-                                                        <label class="form-label" for="direction-heading-inputs" >Button Text</label>
+                                                        <label class="form-label" for="direction-heading-inputs" >Button Text <span class="text-muted text-danger">*</span></label>
                                                         <input type="text" class="form-control" id="direction-heading-inputs" maxlength="25" name="action_button" value="{{@$homesettings->action_button}}"
                                                                placeholder="Enter button text" required>
                                                         <div class="invalid-feedback">
