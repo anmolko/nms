@@ -110,7 +110,7 @@ class SectionElementController extends Controller
                     ->where('page_section_id', $section->id)
                     ->first();
             }
-            else if ($section->section_slug == 'accordion_section_2'){
+            else if ($section->section_slug == 'accordion_section'){
                 $list_2 = $section->list_number_2;
                 $accordian2_elements = SectionElement::with('section')
                     ->where('page_section_id', $section->id)
@@ -320,7 +320,7 @@ class SectionElementController extends Controller
             ];
             $status = SectionElement::create($data);
         }
-        elseif ($section_name == 'accordion_section_2'){
+        elseif ($section_name == 'accordion_section'){
                 $list2_num   = $request->input('list_number_2');
                 for ($i=0;$i<$list2_num;$i++){
                     $heading     =  (array_key_exists($i, $request->input('heading')) ?  $request->input('heading')[$i]: Null);
@@ -651,7 +651,7 @@ class SectionElementController extends Controller
             }
 
         }
-        elseif ($section_name == 'accordion_section_2') {
+        elseif ($section_name == 'accordion_section') {
             $list2_num       = $request->input('list_number_2');
             $db_elements     = json_decode($request->input('accordion2_elements'),true);
             $db_elements_id  = array_map(function($item){ return $item['id']; }, $db_elements);

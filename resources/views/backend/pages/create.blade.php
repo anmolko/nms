@@ -297,7 +297,7 @@
                                         <div class="col-md-12">
                                             <label class="image-checkbox">
                                                 <img class="img-responsive" src="{{asset('assets/backend/img/page_sections/simple_accordian_tab2.png')}}" width="100%" />
-                                                <input type="checkbox" name="section[]" value="accordion_section_2" id="simple_accordian_tab2.png"/>
+                                                <input type="checkbox" name="section[]" value="accordion_section" id="simple_accordian_tab.png"/>
                                                 <i class="ri ri-check-line hidden"></i>
                                             </label>
                                             <span class="ctm-text-sm text-warning">* Can be used for multiple Q & A section such as FAQs.</span>

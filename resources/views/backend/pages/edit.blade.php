@@ -192,7 +192,7 @@
                                         <div class="col-md-12">
                                             <label class="image-checkbox {{(in_array('call_to_action_2', $sections) ? "image-checkbox-checked":"")}}">
                                                 <img class="img-responsive" src="{{asset('assets/backend/img/page_sections/calltoaction2.png')}}"  width="100%"/>
-                                                <input type="checkbox" name="section[]" value="call_to_action_1" id="calltoaction2.png" {{(in_array('call_to_action_2', $sections) ? "checked":"")}} />
+                                                <input type="checkbox" name="section[]" value="call_to_action_2" id="calltoaction2.png" {{(in_array('call_to_action_2', $sections) ? "checked":"")}} />
                                                 <i class="ri ri-check-line hidden"></i>
                                             </label>
                                         </div>
@@ -284,9 +284,9 @@
                                             </div>
                                         </div>
                                         <div class="col-md-12">
-                                            <label class="image-checkbox {{(in_array('accordion_section_2', $sections) ? "image-checkbox-checked":"")}}">
+                                            <label class="image-checkbox {{(in_array('accordion_section', $sections) ? "image-checkbox-checked":"")}}">
                                                 <img class="img-responsive" src="{{asset('assets/backend/img/page_sections/simple_accordian_tab2.png')}}" width="100%"/>
-                                                <input type="checkbox" name="section[]" id="simple_accordian_tab2.png" value="accordion_section_2" {{(in_array('accordion_section_2', $sections) ? "checked":"")}} />
+                                                <input type="checkbox" name="section[]" id="simple_accordian_tab2.png" value="accordion_section" {{(in_array('accordion_section', $sections) ? "checked":"")}} />
                                                 <i class="ri ri-check-line hidden"></i>
                                             </label>
                                             <span class="ctm-text-sm text-warning">* Can be used for multiple Q & A section such as FAQs.</span>

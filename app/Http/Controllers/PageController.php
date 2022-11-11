@@ -71,7 +71,7 @@ class PageController extends Controller
             if ($sections !== null) {
                 foreach ($sections as $key => $value) {
                     $section_name = str_replace("_", " ", $value);
-                 if ($value == 'accordion_section_2') {
+                 if ($value == 'accordion_section') {
                         $section_status = PageSection::create([
                             'section_name' => $section_name,
                             'section_slug' => $value,
@@ -167,7 +167,7 @@ class PageController extends Controller
                 $ordered_sections[$section->section_slug] = 'simple_accordian_tab.png';
                 $list1      = $section->list_number_1;
                 $list1_id   = $section->id;
-            }elseif ($section->section_slug == 'accordion_section_2'){
+            }elseif ($section->section_slug == 'accordion_section'){
                 $ordered_sections[$section->section_slug] = 'simple_accordian_tab2.png';
                 $list2      = $section->list_number_2;
                 $list2_id   = $section->id;
@@ -262,7 +262,7 @@ class PageController extends Controller
                                     'page_id' => $page->id,
                                     'created_by' => Auth::user()->id,
                                 ]);
-                        } elseif ($value == 'accordion_section_2') {
+                        } elseif ($value == 'accordion_section') {
                             $section_status = PageSection::create([
                                 'section_name' => $section_name,
                                 'section_slug' => $value,
@@ -323,7 +323,7 @@ class PageController extends Controller
                             $section_element->list_number_3 = $request->input('list_number_3_process_sel');
                             $section_element->position = $pos[$key];
                             $section_status = $section_element->update();
-                        } elseif ($value == 'accordion_section_2') {
+                        } elseif ($value == 'accordion_section') {
                             $section_element = PageSection::find($request->input('list_2_id'));
                             $section_element->list_number_2 = $request->input('list_number_2');
                             $section_element->position = $pos[$key];

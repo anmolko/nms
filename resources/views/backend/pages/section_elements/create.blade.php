@@ -143,6 +143,10 @@
                                 @else
                                     {!! Form::open(['route' => 'section-elements.store','method'=>'post','class'=>'needs-validation','id'=>'basic-form','novalidate'=>'','enctype'=>'multipart/form-data']) !!}
                                 @endif
+                                    <figure class="figure">
+                                        <figcaption>Output Sample.</figcaption>
+                                        <img src="{{asset('assets/backend/img/page_sections/basic_section.png')}}"  class="figure-img img-fluid rounded" alt="...">
+                                    </figure>
                                 <div class="row" id="basic-form-ajax">
                                     <div class="col-md-7">
                                         <div class="card ctm-border-radius shadow-sm flex-fill">
@@ -246,6 +250,10 @@
                                         @else
                                             {!! Form::open(['route' => 'section-elements.store','method'=>'post','class'=>'needs-validation','id'=>'basic2-form','novalidate'=>'','enctype'=>'multipart/form-data']) !!}
                                         @endif
+                                            <figure class="figure">
+                                                <figcaption>Output Sample.</figcaption>
+                                                <img src="{{asset('assets/backend/img/page_sections/basic_section2.png')}}"  class="figure-img img-fluid rounded" alt="...">
+                                            </figure>
                                         <div class="row" id="basic2-form-ajax">
                                             <div class="col-md-6">
                                                 <div class="card ctm-border-radius shadow-sm flex-fill">
@@ -372,6 +380,10 @@
                                      @else
                                          {!! Form::open(['route' => 'section-elements.store','method'=>'post','class'=>'needs-validation','id'=>'map-descrip-form','novalidate'=>'']) !!}
                                      @endif
+                                         <figure class="figure">
+                                             <figcaption>Output Sample.</figcaption>
+                                             <img src="{{asset('assets/backend/img/page_sections/map_and_description.png')}}"  class="figure-img img-fluid rounded" alt="...">
+                                         </figure>
                                      <div class="row" id="map-descrip-form-ajax">
                                          <div class="col-md-12">
                                              <div class="card ctm-border-radius shadow-sm flex-fill">
@@ -450,7 +462,10 @@
                                      @else
                                          {!! Form::open(['route' => 'section-elements.store','method'=>'post','class'=>'needs-validation','id'=>'call-action1-form','novalidate'=>'']) !!}
                                      @endif
-
+                                     <figure class="figure">
+                                             <figcaption>Output Sample.</figcaption>
+                                             <img src="{{asset('assets/backend/img/page_sections/calltoaction.png')}}"  class="figure-img img-fluid rounded" alt="...">
+                                         </figure>
                                      <div class="row" id="call-action1-form-ajax">
                                          <div class="col-md-12">
                                              <div class="card ctm-border-radius shadow-sm flex-fill">
@@ -502,7 +517,10 @@
                                         @else
                                             {!! Form::open(['route' => 'section-elements.store','method'=>'post','class'=>'needs-validation','id'=>'call-action2-form','novalidate'=>'']) !!}
                                         @endif
-
+                                            <figure class="figure">
+                                                <figcaption>Output Sample.</figcaption>
+                                                <img src="{{asset('assets/backend/img/page_sections/calltoaction2.png')}}"  class="figure-img img-fluid rounded" alt="...">
+                                            </figure>
                                         <div class="row" id="call-action2-form-ajax">
                                             <div class="col-md-8">
                                                 <div class="card ctm-border-radius shadow-sm flex-fill">
@@ -603,7 +621,12 @@
                                         @else
                                             {!! Form::open(['route' => 'section-elements.store','method'=>'post','class'=>'needs-validation','id'=>'background-image-form','novalidate'=>'','enctype'=>'multipart/form-data']) !!}
                                         @endif
-                                     <div id="background-image-form-ajax">
+                                            <figure class="figure">
+                                                <figcaption>Output Sample.</figcaption>
+                                                <img src="{{asset('assets/backend/img/page_sections/background_image_section.png')}}"  class="figure-img img-fluid rounded" alt="...">
+                                            </figure>
+
+                                            <div id="background-image-form-ajax">
                                          <div class="row">
                                              <div class="col-md-8">
                                                  <div class="card ctm-border-radius shadow-sm flex-fill">
@@ -615,7 +638,7 @@
                                                      <div class="card-body">
                                                          <div class="form-group mb-3">
                                                              <label>Heading <span class="text-muted text-danger">*</span></label>
-                                                             <input type="text" maxlength="35" class="form-control" name="heading" value="{{@$bgimage_elements->heading}}" required>
+                                                             <input type="text" maxlength="50" class="form-control" name="heading" value="{{@$bgimage_elements->heading}}" required>
                                                              <input type="hidden" class="form-control" value="{{$key}}" name="page_section_id" required>
                                                              <input type="hidden" class="form-control" value="{{$value}}" name="section_name" required>
                                                              <div class="invalid-feedback">
@@ -625,7 +648,7 @@
 
                                                          <div class="form-group mb-3">
                                                              <label>Sub Heading </label>
-                                                             <input type="text" class="form-control" maxlength="15" name="subheading" value="{{@$bgimage_elements->subheading}}">
+                                                             <input type="text" class="form-control" maxlength="30" name="subheading" value="{{@$bgimage_elements->subheading}}">
                                                              <div class="invalid-feedback">
                                                                  Please enter the section Sub heading.
                                                              </div>
@@ -633,7 +656,7 @@
 
                                                          <div class="form-group mb-3">
                                                              <label>Description <span class="text-muted text-danger">*</span></label>
-                                                             <textarea class="form-control" maxlength="110" rows="3" name="description" required>{{@$bgimage_elements->description}}</textarea>
+                                                             <textarea class="form-control" maxlength="150" rows="3" name="description" required>{{@$bgimage_elements->description}}</textarea>
                                                              <div class="invalid-feedback">
                                                                  Please write the short description.
                                                              </div>
@@ -708,7 +731,12 @@
                                      @else
                                          {!! Form::open(['route' => 'section-elements.store','method'=>'post','class'=>'needs-validation','id'=>'flash-card-form','novalidate'=>'']) !!}
                                      @endif
-                                     <div id="flash-card-form-ajax">
+                                         <figure class="figure">
+                                             <figcaption>Output Sample.</figcaption>
+                                             <img src="{{asset('assets/backend/img/page_sections/mission_vision.png')}}"  class="figure-img img-fluid rounded" alt="...">
+                                         </figure>
+
+                                         <div id="flash-card-form-ajax">
                                          <div class="col-md-12">
                                              <div class="card ctm-border-radius shadow-sm flex-fill">
                                                  <div class="card-header">
@@ -934,6 +962,10 @@
                                      @else
                                          {!! Form::open(['route' => 'section-elements.store','method'=>'post','class'=>'needs-validation','id'=>'header-descp-form','novalidate'=>'']) !!}
                                      @endif
+                                         <figure class="figure">
+                                             <figcaption>Output Sample.</figcaption>
+                                             <img src="{{asset('assets/backend/img/page_sections/simple_header_descp.png')}}"  class="figure-img img-fluid rounded" alt="...">
+                                         </figure>
 
                                      <div class="row" id="header-descp-form-ajax">
                                          <div class="col-md-12">
@@ -973,13 +1005,18 @@
 
                                  @endif
 
-                                 @if($value == 'accordion_section_2')
+                                 @if($value == 'accordion_section')
                                      @if(sizeof($accordian2_elements) !== 0)
                                          {!! Form::open(['route' => 'section-elements.tablistUpdate','method'=>'post','class'=>'needs-validation','id'=>'accordion2-form','novalidate'=>'','enctype'=>'multipart/form-data']) !!}
                                      @else
                                          {!! Form::open(['route' => 'section-elements.store','method'=>'post','class'=>'needs-validation','id'=>'accordion2-form','novalidate'=>'','enctype'=>'multipart/form-data']) !!}
                                      @endif
-                                     <div id="accordion2-form-ajax">
+                                         <figure class="figure">
+                                             <figcaption>Output Sample.</figcaption>
+                                             <img src="{{asset('assets/backend/img/page_sections/simple_accordian_tab2.png')}}"  class="figure-img img-fluid rounded" alt="...">
+                                         </figure>
+
+                                         <div id="accordion2-form-ajax">
                                          <div class="row">
                                              <div class="col-md-12">
                                                  <div class="card ctm-border-radius shadow-sm flex-fill">
@@ -1062,6 +1099,10 @@
                                      @else
                                          {!! Form::open(['route' => 'section-elements.store','method'=>'post','class'=>'needs-validation','id'=>'slider-list-form','novalidate'=>'','enctype'=>'multipart/form-data']) !!}
                                      @endif
+                                         <figure class="figure">
+                                             <figcaption>Output Sample.</figcaption>
+                                             <img src="{{asset('assets/backend/img/page_sections/list_option_1.png')}}"  class="figure-img img-fluid rounded" alt="...">
+                                         </figure>
                                      <div id="slider-list-form-ajax">
                                          <div class="row">
                                              <div class="col-md-12">
@@ -1255,6 +1296,10 @@
                                     @else
                                         {!! Form::open(['route' => 'section-elements.store','method'=>'post','class'=>'needs-validation','id'=>'process-form','novalidate'=>'','enctype'=>'multipart/form-data']) !!}
                                     @endif
+                                        <figure class="figure">
+                                            <figcaption>Output Sample.</figcaption>
+                                            <img src="{{asset('assets/backend/img/page_sections/simple_accordion_tab2.png')}}"  class="figure-img img-fluid rounded" alt="...">
+                                        </figure>
                                     <div id="process-form-ajax">
                                         <div class="row">
                                             <div class="col-md-8">
@@ -1686,7 +1731,7 @@
             });
         }
 
-        if($.inArray("accordion_section_2", section_list) !== -1) {
+        if($.inArray("accordion_section", section_list) !== -1) {
 
             $("#accordion2-form").submit(function(event){
                 event.preventDefault(); //prevent default action
