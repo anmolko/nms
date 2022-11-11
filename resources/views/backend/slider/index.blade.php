@@ -67,7 +67,7 @@
 
                             <div class="form-group mb-3">
                                 <label>Sub Heading <span class="text-muted text-danger">*</span></label>
-                                <input type="text" maxlength="20" class="form-control" name="subheading" required>
+                                <input type="text" maxlength="30" class="form-control" name="subheading" required>
                                 <div class="invalid-feedback">
                                     Please enter the slider subheading.
                                 </div>
@@ -249,7 +249,7 @@
                             </div>
                             <div class="form-group mb-3">
                                 <label>Sub Heading </label>
-                                <input type="text" maxlength="20" class="form-control" name="subheading" id="subheading" required>
+                                <input type="text" maxlength="30" class="form-control" name="subheading" id="subheading" required>
                                 <div class="invalid-feedback">
                                     Please enter the slider subheading.
                                 </div>
