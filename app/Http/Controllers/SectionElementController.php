@@ -60,6 +60,7 @@ class SectionElementController extends Controller
         $bgimage_elements = "";
         $flash_elements = "";
         $header_descp_elements = "";
+        $directors_message = "";
         $video_descp_elements = "";
         $gallery_elements = "";
         $location_map = "";
@@ -109,6 +110,10 @@ class SectionElementController extends Controller
                 $header_descp_elements = SectionElement::with('section')
                     ->where('page_section_id', $section->id)
                     ->first();
+            } else if ($section->section_slug == 'directors_message'){
+                $directors_message = SectionElement::with('section')
+                    ->where('page_section_id', $section->id)
+                    ->first();
             }
             else if ($section->section_slug == 'accordion_section'){
                 $list_2 = $section->list_number_2;
@@ -142,7 +147,7 @@ class SectionElementController extends Controller
         }
 
 
-        return view('backend.pages.section_elements.create',compact( 'page','sections','basic_elements2','process_num','process_elements','map_descp','icon_title_elements','location_map','video_descp_elements','list_2','list_3','basic_elements','call1_elements','gallery2_elements','bgimage_elements','call2_elements','flash_elements','gallery_elements','header_descp_elements','accordian1_elements','accordian2_elements','slider_list_elements','contact_info_elements','id'));
+        return view('backend.pages.section_elements.create',compact( 'page','directors_message','sections','basic_elements2','process_num','process_elements','map_descp','icon_title_elements','location_map','video_descp_elements','list_2','list_3','basic_elements','call1_elements','gallery2_elements','bgimage_elements','call2_elements','flash_elements','gallery_elements','header_descp_elements','accordian1_elements','accordian2_elements','slider_list_elements','contact_info_elements','id'));
     }
 
     /**
@@ -171,6 +176,25 @@ class SectionElementController extends Controller
                 $name         = uniqid().'_basic_'.$image->getClientOriginalName();
                 $path         = base_path().'/public/images/section_elements/basic_section/';
                 $moved        = Image::make($image->getRealPath())->fit(600, 595)->orientate()->save($path.$name);
+                if ($moved){
+                    $data['image']= $name;
+                }
+            }
+            $status = SectionElement::create($data);
+        }
+        else if($section_name == 'directors_message'){
+            $data=[
+                'heading'                => $request->input('heading'),
+                'page_section_id'        => $section_id,
+                'subheading'             => $request->input('subheading'),
+                'description'            => $request->input('description'),
+                'created_by'             => Auth::user()->id,
+            ];
+            if(!empty($request->file('image'))){
+                $image        = $request->file('image');
+                $name         = uniqid().'_director_'.$image->getClientOriginalName();
+                $path         = base_path().'/public/images/section_elements/basic_section/';
+                $moved        = Image::make($image->getRealPath())->fit(570, 590)->orientate()->save($path.$name);
                 if ($moved){
                     $data['image']= $name;
                 }
@@ -452,6 +476,29 @@ class SectionElementController extends Controller
                 $name                 = uniqid().'_basic_'.$image->getClientOriginalName();
                 $path                 = base_path().'/public/images/section_elements/basic_section/';
                 $moved                = Image::make($image->getRealPath())->fit(600, 595)->orientate()->save($path.$name);
+                if ($moved){
+                    $basic->image = $name;
+                    if (!empty($oldimage) && file_exists(public_path().'/images/section_elements/basic_section/'.$oldimage)){
+                        @unlink(public_path().'/images/section_elements/basic_section/'.$oldimage);
+                    }
+                }
+            }
+            $status = $basic->update();
+        }
+        else if($section_name == 'directors_message'){
+            $basic                      = SectionElement::find($id);
+            $basic->heading             = $request->input('heading');
+            $basic->page_section_id     = $section_id;
+            $basic->subheading          = $request->input('subheading');
+            $basic->description         = $request->input('description');
+            $basic->updated_by          = Auth::user()->id;
+            $oldimage                   = $basic->image;
+
+            if (!empty($request->file('image'))){
+                $image                = $request->file('image');
+                $name                 = uniqid().'_director_'.$image->getClientOriginalName();
+                $path                 = base_path().'/public/images/section_elements/basic_section/';
+                $moved                = Image::make($image->getRealPath())->fit(570, 590)->orientate()->save($path.$name);
                 if ($moved){
                     $basic->image = $name;
                     if (!empty($oldimage) && file_exists(public_path().'/images/section_elements/basic_section/'.$oldimage)){

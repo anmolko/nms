@@ -185,6 +185,22 @@
                             </div>
                             <div class="card shadow-none">
                                 <div class="card-header">
+                                    <h5 class="card-title text-primary mb-0">Directors Message</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <label class="image-checkbox {{(in_array('directors_message', $sections) ? "image-checkbox-checked":"")}}">
+                                                <img class="img-responsive" src="{{asset('assets/backend/img/page_sections/directors_message.png')}}" width="100%"/>
+                                                <input type="checkbox" name="section[]" value="directors_message" id="directors_message.png" {{(in_array('directors_message', $sections) ? "checked":"")}} />
+                                                <i class="ri ri-check-line hidden"></i>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card shadow-none">
+                                <div class="card-header">
                                     <h5 class="card-title text-primary mb-0">Call to Action 2</h5>
                                 </div>
                                 <div class="card-body">
@@ -200,6 +216,7 @@
 
                                 </div>
                             </div>
+
                             <div class="card shadow-none">
                                 <div class="card-header">
                                     <h5 class="card-title text-primary mb-0">Background Image Section</h5>

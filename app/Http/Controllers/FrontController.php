@@ -49,7 +49,7 @@ class FrontController extends Controller
     protected $client = null;
     protected $slider = null;
     protected $demand = null;
-    
+
 
     public function __construct(Testimonial $testimonial, Job $demand,Slider $slider,HomePage $home_page,Client $client,PageSection $pagesection,Page $page,Service $service,Setting $setting,BlogCategory $bcategory,Blog $blog)
     {
@@ -64,7 +64,7 @@ class FrontController extends Controller
         $this->home_page = $home_page;
         $this->demand = $demand;
         $this->testimonial = $testimonial;
-        
+
     }
 
 
@@ -76,7 +76,7 @@ class FrontController extends Controller
         $countries  = CountryState::getCountries();
         $sliders =$this->slider->where('status','active')->orderBy('created_at', 'asc')->get();
         $homepage_info = $this->home_page->first();
-        
+
         $testimonials = $this->testimonial->get();
         $latestPosts = $this->blog->inRandomOrder()->take(3)->get();
 
@@ -105,14 +105,14 @@ class FrontController extends Controller
                     ->where('page_section_id', $section->id)
                     ->first();
             }
-         
+
         }
         return view('frontend.pages.privacy',compact('header_descp_elements'));
     }
 
     public function terms()
     {
-        
+
         $page_detail = $this->page->with('sections')->where('slug','terms-condition')->where('status','active')->first();
         if (!$page_detail) {
             return abort(404);
@@ -132,13 +132,13 @@ class FrontController extends Controller
                     ->where('page_section_id', $section->id)
                     ->first();
             }
-         
+
         }
         return view('frontend.pages.term',compact('header_descp_elements'));
     }
 
 
-    
+
 
     public function faq()
     {
@@ -163,7 +163,7 @@ class FrontController extends Controller
                     ->where('page_section_id', $section->id)
                     ->get();
             }
-         
+
         }
         return view('frontend.pages.faq',compact('list_2','accordian2_elements'));
     }
@@ -172,7 +172,7 @@ class FrontController extends Controller
     public function page($page)
     {
         $page_detail = $this->page->with('sections')->where('slug', $page)->where('status','active')->first();
-        
+
         if (!$page_detail) {
             return abort(404);
         }
@@ -196,6 +196,7 @@ class FrontController extends Controller
         $video_descp_elements = "";
         $gallery_elements = "";
         $location_map = "";
+        $directors_message = "";
         $gallery2_elements = "";
         $contact_info_elements = "";
         $accordian1_elements = "";
@@ -225,6 +226,11 @@ class FrontController extends Controller
             }
             else if ($section->section_slug == 'call_to_action_2'){
                 $call2_elements = SectionElement::with('section')
+                    ->where('page_section_id', $section->id)
+                    ->first();
+            }
+            else if ($section->section_slug == 'directors_message'){
+                $directors_message = SectionElement::with('section')
                     ->where('page_section_id', $section->id)
                     ->first();
             }
@@ -266,7 +272,7 @@ class FrontController extends Controller
                     ->get();
             }
 
-         
+
             else if ($section->section_slug == 'simple_accordion_tab2'){
                 $process_num = $section->list_number_3;
                 $process_elements = SectionElement::with('section')
@@ -275,7 +281,7 @@ class FrontController extends Controller
             }
         }
 
-        return view('frontend.pages.dynamic_page',compact( 'basic_elements2','page_detail','sections','process_num','process_elements','map_descp','icon_title_elements','location_map','video_descp_elements','list_2','list_3','basic_elements','call1_elements','gallery2_elements','bgimage_elements','call2_elements','flash_elements','gallery_elements','header_descp_elements','accordian1_elements','accordian2_elements','slider_list_elements','contact_info_elements'));
+        return view('frontend.pages.dynamic_page',compact( 'basic_elements2','directors_message','page_detail','sections','process_num','process_elements','map_descp','icon_title_elements','location_map','video_descp_elements','list_2','list_3','basic_elements','call1_elements','gallery2_elements','bgimage_elements','call2_elements','flash_elements','gallery_elements','header_descp_elements','accordian1_elements','accordian2_elements','slider_list_elements','contact_info_elements'));
 
     }
 
@@ -298,7 +304,7 @@ class FrontController extends Controller
     }
 
 
-    
+
 
     public function testimonial(){
         $testimonials = $this->testimonial->get();
@@ -326,7 +332,7 @@ class FrontController extends Controller
 
     public function service(){
         $allservices = $this->service->paginate(6);
-        
+
         $latestServices = $this->service->orderBy('created_at', 'DESC')->take(3)->get();
 
         $latestPosts = $this->blog->orderBy('created_at', 'DESC')->where('status','publish')->take(3)->get();
@@ -357,7 +363,7 @@ class FrontController extends Controller
         }
 
         $today = date('Y-m-d');
-       
+
         $latestDemands = $this->demand->orderBy('created_at', 'DESC')->where('status','publish')->where('start_date','<=',$today)->where('end_date','>=',$today)->take(5)->get();
 
         return view('frontend.pages.demand.single',compact('singleDemand','latestDemands'));
@@ -374,7 +380,7 @@ class FrontController extends Controller
 
         return view('frontend.pages.demand.search',compact('alldemands','query','latestDemands'));
     }
-    
+
 
     public function careerStore(Request $request)
     {
@@ -443,7 +449,7 @@ class FrontController extends Controller
 
 
 
-    
+
     public function contactStore(Request $request)
     {
         $theme_data = Setting::first();
@@ -465,7 +471,7 @@ class FrontController extends Controller
 
             // Session::flash('success','Thank you for contacting us!');
             $status ='success';
-            return response()->json($status);        
+            return response()->json($status);
 
 
         // return redirect()->back();

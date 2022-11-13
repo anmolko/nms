@@ -102,6 +102,7 @@
                                                 <div class="page-title-right">
                                                     <ol class="breadcrumb">
                                                         <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Dashboard</a></li>
+                                                        <li class="breadcrumb-item"><a href="{{route('pages.index')}}">Pages</a></li>
                                                         <li class="breadcrumb-item active">{{str_replace('-',' ',ucwords(Request::segment(2)))}}</li>
                                                     </ol>
                                                 </div>
@@ -243,6 +244,88 @@
                                 </div>
                                 {!! Form::close() !!}
                             @endif
+
+                                @if($value == 'directors_message')
+                                        @if($directors_message !== null)
+                                            {!! Form::open(['url'=>route('section-elements.update', @$directors_message->id),'id'=>'directors-form','class'=>'needs-validation','method'=>'PUT','novalidate'=>'','enctype'=>'multipart/form-data']) !!}
+                                        @else
+                                            {!! Form::open(['route' => 'section-elements.store','method'=>'post','class'=>'needs-validation','id'=>'directors-form','novalidate'=>'','enctype'=>'multipart/form-data']) !!}
+                                        @endif
+                                        <figure class="figure">
+                                            <figcaption>Output Sample.</figcaption>
+                                            <img src="{{asset('assets/backend/img/page_sections/directors_message.png')}}"  class="figure-img img-fluid rounded" alt="...">
+                                        </figure>
+                                        <div class="row" id="directors-form-ajax">
+                                            <div class="col-md-7">
+                                                <div class="card ctm-border-radius shadow-sm flex-fill">
+                                                    <div class="card-header">
+                                                        <h4 class="card-title mb-0">
+                                                            Directors Message Details
+                                                        </h4>
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <div class="form-group mb-3">
+                                                            <label>Heading <span class="text-muted text-danger">*</span></label>
+                                                            <input type="text" class="form-control" name="heading" value="{{@$directors_message->heading}}" maxlength="40" required>
+                                                            <input type="hidden" class="form-control" value="{{$key}}" name="page_section_id" required>
+                                                            <input type="hidden" class="form-control" value="{{$value}}" name="section_name" required>
+                                                            <div class="invalid-feedback">
+                                                                Please enter the basic section heading.
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group mb-3">
+                                                            <label>Message Signature</label>
+                                                            <input type="text" class="form-control" maxlength="35" name="subheading" value="{{@$directors_message->subheading}}">
+                                                            <figcaption class="figure-caption">*For example: Name of Director</figcaption>
+
+                                                            <div class="invalid-feedback">
+                                                                Please enter the basic section Sub heading.
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group mb-3">
+                                                            <label>Message <span class="text-muted text-danger">*</span></label>
+                                                            <textarea class="form-control" rows="6" name="description" maxlength="800" id="director_editor" required>{!! @$directors_message->description !!}</textarea>
+                                                            <div class="invalid-feedback">
+                                                                Please write the message.
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <div class="card ctm-border-radius shadow-sm flex-fill">
+                                                    <div class="card-header">
+                                                        <h4 class="card-title mb-0">
+                                                            Directors Section Image <span class="text-muted text-danger">*</span>
+                                                        </h4>
+                                                    </div>
+                                                    <div class="card-body">
+
+                                                        <div>
+                                                            <img  id="current-director-img"  src="<?php if(!empty(@$directors_message->image)){ echo '/images/section_elements/basic_section/'.@$directors_message->image; } else{  echo '/images/default-image.jpg'; } ?>" class="position-relative img-fluid img-thumbnail blog-feature-image" >
+                                                            <input  type="file" accept="image/png, image/jpeg" hidden
+                                                                    id="director-image" onchange="loadbasicFile('director-image','current-director-img',event)" name="image" {{(@$directors_message->id !== null) ? "":"required" }}
+                                                                    class="profile-foreground-img-file-input" >
+
+                                                            <figcaption class="figure-caption">Image for current section. (SIZE: 570 x 590px)</figcaption>
+                                                            <div class="invalid-feedback" >
+                                                                Please select a image.
+                                                            </div>
+                                                            <label for="director-image" class="profile-photo-edit btn btn-light feature-image-button">
+                                                                <i class="ri-image-edit-line align-bottom me-1"></i> Add Image
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="text-center mt-3 mb-3" id="directors-form-button">
+                                            <button id="basic-button-submit" type="submit" class="btn btn-success w-sm">
+                                                {{(@$directors_message !==null)? "Update Details":"Add Details"}}</button>
+                                        </div>
+                                        {!! Form::close() !!}
+                                    @endif
 
                                  @if($value == 'basic_section2')
                                         @if($basic_elements2 !== null)
@@ -1599,6 +1682,9 @@
             if(section_list.includes("simple_header_and_description")){
                 createEditor('task-textarea');
             }
+            if(section_list.includes("directors_message")){
+                createEditor('director_editor');
+            }
 
             {{--if(section_list.includes("accordion_section_2")){--}}
             {{--    var list2 = "{{$list_2}}";--}}
@@ -1613,6 +1699,21 @@
         if($.inArray("basic_section", section_list) !== -1) {
 
             $("#basic-form").submit(function(event){
+                event.preventDefault(); //prevent default action
+                if (!this.checkValidity()) { return false; }
+                var post_url       = $(this).attr("action"); //get form action url
+                var request_method = $(this).attr("method"); //get form GET/POST method
+                var form_data      = new FormData(this); //Creates new FormData object
+                var divID          = $(this).attr('id')+'-ajax';
+                var buttonID       = $(this).attr('id')+'-button';
+                ElementData(post_url,request_method,form_data,divID,buttonID);
+
+            });
+
+        }
+        if($.inArray("directors_message", section_list) !== -1) {
+
+            $("#directors-form").submit(function(event){
                 event.preventDefault(); //prevent default action
                 if (!this.checkValidity()) { return false; }
                 var post_url       = $(this).attr("action"); //get form action url

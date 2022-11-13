@@ -2,7 +2,7 @@
 @section('title') {{ucwords(@$page_detail->name)}} @endsection
 @section('css')
     <style>
-           
+
     .theme-btn.style-three, a.theme-btn.style-three.faq-button {
         color: #293043 !important;
         background: transparent;
@@ -25,7 +25,7 @@
         font-size: 1.1875rem;
         text-align: justify;
     }
-   
+
     .accordion-item {
       margin-bottom: 30px;
   }
@@ -44,7 +44,10 @@
       ul, ol{
         padding-left: 1rem;
       }
-/* 
+    .about-me__summery p + p {
+        margin-top: 0;
+    }
+/*
     .winrecruit ul li::before,.winrecruit ol li::before {
       -webkit-box-flex: 0;
       -ms-flex: none;
@@ -136,17 +139,17 @@
           </div>
       </section>
       <!--Page Header End-->
-   
+
 
     @foreach($sections as $key=>$value)
 
         @if($value == "basic_section")
           <!--- Basic Section--->
-          
+
           <section class="reasons">
             <div class="container">
               <div class="row">
-  
+
                 @if(@$basic_elements->list_image == "right")
 
                 <div class="col-xl-5 col-lg-6">
@@ -178,10 +181,10 @@
                     </div>
                   </div>
                 </div>
-              
-                 
+
+
                 @else
-                  
+
                 <div class="col-xl-7 col-lg-6">
                   <div class="reasons__left">
                     <div class="reasons__img">
@@ -265,7 +268,7 @@
                       </div>
                       <div class="two-boxes__arrow">
                         @if(@$call2_elements->button)
-                         
+
                           <a href="{{@$call1_elements->button}}"><span class="icon-right-arrow"></span></a>
                         @else
                           <a href="{{route('contact')}}"><span class="icon-right-arrow"></span></a>
@@ -286,7 +289,7 @@
                       </div>
                       <div class="two-boxes__arrow">
                         @if(@$call2_elements->button_link)
-                          
+
                           <a href="{{@$call1_elements->button_link}}"><span class="icon-right-arrow"></span></a>
                         @else
                           <a href="{{route('contact')}}"><span class="icon-right-arrow"></span></a>
@@ -438,10 +441,42 @@
           </section>
         @endif
 
+        @if($value == "directors_message")
+            <!--- Basic Section--->
+
+            <section class="about-me" style=" padding-top: 100px; padding-bottom: 100px;">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 col-lg-5" style="margin: auto">
+
+                            <div class="about-me__image get-in-touch__img wow fadeInLeft animated" data-wow-duration="1500ms" style="visibility: visible; margin-right: 0; animation-duration: 1500ms; animation-name: fadeInLeft;">
+                                <img src="{{asset('/images/section_elements/basic_section/'.@$directors_message->image) }}" alt="">
+                                <div class="get-in-touch__img-shapes">
+                                    <div class="get-in-touch__img-shape-1"></div>
+                                    <div class="get-in-touch__img-shape-2"></div>
+                                </div>
+                            </div>
+{{--                            <div class="about-me__image">--}}
+{{--                                <img src="{{asset('/images/section_elements/basic_section/'.@$directors_message->image) }}" alt="">--}}
+{{--                            </div><!-- /.about-me__image -->--}}
+                        </div><!-- /.col-md-12 -->
+                        <div class="col-md-12 col-lg-7">
+                            <div class="about-me__content">
+                                <h3 class="about-me__title">{{$directors_message->heading}}</h3>
+                                <div class="about-me__summery" style="margin-top: 10px;">
+                                    <p>  {!! @$directors_message->description !!}</p>
+                                </div>
+                                <p class="get-in-touch__locatins-count-text">{{$directors_message->subheading}}</p>
+                            </div><!-- /.about-me__content -->
+                        </div><!-- /.col-md-12 -->
+                    </div><!-- /.row -->
+                </div><!-- /.container -->
+            </section>
+        @endif
 
         @if($value == "flash_cards")
           <!--- Mission Vision--->
-          
+
           <section class="web-solutions">
             <div class="web-solutions-bg" style="background-image: url({{asset('assets/frontend/images/backgrounds/web-solutions-bg.jpg')}})">
             </div>
@@ -477,7 +512,7 @@
                                 <div class="col-xl-6 col-lg-6">
                                   <div class="web-solutions__content-right">
                                     <p class="web-solutions__content-desc">{{ucfirst(@$flash_element->list_description) }} </p>
-                                    
+
                                   </div>
                                 </div>
                               </div>
@@ -492,13 +527,13 @@
                                 <div class="col-xl-6 col-lg-6">
                                   <div class="web-solutions__content-img">
                                     <img src="{{asset('/images/section_elements/list_1/'.@$flash_element->image)}}" alt="">
-                                    
+
                                   </div>
                                 </div>
                                 <div class="col-xl-6 col-lg-6">
                                   <div class="web-solutions__content-right">
                                     <p class="web-solutions__content-desc">{{ucfirst(@$flash_element->list_description) }} </p>
-                                    
+
                                   </div>
                                 </div>
                               </div>
@@ -514,13 +549,13 @@
                                 <div class="col-xl-6 col-lg-6">
                                   <div class="web-solutions__content-img">
                                     <img src="{{asset('/images/section_elements/list_1/'.@$flash_element->image)}}" alt="">
-                                    
+
                                   </div>
                                 </div>
                                 <div class="col-xl-6 col-lg-6">
                                   <div class="web-solutions__content-right">
                                     <p class="web-solutions__content-desc">{{ucfirst(@$flash_element->list_description) }} </p>
-                                   
+
                                   </div>
                                 </div>
                               </div>
@@ -547,7 +582,7 @@
                   <div class="portfolio-fullwidth__content">
                   @if(@$header_descp_elements->heading)
 
-                    <h2 class="portfolio-fullwidth__title" 
+                    <h2 class="portfolio-fullwidth__title"
                     style="margin: auto;
                       width: 50%;
                       text-align: center;
@@ -555,7 +590,7 @@
                       text-transform: uppercase;">
                       {{ucwords(@$header_descp_elements->heading)}}</h2>
                       @endif
-                    
+
                       <div class="portfolio-fullwidth__text-1 winrecruit" style="text-align: justify;">
                         {!! @$header_descp_elements->description !!}
                       </div>
@@ -640,13 +675,13 @@
                                   </div>
                                 </div>
                             @endforeach
-                            
+
                           </div>
                         </div>
                       </div>
                     @endforeach
 
-                  
+
                   </div>
                 </div>
               </section>
@@ -660,32 +695,56 @@
 
 
         <section class="gallery-one">
+
+
           <div class="container-fluid">
+              @if(Request::is('about-us'))
+                  <div class="section-title text-center">
+                      <span class="section-title__tagline">Our Gallery</span>
+                      <h2 class="section-title__title">Legal Documents</h2>
+                  </div>
+
+                  @else
+                  <div class="section-title text-center">
+                      <span class="section-title__tagline">NMS Recruitment</span>
+                      <h2 class="section-title__title">Our Gallery</h2>
+                  </div>
+              @endif
             <div class="row masonary-layout">
+
             @foreach(@$gallery_elements as $gallery_element)
-              
+
               <div class="col-md-6 col-lg-4">
-                <div class="gallery-one__card">
-                  <img src="{{asset('/images/section_elements/gallery/'.@$gallery_element->filename)}}" alt="">
-                  <a href="{{asset('/images/section_elements/gallery/'.@$gallery_element->filename)}}" class="img-popup">
-                    <span></span>
-                  </a>
-                </div><!-- /.gallery-one__card -->
+                  <div class="team-one__single">
+                      <div class="team-one__img-box">
+                          <div class="team-one__img gallery-one__card">
+                              <img src="{{asset('/images/section_elements/gallery/'.@$gallery_element->filename)}}" alt="">
+                              <a href="{{asset('/images/section_elements/gallery/'.@$gallery_element->filename)}}" class="img-popup">
+                                  <span></span>
+                              </a>
+                          </div>
+                          <div class="team-one__social">
+                              <div class="team-one__member-info">
+                                  <p class="team-one__member-title">{{ ucfirst(str_replace('-',' ',$gallery_element->original_name))}}</p>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
               </div><!-- /.col-md-6 col-lg-3 -->
               @endforeach
-            
+
 
             </div><!-- /.row -->
           </div><!-- /.container-fluid -->
         </section><!-- /.gallery-one -->
-     
+
         @endif
 
 
         @if($value == "slider_list")
           <!-- Slider List Area start -->
           @if(@$slider_list_elements[0]->heading)
-        
+
             <!--Portfolio Two Start-->
             <section class="portfolio-two">
                 <div class="container">
@@ -694,14 +753,14 @@
                         <h2 class="section-title__title">{{ucwords(@$slider_list_elements[0]->heading)}}</h2>
                     </div>
                     <div class="portfolio-two__carousel owl-theme owl-carousel">
-                      
+
                       @for ($i = 1; $i <=@$list_3; $i++)
 
                         <div class="portfolio-one__single">
                             <div class="portfolio-one__img">
                                 <img src="{{asset('/images/section_elements/list_1/'.@$slider_list_elements[$i-1]->list_image)}}" alt="">
                                 <div class="portfolio-one__experience">
-                                    
+
                                     <div class="portfolio-one__fimlor">
                                         <p class="portfolio-one__fimlor-title"><a href="{{route('slider.single',@$slider_list_elements[$i-1]->subheading)}}">{{ucwords(@$slider_list_elements[$i-1]->list_header)}}</a></p>
                                     </div>
@@ -712,7 +771,7 @@
                             </div>
                         </div>
                         @endfor
-                      
+
                     </div>
                 </div>
             </section>
@@ -772,7 +831,7 @@
                         <div class="we-change__right">
                             <div class="we-change__right-img">
                                 <img src="{{asset('/images/section_elements/list_1/'.@$process_elements[0]->list_image)}}" alt="">
-                               
+
                             </div>
                         </div>
                     </div>
@@ -782,7 +841,7 @@
         @endif
 
 
-        
+
     @endforeach
 
 

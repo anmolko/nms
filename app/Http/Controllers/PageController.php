@@ -204,6 +204,8 @@ class PageController extends Controller
                 $ordered_sections[$section->section_slug] = 'basic_section.png';
             }elseif ($section->section_slug == 'basic_section2'){
                 $ordered_sections[$section->section_slug] = 'basic_section2.png';
+            }elseif ($section->section_slug == 'directors_message'){
+                $ordered_sections[$section->section_slug] = 'directors_message.png';
             }
         }
 
@@ -373,6 +375,13 @@ class PageController extends Controller
                                     @unlink(public_path().'/images/section_elements/basic_section/'.$basic_element2->list_description);
                                 }
                             }
+                            if($section->section_slug == 'directors_message'){
+                                $directors_message = SectionElement::where('page_section_id', $section->id)
+                                    ->first();
+                                if (!empty($directors_message->image) && file_exists(public_path().'/images/section_elements/basic_section/'.$directors_message->image)){
+                                    @unlink(public_path().'/images/section_elements/basic_section/'.$directors_message->image);
+                                }
+                            }
                             if ($section->section_slug == 'background_image_section') {
                                 $bgimage_element = SectionElement::where('page_section_id', $section->id)
                                     ->first();
@@ -486,6 +495,12 @@ class PageController extends Controller
                     ->first();
                 if (!empty($basic_element->image) && file_exists(public_path().'/images/section_elements/basic_section/'.$basic_element->image)){
                     @unlink(public_path().'/images/section_elements/basic_section/'.$basic_element->image);
+                }
+            } if($section->section_slug == 'directors_message'){
+                $directors_message = SectionElement::where('page_section_id', $section->id)
+                    ->first();
+                if (!empty($directors_message->image) && file_exists(public_path().'/images/section_elements/basic_section/'.$directors_message->image)){
+                    @unlink(public_path().'/images/section_elements/basic_section/'.$directors_message->image);
                 }
             }
             if($section->section_slug == 'basic_section2'){

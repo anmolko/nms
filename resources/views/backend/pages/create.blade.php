@@ -197,6 +197,22 @@
                             </div>
                             <div class="card shadow-none">
                                 <div class="card-header">
+                                    <h5 class="card-title text-primary mb-0">Directors Message</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <label class="image-checkbox">
+                                                <img class="img-responsive" src="{{asset('assets/backend/img/page_sections/directors_message.png')}}" width="100%"/>
+                                                <input type="checkbox" name="section[]" value="directors_message" id="directors_message.png"/>
+                                                <i class="ri ri-check-line hidden"></i>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card shadow-none">
+                                <div class="card-header">
                                     <h5 class="card-title text-primary mb-0">Call to Action2</h5>
                                 </div>
                                 <div class="card-body">
