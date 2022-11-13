@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "999cd04acc426c5481f8afcab46f7d05",
+    "content-hash": "803f394e7b08beb0595d862fe8dcb786",
     "packages": [
         {
             "name": "brick/math",
@@ -303,6 +303,53 @@
                 }
             ],
             "time": "2022-02-28T11:07:21+00:00"
+        },
+        {
+            "name": "doode/laravel-formbuilder",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/vitormicillo/laravel-formbuilder.git",
+                "reference": "fe13b664d1c4d1b19c5b83f478c663f40047ab5a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/vitormicillo/laravel-formbuilder/zipball/fe13b664d1c4d1b19c5b83f478c663f40047ab5a",
+                "reference": "fe13b664d1c4d1b19c5b83f478c663f40047ab5a",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.2.5|^8.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "doode\\FormBuilder\\FormBuilderServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "doode\\FormBuilder\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Vitor Micillo",
+                    "email": "vitormicillo@gmail.com"
+                }
+            ],
+            "description": "Laravel Package for Creating a Drag-and-Drop Form Builder Using JQuery Form Builder",
+            "support": {
+                "issues": "https://github.com/vitormicillo/laravel-formbuilder/issues",
+                "source": "https://github.com/vitormicillo/laravel-formbuilder/tree/1.0.1"
+            },
+            "time": "2021-08-04T07:19:31+00:00"
         },
         {
             "name": "dougsisk/laravel-country-state",

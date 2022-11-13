@@ -70,6 +70,8 @@
           color: #fc653c;
       } */
     </style>
+        @stack('styles')
+
         @yield('css')
 
 	</head>
