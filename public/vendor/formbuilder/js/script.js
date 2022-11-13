@@ -71,19 +71,19 @@ if (window.Clipboard && Clipboard.isSupported && Clipboard.isSupported()) {
 }
 
 jQuery(function($){
-    $('.table').footable({
-        "filtering": {
-            "enabled": true,
-        },
-        "paging": {
-            "enabled": true,
-            "size": 100,
-            "position": "right",
-        },
-        "sorting": {
-            "enabled": true,
-        },
-    });
+    // $('.table').footable({
+    //     "filtering": {
+    //         "enabled": true,
+    //     },
+    //     "paging": {
+    //         "enabled": true,
+    //         "size": 100,
+    //         "position": "right",
+    //     },
+    //     "sorting": {
+    //         "enabled": true,
+    //     },
+    // });
 });
 
 function initilizeConfirmListeners() {

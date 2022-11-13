@@ -1,6 +1,57 @@
 @extends('formbuilder::layout')
 @section('title') Submissions @endsection
+@section('css')
 
+<style>
+    .footable .btn .caret {
+        margin-left: 0;
+        display: none;
+    }
+
+    button.dt-button.buttons-excel.buttons-html5{
+        color: #fff !important;
+        background-color: #28a745 !important;
+        border-color: #28a745 !important;
+        padding: 0.25rem 0.5rem !important;
+        font-size: .875rem !important;
+        line-height: 1.5 !important;
+        border-radius: 0.2rem !important;
+    }
+  
+
+    button.dt-button.buttons-excel.buttons-html5 {
+        color: #fff !important;
+        background-color: #1e7e34 !important;
+        border-color: #1c7430 !important;
+    }
+
+    button.dt-button.buttons-copy.buttons-html5{
+        color: #fff !important;
+        background-color: #0062cc !important;
+        border-color: #005cbf !important;
+        padding: 0.25rem 0.5rem !important;
+        font-size: .875rem !important;
+        line-height: 1.5 !important;
+        border-radius: 0.2rem !important;
+    }
+ 
+    button.dt-button.buttons-copy.buttons-html5 {
+        color: #fff !important;
+        background-color: #0062cc !important;
+        border-color: #005cbf !important;
+    }
+
+    div#submission-index_wrapper {
+        margin-top: 10px;
+    }
+   
+   
+    div.dt-buttons {
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+</style>
+@endsection
 @section('content')
 <div class="page-content">
 
@@ -20,7 +71,7 @@
 
                     @if($submissions->count())
                         <div class="table-responsive">
-                            <table class="table table-bordered d-table table-striped pb-0 mb-0">
+                            <table id="submission-index" class="table table-bordered d-table table-striped pb-0 mb-0">
                                 <thead>
                                     <tr>
                                         <th class="five">#</th>
