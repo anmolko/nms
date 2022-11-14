@@ -16,6 +16,8 @@ use App\Models\SectionElement;
 use App\Models\Page;
 use App\Models\Job;
 use App\Models\Client;
+use App\Models\Album;
+use App\Models\AlbumGallery;
 use App\Models\Testimonial;
 use App\Models\PageSection;
 use App\Models\SectionGallery;
@@ -49,9 +51,10 @@ class FrontController extends Controller
     protected $client = null;
     protected $slider = null;
     protected $demand = null;
+    protected $album = null;
+    protected $album_gallery = null;
 
-
-    public function __construct(Testimonial $testimonial, Job $demand,Slider $slider,HomePage $home_page,Client $client,PageSection $pagesection,Page $page,Service $service,Setting $setting,BlogCategory $bcategory,Blog $blog)
+    public function __construct(Testimonial $testimonial, Job $demand,AlbumGallery $album_gallery,Album $album,Slider $slider,HomePage $home_page,Client $client,PageSection $pagesection,Page $page,Service $service,Setting $setting,BlogCategory $bcategory,Blog $blog)
     {
         $this->setting = $setting;
         $this->bcategory = $bcategory;
@@ -64,7 +67,8 @@ class FrontController extends Controller
         $this->home_page = $home_page;
         $this->demand = $demand;
         $this->testimonial = $testimonial;
-
+        $this->album = $album;
+        $this->album_gallery = $album_gallery;
     }
 
 
@@ -138,7 +142,18 @@ class FrontController extends Controller
     }
 
 
+    public function album(){
+        $albums =$this->album->with('gallery')->get();
+        return view('frontend.pages.album',compact('albums'));
+    }
 
+    public function albumgallery($slug){
+        $singleAlbum = $this->album->where('slug', $slug)->with('gallery')->first();
+        if (!$singleAlbum) {
+            return abort(404);
+        }
+        return view('frontend.pages.album_gallery',compact('singleAlbum'));
+    }
 
     public function faq()
     {

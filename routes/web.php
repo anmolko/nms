@@ -37,7 +37,8 @@ Route::get('/contact-us', 'App\Http\Controllers\FrontController@contact')->name(
 Route::get('/testimonial', 'App\Http\Controllers\FrontController@testimonial')->name('testimonial');
 Route::post('/contact-us', 'App\Http\Controllers\FrontController@contactStore')->name('contact.store');
 
-
+Route::get('/album', 'App\Http\Controllers\FrontController@album')->name('album');
+Route::get('/album/{album}/', 'App\Http\Controllers\FrontController@albumgallery')->name('album.gallery');
 Route::get('/', 'App\Http\Controllers\FrontController@index')->name('home');
 
 //blog
