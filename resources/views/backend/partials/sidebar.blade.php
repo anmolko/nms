@@ -108,7 +108,12 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link menu-link @if(\Request::route()->getName() == 'formbuilder::forms.index' || \Request::route()->getName() == 'formbuilder::forms.create' || \Request::route()->getName() == 'formbuilder::forms.edit') active @endif" href="{{route('formbuilder::forms.index')}}">
-                        <i class="ri-hand-heart-line"></i> <span data-key="t-widgets">Forms</span>
+                        <i class="ri-pages-line"></i> <span data-key="t-widgets">Forms</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link menu-link @if(\Request::route()->getName() == 'album.index' || \Request::route()->getName() == 'album.show') active @endif" href="{{route('album.index')}}">
+                        <i class="ri-gallery-line"></i> <span data-key="t-widgets">Albums</span>
                     </a>
                 </li>
                 <li class="nav-item">

@@ -46,7 +46,7 @@ Dropzone.options.myDropzone = {
                 $.ajax({
                     type: 'POST',
                     url: '/auth/album-gallery/image-delete',
-                    data: { filename: name, _token: $('[name="_token"]').val() },
+                    data: { filename: name, _token: $('meta[name="csrf-token"]').attr('content') },
                     success: function(data) {
                         total_photos_counter--;
                         $("#counter").text("# " + total_photos_counter);

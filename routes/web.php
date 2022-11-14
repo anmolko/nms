@@ -230,6 +230,19 @@ Route::group(['prefix' => 'auth', 'middleware' => ['auth']], function () {
     Route::delete('/testimonials/{testimonial}', 'App\Http\Controllers\TestimonialController@destroy')->name('testimonials.destroy');
     Route::get('/testimonials/{testimonial}/edit', 'App\Http\Controllers\TestimonialController@edit')->name('testimonials.edit');
 
+    //Album
+
+    Route::get('/album', 'App\Http\Controllers\AlbumController@index')->name('album.index');
+    Route::get('/album/create', 'App\Http\Controllers\AlbumController@create')->name('album.create');
+    Route::post('/album', 'App\Http\Controllers\AlbumController@store')->name('album.store');
+    Route::put('/album/{album}', 'App\Http\Controllers\AlbumController@update')->name('album.update');
+    Route::delete('/album/{album}', 'App\Http\Controllers\AlbumController@destroy')->name('album.destroy');
+    Route::get('/album/{album}/edit', 'App\Http\Controllers\AlbumController@edit')->name('album.edit');
+    Route::get('/album/show/{id}', 'App\Http\Controllers\AlbumController@show')->name('album.show');
+    Route::put('/album-upload-gallery/{id}', 'App\Http\Controllers\AlbumController@uploadGallery')->name('album-gallery.update');
+    Route::post('/album-gallery/image-delete', 'App\Http\Controllers\AlbumController@deleteGallery')->name('album-gallery.delete');
+    Route::get('/album-gallery/{id}', 'App\Http\Controllers\AlbumController@getGallery')->name('album-gallery.display');
+    //End ofAlbum
 });
 
 

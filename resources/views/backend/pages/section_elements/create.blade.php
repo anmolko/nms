@@ -1323,7 +1323,6 @@
                                                      {!! Form::close() !!}
 
 
-                                                     Dropzone Preview Template
                                                      <div id="preview" style="display: none;">
 
                                                          <div class="dz-preview dz-file-preview">
@@ -1364,7 +1363,7 @@
                                                              </div>
                                                          </div>
                                                      </div>
-                                                     End of Dropzone Preview Template
+{{--                                                     End of Dropzone Preview Template--}}
 
                                                  </div>
                                              </div>
