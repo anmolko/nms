@@ -10,7 +10,7 @@
                             <div class="footer-widget__column footer-widget__about">
                                 <div class="footer-widget__about-logo">
                                     
-                                    <a href="/"><img src="<?php if(@$setting_data->logo){?>{{asset('/images/settings/'.@$setting_data->logo)}}<?php } ?>" alt="Logo"></a>
+                                    <a href="/"><img src="<?php if(@$setting_data->logo_white){?>{{asset('/images/settings/'.@$setting_data->logo_white)}}<?php } ?>" alt="Logo"></a>
 
                                 </div>
                                 <p class="footer-widget__about-text"> @if(!empty(@$setting_data->website_description)) {!! ucfirst(@$setting_data->website_description) !!} @else NMS Recruitment Service @endif</p>

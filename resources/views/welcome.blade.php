@@ -358,6 +358,141 @@
         <!-- Mission Vision end -->
     @endif
 
+
+    @if(!empty($homepage_info->core_main_heading))
+
+    <!-- Core value start -->
+    <section class="areas-of-practice">
+        <div class="container">
+            <div class="areas-of-practice__top">
+                <div class="row">
+                    <div class="col-xl-6 col-lg-6">
+                        <div class="areas-of-practice__top-left">
+                            <div class="section-title text-left">
+                                <span class="section-title__tagline">{{ucfirst(@$homepage_info->core_main_subheading)}}</span>
+                                <h2 class="section-title__title">{{ucwords(@$homepage_info->core_main_heading)}}</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6">
+                        <div class="areas-of-practice__top-right">
+                            <p class="areas-of-practice__top-right-text">{{ucfirst(@$homepage_info->core_main_description)}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="areas-of-practice__bottom">
+                <div class="row">
+                    <div class="col-xl-3 col-lg-6 col-md-6">
+                        <!--Areas of Practice Single-->
+                        <div class="areas-of-practice__single">
+                            <div class="areas-of-practice__icon-box">
+                                
+                                <div class="areas-of-practice__title">
+                                    <h3><a href="#">{{ucwords(@$homepage_info->core_heading1)}}</a></h3>
+                                </div>
+                            </div>
+                            <p class="areas-of-practice__text">{{ucfirst(@$homepage_info->core_description1)}}</p>
+                            
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-6 col-md-6">
+                        <!--Areas of Practice Single-->
+                        <div class="areas-of-practice__single">
+                            <div class="areas-of-practice__icon-box">
+                               
+                                <div class="areas-of-practice__title">
+                                    <h3><a href="#">{{ucwords(@$homepage_info->core_heading2)}}</a></h3>
+                                </div>
+                            </div>
+                            <p class="areas-of-practice__text">{{ucfirst(@$homepage_info->core_description2)}}</p>
+                            
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-6 col-md-6">
+                        <!--Areas of Practice Single-->
+                        <div class="areas-of-practice__single">
+                            <div class="areas-of-practice__icon-box">
+                                
+                                <div class="areas-of-practice__title">
+                                    <h3><a href="#">{{ucwords(@$homepage_info->core_heading3)}}</a></h3>
+                                </div>
+                            </div>
+                            <p class="areas-of-practice__text">{{ucfirst(@$homepage_info->core_description3)}}</p>
+                            
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-6 col-md-6">
+                        <!--Areas of Practice Single-->
+                        <div class="areas-of-practice__single">
+                            <div class="areas-of-practice__icon-box">
+                               
+                                <div class="areas-of-practice__title">
+                                    <h3><a href="#">{{ucwords(@$homepage_info->core_heading4)}}</a></h3>
+                                </div>
+                            </div>
+                            <p class="areas-of-practice__text">{{ucfirst(@$homepage_info->core_description4)}}</p>
+                            
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-6 col-md-6">
+                        <!--Areas of Practice Single-->
+                        <div class="areas-of-practice__single">
+                            <div class="areas-of-practice__icon-box">
+                               
+                                <div class="areas-of-practice__title">
+                                    <h3><a href="#">{{ucwords(@$homepage_info->core_heading5)}}</a></h3>
+                                </div>
+                            </div>
+                            <p class="areas-of-practice__text">{{ucfirst(@$homepage_info->core_description5)}}</p>
+                            
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-6 col-md-6">
+                        <!--Areas of Practice Single-->
+                        <div class="areas-of-practice__single">
+                            <div class="areas-of-practice__icon-box">
+                               
+                                <div class="areas-of-practice__title">
+                                    <h3><a href="#">{{ucwords(@$homepage_info->core_heading6)}}</a></h3>
+                                </div>
+                            </div>
+                            <p class="areas-of-practice__text">{{ucfirst(@$homepage_info->core_description6)}}</p>
+                            
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-6 col-md-6">
+                        <!--Areas of Practice Single-->
+                        <div class="areas-of-practice__single">
+                            <div class="areas-of-practice__icon-box">
+                               
+                                <div class="areas-of-practice__title">
+                                    <h3><a href="#">{{ucwords(@$homepage_info->core_heading7)}}</a></h3>
+                                </div>
+                            </div>
+                            <p class="areas-of-practice__text">{{ucfirst(@$homepage_info->core_description7)}}</p>
+                            
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-6 col-md-6">
+                        <!--Areas of Practice Single-->
+                        <div class="areas-of-practice__single">
+                            <div class="areas-of-practice__icon-box">
+                               
+                                <div class="areas-of-practice__title">
+                                    <h3><a href="#">{{ucwords(@$homepage_info->core_heading8)}}</a></h3>
+                                </div>
+                            </div>
+                            <p class="areas-of-practice__text">{{ucfirst(@$homepage_info->core_description8)}}</p>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Core value end -->
+    @endif
   
     @if(count($testimonials) > 2)
 
