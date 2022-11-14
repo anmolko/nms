@@ -155,7 +155,30 @@
 
                 <div class="col-lg-4 ">
                     <div class="sticky-side-div">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">Form & Category</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="form-group mb-3">
+                                    <label>Form Link <span class="text-muted text-danger">*</span></label>
+                                    <input type="text" class="form-control" name="form_link" value="{{@$edit->form_link}}" required>
+                                    <div class="invalid-feedback">
+                                        Please enter the form link.
+                                    </div>
+                                </div>
+                                <p class="text-muted mb-2"> Select demand category</p>
+                                <select class="form-select" name="job_category_id" data-choices data-choices-search-true >
+                                    @if(!empty(@$categories))
+                                        @foreach(@$categories as $categoryList)
+                                            <option value="{{ @$categoryList->id }}" @if(@$edit->job_category_id == @$categoryList->id) selected @endif>{{ ucwords(@$categoryList->name) }}</option>
+                                        @endforeach
+                                    @endif
+                                </select>
 
+                            </div>
+                            <!-- end card body -->
+                        </div>
                         <div class="card ">
                             <div class="card-header">
                                 <h5 class="card-title mb-0">Select Options</h5>

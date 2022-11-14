@@ -74,6 +74,7 @@ class JobController extends Controller
             'required_number'      => $request->input('required_number'),
             'min_qualification'    => $request->input('min_qualification'),
             'description'          => $request->input('description'),
+            'form_link'            => $request->input('form_link'),
             'start_date'           => $start,
             'end_date'             => $end,
             'meta_title'           => $request->input('meta_title'),
@@ -160,6 +161,7 @@ class JobController extends Controller
         $job->meta_title            = $request->input('meta_title');
         $job->meta_tags             = $request->input('meta_tags');
         $job->meta_description      = $request->input('meta_description');
+        $job->form_link             = $request->input('form_link');
         $job->start_date            = $start;
         $job->end_date              = $end;
         $job->updated_by            = Auth::user()->id;
