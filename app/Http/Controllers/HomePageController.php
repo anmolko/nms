@@ -188,6 +188,7 @@ class HomePageController extends Controller
     {
         $update_theme                           =  HomePage::find($id);
         $update_theme->core_main_heading        =  $request->input('core_main_heading');
+        $update_theme->core_main_subheading     =  $request->input('core_main_subheading');
         $update_theme->core_main_description    =  $request->input('core_main_description');
         $update_theme->core_heading1            =  $request->input('core_heading1');
         $update_theme->core_description1        =  $request->input('core_description1');
@@ -201,6 +202,10 @@ class HomePageController extends Controller
         $update_theme->core_description5        =  $request->input('core_description5');
         $update_theme->core_heading6            =  $request->input('core_heading6');
         $update_theme->core_description6        =  $request->input('core_description6');
+        $update_theme->core_heading7            =  $request->input('core_heading7');
+        $update_theme->core_description7        =  $request->input('core_description7');
+        $update_theme->core_heading8            =  $request->input('core_heading8');
+        $update_theme->core_description8        =  $request->input('core_description8');
         $update_theme->updated_by               =  Auth::user()->id;
 
         $status=$update_theme->update();
