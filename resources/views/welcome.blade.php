@@ -49,6 +49,11 @@
         z-index: unset;
     }
 
+    .core-value .areas-of-practice__single{
+        height: 425px;
+    }
+
+
     .about-status .newsletter-one__inner{
         padding-bottom: 36px;
         justify-content: center;
@@ -193,7 +198,7 @@
                                     @endif
                                 </div>
                         
-                                <p class="welcome-one__right-text-2">{{ ucfirst(@$homepage_info->welcome_description) }}</p>
+                                <p class="welcome-one__right-text-2">{!! ucfirst(@$homepage_info->welcome_description) !!}</p>
                                 @if(@$homepage_info->welcome_button)
                                     <a href="{{@$homepage_info->welcome_link}}" class="thm-btn testimonial-one__btn welcome-button"><span>{{ucwords(@$homepage_info->welcome_button)}}</span></a>
                                 @endif
@@ -211,7 +216,7 @@
                                     @endif
                                 </div>
                         
-                                <p class="welcome-one__right-text-2">{{ ucfirst(@$homepage_info->welcome_description) }}</p>
+                                <p class="welcome-one__right-text-2">{!! ucfirst(@$homepage_info->welcome_description) !!}</p>
                                 @if(@$homepage_info->welcome_button)
                                     <a href="{{@$homepage_info->welcome_link}}" class="thm-btn testimonial-one__btn"><span>{{ucwords(@$homepage_info->welcome_button)}}</span></a>
                                 @endif
@@ -362,7 +367,7 @@
     @if(!empty($homepage_info->core_main_heading))
 
     <!-- Core value start -->
-    <section class="areas-of-practice">
+    <section class="areas-of-practice core-value">
         <div class="container">
             <div class="areas-of-practice__top">
                 <div class="row">
