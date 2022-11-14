@@ -122,6 +122,11 @@
                                                         <input type="text" class="form-control" id="website-name-input" name="website_name" value="{{@$settings->website_name}}"
                                                                placeholder="Enter website name" required>
                                                     </div>
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="website-name-input">Registration Number</label>
+                                                        <input type="text" class="form-control" id="website-name-input" name="registration_number" value="{{@$settings->registration_number}}"
+                                                               placeholder="Enter registration number" required>
+                                                    </div>
                                                     <div class="position-relative">
                                                         <label>Website Summary</label>
                                                         <textarea class="form-control" id="ckeditor-classic" name="website_description" placeholder="Enter website description" rows="3" required>{{@$settings->website_description}}</textarea>

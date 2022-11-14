@@ -12,6 +12,7 @@ var loadbasicFile = function(id1,id2,event) {
 
 $(document).ready(function () {
     createEditor('ckeditor-classic');
+    createEditor('welcome_description');
     createEditor('ckeditor-classic-background');
     createEditor('ckeditor-classic-direction');
 });

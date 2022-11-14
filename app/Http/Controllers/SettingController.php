@@ -53,6 +53,7 @@ class SettingController extends Controller
         $data=[
             'website_name'              => $request->input('website_name'),
             'website_description'       => $request->input('website_description'),
+            'registration_number'       => $request->input('registration_number'),
             'phone'                     => $request->input('phone'),
             'mobile'                    => $request->input('mobile'),
             'whatsapp'                  => $request->input('whatsapp'),
@@ -144,6 +145,7 @@ class SettingController extends Controller
         $update_theme                           =  Setting::find($id);
         $update_theme->website_name             =  $request->input('website_name');
         $update_theme->website_description      =  $request->input('website_description');
+        $update_theme->registration_number      =  $request->input('registration_number');
         $update_theme->phone                    =  $request->input('phone');
         $update_theme->mobile                   =  $request->input('mobile');
         $update_theme->whatsapp                 =  $request->input('whatsapp');
