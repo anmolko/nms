@@ -84,9 +84,7 @@
             <div class="main-menu-wrapper clearfix">
                 <div class="main-menu-wrapper__left clearfix">
                     <div class="main-menu-wrapper__logo">
-                        @if(request()->is('/'))
                                     <a href="/"> <img src="<?php if(@$setting_data->logo){?>{{asset('/images/settings/'.@$setting_data->logo)}}<?php }?>"  alt="NMS Recruitment Service" title="NMS Recruitment Service"></a>
-                                @endif
                     </div>
                   
                 </div>
