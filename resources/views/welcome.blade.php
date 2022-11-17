@@ -392,7 +392,9 @@
                         <!--Areas of Practice Single-->
                         <div class="areas-of-practice__single">
                             <div class="areas-of-practice__icon-box">
-                                
+                                <div class="areas-of-practice__icon">
+                                        <span class="fas fa-subway"></span>
+                                    </div>
                                 <div class="areas-of-practice__title">
                                     <h3><a href="#">{{ucwords(@$homepage_info->core_heading1)}}</a></h3>
                                 </div>
@@ -405,7 +407,9 @@
                         <!--Areas of Practice Single-->
                         <div class="areas-of-practice__single">
                             <div class="areas-of-practice__icon-box">
-                               
+                                <div class="areas-of-practice__icon">
+                                        <span class="fas fa-vihara"></span>
+                                    </div>
                                 <div class="areas-of-practice__title">
                                     <h3><a href="#">{{ucwords(@$homepage_info->core_heading2)}}</a></h3>
                                 </div>
@@ -418,7 +422,9 @@
                         <!--Areas of Practice Single-->
                         <div class="areas-of-practice__single">
                             <div class="areas-of-practice__icon-box">
-                                
+                                <div class="areas-of-practice__icon">
+                                        <span class="fa fa-tractor"></span>
+                                    </div>
                                 <div class="areas-of-practice__title">
                                     <h3><a href="#">{{ucwords(@$homepage_info->core_heading3)}}</a></h3>
                                 </div>
@@ -431,7 +437,9 @@
                         <!--Areas of Practice Single-->
                         <div class="areas-of-practice__single">
                             <div class="areas-of-practice__icon-box">
-                               
+                                <div class="areas-of-practice__icon">
+                                        <span class="fa fa-mail-bulk"></span>
+                                    </div>
                                 <div class="areas-of-practice__title">
                                     <h3><a href="#">{{ucwords(@$homepage_info->core_heading4)}}</a></h3>
                                 </div>
@@ -444,7 +452,9 @@
                         <!--Areas of Practice Single-->
                         <div class="areas-of-practice__single">
                             <div class="areas-of-practice__icon-box">
-                               
+                                <div class="areas-of-practice__icon">
+                                        <span class="fa fa-user-shield"></span>
+                                    </div>
                                 <div class="areas-of-practice__title">
                                     <h3><a href="#">{{ucwords(@$homepage_info->core_heading5)}}</a></h3>
                                 </div>
@@ -457,7 +467,9 @@
                         <!--Areas of Practice Single-->
                         <div class="areas-of-practice__single">
                             <div class="areas-of-practice__icon-box">
-                               
+                                <div class="areas-of-practice__icon">
+                                        <span class="fa fa-heartbeat"></span>
+                                    </div>
                                 <div class="areas-of-practice__title">
                                     <h3><a href="#">{{ucwords(@$homepage_info->core_heading6)}}</a></h3>
                                 </div>
@@ -470,7 +482,9 @@
                         <!--Areas of Practice Single-->
                         <div class="areas-of-practice__single">
                             <div class="areas-of-practice__icon-box">
-                               
+                                <div class="areas-of-practice__icon">
+                                        <span class="fa fa-tools"></span>
+                                    </div>
                                 <div class="areas-of-practice__title">
                                     <h3><a href="#">{{ucwords(@$homepage_info->core_heading7)}}</a></h3>
                                 </div>
@@ -483,7 +497,9 @@
                         <!--Areas of Practice Single-->
                         <div class="areas-of-practice__single">
                             <div class="areas-of-practice__icon-box">
-                               
+                                    <div class="areas-of-practice__icon">
+                                        <span class="fa fa-utensils"></span>
+                                    </div>
                                 <div class="areas-of-practice__title">
                                     <h3><a href="#">{{ucwords(@$homepage_info->core_heading8)}}</a></h3>
                                 </div>
