@@ -135,7 +135,7 @@
                                     <div class="col-lg-12">
                                         <div class="main-slider__content">
                                             <p>{{@$slider->subheading}}</p>
-                                            <h2>{!! wordwrap(@$slider->heading,15,"<br>\n",TRUE) !!}</h2>
+                                            <h2>{!! @$slider->heading !!}</h2>
                                             @if(@$slider->button)
                                                     <a href="{{@$slider->link}}" class="thm-btn "><span>{{ucwords(@$slider->button)}}</span></a>
                                                 @endif
