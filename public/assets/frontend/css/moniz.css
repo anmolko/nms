@@ -11043,3 +11043,14 @@ body.boxed-wrapper {
   content: '\f00c';
 }
 /*# sourceMappingURL=moniz.css.map */
+
+.justified p{
+    text-align: justify;
+}
+.justified{
+    text-align: justify;
+}
+
+.text-centered{
+    text-align: center;
+}

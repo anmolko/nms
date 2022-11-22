@@ -13,7 +13,7 @@
     }
 
     .blog-one {
-      
+
         background-color: #f1f1f5;
     }
 
@@ -93,7 +93,7 @@
     .brand-one .swiper-slide img {
             height: 100%;
             object-fit: contain;
-        
+
         }
 </style>
 @endsection
@@ -145,7 +145,7 @@
                             </div>
                         </div>
                     @endforeach
-                   
+
                 </div>
                 <!-- If we need navigation buttons -->
                 <div class="slider-bottom-box clearfix">
@@ -172,7 +172,7 @@
         <section class="welcome-one">
             <div class="container">
                 <div class="row">
-                    @if(@$homepage_info->welcome_side_image == "left") 
+                    @if(@$homepage_info->welcome_side_image == "left")
 
                         <div class="col-xl-6">
                             <div class="welcome-one__left wow fadeInLeft" data-wow-duration="1500ms">
@@ -182,11 +182,11 @@
                                         <div class="welcome-one__shape-1"></div>
                                         <div class="welcome-one__shape-2"></div>
                                     </div>
-                                
+
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="col-xl-6">
                             <div class="welcome-one__right">
                                 <div class="section-title text-left">
@@ -197,8 +197,8 @@
                                         <h2 class="section-title__title"><span>{{ucwords(@$homepage_info->welcome_heading)}}</span></h2>
                                     @endif
                                 </div>
-                        
-                                <p class="welcome-one__right-text-2">{!! ucfirst(@$homepage_info->welcome_description) !!}</p>
+
+                                <div class="welcome-one__right-text-2 justified">{!! ucfirst(@$homepage_info->welcome_description) !!}</div>
                                 @if(@$homepage_info->welcome_button)
                                     <a href="{{@$homepage_info->welcome_link}}" class="thm-btn testimonial-one__btn welcome-button"><span>{{ucwords(@$homepage_info->welcome_button)}}</span></a>
                                 @endif
@@ -215,8 +215,8 @@
                                         <h2 class="section-title__title"><span>{{ucwords(@$homepage_info->welcome_heading)}}</span></h2>
                                     @endif
                                 </div>
-                        
-                                <p class="welcome-one__right-text-2">{!! ucfirst(@$homepage_info->welcome_description) !!}</p>
+
+                                <div class="welcome-one__right-text-2 justified">{!! ucfirst(@$homepage_info->welcome_description) !!}</div>
                                 @if(@$homepage_info->welcome_button)
                                     <a href="{{@$homepage_info->welcome_link}}" class="thm-btn testimonial-one__btn"><span>{{ucwords(@$homepage_info->welcome_button)}}</span></a>
                                 @endif
@@ -231,7 +231,7 @@
                                         <div class="welcome-one__shape-1"></div>
                                         <div class="welcome-one__shape-2"></div>
                                     </div>
-                                
+
                                 </div>
                             </div>
                         </div>
@@ -252,7 +252,7 @@
                             <span class="icon-recommend"></span>
                         </div>
                         <h3 class="odometer" data-count="{{ (@$homepage_info->project_completed) ? @$homepage_info->project_completed : '3670';}}">00</h3>
-                        <p class="counter-one__text">Projects completed</p>
+                        <p class="counter-one__text">Customer Served</p>
                     </li>
                     <li class="counter-one__single wow fadeInUp" data-wow-delay="200ms">
                         <div class="counter-one__icon">
@@ -292,7 +292,7 @@
                             <p class="cta-one__tagline">{{@$homepage_info->action_heading2}}</p>
                             <h2 class="cta-one__title">{!! wordwrap(@$homepage_info->action_heading,30,"<br>\n",TRUE) !!}</h2>
                             @if(@$homepage_info->action_button)
-                          
+
                                 <a href="{{@$homepage_info->action_link}}" class="thm-btn cta-one__btn thm-btn--dark--light-hover"><span>{{@$homepage_info->action_button}}</span></a>
                             @endif
                         </div>
@@ -312,7 +312,7 @@
             </div>
             <div class="container">
                 <div class="section-title text-center">
-        
+
                     @if(@$homepage_info->mv_subheading)
                         <span class="section-title__tagline">{{ucfirst(@$homepage_info->mv_subheading)}}</span>
                     @endif
@@ -331,8 +331,8 @@
                                 <span class="fas fa-trophy"></span>
                             </div>
                             <h3 class="services-one__title"><a href="#">Mission</a></h3>
-                            <p class="services-one__text">{{ ucfirst(@$homepage_info->mission) }}</p>
-                     
+                            <p class="services-one__text justified">{{ ucfirst(@$homepage_info->mission) }}</p>
+
                         </div>
                     </div>
                     <div class="col-xl-4 col-lg-4">
@@ -342,8 +342,8 @@
                                 <span class="far fa-eye"></span>
                             </div>
                             <h3 class="services-one__title"><a href="#">Vision</a></h3>
-                            <p class="services-one__text">{{ ucfirst(@$homepage_info->vision) }}</p>
-                 
+                            <p class="services-one__text justified">{{ ucfirst(@$homepage_info->vision) }}</p>
+
                         </div>
                     </div>
                     <div class="col-xl-4 col-lg-4">
@@ -353,8 +353,8 @@
                                 <span class="far fa-heart"></span>
                             </div>
                             <h3 class="services-one__title"><a href="#">Value</a></h3>
-                            <p class="services-one__text">{{ ucfirst(@$homepage_info->value) }}</p>
-                        
+                            <p class="services-one__text justified">{{ ucfirst(@$homepage_info->value) }}</p>
+
                         </div>
                     </div>
                 </div>
@@ -393,14 +393,14 @@
                         <div class="areas-of-practice__single">
                             <div class="areas-of-practice__icon-box">
                                 <div class="areas-of-practice__icon">
-                                        <span class="fas fa-subway"></span>
+                                        <span class="fa fa-user-shield"></span>
                                     </div>
                                 <div class="areas-of-practice__title">
                                     <h3><a href="#">{{ucwords(@$homepage_info->core_heading1)}}</a></h3>
                                 </div>
                             </div>
                             <p class="areas-of-practice__text">{{ucfirst(@$homepage_info->core_description1)}}</p>
-                            
+
                         </div>
                     </div>
                     <div class="col-xl-3 col-lg-6 col-md-6">
@@ -408,14 +408,14 @@
                         <div class="areas-of-practice__single">
                             <div class="areas-of-practice__icon-box">
                                 <div class="areas-of-practice__icon">
-                                        <span class="fas fa-vihara"></span>
+                                        <span class="fa fa-handshake"></span>
                                     </div>
                                 <div class="areas-of-practice__title">
                                     <h3><a href="#">{{ucwords(@$homepage_info->core_heading2)}}</a></h3>
                                 </div>
                             </div>
                             <p class="areas-of-practice__text">{{ucfirst(@$homepage_info->core_description2)}}</p>
-                            
+
                         </div>
                     </div>
                     <div class="col-xl-3 col-lg-6 col-md-6">
@@ -423,14 +423,14 @@
                         <div class="areas-of-practice__single">
                             <div class="areas-of-practice__icon-box">
                                 <div class="areas-of-practice__icon">
-                                        <span class="fa fa-tractor"></span>
+                                        <span class="fas fa-head-side-virus"></span>
                                     </div>
                                 <div class="areas-of-practice__title">
                                     <h3><a href="#">{{ucwords(@$homepage_info->core_heading3)}}</a></h3>
                                 </div>
                             </div>
                             <p class="areas-of-practice__text">{{ucfirst(@$homepage_info->core_description3)}}</p>
-                            
+
                         </div>
                     </div>
                     <div class="col-xl-3 col-lg-6 col-md-6">
@@ -438,14 +438,14 @@
                         <div class="areas-of-practice__single">
                             <div class="areas-of-practice__icon-box">
                                 <div class="areas-of-practice__icon">
-                                        <span class="fa fa-mail-bulk"></span>
+                                        <span class="fas fa-hands-helping"></span>
                                     </div>
                                 <div class="areas-of-practice__title">
                                     <h3><a href="#">{{ucwords(@$homepage_info->core_heading4)}}</a></h3>
                                 </div>
                             </div>
                             <p class="areas-of-practice__text">{{ucfirst(@$homepage_info->core_description4)}}</p>
-                            
+
                         </div>
                     </div>
                     <div class="col-xl-3 col-lg-6 col-md-6">
@@ -453,14 +453,14 @@
                         <div class="areas-of-practice__single">
                             <div class="areas-of-practice__icon-box">
                                 <div class="areas-of-practice__icon">
-                                        <span class="fa fa-user-shield"></span>
+                                        <span class="fas fa-medal"></span>
                                     </div>
                                 <div class="areas-of-practice__title">
                                     <h3><a href="#">{{ucwords(@$homepage_info->core_heading5)}}</a></h3>
                                 </div>
                             </div>
                             <p class="areas-of-practice__text">{{ucfirst(@$homepage_info->core_description5)}}</p>
-                            
+
                         </div>
                     </div>
                     <div class="col-xl-3 col-lg-6 col-md-6">
@@ -468,14 +468,14 @@
                         <div class="areas-of-practice__single">
                             <div class="areas-of-practice__icon-box">
                                 <div class="areas-of-practice__icon">
-                                        <span class="fa fa-heartbeat"></span>
+                                        <span class="fas fa-street-view"></span>
                                     </div>
                                 <div class="areas-of-practice__title">
                                     <h3><a href="#">{{ucwords(@$homepage_info->core_heading6)}}</a></h3>
                                 </div>
                             </div>
                             <p class="areas-of-practice__text">{{ucfirst(@$homepage_info->core_description6)}}</p>
-                            
+
                         </div>
                     </div>
                     <div class="col-xl-3 col-lg-6 col-md-6">
@@ -483,14 +483,14 @@
                         <div class="areas-of-practice__single">
                             <div class="areas-of-practice__icon-box">
                                 <div class="areas-of-practice__icon">
-                                        <span class="fa fa-tools"></span>
+                                        <span class="fas fa-balance-scale"></span>
                                     </div>
                                 <div class="areas-of-practice__title">
                                     <h3><a href="#">{{ucwords(@$homepage_info->core_heading7)}}</a></h3>
                                 </div>
                             </div>
                             <p class="areas-of-practice__text">{{ucfirst(@$homepage_info->core_description7)}}</p>
-                            
+
                         </div>
                     </div>
                     <div class="col-xl-3 col-lg-6 col-md-6">
@@ -498,14 +498,14 @@
                         <div class="areas-of-practice__single">
                             <div class="areas-of-practice__icon-box">
                                     <div class="areas-of-practice__icon">
-                                        <span class="fa fa-utensils"></span>
+                                        <span class="fas fa-tachometer-alt"></span>
                                     </div>
                                 <div class="areas-of-practice__title">
                                     <h3><a href="#">{{ucwords(@$homepage_info->core_heading8)}}</a></h3>
                                 </div>
                             </div>
                             <p class="areas-of-practice__text">{{ucfirst(@$homepage_info->core_description8)}}</p>
-                            
+
                         </div>
                     </div>
                 </div>
@@ -514,7 +514,7 @@
     </section>
     <!-- Core value end -->
     @endif
-  
+
     @if(count($testimonials) > 2)
 
         <!--Testimonial One Start-->
@@ -550,7 +550,7 @@
                                             </div>
                                         </div><!-- /.swiper-slide -->
                                     @endforeach
-                                   
+
                                 </div><!-- /.swiper-wrapper -->
                             </div><!-- /#testimonials-one__thumb.swiper-container -->
 
@@ -619,7 +619,7 @@
                                 <h3 class="blog-one__title">
                                     <a href="{{route('blog.single',$post->slug)}}">{{ucwords($post->title)}}</a>
                                 </h3>
-                                
+
                                 <div class="blog-one__bottom">
                                     <div class="blog-one__read-btn">
                                         <a href="{{route('blog.single',$post->slug)}}">Read more</a>
@@ -632,7 +632,7 @@
                         </div>
                     </div>
                 @endforeach
-                
+
             </div>
         </div>
     </section>
@@ -640,7 +640,7 @@
 
     @endif
 
-    
+
     @if(count($clients) > 0)
 
         <!--Brand Two-->

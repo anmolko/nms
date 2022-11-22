@@ -626,19 +626,11 @@
                                                 <div class="card-body">
 
                                                     <div class="position-relative mb-3">
-                                                        <label class="form-label">Project completed <span class="text-muted text-danger">*</span></label>
+                                                        <label class="form-label">Customer Served <span class="text-muted text-danger">*</span></label>
                                                         <input type="number" class="form-control" name="project_completed" value="{{@$homesettings->project_completed}}"
                                                                placeholder="Enter project completed number">
                                                         <div class="invalid-feedback">
                                                             Please enter the project completed number.
-                                                        </div>
-                                                    </div>
-                                                    <div class="position-relative mb-3">
-                                                        <label class="form-label">Happy Clients <span class="text-muted text-danger">*</span></label>
-                                                        <input type="number" class="form-control" name="happy_clients" value="{{@$homesettings->happy_clients}}"
-                                                               placeholder="Enter happy clients number">
-                                                        <div class="invalid-feedback">
-                                                            Please enter the happy clients number.
                                                         </div>
                                                     </div>
                                                     <div class="position-relative mb-3">
@@ -657,6 +649,16 @@
                                                             Please enter the success stories number.
                                                         </div>
                                                     </div>
+                                                    <div class="position-relative mb-3">
+                                                        <label class="form-label">Happy Clients <span class="text-muted text-danger">*</span></label>
+                                                        <input type="number" class="form-control" name="happy_clients" value="{{@$homesettings->happy_clients}}"
+                                                               placeholder="Enter happy clients number">
+                                                        <div class="invalid-feedback">
+                                                            Please enter the happy clients number.
+                                                        </div>
+                                                    </div>
+
+
                                                 </div>
                                             </div>
                                         </div>
