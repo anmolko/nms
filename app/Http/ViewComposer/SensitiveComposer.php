@@ -45,6 +45,15 @@ class SensitiveComposer
                        $child->slug = MenuItem::where('id',$child->id)->value('slug');
                        $child->target = MenuItem::where('id',$child->id)->value('target');
                        $child->type = MenuItem::where('id',$child->id)->value('type');
+                       if(!empty($child->children[0])){
+                        foreach ($child->children[0] as $lastchild) {
+                          $lastchild->title = MenuItem::where('id',$lastchild->id)->value('title');
+                          $lastchild->name = MenuItem::where('id',$lastchild->id)->value('name');
+                          $lastchild->slug = MenuItem::where('id',$lastchild->id)->value('slug');
+                          $lastchild->target = MenuItem::where('id',$lastchild->id)->value('target');
+                          $lastchild->type = MenuItem::where('id',$lastchild->id)->value('type');
+                        }
+                      }
                    }
                }
            }
