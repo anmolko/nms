@@ -234,7 +234,7 @@
                                                     </figure>
                                                     <div class="position-relative mb-3">
                                                         <label class="form-label" for="core_main_heading-input">Main Heading <span class="text-muted text-danger">*</span></label>
-                                                        <input type="text" class="form-control" maxlength="25" id="core_main_heading-input" name="core_main_heading" value="{{@$homesettings->core_main_heading}}"
+                                                        <input type="text" class="form-control" maxlength="35" id="core_main_heading-input" name="core_main_heading" value="{{@$homesettings->core_main_heading}}"
                                                                placeholder="Enter heading" required>
                                                         <div class="invalid-feedback">
                                                             Please enter the heading.
@@ -242,12 +242,12 @@
                                                     </div>
                                                     <div class="mb-3">
                                                         <label class="form-label" for="welcome-core-main-subheading">Sub Heading </label>
-                                                        <input type="text" class="form-control" maxlength="20" id="welcome-core-main-subheading" name="core_main_subheading" value="{{@$homesettings->core_main_description}}"
+                                                        <input type="text" class="form-control" maxlength="20" id="welcome-core-main-subheading" name="core_main_subheading" value="{{@$homesettings->core_main_subheading}}"
                                                                placeholder="Enter subheading">
                                                     </div>
                                                     <div class="position-relative mb-3">
                                                         <label> Description <span class="text-muted text-danger">*</span></label>
-                                                        <textarea class="form-control" maxlength="170" name="core_main_description" placeholder="Enter description" rows="8" required>{{@$homesettings->core_main_description}}</textarea>
+                                                        <textarea class="form-control" maxlength="170" name="core_main_description" placeholder="Enter description" rows="3" required>{{@$homesettings->core_main_description}}</textarea>
                                                         <div class="invalid-tooltip">
                                                             Please enter the description.
                                                         </div>
@@ -280,7 +280,7 @@
                                                     </div>
                                                     <div class="position-relative mb-3">
                                                         <label class="form-label">Core Description 1 <span class="text-muted text-danger">*</span></label>
-                                                        <textarea class="form-control" maxlength="120" name="core_description1" placeholder="Enter core description" rows="4" required>{{@$homesettings->core_description1}}</textarea>
+                                                        <textarea class="form-control" maxlength="145" name="core_description1" placeholder="Enter core description" rows="4" required>{{@$homesettings->core_description1}}</textarea>
                                                         <div class="invalid-tooltip">
                                                             Please enter the  description.
                                                         </div>
@@ -310,7 +310,7 @@
                                                     </div>
                                                     <div class="position-relative mb-3">
                                                         <label class="form-label">Core Description 2 <span class="text-muted text-danger">*</span></label>
-                                                        <textarea class="form-control" maxlength="120" name="core_description2" placeholder="Enter core value description" rows="4" required>{{@$homesettings->core_description2}}</textarea>
+                                                        <textarea class="form-control" maxlength="145" name="core_description2" placeholder="Enter core value description" rows="4" required>{{@$homesettings->core_description2}}</textarea>
                                                         <div class="invalid-tooltip">
                                                             Please enter the  description.
                                                         </div>
@@ -341,7 +341,7 @@
                                                     </div>
                                                     <div class="position-relative mb-3">
                                                         <label class="form-label">Core Description 3 <span class="text-muted text-danger">*</span></label>
-                                                        <textarea class="form-control" maxlength="120" name="core_description3" placeholder="Enter core description" rows="4" required>{{@$homesettings->core_description3}}</textarea>
+                                                        <textarea class="form-control" maxlength="145" name="core_description3" placeholder="Enter core description" rows="4" required>{{@$homesettings->core_description3}}</textarea>
                                                         <div class="invalid-tooltip">
                                                             Please enter the  description.
                                                         </div>
@@ -371,7 +371,7 @@
                                                     </div>
                                                     <div class="position-relative mb-3">
                                                         <label class="form-label">Core Description 4 <span class="text-muted text-danger">*</span></label>
-                                                        <textarea class="form-control" maxlength="120" name="core_description4" placeholder="Enter core description" rows="4" required>{{@$homesettings->core_description4}}</textarea>
+                                                        <textarea class="form-control" maxlength="145" name="core_description4" placeholder="Enter core description" rows="4" required>{{@$homesettings->core_description4}}</textarea>
                                                         <div class="invalid-tooltip">
                                                             Please enter the  description.
                                                         </div>
@@ -401,7 +401,7 @@
                                                     </div>
                                                     <div class="position-relative mb-3">
                                                         <label class="form-label">Core Description 5 <span class="text-muted text-danger">*</span></label>
-                                                        <textarea class="form-control" maxlength="120" name="core_description5" placeholder="Enter core description" rows="4" required>{{@$homesettings->core_description5}}</textarea>
+                                                        <textarea class="form-control" maxlength="145" name="core_description5" placeholder="Enter core description" rows="4" required>{{@$homesettings->core_description5}}</textarea>
                                                         <div class="invalid-tooltip">
                                                             Please enter the  description.
                                                         </div>
@@ -431,7 +431,7 @@
                                                     </div>
                                                     <div class="position-relative mb-3">
                                                         <label class="form-label">Core Description 6 <span class="text-muted text-danger">*</span></label>
-                                                        <textarea class="form-control" maxlength="120" name="core_description6" placeholder="Enter core description" rows="4" required>{{@$homesettings->core_description6}}</textarea>
+                                                        <textarea class="form-control" maxlength="145" name="core_description6" placeholder="Enter core description" rows="4" required>{{@$homesettings->core_description6}}</textarea>
                                                         <div class="invalid-tooltip">
                                                             Please enter the  description.
                                                         </div>
@@ -461,7 +461,7 @@
                                                     </div>
                                                     <div class="position-relative mb-3">
                                                         <label class="form-label">Core Description 7 <span class="text-muted text-danger">*</span></label>
-                                                        <textarea class="form-control" maxlength="120" name="core_description7" placeholder="Enter core description" rows="4" required>{{@$homesettings->core_description7}}</textarea>
+                                                        <textarea class="form-control" maxlength="145" name="core_description7" placeholder="Enter core description" rows="4" required>{{@$homesettings->core_description7}}</textarea>
                                                         <div class="invalid-tooltip">
                                                             Please enter the  description.
                                                         </div>
@@ -491,7 +491,7 @@
                                                     </div>
                                                     <div class="position-relative mb-3">
                                                         <label class="form-label">Core Description 8 <span class="text-muted text-danger">*</span></label>
-                                                        <textarea class="form-control" maxlength="120" name="core_description8" placeholder="Enter core description" rows="4" required>{{@$homesettings->core_description8}}</textarea>
+                                                        <textarea class="form-control" maxlength="145" name="core_description8" placeholder="Enter core description" rows="4" required>{{@$homesettings->core_description8}}</textarea>
                                                         <div class="invalid-tooltip">
                                                             Please enter the  description.
                                                         </div>
