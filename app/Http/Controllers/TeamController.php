@@ -54,6 +54,10 @@ class TeamController extends Controller
         $data=[
             'name'                => $request->input('name'),
             'post'                => $request->input('post'),
+<<<<<<< HEAD
+=======
+            'description'         => $request->input('description'),
+>>>>>>> d201af4814aa5cbc7299cb70a8d1f60260eab760
             'fb'                  => $request->input('fb'),
             'twitter'             => $request->input('twitter'),
             'insta'               => $request->input('insta'),
@@ -133,6 +137,10 @@ class TeamController extends Controller
         $team                      =  Team::find($id);
         $team->name                =  $request->input('name');
         $team->post                =  $request->input('post');
+<<<<<<< HEAD
+=======
+        $team->description         =  $request->input('description');
+>>>>>>> d201af4814aa5cbc7299cb70a8d1f60260eab760
         $team->fb                  =  $request->input('fb');
         $team->twitter             =  $request->input('twitter');
         $team->insta               =  $request->input('insta');
