@@ -40,17 +40,29 @@
                         <div class="card-body">
                             <div class="form-group mb-3">
                                 <label>Company Name</label>
-                                <input type="text" class="form-control" name="country">
+                                <input type="text" class="form-control" name="name">
 
                                 <div class="invalid-feedback">
                                     Please select the company name.
                                 </div>
                             </div>
                             <div class="form-group mb-3">
-                                <label>Link </label>
+                                <label>Website Link </label>
                                 <input type="text" class="form-control" name="link">
                                 <div class="invalid-feedback">
                                     Please enter the category name.
+                                </div>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label>Country</label>
+                                <select class="form-control select select2" name="country">
+                                    <option disabled>Select Country</option>
+                                    @foreach($countries as $key => $value)
+                                        <option value="{{$key}}">{{$value}}</option>
+                                    @endforeach
+                                </select>
+                                <div class="invalid-feedback">
+                                    Please select the country.
                                 </div>
                             </div>
                             <div class="text-center">
@@ -102,6 +114,7 @@
                                         <thead class="table-light">
                                         <tr>
                                             <th>Client Image</th>
+                                            <th>Name</th>
                                             <th>Link</th>
                                             <th>Country</th>
                                             <th class="text-right">Action</th>
@@ -115,8 +128,17 @@
                                                         <img src="{{asset('/images/clients/'.@$client->image)}}" alt="{{@$client->slug}}" class="figure-img rounded avatar-lg">
 
                                                     </td>
+                                                    <td>{{(!empty($client->name)) ?  $client->name:"Not Set"}}</td>
                                                     <td>{{(!empty($client->link)) ?  $client->link:"Not Set"}}</td>
-                                                    <td>{{(!empty($client->country)) ?  $client->country:"Not Set"}}</td>
+                                                    <td><?php
+                                                        if(!empty($client->country)){
+                                                            foreach ($countries as $key=>$value){
+                                                                if($client->country == $key){
+                                                                    echo $value;
+                                                                }
+                                                            }
+                                                        }
+                                                        ?></td>
                                                     <td>
                                                         <div class="row">
 
@@ -175,7 +197,7 @@
                                     <div class="card-body">
                                         <div class="form-group mb-3">
                                             <label>Company Name</label>
-                                            <input type="text" class="form-control" name="country" id="country">
+                                            <input type="text" class="form-control" name="name" id="name">
 
                                             <div class="invalid-feedback">
                                                 Please select the company name.
@@ -186,6 +208,19 @@
                                             <input type="text" class="form-control" name="link" id="link">
                                             <div class="invalid-feedback">
                                                 Please enter the category name.
+                                            </div>
+                                        </div>
+                                        <div class="form-group mb-3">
+                                            <label>Country</label>
+                                            <br>
+                                            <select class="form-control select select2" name="country" id="country">
+                                                <option disabled>Select Country</option>
+                                                @foreach($countries as $key => $value)
+                                                    <option value="{{$key}}">{{$value}}</option>
+                                                @endforeach
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                Please select the country.
                                             </div>
                                         </div>
 
@@ -271,8 +306,14 @@
                     success: function (dataResult) {
                         // $('#id').val(data.id);
                         $("#editClient").modal("toggle");
+                        $('#name').attr('value', dataResult.edit.name);
                         $('#link').attr('value', dataResult.edit.link);
-                        $('#country').attr('value', dataResult.edit.country);
+                        $.each(dataResult.countries, function (index, value) {
+                            if(index==dataResult.edit.country){
+                                $('#select2-country-container').text(value);
+                            }
+                        });
+                        $('#country option[value="'+dataResult.edit.country+'"]').prop('selected', true);
                         $('#current-edit-img').attr("src", '/images/clients/' + dataResult.edit.image);
                         $('.updateclient').attr('action', action);
 

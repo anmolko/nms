@@ -49,6 +49,7 @@ class ClientController extends Controller
     public function store(Request $request)
     {
         $data=[
+            'name'                => $request->input('name'),
             'country'             => $request->input('country'),
             'link'                => $request->input('link'),
             'created_by'          => Auth::user()->id,
@@ -106,6 +107,7 @@ class ClientController extends Controller
     public function update(Request $request, $id)
     {
         $clients                     =  Client::find($id);
+        $clients->name               =  $request->input('name');
         $clients->country            =  $request->input('country');
         $clients->link               =  $request->input('link');
         $oldimage                    = $clients->image;
