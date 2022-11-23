@@ -165,10 +165,8 @@
         <!--Banner One End-->
     @endif
 
-
     @if(!empty($homepage_info->welcome_description))
         <!-- Welcome section -->
-
         <section class="welcome-one">
             <div class="container">
                 <div class="row">
@@ -248,43 +246,43 @@
         <!-- Welcome end -->
     @endif
 
-        <!--Counter One Start-->
-        <section class="counters-one">
-            <div class="container">
-                <ul class="counters-one__box list-unstyled">
-                    <li class="counter-one__single wow fadeInUp" data-wow-delay="100ms">
-                        <div class="counter-one__icon">
-                            <span class="icon-recommend"></span>
-                        </div>
-                        <h3 class="odometer" data-count="{{ (@$homepage_info->project_completed) ? @$homepage_info->project_completed : '3670';}}">00</h3>
-                        <p class="counter-one__text">Customer Served</p>
-                    </li>
-                    <li class="counter-one__single wow fadeInUp" data-wow-delay="200ms">
-                        <div class="counter-one__icon">
-                            <span class="icon-recruit"></span>
-                        </div>
-                        <h3 class="odometer" data-count="{{ (@$homepage_info->visa_approved) ? @$homepage_info->visa_approved : '3670';}}">00</h3>
-                        <p class="counter-one__text">Visa Approved</p>
-                    </li>
-                    <li class="counter-one__single wow fadeInUp" data-wow-delay="300ms">
-                        <div class="counter-one__icon">
-                            <span class="icon-coffee"></span>
-                        </div>
-                        <h3 class="odometer" data-count="{{ (@$homepage_info->success_stories) ? @$homepage_info->success_stories : '3670';}}">00</h3>
-                        <p class="counter-one__text">Success Stories</p>
-                    </li>
-                    <li class="counter-one__single wow fadeInUp" data-wow-delay="400ms">
-                        <div class="counter-one__icon">
-                            <span class="icon-customer-review"></span>
-                        </div>
-                        <h3 class="odometer" data-count="{{ (@$homepage_info->happy_clients) ? @$homepage_info->happy_clients : '3670';}}">00</h3>
-                        <p class="counter-one__text">Happy clients</p>
-                    </li>
-                    <li class="counter-one__shape wow fadeInUp" data-wow-delay="500ms"></li>
-                </ul>
-            </div>
-        </section>
-        <!--Counter One End-->
+    <!--Counter One Start-->
+    <section class="counters-one">
+        <div class="container">
+            <ul class="counters-one__box list-unstyled">
+                <li class="counter-one__single wow fadeInUp" data-wow-delay="100ms">
+                    <div class="counter-one__icon">
+                        <span class="icon-recommend"></span>
+                    </div>
+                    <h3 class="odometer" data-count="{{ (@$homepage_info->project_completed) ? @$homepage_info->project_completed : '3670';}}">00</h3>
+                    <p class="counter-one__text">Customer Served</p>
+                </li>
+                <li class="counter-one__single wow fadeInUp" data-wow-delay="200ms">
+                    <div class="counter-one__icon">
+                        <span class="icon-recruit"></span>
+                    </div>
+                    <h3 class="odometer" data-count="{{ (@$homepage_info->visa_approved) ? @$homepage_info->visa_approved : '3670';}}">00</h3>
+                    <p class="counter-one__text">Visa Approved</p>
+                </li>
+                <li class="counter-one__single wow fadeInUp" data-wow-delay="300ms">
+                    <div class="counter-one__icon">
+                        <span class="icon-coffee"></span>
+                    </div>
+                    <h3 class="odometer" data-count="{{ (@$homepage_info->success_stories) ? @$homepage_info->success_stories : '3670';}}">00</h3>
+                    <p class="counter-one__text">Success Stories</p>
+                </li>
+                <li class="counter-one__single wow fadeInUp" data-wow-delay="400ms">
+                    <div class="counter-one__icon">
+                        <span class="icon-customer-review"></span>
+                    </div>
+                    <h3 class="odometer" data-count="{{ (@$homepage_info->happy_clients) ? @$homepage_info->happy_clients : '3670';}}">00</h3>
+                    <p class="counter-one__text">Happy clients</p>
+                </li>
+                <li class="counter-one__shape wow fadeInUp" data-wow-delay="500ms"></li>
+            </ul>
+        </div>
+    </section>
+    <!--Counter One End-->
 
     @if(!empty($homepage_info->action_heading))
         <!-- CTA Area start -->
@@ -307,8 +305,6 @@
         </section>
         <!-- CTA Area end -->
     @endif
-
-
 
     @if(!empty($homepage_info->mv_heading))
         <!-- Mission Vision start -->
@@ -370,7 +366,6 @@
         <!-- Mission Vision end -->
     @endif
 
-
     @if(!empty($homepage_info->core_main_heading))
 
     <!-- Core value start -->
@@ -402,7 +397,7 @@
                 <div class="row">
                     <div class="col-xl-3 col-lg-6 col-md-6">
                         <!--Areas of Practice Single-->
-                        <div class="areas-of-practice__single">
+                        <div class="areas-of-practice__single text-centered">
                             <div class="areas-of-practice__icon-box">
                                 <div class="areas-of-practice__icon">
                                         <span class="fa fa-user-shield"></span>
@@ -417,7 +412,7 @@
                     </div>
                     <div class="col-xl-3 col-lg-6 col-md-6">
                         <!--Areas of Practice Single-->
-                        <div class="areas-of-practice__single">
+                        <div class="areas-of-practice__single text-centered">
                             <div class="areas-of-practice__icon-box">
                                 <div class="areas-of-practice__icon">
                                         <span class="fa fa-handshake"></span>
@@ -432,7 +427,7 @@
                     </div>
                     <div class="col-xl-3 col-lg-6 col-md-6">
                         <!--Areas of Practice Single-->
-                        <div class="areas-of-practice__single">
+                        <div class="areas-of-practice__single text-centered">
                             <div class="areas-of-practice__icon-box">
                                 <div class="areas-of-practice__icon">
                                         <span class="fas fa-head-side-virus"></span>
@@ -447,7 +442,7 @@
                     </div>
                     <div class="col-xl-3 col-lg-6 col-md-6">
                         <!--Areas of Practice Single-->
-                        <div class="areas-of-practice__single">
+                        <div class="areas-of-practice__single text-centered">
                             <div class="areas-of-practice__icon-box">
                                 <div class="areas-of-practice__icon">
                                         <span class="fas fa-hands-helping"></span>
@@ -462,7 +457,7 @@
                     </div>
                     <div class="col-xl-3 col-lg-6 col-md-6">
                         <!--Areas of Practice Single-->
-                        <div class="areas-of-practice__single">
+                        <div class="areas-of-practice__single text-centered">
                             <div class="areas-of-practice__icon-box">
                                 <div class="areas-of-practice__icon">
                                         <span class="fas fa-medal"></span>
@@ -477,7 +472,7 @@
                     </div>
                     <div class="col-xl-3 col-lg-6 col-md-6">
                         <!--Areas of Practice Single-->
-                        <div class="areas-of-practice__single">
+                        <div class="areas-of-practice__single text-centered">
                             <div class="areas-of-practice__icon-box">
                                 <div class="areas-of-practice__icon">
                                         <span class="fas fa-street-view"></span>
@@ -492,7 +487,7 @@
                     </div>
                     <div class="col-xl-3 col-lg-6 col-md-6">
                         <!--Areas of Practice Single-->
-                        <div class="areas-of-practice__single">
+                        <div class="areas-of-practice__single text-centered">
                             <div class="areas-of-practice__icon-box">
                                 <div class="areas-of-practice__icon">
                                         <span class="fas fa-balance-scale"></span>
@@ -507,7 +502,7 @@
                     </div>
                     <div class="col-xl-3 col-lg-6 col-md-6">
                         <!--Areas of Practice Single-->
-                        <div class="areas-of-practice__single">
+                        <div class="areas-of-practice__single text-centered">
                             <div class="areas-of-practice__icon-box">
                                     <div class="areas-of-practice__icon">
                                         <span class="fas fa-tachometer-alt"></span>
@@ -596,7 +591,6 @@
 
     @endif
 
-
     @if(count($latestPosts) > 2)
 
       <!--Blog One Start-->
@@ -653,7 +647,6 @@
     <!--Blog One End-->
 
     @endif
-
 
     @if(count($clients) > 0)
 

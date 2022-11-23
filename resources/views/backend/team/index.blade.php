@@ -53,7 +53,7 @@
                                     Please enter the post.
                                 </div>
                             </div>
-<<<<<<< HEAD
+
                             <div class="form-group mb-3">
                                 <label>FB link </label>
                                 <input type="url" class="form-control" name="fb">
@@ -66,22 +66,6 @@
                                 <input type="url" class="form-control" name="twitter">
                                 <div class="invalid-feedback">
                                     Please enter the twitter link.
-=======
-
-                            <div class="form-group mb-3">
-                                <label>Description <span class="text-muted text-danger">*</span></label>
-                                <textarea class="form-control" rows="6" maxlength="50" name="description" required></textarea>
-                                <div class="invalid-feedback">
-                                    Please write the short description about service category.
-                                </div>
-                            </div>
-
-                            <div class="form-group mb-3">
-                                <label>FB link </label>
-                                <input type="url" class="form-control" name="fb">
-                                <div class="invalid-feedback">
-                                    Please enter the fb link.
->>>>>>> d201af4814aa5cbc7299cb70a8d1f60260eab760
                                 </div>
                             </div>
 
@@ -115,16 +99,6 @@
                                 </label>
                             </div>
                             <div class="form-group mb-3">
-<<<<<<< HEAD
-=======
-                                <label>Twitter link </label>
-                                <input type="url" class="form-control" name="twitter">
-                                <div class="invalid-feedback">
-                                    Please enter the twitter link.
-                                </div>
-                            </div>
-                            <div class="form-group mb-3">
->>>>>>> d201af4814aa5cbc7299cb70a8d1f60260eab760
                                 <label>Instagram link </label>
                                 <input type="url" class="form-control" name="insta">
                                 <div class="invalid-feedback">
@@ -163,7 +137,6 @@
                                             <th>Team Image</th>
                                             <th>Name</th>
                                             <th>Post</th>
-                                            <th>Description</th>
                                             <th class="text-right">Action</th>
                                         </tr>
                                         </thead>
@@ -178,7 +151,6 @@
                                                     </td>
                                                     <td>{{ucfirst(@$team->name)}}</td>
                                                     <td>{{(!empty($team->post) ? $team->post:"")}}</td>
-                                                    <td>{{$team->description}}</td>
                                                     <td>
                                                         <div class="row">
 
@@ -224,11 +196,10 @@
                     {!! Form::open(['method'=>'PUT','class'=>'needs-validation updateteams','novalidate'=>'','enctype'=>'multipart/form-data']) !!}
 
                     <div class="modal-body">
-<<<<<<< HEAD
+
                         <h4 class="modal-title mb-3">Edit Teams</h4>
-=======
+
                         <h4 class="modal-title mb-3">Edit Clients</h4>
->>>>>>> d201af4814aa5cbc7299cb70a8d1f60260eab760
                         <div class="row">
 
                             <div class="col-md-7">
@@ -256,7 +227,6 @@
                                         </div>
 
                                         <div class="form-group mb-3">
-<<<<<<< HEAD
                                             <label>FB link </label>
                                             <input type="url" class="form-control" name="fb" id="fb">
                                             <div class="invalid-feedback">
@@ -268,22 +238,8 @@
                                             <input type="url" class="form-control" name="twitter" id="twitter">
                                             <div class="invalid-feedback">
                                                 Please enter the twitter link.
-=======
-                                            <label>Description <span class="text-muted text-danger">*</span></label>
-                                            <textarea class="form-control" rows="6" maxlength="50" name="description" id="description" required></textarea>
-                                            <div class="invalid-feedback">
-                                                Please write the description.
                                             </div>
                                         </div>
-                                        <div class="form-group mb-3">
-                                            <label>FB link </label>
-                                            <input type="url" class="form-control" name="fb" id="fb">
-                                            <div class="invalid-feedback">
-                                                Please enter the fb link.
->>>>>>> d201af4814aa5cbc7299cb70a8d1f60260eab760
-                                            </div>
-                                        </div>
-
 
                                     </div>
                                 </div>
@@ -311,16 +267,6 @@
                                                 <i class="ri-image-edit-line align-bottom me-1"></i> Update Image
                                             </label>
                                         </div>
-<<<<<<< HEAD
-=======
-                                        <div class="form-group mb-3">
-                                            <label>Twitter link </label>
-                                            <input type="url" class="form-control" name="twitter" id="twitter">
-                                            <div class="invalid-feedback">
-                                                Please enter the twitter link.
-                                            </div>
-                                        </div>
->>>>>>> d201af4814aa5cbc7299cb70a8d1f60260eab760
 
                                         <div class="form-group mb-3">
                                             <label>Instagram link </label>
@@ -469,10 +415,6 @@
                         if(dataResult.post !== null){
                             $('#post').attr('value',dataResult.post);
                         }
-<<<<<<< HEAD
-=======
-                        $('#description').text(dataResult.description);
->>>>>>> d201af4814aa5cbc7299cb70a8d1f60260eab760
                         if(dataResult.fb !== null){
                             $('#fb').attr('value',dataResult.fb);
                         }
