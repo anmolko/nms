@@ -36,6 +36,7 @@ Route::get('/categories', function () {
 Route::get('/contact-us', 'App\Http\Controllers\FrontController@contact')->name('contact');
 Route::get('/testimonial', 'App\Http\Controllers\FrontController@testimonial')->name('testimonial');
 Route::post('/contact-us', 'App\Http\Controllers\FrontController@contactStore')->name('contact.store');
+Route::get('/team', 'App\Http\Controllers\FrontController@team')->name('team');
 
 Route::get('/album', 'App\Http\Controllers\FrontController@album')->name('album');
 Route::get('/album/{album}/', 'App\Http\Controllers\FrontController@albumgallery')->name('album.gallery');

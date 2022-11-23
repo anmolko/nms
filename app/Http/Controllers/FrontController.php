@@ -19,6 +19,7 @@ use App\Models\Client;
 use App\Models\Album;
 use App\Models\AlbumGallery;
 use App\Models\Testimonial;
+use App\Models\Team;
 use App\Models\PageSection;
 use App\Models\SectionGallery;
 use App\Notifications\NewCareerNotification;
@@ -53,8 +54,9 @@ class FrontController extends Controller
     protected $demand = null;
     protected $album = null;
     protected $album_gallery = null;
+    protected $team = null;
 
-    public function __construct(Testimonial $testimonial, Job $demand,AlbumGallery $album_gallery,Album $album,Slider $slider,HomePage $home_page,Client $client,PageSection $pagesection,Page $page,Service $service,Setting $setting,BlogCategory $bcategory,Blog $blog)
+    public function __construct(Team $team,Testimonial $testimonial, Job $demand,AlbumGallery $album_gallery,Album $album,Slider $slider,HomePage $home_page,Client $client,PageSection $pagesection,Page $page,Service $service,Setting $setting,BlogCategory $bcategory,Blog $blog)
     {
         $this->setting = $setting;
         $this->bcategory = $bcategory;
@@ -68,6 +70,7 @@ class FrontController extends Controller
         $this->demand = $demand;
         $this->testimonial = $testimonial;
         $this->album = $album;
+        $this->team = $team;
         $this->album_gallery = $album_gallery;
     }
 
@@ -154,6 +157,13 @@ class FrontController extends Controller
         }
         return view('frontend.pages.album_gallery',compact('singleAlbum'));
     }
+
+    
+    public function team(){
+        $teams =$this->team->orderBy('order', 'asc')->get();
+        return view('frontend.pages.team',compact('teams'));
+    }
+
 
     public function faq()
     {
