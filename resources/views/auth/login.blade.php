@@ -5,10 +5,10 @@
     <meta charset="utf-8" />
     <title>Sign In | {{@$setting_data->website_name}} - Dashboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="@if(!empty(@$setting_data->website_description)) {{ucwords(@$setting_data->website_description)}} @else NMS recruitment Service Pvt. Ltd. @endif">
+    <meta name="description" content="@if(!empty(@$setting_data->website_description)) {{ucwords(@$setting_data->website_description)}} @else NMS Recruitment Service Pvt. Ltd. @endif">
     <meta name="author" content="Canosoft Technology" />
     <!-- App favicon -->
-    <link rel="shortcut icon" type="image/x-icon"  href="<?php if(@$setting_data->favicon){?>{{asset('/images/uploads/settings/'.@$setting_data->favicon)}}<?php }else{ echo "assets/backend/images/canosoft-favicon.png"; }?>">
+    <link rel="shortcut icon" type="image/x-icon"  href="<?php if(@$setting_data->favicon){?>{{asset('/images/settings/'.@$setting_data->favicon)}}<?php }else{ echo "assets/backend/images/canosoft-favicon.png"; }?>">
     <link rel="canonical" href="https://www.canosoft.com.np/" />
 
     <!-- Layout config Js -->
@@ -47,7 +47,7 @@
                     <div class="text-center mt-sm-5 mb-4 text-white-50">
                         <div>
                             <a href="/" class="d-inline-block auth-logo">
-                                <img src="<?php if(@$setting_data->logo_white){?>{{asset('/images/settings/'.@$setting_data->logo_white)}}<?php }else{ echo 'assets/backend/images/canosoft-logo.png'; }?>" alt="Logo" height="60">
+                                <img src="<?php if(@$setting_data->logo_white){?>{{asset('/images/settings/'.@$setting_data->logo_white)}}<?php }else{ echo 'assets/backend/images/canosoft-logo.png'; }?>" alt="Logo" height="100">
                             </a>
                         </div>
                         <p class="mt-3 fs-15 fw-medium">Admin Dashboard Access</p>

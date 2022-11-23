@@ -48,19 +48,19 @@
                     <div class="navbar-brand-box horizontal-logo">
                         <a href="{{route('dashboard')}}" class="logo logo-dark">
                             <span class="logo-sm">
-                                <img src="{{asset('assets/backend/images/canosoft-favicon.png')}}" alt="" height="25">
+                                <img src="{{asset('assets/backend/images/canosoft-favicon.png')}}" alt="" height="40">
                             </span>
                             <span class="logo-lg">
-                                    <img src="<?php if(@$setting_data->logo_white){?>{{asset('/images/settings/'.@$setting_data->logo_white)}}<?php }else{ echo '/assets/backend/images/canosoft-logo.png'; }?>" alt="Logo" height="55">
+                                    <img src="<?php if(@$setting_data->logo){?>{{asset('/images/settings/'.@$setting_data->logo)}}<?php }else{ echo '/assets/backend/images/canosoft-logo.png'; }?>" alt="Logo" height="55">
                             </span>
                         </a>
 
                         <a href="{{route('dashboard')}}" class="logo logo-light">
                             <span class="logo-sm">
-                                <img src="{{asset('assets/backend/images/canosoft-favicon.png')}}" alt="" height="25">
+                                <img src="{{asset('assets/backend/images/canosoft-favicon.png')}}" alt="" height="40">
                             </span>
                             <span class="logo-lg">
-                                <img src="<?php if(@$setting_data->logo_white){?>{{asset('/images/settings/'.@$setting_data->logo_white)}}<?php }else{ echo '/assets/backend/images/canosoft-logo.png'; }?>" alt="Logo" height="55">
+                                <img src="<?php if(@$setting_data->logo){?>{{asset('/images/settings/'.@$setting_data->logo)}}<?php }else{ echo '/assets/backend/images/canosoft-logo.png'; }?>" alt="Logo" height="55">
 
                             </span>
                         </a>
