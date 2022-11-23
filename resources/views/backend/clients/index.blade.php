@@ -54,8 +54,8 @@
                                 </div>
                             </div>
                             <div class="form-group mb-3">
-                                <label>Country</label>
-                                <select class="form-control select select2" name="country">
+                                <label>Country <span class="text-muted text-danger">*</span></label>
+                                <select class="form-control select select2" name="country" required>
                                     <option disabled>Select Country</option>
                                     @foreach($countries as $key => $value)
                                         <option value="{{$key}}">{{$value}}</option>
@@ -211,9 +211,9 @@
                                             </div>
                                         </div>
                                         <div class="form-group mb-3">
-                                            <label>Country</label>
+                                            <label>Country <span class="text-muted text-danger">*</span></label>
                                             <br>
-                                            <select class="form-control select select2" name="country" id="country">
+                                            <select class="form-control select select2" name="country" id="country" required>
                                                 <option disabled>Select Country</option>
                                                 @foreach($countries as $key => $value)
                                                     <option value="{{$key}}">{{$value}}</option>

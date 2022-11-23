@@ -158,7 +158,7 @@ class FrontController extends Controller
         return view('frontend.pages.album_gallery',compact('singleAlbum'));
     }
 
-    
+
     public function team(){
         $teams =$this->team->orderBy('order', 'asc')->get();
         return view('frontend.pages.team',compact('teams'));
@@ -592,7 +592,12 @@ class FrontController extends Controller
         return view('frontend.pages.blogs.search',compact('allPosts','query','latestPosts','bcategories'));
     }
 
+    public function clients(){
+        $clients      = Client::orderBy('country', 'asc')->get();
+        $countries    = CountryState::getCountries();
 
+        return view('frontend.pages.clients',compact('clients','countries'));
+    }
 
 
 

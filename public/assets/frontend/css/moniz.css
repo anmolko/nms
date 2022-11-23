@@ -11059,6 +11059,13 @@ body.boxed-wrapper {
     color:#fc653c;
 }
 
+.section-title__title a:hover span{
+    color:#f9cc43;
+}
+.section-title__title a:hover .text-last{
+    color:#fc653c!important;
+}
+
 .text-last{
     color: #f9cc43!important;
 }

@@ -652,6 +652,11 @@
 
         <!--Brand Two-->
         <section class="brand-one">
+            <div class="section-title text-center">
+                <span class="section-title__tagline">NMS Valuable list</span>
+                <h2 class="section-title__title"><a href="/clients">
+                    <span>Meet Our  </span> <span class="text-last">Clients</span> </a></h2>
+            </div>
             <div class="container">
                 <div class="thm-swiper__slider swiper-container" data-swiper-options='{"spaceBetween": 50, "slidesPerView": 5, "autoplay": { "delay": 5000 }, "breakpoints": {
                     "0": {

@@ -52,6 +52,7 @@ Route::get('/blog/categories/{slug}', 'App\Http\Controllers\FrontController@blog
 Route::get('/blog', 'App\Http\Controllers\FrontController@blogs')->name('blog.frontend');
 Route::get('/faq', 'App\Http\Controllers\FrontController@faq')->name('faq.frontend');
 
+Route::get('/clients', 'App\Http\Controllers\FrontController@clients')->name('client.frontend');
 
 //jobs
 Route::get('demand/search/', 'App\Http\Controllers\FrontController@searchDemand')->name('searchDemand');
