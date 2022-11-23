@@ -194,7 +194,12 @@
                                             <span class="section-title__tagline">{{ucfirst(@$homepage_info->welcome_subheading)}}</span>
                                     @endif
                                     @if(@$homepage_info->welcome_heading)
-                                        <h2 class="section-title__title"><span>{{ucwords(@$homepage_info->welcome_heading)}}</span></h2>
+                                        <h2 class="section-title__title">
+{{--                                            <span>{{ucwords(@$homepage_info->welcome_heading)}}</span>--}}
+                                            <span><?php
+                                                $split = explode(" ", ucwords(@$homepage_info->welcome_heading));?> {{preg_replace('/\W\w+\s*(\W*)$/', '$1', ucwords(@$homepage_info->welcome_heading))."\n"}}</span>
+                                            <span class="text-last">{{$split[count($split)-1]}}</span>
+                                        </h2>
                                     @endif
                                 </div>
 
@@ -317,7 +322,9 @@
                         <span class="section-title__tagline">{{ucfirst(@$homepage_info->mv_subheading)}}</span>
                     @endif
                     @if(@$homepage_info->mv_heading)
-                        <h2 class="section-title__title"><span>{{ucwords(@$homepage_info->mv_heading)}}</span></h2>
+                        <h2 class="section-title__title"><span><?php
+                                $split = explode(" ", $homepage_info->mv_heading);?> {{preg_replace('/\W\w+\s*(\W*)$/', '$1', $homepage_info->mv_heading)."\n"}}</span>
+                            <span class="text-last">{{$split[count($split)-1]}}</span></h2>
                     @endif
 
                     <p class="services-one__text">{{ ucfirst(@$homepage_info->mv_description) }}</p>
@@ -375,7 +382,12 @@
                         <div class="areas-of-practice__top-left">
                             <div class="section-title text-left">
                                 <span class="section-title__tagline">{{ucfirst(@$homepage_info->core_main_subheading)}}</span>
-                                <h2 class="section-title__title">{{ucwords(@$homepage_info->core_main_heading)}}</h2>
+                                <h2 class="section-title__title">
+                                     <span><?php
+                                         $split = explode(" ", ucwords(@$homepage_info->core_main_heading));?> {{preg_replace('/\W\w+\s*(\W*)$/', '$1', ucwords(@$homepage_info->core_main_heading))."\n"}}</span>
+                                    <span class="text-last">{{$split[count($split)-1]}}</span>
+
+                                </h2>
                             </div>
                         </div>
                     </div>
@@ -525,7 +537,7 @@
                         <div class="testimonial-one__left">
                             <div class="section-title text-left">
                                 <span class="section-title__tagline">Customer feedback</span>
-                                <h2 class="section-title__title">What they are talking about NMS?</h2>
+                                <h2 class="section-title__title"><span>What are clients talking </span> <span class="text-last">about?</span></h2>
                             </div>
                             <div class="testimonial-one__btn-box">
                                 <a href="{{route('testimonial')}}" class="thm-btn testimonial-one__btn"><span>All feedbacks</span></a>
@@ -592,7 +604,9 @@
         <div class="container">
             <div class="section-title text-center">
                 <span class="section-title__tagline">Recent work completed</span>
-                <h2 class="section-title__title">Latest from the blog</h2>
+                <h2 class="section-title__title">
+
+                    <span>Latest from the </span> <span class="text-last">blog</span></h2>
             </div>
             <div class="row">
                 @foreach(@$latestPosts as $post)
@@ -687,3 +701,4 @@
     @endif
 
 @endsection
+

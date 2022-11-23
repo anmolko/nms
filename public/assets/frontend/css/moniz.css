@@ -11054,3 +11054,12 @@ body.boxed-wrapper {
 .text-centered{
     text-align: center;
 }
+
+.section-title__title span{
+    color:#fc653c;
+}
+
+.text-last{
+    color: #f9cc43!important;
+}
+
