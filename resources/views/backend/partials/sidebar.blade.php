@@ -120,6 +120,10 @@
                     <a class="nav-link menu-link @if(\Request::route()->getName() == 'clients.index') active @endif" href="{{route('clients.index')}}">
                         <i class="ri-user-2-line"></i> <span data-key="t-widgets">Clients</span>
                     </a>
+                </li> <li class="nav-item">
+                    <a class="nav-link menu-link @if(\Request::route()->getName() == 'teams.index') active @endif" href="{{route('teams.index')}}">
+                        <i class="ri-team-line"></i> <span data-key="t-widgets">Teams</span>
+                    </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link menu-link @if(\Request::route()->getName() == 'alluser') active @endif" href="{{route('alluser')}}">

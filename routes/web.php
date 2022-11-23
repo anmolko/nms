@@ -243,7 +243,18 @@ Route::group(['prefix' => 'auth', 'middleware' => ['auth']], function () {
     Route::put('/album-upload-gallery/{id}', 'App\Http\Controllers\AlbumController@uploadGallery')->name('album-gallery.update');
     Route::post('/album-gallery/image-delete', 'App\Http\Controllers\AlbumController@deleteGallery')->name('album-gallery.delete');
     Route::get('/album-gallery/{id}', 'App\Http\Controllers\AlbumController@getGallery')->name('album-gallery.display');
-    //End ofAlbum
+    //End of Album
+
+    //teams
+
+    Route::get('/teams', 'App\Http\Controllers\TeamController@index')->name('teams.index');
+    Route::get('/teams/create', 'App\Http\Controllers\TeamController@create')->name('teams.create');
+    Route::post('/teams', 'App\Http\Controllers\TeamController@store')->name('teams.store');
+    Route::put('/teams/{teams}', 'App\Http\Controllers\TeamController@update')->name('teams.update');
+    Route::delete('/teams/{teams}', 'App\Http\Controllers\TeamController@destroy')->name('teams.destroy');
+    Route::get('/teams/{teams}/edit', 'App\Http\Controllers\TeamController@edit')->name('teams.edit');
+    Route::post('/teams-sortable','App\Http\Controllers\TeamController@orderUpdate')->name('teams.order');
+    //End of teams
 });
 
 
