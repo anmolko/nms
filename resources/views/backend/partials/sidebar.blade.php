@@ -107,6 +107,11 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link menu-link @if(\Request::route()->getName() == 'service-category.index') active @endif" href="{{route('service-category.index')}}">
+                            <i class=" ri-price-tag-2-line"></i> <span data-key="t-widgets">Service Categories</span>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link menu-link @if(\Request::route()->getName() == 'formbuilder::forms.index' || \Request::route()->getName() == 'formbuilder::forms.create' || \Request::route()->getName() == 'formbuilder::forms.edit') active @endif" href="{{route('formbuilder::forms.index')}}">
                         <i class="ri-pages-line"></i> <span data-key="t-widgets">Forms</span>
                     </a>
