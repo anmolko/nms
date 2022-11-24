@@ -70,7 +70,7 @@
                             </div>
                             <h3 class="service-details__title">{{ucwords(@$singleService->title)}}</h3>
 
-                            <div class="service-details__text-1">{!! @$singleService->description !!} </div>
+                            <div class="service-details__text-1 justified">{!! @$singleService->description !!} </div>
                         </div>
                     </div>
                     <div class="col-xl-4 col-lg-5">
