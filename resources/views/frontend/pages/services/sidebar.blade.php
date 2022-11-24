@@ -1,4 +1,4 @@
-<div class="service-details__sidebar">
+<div class="service-details__sidebar" id="service-sidebar">
     <div class="service-details__sidebar-category">
         <h3 class="service-details__sidebar-title">Service List</h3>
         <ul class="service-details__sidebar-category-list list-unstyled">

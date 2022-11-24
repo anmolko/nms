@@ -17,6 +17,29 @@
 		color: #fc653c !important;
 	}
 
+    @media only screen and (min-width: 1000px) {
+
+    .sticky-sidebar{
+        width: 400px;
+        height:720px;
+
+
+    }
+    .sticky-sidebar.stick {
+        position:fixed;
+        /* position: -webkit-sticky; */
+        top: 80px;
+        z-index: 10;
+        /* border-radius: 0 0 0.5em 0.5em; */
+        right: 75px;
+        }
+    }
+    
+    #sticky-anchor{
+        display:none;
+    }
+ 
+    
     </style>
 @endsection
 @section('seo')
@@ -57,12 +80,13 @@
         <!--Page Header End-->
         
 
+
         <!--Service Details Start-->
         <section class="service-details">
             <div class="container">
                 <div class="row">
                    
-                    <div class="col-xl-8 col-lg-7">
+                    <div class="col-xl-8 col-lg-7 content">
                         <div class="service-details__left">
                            
                             <div class="service-details__img">
@@ -73,7 +97,9 @@
                             <div class="service-details__text-1 justified">{!! @$singleService->description !!} </div>
                         </div>
                     </div>
-                    <div class="col-xl-4 col-lg-5">
+                    <div id="sticky-anchor"></div>
+
+                    <div class="col-xl-4 col-lg-5 sticky-sidebar" >
 						@include('frontend.pages.services.sidebar')
 
                     </div>
@@ -86,6 +112,31 @@
 @endsection
 @section('js')
 <script>
+   
+   
+   function sticky_relocate() {
+            var window_top = $(window).scrollTop();
+            var footer_top = $(".sticky-stop").offset().top;
+            var div_top = $('#sticky-anchor').offset().top;
+            var div_height = $(".sticky-sidebar").height();
+
+            var padding = 80;  // tweak here or get from margins etc
+
+            if (window_top + div_height > footer_top - padding)
+                $('.sticky-sidebar').css({top: (window_top + div_height - footer_top + padding) * -1})
+            else if (window_top > div_top && window_top > 300) {
+                $('.sticky-sidebar').addClass('stick');
+                $('.sticky-sidebar').css({top: 120})
+            } else {
+                $('.sticky-sidebar').removeClass('stick');
+                $('.sticky-sidebar').css({top: 0})
+            }
+        }
+        $(function () {
+            $(window).scroll(sticky_relocate);
+            sticky_relocate();
+        });
+
 function fbShare(url) {
   window.open("https://www.facebook.com/sharer/sharer.php?u=" + url, "_blank", "toolbar=no, scrollbars=yes, resizable=yes, top=200, left=500, width=600, height=400");
 }

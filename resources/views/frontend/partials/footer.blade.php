@@ -1,6 +1,6 @@
 
         <!--Site Footer One Start-->
-        <footer class="site-footer">
+        <footer class="site-footer sticky-stop" >
             <div class="site-footer__top">
                 <div class="site-footer-top-bg"
                     style="background-image: url({{asset('assets/frontend/images/backgrounds/site-footer-bg.jpg')}})"></div>
