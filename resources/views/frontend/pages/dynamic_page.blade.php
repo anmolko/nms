@@ -163,9 +163,9 @@
                           <h2 class="section-title__title">{{ucwords(@$basic_elements->heading)}}</h2>
                           @endif
                     </div>
-                    <p class="reasons__text">
+                    <div class="reasons__text justified">
                     {!! @$basic_elements->description !!}
-                    </p>
+                    </div>
                     @if(@$basic_elements->button)
                         <a href="{{@$basic_elements->button_link}}" class="thm-btn reasons__btn" style="margin-top: 25px;"><span>{{ucwords(@$basic_elements->button)}}</span></a>
                       @endif
@@ -407,7 +407,7 @@
                           <h2 class="section-title__title">{{ucwords(@$basic_elements2->heading)}}</h2>
                           @endif
                     </div>
-                    <p class="reasons-one__text-1">{!! @$basic_elements2->description !!}</p>
+                    <div class="reasons-one__text-1 justified">{!! @$basic_elements2->description !!}</div>
                     @if(@$basic_elements2->button)
                         <a href="{{@$basic_elements2->button_link}}" class="thm-btn"><span>{{ucwords(@$basic_elements2->button)}}</span></a>
                       @endif
@@ -463,8 +463,8 @@
                         <div class="col-md-12 col-lg-7">
                             <div class="about-me__content">
                                 <h3 class="about-me__title">{{$directors_message->heading}}</h3>
-                                <div class="about-me__summery" style="margin-top: 10px;">
-                                    <p>  {!! @$directors_message->description !!}</p>
+                                <div class="about-me__summery justified" style="margin-top: 10px;">
+                                    {!! @$directors_message->description !!}
                                 </div>
                                 <p class="get-in-touch__locatins-count-text">{{$directors_message->subheading}}</p>
                             </div><!-- /.about-me__content -->
