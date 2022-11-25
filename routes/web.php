@@ -277,6 +277,16 @@ Route::group(['prefix' => 'auth', 'middleware' => ['auth']], function () {
     Route::get('/press-release/{press}/edit', 'App\Http\Controllers\PressReleaseController@edit')->name('press-release.edit');
     Route::patch('/press-release/{id}/update', 'App\Http\Controllers\PressReleaseController@updateStatus')->name('press-release-status.update');
 
+    //career
+
+    Route::get('/career', 'App\Http\Controllers\CareerController@index')->name('career.index');
+    Route::get('/career/create', 'App\Http\Controllers\CareerController@create')->name('career.create');
+    Route::post('/career', 'App\Http\Controllers\CareerController@store')->name('career.store');
+    Route::put('/career/{career}', 'App\Http\Controllers\CareerController@update')->name('career.update');
+    Route::delete('/career/{career}', 'App\Http\Controllers\CareerController@destroy')->name('career.destroy');
+    Route::get('/career/{career}/edit', 'App\Http\Controllers\CareerController@edit')->name('career.edit');
+
+    //End of Career
 });
 
 

@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\JobCreateRequest;
-use App\Http\Requests\JobUpdateRequest;
+
 use App\Models\Client;
 use App\Models\Job;
 use App\Models\JobCategory;
-use App\Models\ServiceCategory;
 use Carbon\Carbon;
 use CountryState;
 use Illuminate\Http\Request;

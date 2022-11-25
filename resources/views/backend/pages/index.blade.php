@@ -254,6 +254,7 @@
                                                         <i class="ri-more-fill fs-17"></i>
                                                     </a>
                                                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink2">
+                                                        <a class="dropdown-item" href="{{route('page',$page->slug)}}" target="_blank"><i class=" ri-eye-line align-middle"></i> Frontend View </a>
                                                         <li><a class="dropdown-item" href="{{route('pages.edit',$page->id)}}"><i class="ri-edit-line me-2 align-middle"></i>Edit Page</a></li>
                                                         <li><a class="dropdown-item action-delete" hrm-delete-per-action="{{route('pages.destroy',$page->id)}}"><i class="ri-delete-bin-6-line me-2 align-middle"></i>Delete</a></li>
                                                     </ul>
@@ -263,38 +264,6 @@
                                         @endforeach
                                     @endif
                                     </tbody>
-
-{{--                                    <tbody id="service-list">--}}
-{{--                                    @if(!empty($services))--}}
-{{--                                        @foreach($services as  $service)--}}
-{{--                                            <tr id="service-individual-{{@$service->id}}">--}}
-{{--                                                <td >--}}
-{{--                                                    <img src="{{asset('/images/service/'.@$service->banner_image)}}" alt="{{@$blog->title}}" class="figure-img rounded avatar-lg">--}}
-{{--                                                </td>--}}
-{{--                                                <td >--}}
-{{--                                                    {{ ucwords(@$service->title) }}--}}
-{{--                                                </td><td >--}}
-{{--                                                    {{ @$service->slug}}--}}
-{{--                                                </td>--}}
-{{--                                                <td >--}}
-{{--                                                    <div class="row">--}}
-
-{{--                                                        <div class="col text-center dropdown">--}}
-{{--                                                            <a href="javascript:void(0);" id="dropdownMenuLink2" data-bs-toggle="dropdown" aria-expanded="false">--}}
-{{--                                                                <i class="ri-more-fill fs-17"></i>--}}
-{{--                                                            </a>--}}
-{{--                                                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink2">--}}
-{{--                                                                <li><a class="dropdown-item" href="{{route('services.edit',$service->id)}}"><i class="ri-pencil-fill me-2 align-middle"></i>Edit</a></li>--}}
-{{--                                                                <li><a class="dropdown-item cs-service-remove" cs-delete-route="{{route('services.destroy',$service->id)}}"><i class="ri-delete-bin-6-line me-2 align-middle"></i>Delete</a></li>--}}
-{{--                                                            </ul>--}}
-{{--                                                        </div>--}}
-{{--                                                    </div>--}}
-
-{{--                                                </td>--}}
-{{--                                            </tr>--}}
-{{--                                        @endforeach--}}
-{{--                                    @endif--}}
-{{--                                    </tbody>--}}
                                 </table>
                             </div>
                         </div><!--end row-->

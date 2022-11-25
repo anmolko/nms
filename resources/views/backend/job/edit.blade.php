@@ -282,14 +282,16 @@
             $('#start_date').datepicker({
                 autoclose: "true",
                 clearBtn:"true",
-                format:"dd/mm/yyyy"
+                format:"dd/mm/yyyy",
+                todayHighlight: "true",
 
 
             });
             $('#end_date').datepicker({
                 autoclose: "true",
                 clearBtn:"true",
-                format:"dd/mm/yyyy"
+                format:"dd/mm/yyyy",
+                todayHighlight: "true",
 
             });
         });
