@@ -1502,8 +1502,8 @@
 
 @section('js')
 {{--    <!-- <script src="{{asset('assets/backend/plugins/ckeditor/ckeditor.js')}}"></script> -->--}}
-{{--    @include('backend.ckeditor')--}}
-    <script src="{{asset('assets/backend/libs/@ckeditor/ckeditor5-build-classic/build/ckeditor.js')}}"></script>
+    @include('backend.ckeditor')
+{{--    <script src="{{asset('assets/backend/libs/@ckeditor/ckeditor5-build-classic/build/ckeditor.js')}}"></script>--}}
     <script src="{{asset('assets/backend/plugins/dropzone/dropzone.js')}}"></script>
     <script src="{{asset('assets/backend/plugins/dropzone/dropzone.config.js')}}"></script>
 
@@ -1597,32 +1597,32 @@
         function createEditor ( elementId ) {
             return ClassicEditor
                 .create( document.querySelector( '#' + elementId ), {
-                toolbar : {
-                    items: [
-                        'heading', '|',
-                        'bold', 'italic', 'link', '|',
-                        'outdent', 'indent', '|',
-                        'bulletedList', 'numberedList', '|',
-                        'insertTable', 'blockQuote', '|',
-                        'undo', 'redo'
-                    ],
-                },
-                link: {
-                    // Automatically add target="_blank" and rel="noopener noreferrer" to all external links.
-                    addTargetToExternalLinks: true,
+                    toolbar : {
+                        items: [
+                            'heading', '|',
+                            'bold', 'italic', 'link', '|',
+                            'outdent', 'indent', '|',
+                            'bulletedList', 'numberedList', '|',
+                            'insertTable', 'blockQuote', '|',
+                            'undo', 'redo'
+                        ],
+                    },
+                    link: {
+                        // Automatically add target="_blank" and rel="noopener noreferrer" to all external links.
+                        addTargetToExternalLinks: true,
 
-                    // Let the users control the "download" attribute of each link.
-                    decorators: [
-                        {
-                            mode: 'manual',
-                            label: 'Downloadable',
-                            attributes: {
-                                download: 'download'
+                        // Let the users control the "download" attribute of each link.
+                        decorators: [
+                            {
+                                mode: 'manual',
+                                label: 'Downloadable',
+                                attributes: {
+                                    download: 'download'
+                                }
                             }
-                        }
-                    ]
-                },
-            } )
+                        ]
+                    },
+                } )
                 .then( editor => {
                     window.editor = editor;
                     editor.model.document.on( 'change:data', () => {

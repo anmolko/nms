@@ -268,6 +268,15 @@ Route::group(['prefix' => 'auth', 'middleware' => ['auth']], function () {
     Route::get('/service-category/{servicecat}/edit', 'App\Http\Controllers\ServiceCategoryController@edit')->name('service-category.edit');
 
     //End of service category
+
+    Route::get('/press-release', 'App\Http\Controllers\PressReleaseController@index')->name('press-release.index');
+    Route::get('/press-release/create', 'App\Http\Controllers\PressReleaseController@create')->name('press-release.create');
+    Route::post('/press-release', 'App\Http\Controllers\PressReleaseController@store')->name('press-release.store');
+    Route::put('/press-release/{press}', 'App\Http\Controllers\PressReleaseController@update')->name('press-release.update');
+    Route::delete('/press-release/{press}', 'App\Http\Controllers\PressReleaseController@destroy')->name('press-release.destroy');
+    Route::get('/press-release/{press}/edit', 'App\Http\Controllers\PressReleaseController@edit')->name('press-release.edit');
+    Route::patch('/press-release/{id}/update', 'App\Http\Controllers\PressReleaseController@updateStatus')->name('press-release-status.update');
+
 });
 
 
