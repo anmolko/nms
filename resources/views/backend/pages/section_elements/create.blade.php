@@ -1176,7 +1176,106 @@
                                      {!! Form::close() !!}
                                  @endif
 
-                                 @if($value == 'slider_list')
+                                @if($value == 'video_section')
+                                        @if(sizeof($video_section_elements) !== 0)
+                                            {!! Form::open(['route' => 'section-elements.tablistUpdate','method'=>'post','class'=>'needs-validation','id'=>'video-section-form','novalidate'=>'']) !!}
+                                        @else
+                                            {!! Form::open(['route' => 'section-elements.store','method'=>'post','class'=>'needs-validation','id'=>'video-section-form','novalidate'=>'']) !!}
+                                        @endif
+
+                                        <div class="row" id="video-section-form-ajax">
+                                            <input type="hidden" class="form-control" value="{{@$video_section_elements}}" name="video_elements">
+
+                                            <div class="col-md-12">
+                                                <div class="card ctm-border-radius shadow-sm flex-fill">
+                                                    <div class="card-header">
+                                                        <h4 class="card-title mb-0">
+                                                            Video section details
+                                                        </h4>
+                                                        <p class="text-danger text-sm">*Please enter the full url as shown below: </p>
+                                                        <p class="text-info text-sm"> 1. https://www.youtube.com/watch?v=ly939bnZUrE (youtube) <br/> 2. https://vimeo.com/687802653 (vimeo)</p>
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <input type="hidden" class="form-control" value="{{$key}}" name="page_section_id" required>
+                                                        <input type="hidden" class="form-control" value="{{$value}}" name="section_name" required>
+
+                                                        <div id="multi-field-wrapper">
+
+                                                            @if(count($video_section_elements)>0)
+                                                                <div id="multi-fields">
+                                                                    @foreach($video_section_elements as $key=>$value)
+                                                                        <div class="multi-field custom-card" style="border-bottom: double #e3e3e3; margin-bottom: 1rem ">
+                                                                            <label>Video Type </label>
+                                                                            <div class="input-group mb-3">
+                                                                                <select class="form-control shadow-none" name="heading[]" id="header_0" required>
+                                                                                    <option value disabled readonly> Select Video Type</option>
+                                                                                    <option value="youtube" {{($value->heading == 'youtube') ? "selected":""}}> YouTube </option>
+                                                                                    <option value="vimeo"  {{($value->heading == 'vimeo') ? "selected":""}}> Vimeo </option>
+                                                                                </select>
+                                                                                <button class="btn btn-danger remove-field"><i class="ri-delete-bin-line" aria-hidden="true"></i></button>
+                                                                                <div class="invalid-feedback">
+                                                                                    Please select the video type.
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="row mb-3 attribute-values" id="addValues">
+                                                                                <div class="col-md-12 col-6">
+                                                                                    <label>Video Link </label>
+                                                                                    <input type="url" class="form-control" name="description[]" value="{{$value->description}}" required/>
+                                                                                    <input type="hidden" class="form-control" name="id[]" value="{{$value->id}}"/>
+                                                                                    <div class="invalid-feedback">
+                                                                                        Please enter the link.
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+                                                                    @endforeach
+                                                                </div>
+                                                            @else
+                                                                <div id="multi-fields">
+                                                                    <div class="multi-field custom-card" style="border-bottom: double #e3e3e3; ">
+                                                                        <label>Video Type </label>
+                                                                        <div class="input-group mb-3">
+                                                                            <select class="form-control shadow-none" name="heading[]" id="header_0" required>
+                                                                                <option value disabled readonly selected> Select Video Type</option>
+                                                                                <option value="youtube"> YouTube </option>
+                                                                                <option value="vimeo"> Vimeo </option>
+                                                                            </select>
+                                                                            <button class="btn btn-danger remove-field"><i class="ri-delete-bin-line" aria-hidden="true"></i></button>
+                                                                        </div>
+                                                                        <div class="row mb-3 attribute-values" id="addValues">
+                                                                            <div class="col-md-12 col-6">
+                                                                                <label>Video Link </label>
+                                                                                <input type="url" class="form-control" name="description[]" required/>
+                                                                                <div class="invalid-feedback">
+                                                                                    Please enter the link.
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                            @endif
+
+                                                            <a href="javascript:void(0)" class="btn btn-warning w-sm" id="add-field"><i class="fa fa-copy"></i> Add More </a>
+
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="text-center mt-3" id="video-section-form-button">
+                                            <button id="video-section-form-submit" class="btn btn-success w-sm mb-4">
+                                                {{(@$video_section_elements !==null)? "Update Details":"Add Details"}}
+                                            </button>
+                                        </div>
+                                        {!! Form::close() !!}
+
+                                    @endif
+
+
+                                @if($value == 'slider_list')
                                      @if(sizeof($slider_list_elements) !== 0)
                                          {!! Form::open(['route' => 'section-elements.tablistUpdate','method'=>'post','class'=>'needs-validation','id'=>'slider-list-form','novalidate'=>'','enctype'=>'multipart/form-data']) !!}
                                      @else
@@ -1710,6 +1809,7 @@
             });
 
         }
+
         if($.inArray("directors_message", section_list) !== -1) {
 
             $("#directors-form").submit(function(event){
@@ -1725,6 +1825,23 @@
             });
 
         }
+
+        if($.inArray("video_section", section_list) !== -1) {
+
+            $("#video-section-form").submit(function(event){
+                event.preventDefault(); //prevent default action
+                if (!this.checkValidity()) { return false; }
+                var post_url       = $(this).attr("action"); //get form action url
+                var request_method = $(this).attr("method"); //get form GET/POST method
+                var form_data      = new FormData(this); //Creates new FormData object
+                var divID          = $(this).attr('id')+'-ajax';
+                var buttonID       = $(this).attr('id')+'-button';
+                ElementData(post_url,request_method,form_data,divID,buttonID);
+
+            });
+
+        }
+
 
         if($.inArray("basic_section2", section_list) !== -1) {
 

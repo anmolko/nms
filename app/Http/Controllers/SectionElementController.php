@@ -71,6 +71,8 @@ class SectionElementController extends Controller
         $slider_list_elements = "";
         $icon_title_elements = "";
         $process_elements = "";
+        $video_section_elements = "";
+
         foreach ($page_section as $section){
             $sections[$section->id] = $section->section_slug;
             if($section->section_slug == 'basic_section'){
@@ -95,6 +97,11 @@ class SectionElementController extends Controller
                 $call2_elements = SectionElement::with('section')
                     ->where('page_section_id', $section->id)
                     ->first();
+            }
+            else if ($section->section_slug == 'video_section'){
+                $video_section_elements = SectionElement::with('section')
+                    ->where('page_section_id', $section->id)
+                    ->get();
             }
             else if ($section->section_slug == 'background_image_section'){
                 $bgimage_elements = SectionElement::with('section')
@@ -147,7 +154,7 @@ class SectionElementController extends Controller
         }
 
 
-        return view('backend.pages.section_elements.create',compact( 'page','directors_message','sections','basic_elements2','process_num','process_elements','map_descp','icon_title_elements','location_map','video_descp_elements','list_2','list_3','basic_elements','call1_elements','gallery2_elements','bgimage_elements','call2_elements','flash_elements','gallery_elements','header_descp_elements','accordian1_elements','accordian2_elements','slider_list_elements','contact_info_elements','id'));
+        return view('backend.pages.section_elements.create',compact( 'page','video_section_elements','directors_message','sections','basic_elements2','process_num','process_elements','map_descp','icon_title_elements','location_map','video_descp_elements','list_2','list_3','basic_elements','call1_elements','gallery2_elements','bgimage_elements','call2_elements','flash_elements','gallery_elements','header_descp_elements','accordian1_elements','accordian2_elements','slider_list_elements','contact_info_elements','id'));
     }
 
     /**
@@ -201,6 +208,19 @@ class SectionElementController extends Controller
             }
             $status = SectionElement::create($data);
         }
+        elseif ($section_name == 'video_section'){
+            $type = count($request->input('heading'));
+            for ($i=0;$i<$type;$i++){
+                $data=[
+                    'header'                 => $request->input('heading')[$i],
+                    'page_section_id'        => $section_id,
+                    'description'            => $request->input('description')[$i],
+                    'created_by'             => Auth::user()->id,
+                ];
+                $status = SectionElement::create($data);
+            }
+        }
+
         else if($section_name == 'basic_section2'){
             $data=[
                 'heading'                => $request->input('heading'),
@@ -735,6 +755,37 @@ class SectionElementController extends Controller
                     $status         = $delete_element->delete();
                 }
             }
+        }
+        elseif ($section_name == 'video_section') {
+            $type = count($request->input('heading'));
+            $db_elements     = json_decode($request->input('video_elements'),true);
+            $db_elements_id  = array_map(function($item){ return $item['id']; }, $db_elements);
+            for ($i=0;$i<$type;$i++){
+                if($request->input('id')[$i] == null){
+                    $data=[
+                        'heading'               => $request->input('heading')[$i],
+                        'description'           => $request->input('description')[$i],
+                        'page_section_id'       => $section_id,
+                        'created_by'            => Auth::user()->id,
+                    ];
+                    $status = SectionElement::create($data);
+                }
+                else{
+                    $video                      = SectionElement::find($request->input('id')[$i]);
+                    $video->heading             = $request->input('heading')[$i];
+                    $video->description         = $request->input('description')[$i];
+                    $video->page_section_id     = $section_id;
+                    $video->updated_by          = Auth::user()->id;
+                    $status                     = $video->update();
+                }
+            }
+            foreach ($db_elements_id as $key=>$value){
+                if(!in_array($value,$request->input('id'))){
+                    $delete_element = SectionElement::find($value);
+                    $status         = $delete_element->delete();
+                }
+            }
+
         }
         elseif ($section_name == 'slider_list') {
             $list3_num   = $request->input('list_number_3');

@@ -268,6 +268,22 @@
                             </div>
                             <div class="card shadow-none">
                                 <div class="card-header">
+                                    <h5 class="card-title text-primary mb-0">Video Section</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <label class='image-checkbox {{(in_array('video_section', $sections) ? "image-checkbox-checked":"")}}'>
+                                                <img class="img-responsive" src="{{asset('assets/backend/img/page_sections/video_section.png')}}" />
+                                                <input type="checkbox" name="section[]" value="video_section" id="video_section.png" {{(in_array('video_section', $sections) ? "checked":"")}} />
+                                                <i class="fa fa-check hidden"></i>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card shadow-none">
+                                <div class="card-header">
                                     <h5 class="card-title text-primary mb-0">Map and Description</h5>
                                 </div>
                                 <div class="card-body">
