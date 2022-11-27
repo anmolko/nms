@@ -11070,3 +11070,117 @@ body.boxed-wrapper {
     color: #f9cc43!important;
 }
 
+
+
+/***Top  Bar Design**/
+
+
+.topbar {
+  position: relative;
+  padding: 0 15px;
+  z-index: 91;
+}
+@media only screen and (max-width: 646px)  {
+  .topbar {
+  display: none;
+  }
+}
+
+@media (min-width: 992px) {
+  .topbar {
+  padding: 0 30px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .topbar {
+  padding: 0 60px;
+  }
+}
+
+  .topbar-items.nav.pull-left {
+      padding-left: 15px;
+  }
+  .pull-left {
+      float: left;
+  }
+  .topbar-items, .logobar-items {
+      margin: 0;
+  }
+
+  ul.topbar-items.nav>li {
+  display: inline-block;
+  float: left;
+}
+
+.topbar-items>li {
+  height: 50px;
+  line-height: 50px;
+}
+
+.topbar-items .nav-item-inner{
+  padding-right: 30px;
+}
+
+
+
+.pull-right {
+  float: right;
+}
+
+ul.nav.social-icons {
+  display: inline-block;
+}
+
+.topbar ul.social-icons>li {
+  border: solid 1px rgb(236 236 236/45%);
+  border-top: 0;
+  border-right: 0;
+}
+
+.topbar ul.social-icons>li>a {
+  margin-right: 0;
+}
+.topbar ul.social-icons>li>a {
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  padding: 0 15px;
+}
+
+ul.social-icons>li {
+  text-align: center;
+  text-align: -webkit-center;
+  padding: 0;
+  display: inline-block;
+  float: left;
+}
+
+.topbar-items .social-icons li a i {
+}
+
+
+ul.social-icons.social-white>li a, ul.social-icons.social-h-white>li a:hover {
+  color: #fff;
+}
+
+.topbar ul.social-icons>li:last-child {
+  border-right: solid 1px rgb(236 236 236/45%);
+}
+.topbar {
+  color: #ffffff;
+  background: rgb(252 101 60);
+  border-bottom: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: rgba(255, 255, 255, 0.07);
+  font-size: 16px;
+}
+
+div i.far.fa-registered,div i.far.fa-envelope {
+  padding-right: 5px;
+  color:white;
+}
+
+.header-email a{
+  color:white;
+}
