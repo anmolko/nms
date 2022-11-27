@@ -11169,7 +11169,7 @@ ul.social-icons.social-white>li a, ul.social-icons.social-h-white>li a:hover {
 }
 .topbar {
   color: #ffffff;
-  background: rgb(252 101 60);
+  background: rgb(236 28 36);
   border-bottom: 1px;
   border-bottom-style: solid;
   border-bottom-color: rgba(255, 255, 255, 0.07);
@@ -11181,6 +11181,11 @@ div i.far.fa-registered,div i.far.fa-envelope {
   color:white;
 }
 
-.header-email a{
+.header-phone span{
+  color:white;
+  padding-right: 10px;
+}
+
+.header-email a,.header-phone a{
   color:white;
 }

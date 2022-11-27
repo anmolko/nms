@@ -121,7 +121,13 @@
                             </ul>
                         </div>
                     </li>
-                    
+                    <li class="nav-item">
+                        <div class="nav-item-inner">
+                            <div class="header-phone"><span class="icon-phone-call"></span>
+                                    <a href="tel:@if(!empty(@$setting_data->phone)) {{@$setting_data->phone}} @else +9771238798 @endif">@if(!empty(@$setting_data->phone)) {{@$setting_data->phone}} @else +9771238798 @endif</a>
+                            </div>
+                        </div>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -273,16 +279,7 @@
                         @endif
                     </ul>
                 </div>
-                <div class="main-menu-wrapper__right">
-                    <div class="main-menu-wrapper__right-contact-box">
-                        <div class="main-menu-wrapper__right-contact-icon">
-                            <span class="icon-phone-call"></span>
-                        </div>
-                        <div class="main-menu-wrapper__right-contact-number">
-                            <a href="tel:@if(!empty(@$setting_data->phone)) {{@$setting_data->phone}} @else +9771238798 @endif">@if(!empty(@$setting_data->phone)) {{@$setting_data->phone}} @else +9771238798 @endif</a>
-                        </div>
-                    </div>
-                </div>
+
             </div>
         </nav>
     </header>
