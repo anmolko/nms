@@ -22,6 +22,7 @@ use App\Models\Testimonial;
 use App\Models\Team;
 use App\Models\PageSection;
 use App\Models\SectionGallery;
+use App\Models\ServiceCategory;
 use App\Notifications\NewCareerNotification;
 use App\Notifications\NewServiceNotification;
 use App\Notifications\OtherNotification;
@@ -55,14 +56,16 @@ class FrontController extends Controller
     protected $album = null;
     protected $album_gallery = null;
     protected $team = null;
+    protected $S_category = null;
 
-    public function __construct(Team $team,Testimonial $testimonial, Job $demand,AlbumGallery $album_gallery,Album $album,Slider $slider,HomePage $home_page,Client $client,PageSection $pagesection,Page $page,Service $service,Setting $setting,BlogCategory $bcategory,Blog $blog)
+    public function __construct(ServiceCategory $S_category,Team $team,Testimonial $testimonial, Job $demand,AlbumGallery $album_gallery,Album $album,Slider $slider,HomePage $home_page,Client $client,PageSection $pagesection,Page $page,Service $service,Setting $setting,BlogCategory $bcategory,Blog $blog)
     {
         $this->setting = $setting;
         $this->bcategory = $bcategory;
         $this->blog = $blog;
         $this->service = $service;
         $this->page = $page;
+        $this->S_category = $S_category;
         $this->pagesection = $pagesection;
         $this->client = $client;
         $this->slider = $slider;
@@ -600,5 +603,16 @@ class FrontController extends Controller
     }
 
 
+    
+    public function category(){
+        $service_categories =$this->S_category->orderBy('name', 'asc')->get();
+        return view('frontend.pages.category.index',compact('service_categories'));
+    }
+
+    public function categorySingle($slug){
+        $singleService = $this->S_category->where('slug', $slug)->first();
+        $service_categories = $this->S_category->orderBy('name', 'asc')->get();
+        return view('frontend.pages.category.single',compact('singleService','service_categories'));
+    }
 
 }
