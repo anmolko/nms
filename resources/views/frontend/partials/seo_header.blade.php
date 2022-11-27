@@ -66,9 +66,16 @@
 		gtag('config', '{{@$setting_data->google_analytics}}');
 		</script>
     <style>
-      /* .main-menu .navbar-collapse li.active a {
-          color: #fc653c;
-      } */
+        span.register-num {
+            color: #fefefe;
+            font-size: 16px;
+            font-weight: 400;
+            text-align: center;
+        }
+
+        span.register-num p {
+            margin: 0px;
+        }
     </style>
         @stack('styles')
 
@@ -228,16 +235,15 @@
                         @endif
                     </ul>
                 </div>
-                <div class="main-menu-wrapper__right">
-                    <div class="main-menu-wrapper__right-contact-box">
-                        <div class="main-menu-wrapper__right-contact-icon">
-                            <span class="icon-phone-call"></span>
-                        </div>
-                        <div class="main-menu-wrapper__right-contact-number">
-                            <a href="tel:@if(!empty(@$setting_data->phone)) {{@$setting_data->phone}} @else +9771238798 @endif">@if(!empty(@$setting_data->phone)) {{@$setting_data->phone}} @else +9771238798 @endif</a>
+                <div class="main-menu-two-wrapper__right">
+                        <div class="main-menu-wrapper__right-contact-box">
+                         
+                            <div class="main-menu-two-wrapper__social">
+                                <span class="register-num"><p>Register No.</p>@if(!empty(@$setting_data->registration_number)) {{@$setting_data->registration_number}} @else 1238798 @endif</span>
+                            </div>
+                           
                         </div>
                     </div>
-                </div>
             </div>
         </nav>
     </header>
