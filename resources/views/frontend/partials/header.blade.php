@@ -290,10 +290,13 @@
                             @endif
                         </ul>
                     </div>
-                    <div class="main-menu-two-wrapper__right">
+
+                    <div class="main-menu-wrapper__right">
                         <div class="main-menu-wrapper__right-contact-box">
-                         
-                            <div class="main-menu-two-wrapper__social">
+                            <div class="main-menu-wrapper__right-contact-icon">
+                                <span class="icon-phone-call"></span>
+                            </div>
+                            <div class="main-menu-wrapper__right-contact-number">
                                 <a href="tel:@if(!empty(@$setting_data->phone)) {{@$setting_data->phone}} @else +9771238798 @endif">@if(!empty(@$setting_data->phone)) {{@$setting_data->phone}} @else +9771238798 @endif</a>
                             </div>
                         </div>
