@@ -1539,7 +1539,7 @@
                                                                                 <div class="col-md-12 col-6">
                                                                                     <input type="hidden" class="form-control" name="id[]" value="{{$value->id}}"/>
                                                                                     <label for="title" class="text-heading">Icon Title <span class="text-muted text-danger">*</span></label>
-                                                                                    <input type="text" class="form-control form-control-lg" id="title" name="title[]" value="{{$value->title}}"/>
+                                                                                    <input type="text" class="form-control" id="title" name="title[]" value="{{$value->title}}"/>
                                                                                     <div class="invalid-feedback">
                                                                                         Please enter a icon title.
                                                                                     </div>
