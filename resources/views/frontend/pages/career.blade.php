@@ -63,7 +63,6 @@
   background-color: #58a9a7;
   color: white;
   border-radius: 20px;
-  margin-left: 10px;
   text-transform: uppercase;
   font-size: 11px;
   display: none;
@@ -160,6 +159,27 @@
 .main {
   background-color: #f0fafb;
 }
+
+.btn-apply {
+	text-transform: uppercase;
+	font-size: 0.875rem;
+	font-weight: 800;
+	letter-spacing: 1px;
+	background-color: transparent;
+	color:  #393a5f;
+	border: 2px solid #393a5f;
+	padding: 0.6rem 2rem;
+	-webkit-border-radius: 2rem;
+	-moz-border-radius: 2rem;
+	border-radius: 2rem;
+}
+
+.btn-apply:hover {
+	background-color: #393a5f;
+	color:  #fff;
+	border: 2px solid #393a5f;
+}
+
 </style>
 
 @endsection
@@ -189,111 +209,38 @@
         <div class="container">
             <div class="row">
             <ul class="col-12" id="job-list">
-                <li class="job-card new featured">
-                <div class="job-card__info">
-                    <div class="d-md-flex align-items-center">
-                    <div class="img-c"><img src="http://projects.lollypop.design/job-listing/photosnap.svg"/></div>
-                    <div>
-                        <div class="d-flex align-items-center">
-                        <p>Photosnap</p>
-                        <p class="tag-new">New!</p>
-                        <p class="tag-featured">Featured</p>
-                        </div><a href="javascript:void(0)">
-                        <h6>Senior Frontend Developer</h6></a>
-                        <ul>
-                        <li>1d ago</li>
-                        <li>Full Time</li>
-                        <li>USA Only</li>
-                        </ul>
-                    </div>
-                    </div>
-                </div>
-                <ul class="job-card__tags">
-                    <li>Frontened</li>
-                    <li>Senior</li>
-                    <li>HTML</li>
-                    <li>CSS</li>
-                    <li>JavaScript</li>
-                </ul>
-                </li>
-            </ul>
+                
 
                     @foreach(@$careers as $career)
 
-                    <section class="elementor-section elementor-inner-section elementor-element elementor-element-b58f1d8 elementor-section-content-middle elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="b58f1d8" data-element_type="section">
-                        <div class="elementor-container elementor-column-gap-default">
-                            <div class="elementor-row">
-                                <div class="elementor-column elementor-col-25 elementor-inner-column elementor-element elementor-element-fb71f66" data-id="fb71f66" data-element_type="column">
-                                    <div class="elementor-column-wrap elementor-element-populated">
-                                        <div class="elementor-widget-wrap">
-                                            <div class="elementor-element elementor-element-6111f85 ct-center elementor-widget elementor-widget-beratersectiontitle" data-id="6111f85" data-element_type="widget" data-widget_type="beratersectiontitle.default">
-                                                <div class="elementor-widget-container">
-                                                    <div class="section-title-wrapper margin-bottom-0 sep-none text-left">
-                                                        <div class="title-wrap">
-                                                            <h5 class="section-title">{{ucwords(@$career->name)}}</h5>
-                                                        </div>
-                                                        <div class="section-description"><i class="fas fa-suitcase"> </i> {{@$career->open_position}} Open Position | <i class="fas fa-clock"> </i> Apply until {{date('M j, Y',strtotime(@$career->end_date))}}  </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="elementor-column elementor-col-25 elementor-inner-column elementor-element elementor-element-b8de6cb" data-id="b8de6cb" data-element_type="column">
-                                    <div class="elementor-column-wrap elementor-element-populated">
-                                        <div class="elementor-widget-wrap">
-                                            <div class="elementor-element elementor-element-d89fdf5 elementor-align-center elementor-mobile-align-center elementor-widget elementor-widget-button" data-id="d89fdf5" data-element_type="widget" data-widget_type="button.default">
-                                                <div class="elementor-widget-container">
-                                                    <div class="elementor-button-wrapper">
-                                                        <a href="#" class="elementor-button-link elementor-button @if(@$career->type == 'part_time') part-time @endif elementor-size-sm" role="button"> <span class="elementor-button-content-wrapper"> <span class="elementor-button-text">
-                                                            @if(@$career->type == "full_time")
-                                                                Full time
-                                                            @else
-                                                                Part time
-                                                            @endif
-                                                        </span> </span>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="elementor-column elementor-col-25 elementor-inner-column elementor-element elementor-element-405096a" data-id="405096a" data-element_type="column">
-                                    <div class="elementor-column-wrap elementor-element-populated">
-                                        <div class="elementor-widget-wrap">
-                                            <div class="elementor-element elementor-element-6b77450 elementor-widget elementor-widget-text-editor" data-id="6b77450" data-element_type="widget" data-widget_type="text-editor.default">
-                                                <div class="elementor-widget-container">
-                                                    <div class="elementor-text-editor elementor-clearfix">   
-                                                        @if(@$career->salary)
-                                                            <i class="fas fa-search-dollar"></i> {{@$career->salary}}
-                                                        @else
-                                                                <i class="fas fa-search-dollar"></i> Negotiable
-                                                        @endif
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="elementor-column elementor-col-25 elementor-inner-column elementor-element elementor-element-0eb08d6" data-id="0eb08d6" data-element_type="column">
-                                    <div class="elementor-column-wrap elementor-element-populated">
-                                        <div class="elementor-widget-wrap">
-                                            <div class="elementor-element elementor-element-67dbcbb elementor-align-center elementor-widget elementor-widget-button" data-id="67dbcbb" data-element_type="widget" data-widget_type="button.default">
-                                                <div class="elementor-widget-container">
-                                                    <div class="elementor-button-wrapper">
-                                                        <a href="{{@$career->from_link}}" class="elementor-button-link elementor-button elementor-size-sm" role="button"> <span class="elementor-button-content-wrapper"> <span class="elementor-button-text">Apply Now</span> </span>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                    <li class="job-card new featured">
+                        <div class="job-card__info">
+                            <div class="d-md-flex align-items-center">
+                            <div>
+                                <div class="d-flex align-items-center">
+                                @if(@$career->type == "full_time")
+                                    <p class="tag-new">Full Time</p>
+                                @else
+                                    <p class="tag-new">Part Time</p>
+                                @endif
+                                </div><a href="javascript:void(0)">
+                                <h6>{{ucwords(@$career->name)}}</h6></a>
+                                <ul>
+                                <li><i class="fas fa-suitcase"> </i> {{@$career->open_position}} Open Position</li>
+                                <li><i class="fas fa-clock"> </i> Apply until {{date('M j, Y',strtotime(@$career->end_date))}}</li>
+                                
+                                </ul>
+                            </div>
                             </div>
                         </div>
-                    </section>  
-                @endforeach     
+                        
+                        <a href="{{@$career->form_link}}" class="btn btn-apply" role="button"> <span class="elementor-button-content-wrapper"> <span class="elementor-button-text">Apply Now</span> </span>
+                                                        </a>
+                    </li>
+
+                @endforeach  
+            </ul>
+
             </div>
         </div>
     </section>

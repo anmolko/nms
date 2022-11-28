@@ -18,7 +18,7 @@
 @endprepend
 
 @prepend(config('formbuilder.layout_css_stack', 'scripts'))
-	<link rel="stylesheet" href="{{asset('assets/backend/css/bootstrap.min.css')}}">
+	<!-- <link rel="stylesheet" href="{{asset('assets/backend/css/bootstrap.min.css')}}"> -->
 
 	<link rel="stylesheet" type="text/css" href="{{ asset('vendor/formbuilder/js/footable/css/footable.standalone.min.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('vendor/formbuilder/css/styles.css') }}{{ doode\FormBuilder\Helper::bustCache() }}">

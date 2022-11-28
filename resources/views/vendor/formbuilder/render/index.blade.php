@@ -43,6 +43,9 @@
         -webkit-transition: all .3s ease-in;
     }
 
+    .topbar-items .social-icons li a i {
+        line-height: 50px;
+    }
     .parsley-errors-list.filled {
         opacity: 1;
     }
@@ -126,6 +129,67 @@
     .rendered-form .fb-checkbox-group .checkbox-inline label {
         display: inline-block;
         margin-bottom: 0;
+    }
+
+    .card {
+    position: relative !important;
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+    -ms-flex-direction: column !important;
+    flex-direction: column !important;
+    min-width: 0 !important;
+    word-wrap: break-word !important;
+    background-color: var(--vz-card-bg) !important;
+    background-clip: border-box !important;
+    border: 0 solid rgba(0,0,0,.125) !important;
+    border-radius: 0.25rem !important;
+}
+.card-header:first-child {
+    border-radius: 0.25rem 0.25rem 0 0 !important;
+}
+
+.card-header {
+    padding: 1rem 1rem !important;
+    margin-bottom: 0 !important;
+    background-color: var(--vz-card-cap-bg) !important;
+    border-bottom: 0 solid rgba(0,0,0,.125) !important;
+}
+
+.card-footer:last-child {
+    border-radius: 0 0 0.25rem 0.25rem !important;
+}
+
+.card-footer {
+    padding: 1rem 1rem !important;
+    background-color: var(--vz-card-cap-bg) !important;
+    border-top: 0 solid rgba(0,0,0,.125) !important;
+}
+
+.btn-primary {
+    color: #fff !important;
+    background-color: #405189 !important;
+    border-color: #405189 !important;
+}
+
+.btn {
+    display: inline-block !important;
+    font-weight: 400 !important;
+    line-height: 1.5 !important;
+    text-align: center !important;
+    text-decoration: none !important;
+    vertical-align: middle !important;
+    cursor: pointer !important;
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+    user-select: none !important;
+    border: 1px solid transparent !important;
+    padding: 0.5rem 0.9rem !important; 
+    font-size: .8125rem !important;
+    border-radius: 0.25rem !important;
     }
 </style>
 @section('content')
