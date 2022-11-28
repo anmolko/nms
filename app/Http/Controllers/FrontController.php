@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Blog;
 use App\Models\BlogCategory;
+use App\Models\Career;
 use App\Models\Faq;
 use App\Models\Setting;
 use App\Models\Service;
@@ -58,7 +59,7 @@ class FrontController extends Controller
     protected $team = null;
     protected $S_category = null;
 
-    public function __construct(ServiceCategory $S_category,Team $team,Testimonial $testimonial, Job $demand,AlbumGallery $album_gallery,Album $album,Slider $slider,HomePage $home_page,Client $client,PageSection $pagesection,Page $page,Service $service,Setting $setting,BlogCategory $bcategory,Blog $blog)
+    public function __construct(Career $career,ServiceCategory $S_category,Team $team,Testimonial $testimonial, Job $demand,AlbumGallery $album_gallery,Album $album,Slider $slider,HomePage $home_page,Client $client,PageSection $pagesection,Page $page,Service $service,Setting $setting,BlogCategory $bcategory,Blog $blog)
     {
         $this->setting = $setting;
         $this->bcategory = $bcategory;
@@ -75,6 +76,7 @@ class FrontController extends Controller
         $this->album = $album;
         $this->team = $team;
         $this->album_gallery = $album_gallery;
+        $this->career = $career;
     }
 
 
@@ -369,9 +371,9 @@ class FrontController extends Controller
     }
 
 
-     public function career(){
-        $allcareers = $this->career->where('status','active')->get();
-        return view('frontend.pages.careers.index',compact('allcareers'));
+    public function career(){
+        $careers =    $this->career->orderBy('end_date', 'DESC')->get();
+        return view('frontend.pages.career',compact('careers'));
     }
 
     public function demands(){

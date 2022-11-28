@@ -51,6 +51,7 @@ Route::get('/service','App\Http\Controllers\FrontController@service')->name('ser
 Route::get('/blog/categories/{slug}', 'App\Http\Controllers\FrontController@blogCategories')->name('blog.category');
 Route::get('/blog', 'App\Http\Controllers\FrontController@blogs')->name('blog.frontend');
 Route::get('/faq', 'App\Http\Controllers\FrontController@faq')->name('faq.frontend');
+Route::get('/career', 'App\Http\Controllers\FrontController@career')->name('career');
 
 Route::get('/clients', 'App\Http\Controllers\FrontController@clients')->name('client.frontend');
 Route::get('/our-category', 'App\Http\Controllers\FrontController@category')->name('category.frontend');
