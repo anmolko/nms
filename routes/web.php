@@ -287,6 +287,18 @@ Route::group(['prefix' => 'auth', 'middleware' => ['auth']], function () {
     Route::get('/career/{career}/edit', 'App\Http\Controllers\CareerController@edit')->name('career.edit');
 
     //End of Career
+
+    //recruitment process
+
+    Route::get('/recruitment-process', 'App\Http\Controllers\RecruitmentProcessController@index')->name('recruitment.index');
+    Route::get('/recruitment-process/create', 'App\Http\Controllers\RecruitmentProcessController@create')->name('recruitment.create');
+    Route::post('/recruitment-process', 'App\Http\Controllers\RecruitmentProcessController@store')->name('recruitment.store');
+    Route::put('/recruitment-process/{recruitment}', 'App\Http\Controllers\RecruitmentProcessController@update')->name('recruitment.update');
+    Route::delete('/recruitment-process/{recruitment}', 'App\Http\Controllers\RecruitmentProcessController@destroy')->name('recruitment.destroy');
+    Route::get('/recruitment-process/{recruitment}/edit', 'App\Http\Controllers\RecruitmentProcessController@edit')->name('recruitment.edit');
+    Route::post('/recruitment-process/listUpdate/', 'App\Http\Controllers\RecruitmentProcessController@listUpdate')->name('recruitment.listUpdate');
+
+    //end of process
 });
 
 

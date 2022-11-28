@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\HomePage;
+use App\Models\RecruitmentProcess;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -34,8 +35,10 @@ class HomePageController extends Controller
 
     public function index()
     {
-        $homesettings = HomePage::first();
-        return view('backend.home.index',compact('homesettings'));
+        $homesettings    = HomePage::first();
+        $recruitment     = RecruitmentProcess::all();
+
+        return view('backend.home.index',compact('homesettings','recruitment'));
     }
 
     /**

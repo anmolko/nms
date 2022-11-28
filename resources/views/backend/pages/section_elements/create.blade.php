@@ -1256,8 +1256,9 @@
                                                                 </div>
 
                                                             @endif
-
-                                                            <a href="javascript:void(0)" class="btn btn-warning w-sm" id="add-field"><i class="fa fa-copy"></i> Add More </a>
+                                                                <div class="text-end mt-3 mb-3">
+                                                                    <a href="javascript:void(0)" class="btn btn-warning btn-sm" id="add-field"><i class="fa fa-copy"></i> Add More </a>
+                                                                </div>
 
                                                         </div>
 
