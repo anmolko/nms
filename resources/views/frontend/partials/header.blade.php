@@ -79,6 +79,10 @@
 
 		gtag('config', '{{@$setting_data->google_analytics}}');
     </script>
+    <style>
+
+ 
+    </style>
     @stack('styles')
 
     @yield('css')
@@ -89,7 +93,61 @@
 
     <div class="page-wrapper">
         <header class="main-header clearfix">
+
+            <div class="topbar clearfix">
+                <div class="custom-container topbar-inner">
+                    <ul class="topbar-items nav pull-left">
+                        <li class="nav-item">
+                            <div class="nav-item-inner">
+                                <div class="header-address"><i class="far fa-registered"></i>@if(!empty(@$setting_data->registration_number)) {{@$setting_data->registration_number}} @else 1238798 @endif  </div>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <div class="nav-item-inner">
+                                <div class="header-email"><i class="far fa-envelope"></i>
+                                    <a href="mailto:@if(!empty(@$setting_data->email)) {{@$setting_data->email}} @else example@gmail.com @endif">@if(!empty(@$setting_data->email)) {{@$setting_data->email}} @else example@gmail.com @endif </a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="topbar-items nav pull-right">
+                        <li class="nav-item">
+                            <div class="nav-item-inner">
+                                <ul class="nav social-icons  social-squared social-white social-h-own social-bg-transparent social-hbg-transparent">
+                            
+                                    @if(!empty(@$setting_data->facebook))
+                                        <li class="nav-item"> <a href="@if(!empty(@$setting_data->facebook)) {{@$setting_data->facebook}} @endif" target="_blank"  class="nav-link social-fb"> <i class=" fab fa-facebook"></i> </a></li>
+                                    @endif
+                                    @if(!empty(@$setting_data->youtube))
+                                    <li class="nav-item"> <a href="@if(!empty(@$setting_data->youtube)) {{@$setting_data->youtube}} @endif" target="_blank" class="nav-link social-linkedin"> <i class="fab fa-youtube"></i> </a></li>
+
+                                    @endif
+                                    @if(!empty(@$setting_data->instagram))
+
+                                    <li class="nav-item"> <a href="@if(!empty(@$setting_data->instagram)) {{@$setting_data->instagram}} @endif" target="_blank"  class="nav-link social-instagram"> <i class="fab fa-instagram"></i> </a></li>
+
+                                    @endif
+                                    @if(!empty(@$setting_data->linkedin))
+
+                                    <li class="nav-item"> <a href="@if(!empty(@$setting_data->linkedin)) {{@$setting_data->linkedin}} @endif" target="_blank" class="nav-link social-instagram"> <i class="fab fa-linkedin-in"></i> </a></li>
+
+                                    @endif
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <div class="nav-item-inner">
+                                <div class="header-phone"><span class="icon-phone-call"></span>
+                                        <a href="tel:@if(!empty(@$setting_data->phone)) {{@$setting_data->phone}} @else +9771238798 @endif">@if(!empty(@$setting_data->phone)) {{@$setting_data->phone}} @else +9771238798 @endif</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
             <nav class="main-menu clearfix">
+
                 <div class="main-menu-wrapper clearfix">
                     <div class="main-menu-wrapper__left clearfix">
                         <div class="main-menu-wrapper__logo">
@@ -237,16 +295,9 @@
                             @endif
                         </ul>
                     </div>
-                    <div class="main-menu-wrapper__right">
-                        <div class="main-menu-wrapper__right-contact-box">
-                            <div class="main-menu-wrapper__right-contact-icon">
-                                <span class="icon-phone-call"></span>
-                            </div>
-                            <div class="main-menu-wrapper__right-contact-number">
-                                <a href="tel:@if(!empty(@$setting_data->phone)) {{@$setting_data->phone}} @else +9771238798 @endif">@if(!empty(@$setting_data->phone)) {{@$setting_data->phone}} @else +9771238798 @endif</a>
-                            </div>
-                        </div>
-                    </div>
+
+        
+                 
                 </div>
             </nav>
         </header>

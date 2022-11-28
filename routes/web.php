@@ -53,6 +53,9 @@ Route::get('/blog', 'App\Http\Controllers\FrontController@blogs')->name('blog.fr
 Route::get('/faq', 'App\Http\Controllers\FrontController@faq')->name('faq.frontend');
 
 Route::get('/clients', 'App\Http\Controllers\FrontController@clients')->name('client.frontend');
+Route::get('/our-category', 'App\Http\Controllers\FrontController@category')->name('category.frontend');
+
+Route::get('our-category/{slug}','App\Http\Controllers\FrontController@categorySingle')->name('category.single');
 
 //jobs
 Route::get('demand/search/', 'App\Http\Controllers\FrontController@searchDemand')->name('searchDemand');
