@@ -238,6 +238,25 @@ class SettingController extends Controller
         return redirect()->back();
     }
 
+    public function grievance(Request $request, $id)
+    {
+        $update_theme                           =  Setting::find($id);
+        $update_theme->grievance_heading        =  $request->input('grievance_heading');
+        $update_theme->grievance_description    =  $request->input('grievance_description');
+        $update_theme->grievance_button         =  $request->input('grievance_button');
+        $update_theme->grievance_link           =  $request->input('grievance_link');
+        $update_theme->updated_by               =  Auth::user()->id;
+
+        $status=$update_theme->update();
+
+        if($status){
+            Session::flash('success','General Grievance Updated Successfully');
+        } else{
+            Session::flash('error','Something Went Wrong. General Grievance could not be Updated');
+        }
+        return redirect()->back();
+    }
+
     public function welcomeupdate(Request $request, $id){
         $actiontype                             = $request->input('action_type');
         $update_intro                           =  Setting::find($id);

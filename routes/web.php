@@ -141,6 +141,7 @@ Route::group(['prefix' => 'auth', 'middleware' => ['auth']], function () {
     Route::put('/dashboard-settings/privacy-policy/{settings}', 'App\Http\Controllers\SettingController@privacyPolicy')->name('settings.privacy');
     Route::put('/dashboard-settings/terms-conditions/{settings}', 'App\Http\Controllers\SettingController@termsConditions')->name('settings.terms');
     Route::put('/dashboard-settings/status/{settings}', 'App\Http\Controllers\SettingController@siteStatus')->name('settings.status');
+    Route::put('/dashboard-settings/grievance/{settings}', 'App\Http\Controllers\SettingController@grievance')->name('settings.grievance');
 
     //for menu
     Route::get('/manage-menus/{slug?}', 'App\Http\Controllers\MenuController@index')->name('menu.index');
