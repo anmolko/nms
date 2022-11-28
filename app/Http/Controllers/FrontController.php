@@ -229,6 +229,7 @@ class FrontController extends Controller
         $directors_message = "";
         $gallery2_elements = "";
         $contact_info_elements = "";
+        $video_section_elements = "";
         $accordian1_elements = "";
         $accordian2_elements = "";
         $slider_list_elements = "";
@@ -309,9 +310,14 @@ class FrontController extends Controller
                     ->where('page_section_id', $section->id)
                     ->get();
             }
+            else if ($section->section_slug == 'video_section'){
+                $video_section_elements = SectionElement::with('section')
+                    ->where('page_section_id', $section->id)
+                    ->get();
+            }
         }
 
-        return view('frontend.pages.dynamic_page',compact( 'basic_elements2','directors_message','page_detail','sections','process_num','process_elements','map_descp','icon_title_elements','location_map','video_descp_elements','list_2','list_3','basic_elements','call1_elements','gallery2_elements','bgimage_elements','call2_elements','flash_elements','gallery_elements','header_descp_elements','accordian1_elements','accordian2_elements','slider_list_elements','contact_info_elements'));
+        return view('frontend.pages.dynamic_page',compact( 'video_section_elements','basic_elements2','directors_message','page_detail','sections','process_num','process_elements','map_descp','icon_title_elements','location_map','video_descp_elements','list_2','list_3','basic_elements','call1_elements','gallery2_elements','bgimage_elements','call2_elements','flash_elements','gallery_elements','header_descp_elements','accordian1_elements','accordian2_elements','slider_list_elements','contact_info_elements'));
 
     }
 

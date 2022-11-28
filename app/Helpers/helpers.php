@@ -101,6 +101,27 @@ if (!function_exists('profile_percentage')) {
     }
 }
 
+if (!function_exists('get_vimeo_thumbnail')) {
+
+    function get_vimeo_thumbnail($vimeo_url){
+        if( !$vimeo_url ) return false;
+        $data = json_decode( file_get_contents( 'http://vimeo.com/api/oembed.json?url=' . $vimeo_url ) );
+        if( !$data ) return false;
+        return $data->thumbnail_url;
+    }
+}
+
+
+if (!function_exists('get_youtube_thumbnail')) {
+
+    function get_youtube_thumbnail($youtube_url){
+        $video_id = explode("?v=", $youtube_url);
+        $video_id = $video_id[1];
+        $thumbnail="https://img.youtube.com/vi/".$video_id."/maxresdefault.jpg";
+
+        return $thumbnail;
+    }
+}
 
 if (!function_exists('get_slugs_to_disable')) {
     function get_slugs_to_disable($id){

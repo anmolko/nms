@@ -331,6 +331,65 @@
           <!--Video One End-->
         @endif
 
+        @if($value == "video_section")
+
+        <section class="blog-one blog-grid">
+            <div class="container">
+                  <div class="section-title text-center">
+                      <span class="section-title__tagline">NMS Recent Activites</span>
+                      <h2 class="section-title__title">Video Gallery</h2>
+                  </div>
+
+                <div class="row">
+                  @foreach(@$video_section_elements as $video_element)
+                        @if(@$video_element->heading == "youtube")
+                            @if(str_contains(@$video_element->description,'youtube'))
+                                <?php
+                                    $thumbnail=get_youtube_thumbnail($video_element->description);
+                                ?>
+                            @else
+                                <?php
+                                $thumbnail=get_vimeo_thumbnail($video_element->description);
+                                ?>
+                            @endif
+                        @else
+                            @if(str_contains(@$video_element->description,'youtube'))
+                                <?php
+                                    $thumbnail=get_youtube_thumbnail($video_element->description);
+                                ?>
+                            @else
+                                <?php
+                                $thumbnail=get_vimeo_thumbnail($video_element->description);
+                                ?>
+                            @endif
+                        @endif
+
+                      <div class="col-xl-4 col-lg-6 col-md-6">
+                        <!--Blog One Single-->
+                        <div class="blog-one__single wow fadeInUp" data-wow-delay="100ms">
+                            <div class="blog-one__img-box">
+                                <div class="blog-one__img">
+                                    <img src="{{@$thumbnail}}" alt="">
+                                    <a href="{{@$video_element->description}}" class="video-popup">
+                                      <div class="video-one__video-icon">
+                                          <span class="icon-play-button"></span>
+                                          <i class="ripple"></i>
+                                      </div>
+                                    </a>
+                                </div>
+                               
+                            </div>
+                           
+                        </div>
+                    </div>
+
+                  @endforeach
+                </div>
+             </div>
+         </section>
+ 
+        @endif
+
         @if($value == "background_image_section")
           <!--- Background Image--->
           <section class="we-make">
