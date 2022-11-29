@@ -160,7 +160,12 @@
 
                           @endif
                           @if(@$basic_elements->heading)
-                          <h2 class="section-title__title">{{ucwords(@$basic_elements->heading)}}</h2>
+                          <h2 class="section-title__title">
+                               <span><?php
+                                   $split = explode(" ", ucwords(@$basic_elements->heading));?> {{preg_replace('/\W\w+\s*(\W*)$/', '$1', ucwords(@$basic_elements->heading))."\n"}}</span>
+                              <span class="text-last">{{$split[count($split)-1]}}</span>
+
+                              </h2>
                           @endif
                     </div>
                     <div class="reasons__text justified">
@@ -202,7 +207,10 @@
 
                           @endif
                           @if(@$basic_elements->heading)
-                          <h2 class="section-title__title">{{ucwords(@$basic_elements->heading)}}</h2>
+                          <h2 class="section-title__title">
+                              <span><?php
+                                  $split = explode(" ", ucwords(@$basic_elements->heading));?> {{preg_replace('/\W\w+\s*(\W*)$/', '$1', ucwords(@$basic_elements->heading))."\n"}}</span>
+                              <span class="text-last">{{$split[count($split)-1]}}</span></h2>
                           @endif
                     </div>
                     <p class="reasons__text">
@@ -337,7 +345,10 @@
             <div class="container">
                   <div class="section-title text-center">
                       <span class="section-title__tagline">NMS Recent Activites</span>
-                      <h2 class="section-title__title">Video Gallery</h2>
+                      <h2 class="section-title__title">
+                          <span>Video</span>
+                          <span class="text-last">Gallery</span>
+                      </h2>
                   </div>
 
                 <div class="row">
@@ -377,9 +388,9 @@
                                       </div>
                                     </a>
                                 </div>
-                               
+
                             </div>
-                           
+
                         </div>
                     </div>
 
@@ -387,7 +398,7 @@
                 </div>
              </div>
          </section>
- 
+
         @endif
 
         @if($value == "background_image_section")
@@ -403,7 +414,12 @@
 
                       <span class="section-title__tagline">{!! ucfirst(@$bgimage_elements->subheading) !!}</span>
                       @endif
-                      <h2 class="section-title__title">{!! ucfirst(@$bgimage_elements->heading) !!}</h2>
+                      <h2 class="section-title__title">
+                          <span><?php
+                              $split = explode(" ", ucfirst(@$bgimage_elements->heading));?> {{preg_replace('/\W\w+\s*(\W*)$/', '$1', ucfirst(@$bgimage_elements->heading))."\n"}}</span>
+                          <span class="text-last">{{$split[count($split)-1]}}</span>
+
+                      </h2>
                     </div>
                     <div class="core-features__left-bottom">
                       <div class="core-features__left-bottom-img">
@@ -463,7 +479,11 @@
 
                           @endif
                           @if(@$basic_elements2->heading)
-                          <h2 class="section-title__title">{{ucwords(@$basic_elements2->heading)}}</h2>
+                          <h2 class="section-title__title">
+                              <span><?php
+                                  $split = explode(" ", ucwords(@$basic_elements2->heading));?> {{preg_replace('/\W\w+\s*(\W*)$/', '$1', ucwords(@$basic_elements2->heading))."\n"}}</span>
+                              <span class="text-last">{{$split[count($split)-1]}}</span>
+                          </h2>
                           @endif
                     </div>
                     <div class="reasons-one__text-1 justified">{!! @$basic_elements2->description !!}</div>
@@ -521,7 +541,14 @@
                         </div><!-- /.col-md-12 -->
                         <div class="col-md-12 col-lg-7">
                             <div class="about-me__content">
-                                <h3 class="about-me__title">{{$directors_message->heading}}</h3>
+                                <h3 class="about-me__title">
+                                <span class="text-red"><?php
+                                    $split = explode(" ", ucwords(@$directors_message->heading));?> {{preg_replace('/\W\w+\s*(\W*)$/', '$1', ucwords(@$directors_message->heading))."\n"}}</span>
+                                    <span class="text-last">{{$split[count($split)-1]}}</span>
+
+
+
+                                </h3>
                                 <div class="about-me__summery justified" style="margin-top: 10px;">
                                     {!! @$directors_message->description !!}
                                 </div>
@@ -546,7 +573,13 @@
 
                 @endif
                 @if(@$flash_elements[0]->heading)
-                <h2 class="section-title__title">{{ucwords(@$flash_elements[0]->heading)}}</h2>
+                <h2 class="section-title__title">
+
+                    <span><?php
+                        $split = explode(" ", ucwords(@$flash_elements[0]->heading));?> {{preg_replace('/\W\w+\s*(\W*)$/', '$1', ucwords(@$flash_elements[0]->heading))."\n"}}</span>
+                    <span class="text-last">{{$split[count($split)-1]}}</span>
+
+                </h2>
                 @endif
               </div>
               <div class="row">
@@ -643,11 +676,16 @@
 
                     <h2 class="portfolio-fullwidth__title"
                     style="margin: auto;
-                      width: 50%;
+                      width: 70%;
                       text-align: center;
                       margin-bottom: 40px;
                       text-transform: uppercase;">
-                      {{ucwords(@$header_descp_elements->heading)}}</h2>
+
+                        <span class="text-red"><?php
+                            $split = explode(" ", ucwords(@$header_descp_elements->heading));?> {{preg_replace('/\W\w+\s*(\W*)$/', '$1', ucwords(@$header_descp_elements->heading))."\n"}}</span>
+                        <span class="text-last">{{$split[count($split)-1]}}</span>
+
+                    </h2>
                       @endif
 
                       <div class="portfolio-fullwidth__text-1 winrecruit" style="text-align: justify;">
@@ -686,7 +724,12 @@
 
                           @endif
                           @if(@$map_descp->heading)
-                          <h2 class="section-title__title">{{ucwords(@$map_descp->heading)}}</h2>
+                          <h2 class="section-title__title">
+                              <span><?php
+                                  $split = explode(" ", ucwords(@$map_descp->heading));?> {{preg_replace('/\W\w+\s*(\W*)$/', '$1', ucwords(@$map_descp->heading))."\n"}}</span>
+                              <span class="text-last">{{$split[count($split)-1]}}</span>
+
+                          </h2>
                           @endif
                     </div>
                     <div class="about-two__box">
@@ -706,14 +749,19 @@
 
         @endif
 
-        @if($value == "accordion_section_2")
+        @if($value == "accordion_section")
             <!-- FAQs Page Area start -->
             <section class="faqs-page">
                 <div class="faqs-page-bg" style="background-image: url({{asset('assets/frontend/images/backgrounds/faqs-page-bg.jpg')}})"></div>
                 <div class="container">
                   <div class="section-title text-center">
                     <span class="section-title__tagline">{{ucwords(@$accordian2_elements[0]->subheading)}}</span>
-                    <h2 class="section-title__title">{{ucwords(@$accordian2_elements[0]->heading)}}</h2>
+                    <h2 class="section-title__title">
+                           <span><?php
+                               $split = explode(" ", ucwords(@$accordian2_elements[0]->heading));?> {{preg_replace('/\W\w+\s*(\W*)$/', '$1', ucwords(@$accordian2_elements[0]->heading))."\n"}}</span>
+                        <span class="text-last">{{$split[count($split)-1]}}</span>
+
+                    </h2>
                   </div>
                   <div class="row">
                     @foreach($accordian2_elements->chunk(2) as $index => $chunk )
@@ -747,12 +795,8 @@
           <!-- FAQs Page Area end -->
         @endif
 
-
-
         @if($value == "gallery_section")
           <!--- Gallery Section 1-->
-
-
         <section class="gallery-one">
 
 
@@ -760,13 +804,17 @@
               @if(Request::is('about-us'))
                   <div class="section-title text-center">
                       <span class="section-title__tagline">Our Gallery</span>
-                      <h2 class="section-title__title">Legal Documents</h2>
+                      <h2 class="section-title__title">
+                        <span>Legal </span><span class="text-last">Documents</span>
+                      </h2>
                   </div>
 
                   @else
                   <div class="section-title text-center">
                       <span class="section-title__tagline">NMS Recruitment</span>
-                      <h2 class="section-title__title">Our Gallery</h2>
+                      <h2 class="section-title__title">
+                          <span>Our </span><span class="text-last">Gallery</span>
+                      </h2>
                   </div>
               @endif
             <div class="row masonary-layout">
@@ -799,17 +847,20 @@
 
         @endif
 
-
         @if($value == "slider_list")
           <!-- Slider List Area start -->
           @if(@$slider_list_elements[0]->heading)
 
             <!--Portfolio Two Start-->
-            <section class="portfolio-two">
+            <section class="portfolio-two" style="margin-top: 80px;margin-bottom: 20px;">
                 <div class="container">
                     <div class="section-title text-center">
                         <span class="section-title__tagline">{{ucfirst(@$slider_list_elements[0]->description)}}</span>
-                        <h2 class="section-title__title">{{ucwords(@$slider_list_elements[0]->heading)}}</h2>
+                        <h2 class="section-title__title">
+                            <span><?php
+                                $split = explode(" ", ucwords(@$slider_list_elements[0]->heading));?> {{preg_replace('/\W\w+\s*(\W*)$/', '$1', ucwords(@$slider_list_elements[0]->heading))."\n"}}</span>
+                            <span class="text-last">{{$split[count($split)-1]}}</span>
+                        </h2>
                     </div>
                     <div class="portfolio-two__carousel owl-theme owl-carousel">
 
@@ -848,7 +899,11 @@
                         <div class="we-change__left-faqs">
                             <div class="section-title text-left">
                               <span class="section-title__tagline">{{ucwords(@$process_elements[0]->description)}}</span>
-                              <h2 class="section-title__title">{{ucwords(@$process_elements[0]->heading)}}</h2>
+                              <h2 class="section-title__title">
+                                  <span><?php
+                                      $split = explode(" ", ucwords(@$process_elements[0]->heading));?> {{preg_replace('/\W\w+\s*(\W*)$/', '$1', ucwords(@$process_elements[0]->heading))."\n"}}</span>
+                                  <span class="text-last">{{$split[count($split)-1]}}</span>
+                              </h2>
                             </div>
                             <div class="we-change__faqs">
                                 <div class="accrodion-grp" data-grp-name="faq-one-accrodion">

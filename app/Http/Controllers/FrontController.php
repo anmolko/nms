@@ -285,7 +285,7 @@ class FrontController extends Controller
                     ->where('page_section_id', $section->id)
                     ->first();
             }
-            else if ($section->section_slug == 'accordion_section_2'){
+            else if ($section->section_slug == 'accordion_section'){
                 $list_2 = $section->list_number_2;
                 $accordian2_elements = SectionElement::with('section')
                     ->where('page_section_id', $section->id)
@@ -616,7 +616,7 @@ class FrontController extends Controller
     }
 
 
-    
+
     public function category(){
         $service_categories =$this->S_category->orderBy('name', 'asc')->get();
         return view('frontend.pages.category.index',compact('service_categories'));
