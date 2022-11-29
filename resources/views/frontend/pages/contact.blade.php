@@ -32,7 +32,11 @@
             <div class="container">
                 <div class="section-title text-center">
                     <span class="section-title__tagline">Contact with us</span>
-                    <h2 class="section-title__title">Write us a message</h2>
+                    <h2 class="section-title__title">
+
+                        <span>Write us a </span>
+                        <span class="text-last">message</span>
+                    </h2>
                 </div>
                 <div class="row">
                     <div class="col-xl-12">
@@ -89,7 +93,7 @@
         <!--Contact Page End-->
 
         @if(@$setting_data->google_map)
-       
+
         <!--Contact Page Google Map Start-->
         <section class="contact-page-google-map">
             <div class="container">
@@ -105,10 +109,10 @@
         <!--Contact Page Google Map End-->
         @endif
 
-        
-  
+
+
 @endsection
 @section('js')
   <!-- For Contact Form -->
-  
+
 @endsection
