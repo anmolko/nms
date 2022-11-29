@@ -274,7 +274,7 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <label class='image-checkbox {{(in_array('video_section', $sections) ? "image-checkbox-checked":"")}}'>
-                                                <img class="img-responsive" src="{{asset('assets/backend/img/page_sections/video_section.png')}}" />
+                                                <img class="img-responsive" src="{{asset('assets/backend/img/page_sections/video_section.png')}}" width="100%"/>
                                                 <input type="checkbox" name="section[]" value="video_section" id="video_section.png" {{(in_array('video_section', $sections) ? "checked":"")}} />
                                                 <i class="fa fa-check hidden"></i>
                                             </label>

@@ -697,6 +697,10 @@
                                 @else
                                     {!! Form::open(['route' => 'recruitment.store','method'=>'post','class'=>'needs-validation','id'=>'icon-and-title-form','novalidate'=>'','enctype'=>'multipart/form-data']) !!}
                                 @endif
+                                    <figure class="figure">
+                                        <img src="{{asset('images/recruitment.png')}}" class="figure-img img-fluid rounded" alt="...">
+                                        <figcaption class="figure-caption">Output Sample.</figcaption>
+                                    </figure>
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="card ctm-border-radius shadow-sm flex-fill">
