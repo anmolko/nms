@@ -304,6 +304,19 @@ Route::group(['prefix' => 'auth', 'middleware' => ['auth']], function () {
     Route::post('/recruitment-process/listUpdate/', 'App\Http\Controllers\RecruitmentProcessController@listUpdate')->name('recruitment.listUpdate');
 
     //end of process
+
+    //Managing director
+
+    Route::get('/managing-director', 'App\Http\Controllers\ManagingDirectorController@index')->name('managing-director.index');
+    Route::get('/managing-director/create', 'App\Http\Controllers\ManagingDirectorController@create')->name('managing-director.create');
+    Route::post('/managing-director', 'App\Http\Controllers\ManagingDirectorController@store')->name('managing-director.store');
+    Route::put('/managing-director/{director}', 'App\Http\Controllers\ManagingDirectorController@update')->name('managing-director.update');
+    Route::delete('/managing-director/{director}', 'App\Http\Controllers\ManagingDirectorController@destroy')->name('managing-director.destroy');
+    Route::get('/managing-director/{director}/edit', 'App\Http\Controllers\ManagingDirectorController@edit')->name('managing-director.edit');
+    Route::post('/director-sortable','App\Http\Controllers\ManagingDirectorController@orderUpdateDirector')->name('director.order');
+
+    //End of managing director
+
 });
 
 
