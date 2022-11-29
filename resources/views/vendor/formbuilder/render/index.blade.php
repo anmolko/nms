@@ -203,8 +203,6 @@
                     <ul class="thm-breadcrumb list-unstyled">
                         <li><a href="/">Home</a></li>
                         <li><span>.</span></li>
-                        <li><a href="{{route('demand.list')}}">Demand </a></li>
-                        <li><span>.</span></li>
                         <li><a href="#">Application Form </a></li>
                     </ul>
                     <!-- <h2> {{ $pageTitle }}</h2> -->
