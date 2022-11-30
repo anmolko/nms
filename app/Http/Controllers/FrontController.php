@@ -24,6 +24,7 @@ use App\Models\Team;
 use App\Models\PageSection;
 use App\Models\SectionGallery;
 use App\Models\RecruitmentProcess;
+use App\Models\ManagingDirector;
 use App\Models\ServiceCategory;
 use App\Notifications\NewCareerNotification;
 use App\Notifications\NewServiceNotification;
@@ -60,8 +61,9 @@ class FrontController extends Controller
     protected $team = null;
     protected $S_category = null;
     protected $recruitment_process = null;
+    protected $director = null;
 
-    public function __construct(RecruitmentProcess $recruitment_process,Career $career,ServiceCategory $S_category,Team $team,Testimonial $testimonial, Job $demand,AlbumGallery $album_gallery,Album $album,Slider $slider,HomePage $home_page,Client $client,PageSection $pagesection,Page $page,Service $service,Setting $setting,BlogCategory $bcategory,Blog $blog)
+    public function __construct(ManagingDirector $director,RecruitmentProcess $recruitment_process,Career $career,ServiceCategory $S_category,Team $team,Testimonial $testimonial, Job $demand,AlbumGallery $album_gallery,Album $album,Slider $slider,HomePage $home_page,Client $client,PageSection $pagesection,Page $page,Service $service,Setting $setting,BlogCategory $bcategory,Blog $blog)
     {
         $this->setting = $setting;
         $this->bcategory = $bcategory;
@@ -80,6 +82,7 @@ class FrontController extends Controller
         $this->album_gallery = $album_gallery;
         $this->career = $career;
         $this->recruitment_process = $recruitment_process;
+        $this->director = $director;
 
     }
 
@@ -96,8 +99,9 @@ class FrontController extends Controller
         $testimonials = $this->testimonial->get();
         $latestPosts = $this->blog->inRandomOrder()->take(3)->get();
         $recruitments =$this->recruitment_process->get();
+        $directors =$this->director->orderBy('order', 'asc')->get();
 
-        return view('welcome',compact('recruitments','testimonials','clients','latestPosts','latestServices','countries','homepage_info','sliders'));
+        return view('welcome',compact('directors','recruitments','testimonials','clients','latestPosts','latestServices','countries','homepage_info','sliders'));
     }
 
 

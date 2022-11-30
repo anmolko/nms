@@ -14,6 +14,10 @@
             height: 215px;
         }
     }
+    .director-message a.thm-btn.testimonial-one__btn {
+        margin-top: 15px;
+    }
+
 
     .recruitement-process-circle { width: 500px; height: 500px; border-radius: 100%; margin: 0 auto; position: relative; }
    
@@ -92,7 +96,7 @@
     }
     @media only screen and (min-width:600px) and (max-width:767px) {  }
     @media only screen and (min-width:768px) and (max-width:991px) {  }
-    @media only screen and (min-width:992px) and (max-width:1199px) {  }
+   
     @media only screen and (min-width:1200px) and (max-width:1499px) { }
     .title-box .title { font-weight: 600; letter-spacing: 2px; position: relative; z-index: -1;margin-top: 20px;font-size: 20px;margin-bottom: 10px; }
             .title-box span { text-shadow: 0 10px 10px rgba(0, 0, 0, .15); font-weight: 800; color: #57585c; }
@@ -159,6 +163,47 @@
         height: 425px;
     }
 
+    .director-message h3.testimonials-two__name {
+        font-size: 25px;
+    }
+    .director-message{
+        background-color: #f1f1f5;
+    }
+    .director-message .testimonial-two__meta__content {
+        margin-bottom: 20px;
+    }
+
+    .director-message .testimonials-two__image img{
+        border-radius: 10%;;
+        height:100%;
+        width:100%;
+        object-fit:cover;
+    }
+
+    section.reasons.recruitment {
+        background-color: #f1f1f5;
+    }
+    .director-message .testimonials-two__image::before{
+        content:unset;
+    }
+
+    .director-message .testimonials-two__image{
+        height:320px;
+        width:320px;
+        margin-right:0;
+    }
+
+    .director-message .testimonials-two__card {
+
+        border: 1px solid #ffffff;
+        background: white;
+    }
+
+    @media only screen and (min-width: 1024px) and (max-width:1199px) { 
+        .director-message .testimonials-two__image{
+            width: 255px;
+        }
+     }
 
     .about-status .newsletter-one__inner{
         padding-bottom: 36px;
@@ -197,10 +242,9 @@
         height:100px
     }
     .brand-one .swiper-slide img {
-            height: 100%;
-            object-fit: contain;
-
-        }
+        height: 100%;
+        object-fit: cover;
+    }
 </style>
 @endsection
 @section('content')
@@ -299,7 +343,6 @@
                                     @endif
                                     @if(@$homepage_info->welcome_heading)
                                         <h2 class="section-title__title">
-{{--                                            <span>{{ucwords(@$homepage_info->welcome_heading)}}</span>--}}
                                             <span><?php
                                                 $split = explode(" ", ucwords(@$homepage_info->welcome_heading));?> {{preg_replace('/\W\w+\s*(\W*)$/', '$1', ucwords(@$homepage_info->welcome_heading))."\n"}}</span>
                                             <span class="text-last">{{$split[count($split)-1]}}</span>
@@ -628,10 +671,98 @@
     <!-- Core value end -->
     @endif
 
+    @if(count($directors) > 0)
+
+    <section class="testimonials-two director-message">
+        <div class="container">
+            <div class="section-title text-center">
+            <span class="section-title__tagline">Check Out</span>
+
+                                    <h2 class="section-title__title"><span> Directors
+                </span>
+                <span class="text-last">Message</span></h2>
+
+            </div>
+            <div class="thm-swiper__slider swiper-container" data-swiper-options='{
+                "slidesPerView": 1,
+                "slidesPerGroup": 1,
+                "spaceBetween": 0,
+                "loop": true,
+                "autoplay": { "delay": 5000 },
+                "pagination": {
+                    "el": "#testimonials-two-pagination",
+                    "type": "bullets",
+                    "clickable": true
+                },
+                "breakpoints": {
+                    "0": {
+                        "slidesPerView": 1,
+                        "slidesPerGroup": 1,
+                        "spaceBetween": 0
+                    },
+                    "768": {
+                        "slidesPerView": 1,
+                        "slidesPerGroup": 1,
+                        "spaceBetween": 30
+                    },
+                    "992": {
+                        "slidesPerView": 1,
+                        "slidesPerGroup": 1,
+                        "spaceBetween": 30
+                    }
+                }
+            }'>
+                <div class="swiper-wrapper">
+                    @foreach(@$directors as $director)
+
+                        <div class="swiper-slide">
+                            <div class="testimonials-two__card">
+                                <div class="testimonials-two__card__inner">
+                                    <div class="testimonials-two__meta">
+                                        <div class="row">
+                                            <div class="col-xl-4 col-lg-4">
+                                                <div class="testimonials-two__image">
+                                                    <img src="{{ asset('/images/director/'.$director->image) }}" alt="">
+                                                </div><!-- /.testimonials-two__image -->
+                                            </div>
+                                            <div class="col-xl-8 col-lg-8">
+                                                <div class="testimonial-two__meta__content">
+                                                    <h3 class="testimonials-two__name">{{ucwords(@$director->heading)}}</h3>
+                                                    <!-- /.testimonials-two__name -->
+                                                    <p class="testimonials-two__designation">{{ucwords(@$director->designation)}}</p>
+                                                    <!-- /.testimonials-two__designation -->
+                                                </div><!-- /.testimonial-two__meta__content -->
+                                                <div class="testimonials-two__summery justified">{{ucfirst(@$director->description)}}</div>
+                                                @if(@$director->button)
+                                                     <a href="{{@$director->link}}" class="thm-btn testimonial-one__btn"><span>{{@$director->button}}</span></a>
+                                                @endif
+                                           
+                                            </div>
+                                        </div>
+                                
+                                    </div><!-- /.testimonials-two__meta -->
+                                    <!-- /.testimonials-two__summery -->
+                                </div><!-- /.testimonials-two__card__inner -->
+                            </div><!-- /.testimonials-two__card -->
+                        </div>
+                    
+                    @endforeach
+                    <!-- /.swiper-slide -->
+                    
+                </div><!-- /.swiper-wrapper -->
+                <div class="swiper-pagination" id="testimonials-two-pagination"></div>
+            </div><!-- /.thm-swiper__slider -->
+
+        </div><!-- /.container -->
+    </section><!-- /.testimonials-two -->
+    @endif
+
+
+        
     @if(count($testimonials) > 2)
 
         <!--Testimonial One Start-->
-        <section class="testimonial-one">
+        <section class="testimonial-one feedback">
             <div class="container">
                 <div class="row">
                     <div class="col-xl-4 col-lg-5">
@@ -757,7 +888,7 @@
 
     @if(@$recruitments[0]->description)
 
-    <section class="reasons">
+        <section class="reasons recruitment">
             <div class="container">
                 <div class="row">
                     <div class="col-xl-7 col-lg-6">
@@ -809,7 +940,7 @@
                 </div>
             </div>
         </section>
-        @endif
+    @endif
 
 
     
