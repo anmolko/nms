@@ -1,5 +1,5 @@
 @extends('backend.layouts.master')
-@section('title') Director @endsection
+@section('title') Managing Director @endsection
 @section('css')
     <link rel="stylesheet" href="{{asset('assets/backend/css/jquery.dataTables.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/backend/custom_css/datatable_style.css')}}">
@@ -15,12 +15,12 @@
             <div class="row">
                 <div class="col-12">
                     <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                        <h4 class="mb-sm-0">Director</h4>
+                        <h4 class="mb-sm-0"> Managing Director</h4>
 
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
                                 <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Dashboard</a></li>
-                                <li class="breadcrumb-item active">Director</li>
+                                <li class="breadcrumb-item active">Managing Director</li>
                             </ol>
                         </div>
 
@@ -34,7 +34,7 @@
                     <div class="card ctm-border-radius shadow-sm grow flex-fill">
                         <div class="card-header">
                             <h4 class="card-title mb-0">
-                                Director details
+                                Managing Director details
                             </h4>
                         </div>
                         <div class="card-body">
@@ -121,7 +121,7 @@
                         <div class="card ctm-border-radius shadow-sm grow">
                             <div class="card-header">
                                 <h4 class="card-title d-inline-block mb-0">
-                                    Director List
+                                    Managing Director List
                                 </h4>
                             </div>
                             <div class="card-body">
@@ -204,7 +204,7 @@
                                 <div class="card ctm-border-radius shadow-sm flex-fill">
                                     <div class="card-header">
                                         <h4 class="card-title mb-0">
-                                            Director Details
+                                            Managing Director Details
                                         </h4>
                                     </div>
                                     <div class="card-body">

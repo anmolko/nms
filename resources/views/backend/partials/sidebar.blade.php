@@ -102,6 +102,11 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link menu-link @if(\Request::route()->getName() == 'managing-director.index') active @endif" href="{{route('managing-director.index')}}">
+                        <i class="ri-open-arm-line"></i> <span data-key="t-widgets">Managing Director</span>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link menu-link @if(\Request::route()->getName() == 'testimonials.index') active @endif" href="{{route('testimonials.index')}}">
                         <i class="ri-hand-heart-line"></i> <span data-key="t-widgets">Testimonial</span>
                     </a>
