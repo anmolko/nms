@@ -665,7 +665,7 @@
 
         @if($value == "simple_header_and_description")
           <!--- Simple Header Description--->
-          <section class="portfolio-fullwidth">
+          <section class="portfolio-fullwidth" style="padding: 20px 0 0px;">
             <div class="container">
               <div class="row">
                 <div class="col-xl-12">
