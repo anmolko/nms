@@ -212,11 +212,127 @@
 @endsection
 
 @section('js')
-{{--@include('backend.ckeditor')--}}
+@include('backend.ckeditor')
 <script src="{{asset('assets/backend/js/pages/form-validation.init.js')}}"></script>
     <!-- Sweet Alerts js -->
-<script src="{{asset('assets/backend/libs/@ckeditor/ckeditor5-build-classic/build/ckeditor.js')}}"></script>
+<!-- <script src="{{asset('assets/backend/libs/@ckeditor/ckeditor5-build-classic/build/ckeditor.js')}}"></script> -->
+<script>
+       function createEditor ( elementId ) {
+            return ClassicEditor
+            .create( document.querySelector( '#' + elementId  ), {
 
+                extraPlugins: [ SimpleUploadAdapterPlugin ],
+                ckfinder: {
+                    // openerMethod: 'popup',
+                    uploadUrl: '{{route('uploadckeditor').'?_token='.csrf_token()}}',
+                    // // uploadUrl: '/ckfinder/connector.php?command=QuickUpload&type=Files&responseType=json',
+                    // options: {
+                    //     resourceType: 'Images',
+                    // },
+
+
+                },
+                toolbar: {
+                    items: [
+                        'heading',
+                        '|',
+                        'bold',
+                        'italic',
+                        'link',
+                        'bulletedList',
+                        'numberedList',
+                        '|',
+                        'outdent',
+                        'indent',
+                        '|',
+                        // 'ckfinder',
+                        'imageUpload',
+                        'imageResize',
+                        'blockQuote',
+                        'insertTable',
+                        'mediaEmbed',
+                        'undo',
+                        'redo',
+                        'alignment',
+                        'codeBlock',
+                        'findAndReplace',
+                        'fontBackgroundColor',
+                        'fontColor',
+                        'fontFamily',
+                        'fontSize',
+                        'highlight',
+                        'horizontalLine',
+                        'htmlEmbed',
+                        'pageBreak',
+                        'removeFormat',
+                        'specialCharacters',
+                        'sourceEditing',
+                        'underline'
+                    ]
+                },
+                mediaEmbed: {
+                // Previews are always enabled if there’s a provider for a URL (below regex catches all URLs)
+                // By default `previewsInData` are disabled, but let’s set it to `false` explicitely to be sure
+                previewsInData: true,
+                },
+                link: {
+                    // Automatically add target="_blank" and rel="noopener noreferrer" to all external links.
+                    addTargetToExternalLinks: true,
+
+                    // Let the users control the "download" attribute of each link.
+                    decorators: [
+                        {
+                            mode: 'manual',
+                            label: 'Downloadable',
+                            attributes: {
+                                download: 'download'
+                            }
+                        }
+                    ]
+                },
+                language: 'en',
+                image: {
+                    toolbar: [
+                        'imageTextAlternative',
+                        'imageStyle:inline',
+                        'imageStyle:block',
+                        'imageStyle:side',
+                        'imageStyle:alignLeft',
+                        'imageStyle:alignRight',
+                        'imageStyle:alignBlockLeft',
+                        'imageStyle:alignBlockRight',
+                        'imageStyle:alignCenter',
+                        'linkImage'
+                    ]
+                },
+                table: {
+                    contentToolbar: [
+                        'tableColumn',
+                        'tableRow',
+                        'mergeTableCells',
+                        'tableCellProperties',
+                        'tableProperties'
+                    ]
+                },
+
+            } )
+            .then( editor => {
+                // Simulate label behavior if textarea had a label
+                if (editor.sourceElement.labels.length > 0) {
+                    editor.sourceElement.labels[0].addEventListener('click', e => editor.editing.view.focus());
+                }
+                window.editor = editor;
+                editor.model.document.on( 'change:data', () => {
+                    $( '#' + elementId).text(editor.getData());
+                } );
+            } )
+            .catch( error => {
+                console.error( error );
+            } );
+
+        }
+
+</script>
 <script src="{{asset('assets/backend/libs/sweetalert2/sweetalert2.min.js')}}"></script>
 <script src="{{asset('assets/backend/custom_js/blog_credit.js')}}"></script>
 @endsection

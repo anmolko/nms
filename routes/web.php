@@ -129,6 +129,8 @@ Route::group(['prefix' => 'auth', 'middleware' => ['auth']], function () {
     Route::get('/blogs/{blogs}/edit', 'App\Http\Controllers\BlogController@edit')->name('blog.edit');
     Route::patch('/blogs/{id}/update', 'App\Http\Controllers\BlogController@updateStatus')->name('blog-status.update');
 
+
+    Route::post('/ckeditor', 'App\Http\Controllers\BlogController@uploadImage')->name('uploadckeditor');
     //End Blog
 
     Route::get('/dashboard-settings', 'App\Http\Controllers\SettingController@index')->name('settings.index');

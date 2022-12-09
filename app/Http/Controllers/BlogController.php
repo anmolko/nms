@@ -102,6 +102,19 @@ class BlogController extends Controller
         return redirect()->route('blog.index');
     }
 
+    public function uploadImage(Request $request){
+        if($request->hasFile('upload')){
+          $originName = $request->file('upload')->getClientOriginalName();
+          $fileName= pathinfo($originName,PATHINFO_FILENAME);
+          $extension = $request->file('upload')->getClientOriginalExtension();
+          $fileName =  $fileName.'_'.time().'.'.$extension;
+          
+          $request->file('upload')->move(public_path('ckimage'),$fileName);
+          $url = asset('ckimage/'.$fileName);
+          return response()->json(['fileName'=>$fileName,'uploaded'=>1,'url'=>$url]);
+          }
+    }
+
     /**
      * Display the specified resource.
      *
