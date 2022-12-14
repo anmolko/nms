@@ -15,7 +15,7 @@
 		<!-- FAVICON AND TOUCH ICONS -->
 
 		<link rel="shortcut icon" type="image/x-icon" href="<?php if(@$setting_data->favicon){?>{{asset('/images/settings/'.@$setting_data->favicon)}}<?php }?>">
- 
+
         <!-- fonts -->
         <link rel="preconnect" href="https://fonts.gstatic.com/">
         <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300;400;700&amp;display=swap" rel="stylesheet">
@@ -100,7 +100,7 @@
                     <li class="nav-item">
                         <div class="nav-item-inner">
                             <ul class="nav social-icons  social-squared social-white social-h-own social-bg-transparent social-hbg-transparent">
-                        
+
                                 @if(!empty(@$setting_data->facebook))
                                     <li class="nav-item"> <a href="@if(!empty(@$setting_data->facebook)) {{@$setting_data->facebook}} @endif" target="_blank"  class="nav-link social-fb"> <i class=" fab fa-facebook"></i> </a></li>
                                 @endif
@@ -116,6 +116,11 @@
                                 @if(!empty(@$setting_data->linkedin))
 
                                 <li class="nav-item"> <a href="@if(!empty(@$setting_data->linkedin)) {{@$setting_data->linkedin}} @endif" target="_blank" class="nav-link social-instagram"> <i class="fab fa-linkedin-in"></i> </a></li>
+
+                                @endif
+                                @if(!empty(@$setting_data->whatsapp))
+
+                                    <li class="nav-item"> <a href="@if(!empty(@$setting_data->whatsapp)) https://wa.me/{{$setting_data->whatsapp}} @endif" target="_blank" class="nav-link social-instagram"> <i class="fab fa-whatsapp"></i> </a></li>
 
                                 @endif
                             </ul>
@@ -137,7 +142,7 @@
                     <div class="main-menu-wrapper__logo">
                                     <a href="/"> <img src="<?php if(@$setting_data->logo){?>{{asset('/images/settings/'.@$setting_data->logo)}}<?php }?>"  alt="NMS Recruitment Service" title="NMS Recruitment Service"></a>
                     </div>
-                  
+
                 </div>
                 <div class="main-menu-wrapper__main-menu">
                     <a href="#" class="mobile-nav__toggler">
