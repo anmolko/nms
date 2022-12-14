@@ -34,12 +34,12 @@
         right: 75px;
         }
     }
-    
+
     #sticky-anchor{
         display:none;
     }
- 
-    
+
+
     </style>
 @endsection
 @section('seo')
@@ -71,24 +71,24 @@
                     <ul class="thm-breadcrumb list-unstyled">
                         <li><a href="/">Home</a></li>
                         <li><span>.</span></li>
-                        <li><a href="{route('service.frontend')}}">Services</a></li>
+                        <li><a href="{{route('service.frontend')}}">Services</a></li>
                     </ul>
                     <h2>{{ @$singleService->title }}</h2>
                 </div>
             </div>
         </section>
         <!--Page Header End-->
-        
+
 
 
         <!--Service Details Start-->
         <section class="service-details">
             <div class="container">
                 <div class="row">
-                   
+
                     <div class="col-xl-8 col-lg-7 content">
                         <div class="service-details__left">
-                           
+
                             <div class="service-details__img">
                                 <img src="<?php if(@$singleService->banner_image){?>{{asset('/images/service/'.@$singleService->banner_image)}}<?php }?>" alt="{{@$singleService->slug}}">
                             </div>
@@ -108,12 +108,12 @@
         </section>
         <!--Service Details End-->
 
- 
+
 @endsection
 @section('js')
 <script>
-   
-   
+
+
    function sticky_relocate() {
             var window_top = $(window).scrollTop();
             var footer_top = $(".sticky-stop").offset().top;

@@ -187,7 +187,7 @@
     -ms-user-select: none !important;
     user-select: none !important;
     border: 1px solid transparent !important;
-    padding: 0.5rem 0.9rem !important; 
+    padding: 0.5rem 0.9rem !important;
     font-size: .8125rem !important;
     border-radius: 0.25rem !important;
     }
