@@ -9,7 +9,7 @@
                         <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms">
                             <div class="footer-widget__column footer-widget__about">
                                 <div class="footer-widget__about-logo">
-                                    
+
                                     <a href="/"><img src="<?php if(@$setting_data->logo_white){?>{{asset('/images/settings/'.@$setting_data->logo_white)}}<?php } ?>" alt="Logo"></a>
 
                                 </div>
@@ -19,7 +19,7 @@
                                     @if(!empty(@$setting_data->facebook))
                                             <a href="@if(!empty(@$setting_data->facebook)) {{@$setting_data->facebook}} @endif" target="_blank" class="social-fb"
                                             ><i class="fab fa-facebook"></i
-                                            ></a>   
+                                            ></a>
                                     @endif
                                     @if(!empty(@$setting_data->youtube))
                                             <a class="clr-fb" href="@if(!empty(@$setting_data->youtube)) {{@$setting_data->youtube}} @endif" target="_blank" class="social-youtube"
@@ -36,6 +36,12 @@
 
                                             <a href="@if(!empty(@$setting_data->linkedin)) {{@$setting_data->linkedin}} @endif" target="_blank" class="social-linkedin"
                                             ><i class="fab fa-linkedin-in"></i
+                                            ></a>
+                                    @endif
+                                    @if(!empty(@$setting_data->whatsapp))
+
+                                            <a href="@if(!empty(@$setting_data->whatsapp)) https://wa.me/{{@$setting_data->whatsapp}} @endif" target="_blank" class="social-whatsapp"
+                                            ><i class="fab fa-whatsapp"></i
                                             ></a>
                                     @endif
 
@@ -130,7 +136,7 @@
                                 </div>
                             </div>
                         </div>
-                       
+
                     </div>
                 </div>
             </div>
@@ -204,7 +210,11 @@
                         <a class="fab fa-linkedin-in" href="@if(!empty(@$setting_data->linkedin)) {{@$setting_data->linkedin}} @endif" target="_blank" class="social-linkedin"
                         ></a>
                     @endif
-                   
+                    @if(!empty(@$setting_data->whatsapp))
+                    <a class="fab fa-whatsapp" href="@if(!empty(@$setting_data->whatsapp))  https://wa.me/{{@$setting_data->whatsapp}} @endif" target="_blank" class="social-whatsapp"
+                    ></a>
+                    @endif
+
                 </div><!-- /.mobile-nav__social -->
             </div><!-- /.mobile-nav__top -->
 
@@ -215,9 +225,12 @@
     </div>
     <!-- /.mobile-nav__wrapper -->
 
-
     <a href="#" data-target="html" class="scroll-to-target scroll-to-top"><i class="fa fa-angle-up"></i></a>
-
+        @if(!empty(@$setting_data->whatsapp))
+        <a href="https://wa.me/{{$setting_data->whatsapp}}" class="float" target="_blank">
+            <i class="fa fa-whatsapp my-float"></i>
+        </a>
+        @endif
 
     <script src="{{asset('assets/frontend/vendors/jquery/jquery-3.5.1.min.js')}}"></script>
     <script src="{{asset('assets/frontend/vendors/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
