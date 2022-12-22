@@ -129,7 +129,7 @@
                                     @endif
                                     @if(!empty(@$setting_data->linkedin))
 
-                                    <li class="nav-item"> <a href="@if(!empty(@$setting_data->linkedin)) {{@$setting_data->linkedin}} @endif" target="_blank" class="nav-link social-instagram"> <i class="fab fa-linkedin-in"></i> </a></li>
+                                    <li class="nav-item"> <a href="@if(!empty(@$setting_data->linkedin)) {{@$setting_data->linkedin}} @endif" target="_blank" class="nav-link social-instagram"> <i class="fab fa-linkedin"></i> </a></li>
 
                                     @endif
                                     @if(!empty(@$setting_data->whatsapp))
