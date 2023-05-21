@@ -4,12 +4,10 @@
 
     <link href="{{asset('assets/backend/libs/sweetalert2/sweetalert2.min.css')}}" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
     <style>
-        .blog-feature-image{
-        }
         .feature-image-button{
-            position: absolute;
             top: 25%;
         }
         .profile-foreground-img-file-input {
@@ -50,29 +48,39 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="mb-3">
-                                <label>Name <span class="text-muted text-danger">*</span></label>
-                                <input type="text" class="form-control" name="name" id="job_name" onclick="slugMaker('job_name','job_slug')" value="{{@$edit->name}}" required>
+                                <label>Job Name <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" name="name" id="job_name" value="{{@$edit->name}}" required>
                                 <div class="invalid-feedback">
-                                    Please enter the demand name.
+                                    Please enter the job name.
                                 </div>
                             </div>
                             <div class="mb-3">
-                                <label>Slug <span class="text-muted text-danger">*</span></label>
-                                <input type="text" class="form-control" name="slug" id="job_slug" value="{{@$edit->slug}}" required>
+                                <label>Job Title </label>
+                                <input type="text" class="form-control" name="title" value="{{@$edit->title}}" id="job_title" >
                                 <div class="invalid-feedback">
-                                    Please enter the demand Slug.
+                                    Please enter the job title.
                                 </div>
-                                @if($errors->has('slug'))
-                                    <div class="invalid-feedback">
-                                        {{$errors->first('slug')}}
-                                    </div>
-                                @endif
                             </div>
                             <div class="form-group mb-3">
-                                <label>Required Number of demands </label>
-                                <input type="text" class="form-control" name="required_number" value="{{@$edit->required_number}}">
+                                <label for="start_date" class="form-label">Start Date <span class="text-muted text-danger">*</span></label>
+                                <input type="text" class="form-control" name="start_date" id="start_date" value="{{@$start}}" required>
                                 <div class="invalid-feedback">
-                                    Please enter the required number of demands.
+                                    Please Select the start date.
+                                </div>
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label for="end_date" class="form-label">End Date <span class="text-muted text-danger">*</span></label>
+                                <input type="text" class="form-control" name="end_date" id="end_date" value="{{@$end}}" required>
+                                <div class="invalid-feedback">
+                                    Please Select the end date.
+                                </div>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label>Required Number of Jobs </label>
+                                <input type="text" class="form-control" name="required_number" value="{{@$edit->required_number}}" >
+                                <div class="invalid-feedback">
+                                    Please enter the required number of jobs.
                                 </div>
                             </div>
                             <div class="form-group mb-3">
@@ -83,12 +91,20 @@
                                 </div>
                             </div>
 
+                            <div class="form-group mb-3">
+                                <label>Salary </label>
+                                <input type="text" min="1" class="form-control" name="salary" value="{{@$edit->salary}}">
+                                <div class="invalid-feedback">
+                                    Please enter the salary.
+                                </div>
+                            </div>
+
                             <div class="mb-3">
-                                <label>Demand Description</label>
+                                <label>Job Description</label>
 
                                 <textarea class="form-control" id="ckeditor-classic-blog" name="description" placeholder="Enter job description" rows="3">{!! $edit->description !!}</textarea>
                                 <div class="invalid-tooltip">
-                                    Please enter the demand description.
+                                    Please enter the job description.
                                 </div>
 
                             </div>
@@ -155,20 +171,31 @@
 
                 <div class="col-lg-4 ">
                     <div class="sticky-side-div">
+
                         <div class="card">
                             <div class="card-header">
                                 <h5 class="card-title mb-0">Form & Category</h5>
                             </div>
                             <div class="card-body">
                                 <div class="form-group mb-3">
-                                    <label>Form Link <span class="text-muted text-danger">*</span></label>
-                                    <input type="text" class="form-control" name="form_link" value="{{@$edit->form_link}}" required>
+                                    <label>Company Name </label>
+                                    <input type="text" class="form-control" name="extra_company" id="extra_company" value="{{@$edit->extra_company}}">
+                                    <div class="invalid-feedback">
+                                        Please enter the company name.
+                                    </div>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label> Form Link </label>
+                                    <input type="url" class="form-control" name="formlink" id="formlink_edit" value="{{@$edit->formlink}}">
                                     <div class="invalid-feedback">
                                         Please enter the form link.
                                     </div>
+                                    <span class="ctm-text-sm">*Paste the from link from here to use it in the frontend</span>
                                 </div>
-                                <p class="text-muted mb-2"> Select demand category</p>
-                                <select class="form-select" name="job_category_id" data-choices data-choices-search-true >
+
+
+                                <p class="text-muted mb-2"> Select job category</p>
+                                <select class="form-select form-group custom-select2" name="job_category_id[]" id="job_category_id" multiple="multiple">
                                     @if(!empty(@$categories))
                                         @foreach(@$categories as $categoryList)
                                             <option value="{{ @$categoryList->id }}" @if(@$edit->job_category_id == @$categoryList->id) selected @endif>{{ ucwords(@$categoryList->name) }}</option>
@@ -179,6 +206,7 @@
                             </div>
                             <!-- end card body -->
                         </div>
+
                         <div class="card ">
                             <div class="card-header">
                                 <h5 class="card-title mb-0">Select Options</h5>
@@ -209,21 +237,7 @@
                                         Please enter the Min Qualification.
                                     </div>
                                 </div>
-                                <div class="form-group mb-3">
-                                    <label for="start_date" class="form-label">Start Date </label>
-                                    <input type="text" class="form-control" name="start_date" id="start_date" value="{{@$start}}" >
-                                    <div class="invalid-feedback">
-                                        Please Select the start date.
-                                    </div>
-                                </div>
 
-                                <div class="form-group mb-3">
-                                    <label for="end_date" class="form-label">End Date </label>
-                                    <input type="text" class="form-control" name="end_date" id="end_date" value="{{@$end}}" >
-                                    <div class="invalid-feedback">
-                                        Please Select the end date.
-                                    </div>
-                                </div>
                             </div>
                             <!-- end card body -->
                         </div>
@@ -241,7 +255,7 @@
                                             id="profile-foreground-img-file-input" onchange="loadFile(event)" name="image"
                                             class="profile-foreground-img-file-input" >
 
-                                    <figcaption class="figure-caption">*use image minimum of  1770 x 536px  </figcaption>
+                                    {{--                                    <figcaption class="figure-caption">*use image minimum of 1280 x 720px </figcaption>--}}
                                     <div class="invalid-feedback" >
                                         Please select a image.
                                     </div>
@@ -259,10 +273,6 @@
 
             </div>
         {!! Form::close() !!}
-
-        <!-- end row -->
-
-            <!-- container-fluid -->
         </div>
     </div>
 
@@ -276,6 +286,7 @@
     <script src="{{asset('assets/backend/libs/sweetalert2/sweetalert2.min.js')}}"></script>
     <script src="{{asset('assets/backend/custom_js/blog_credit.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
     <script type="text/javascript">
         $(function() {
@@ -294,7 +305,16 @@
                 todayHighlight: "true",
 
             });
+            let category_id = "{{$edit->category_ids}}";
+            const split_string = category_id.split(",");
+            $("#job_category_id").val(split_string).trigger('change');
+
         });
+        $('.custom-select2').select2({
+            placeholder: "Select here",
+            minimumResultsForSearch:-1,width:'100%'}
+        );
+
 
 
     </script>

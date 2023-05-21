@@ -17,14 +17,14 @@ use Intervention\Image\Facades\Image;
 class JobController extends Controller
 {
 
-    private $blog_path;
     private $blog_thumb_path;
 
-    public function __construct()
+    protected Job $job;
+    public function __construct(Job $job)
     {
         $this->middleware('auth');
         $this->blog_thumb_path   = public_path('/images/job/thumb');
-
+        $this->job = $job;
     }
 
 
@@ -36,7 +36,7 @@ class JobController extends Controller
     public function index()
     {
 
-        $jobs               = Job::all();
+        $jobs               = Job::orderBy('created_at','desc')->get();
         $categories         = JobCategory::all();
         $countries          = CountryState::getCountries();
         $clients            = Client::all();
@@ -64,15 +64,21 @@ class JobController extends Controller
     {
         $end     = Carbon::createFromFormat('d/m/Y', $request->end_date)->format('Y-m-d');
         $start   = Carbon::createFromFormat('d/m/Y', $request->start_date)->format('Y-m-d');
+        $category_id = $request->job_category_id;
+
         $data = [
             'lt_number'            => $request->input('lt_number'),
+            'category_ids'         => ($category_id !== null) ? implode(',', $category_id):null,
             'name'                 => $request->input('name'),
-            'slug'                 => $request->input('slug'),
+            'slug'                 => $this->job->changeToSlug($request->input('name')),
             'job_category_id'      => $request->input('job_category_id'),
             'required_number'      => $request->input('required_number'),
             'min_qualification'    => $request->input('min_qualification'),
             'description'          => $request->input('description'),
             'form_link'            => $request->input('form_link'),
+            'extra_company'        => $request->input('extra_company'),
+            'title'                 => $request->input('title'),
+
             'start_date'           => $start,
             'end_date'             => $end,
             'meta_title'           => $request->input('meta_title'),
@@ -147,16 +153,20 @@ class JobController extends Controller
 
         $end     = Carbon::createFromFormat('d/m/Y', $request->end_date)->format('Y-m-d');
         $start   = Carbon::createFromFormat('d/m/Y', $request->start_date)->format('Y-m-d');
+        $category_id = $request->job_category_id;
+
         $job                        = Job::find($id);
         $job->name                  = $request->input('name');
+        $job->category_ids          = ($category_id !== null) ? implode(',', $category_id):null;
         $job->slug                  = $request->input('slug');
-        $job->job_category_id       = $request->input('job_category_id');
+        $job->title                  = $request->input('title');
         $job->lt_number             = $request->input('lt_number');
         $job->required_number       = $request->input('required_number');
         $job->salary                = $request->input('salary');
         $job->min_qualification     = $request->input('min_qualification');
         $job->description           = $request->input('description');
         $job->meta_title            = $request->input('meta_title');
+        $job->extra_company         = $request->input('extra_company');
         $job->meta_tags             = $request->input('meta_tags');
         $job->meta_description      = $request->input('meta_description');
         $job->form_link             = $request->input('form_link');

@@ -4,7 +4,7 @@
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
 
 <style>
-    
+
     @media only screen and (min-width:768px){
         .counter-item.style-two {
             height: 400px;
@@ -18,9 +18,17 @@
         margin-top: 15px;
     }
 
+    .portfolio-one__img {
+        height: 425px;
+    }
 
+    .portfolio-one__img img {
+
+        height: 100%;
+        object-fit: cover;
+    }
     .recruitement-process-circle { width: 500px; height: 500px; border-radius: 100%; margin: 0 auto; position: relative; }
-   
+
     span.step-by i {
         font-family: 'FontAwesome';
     }
@@ -77,11 +85,11 @@
 
     .step-process .step-by { font-size: 40px; }
     .contentCircle { width: 250px; border-radius: 100%; color: #fff; position: relative; top: 150px; left: 50%; transform: translate(-50%, -50%); }
-    .contentCircle .process-item { border-radius: 100%; 
-        color: #fff; position: absolute; 
-        text-align: center; bottom: 0; left: 0; opacity: 0; 
+    .contentCircle .process-item { border-radius: 100%;
+        color: #fff; position: absolute;
+        text-align: center; bottom: 0; left: 0; opacity: 0;
         transform: scale(0); transition: 0.5s; font-size: 15px;
-        width: 100%; height: 100%; top: 0; right: 0; 
+        width: 100%; height: 100%; top: 0; right: 0;
         margin: auto; line-height: 150px; }
 
 
@@ -92,11 +100,11 @@
         .recruitement-process-circle::after { width: 100%; height: 100%; }
         .step-process { width: 100%; height: 100%; top: 0; right: 0; bottom: 0; left: 0; margin: auto; }
        .recruitement-process-circle{display:none;}
-        
+
     }
     @media only screen and (min-width:600px) and (max-width:767px) {  }
     @media only screen and (min-width:768px) and (max-width:991px) {  }
-   
+
     @media only screen and (min-width:1200px) and (max-width:1499px) { }
     .title-box .title { font-weight: 600; letter-spacing: 2px; position: relative; z-index: -1;margin-top: 20px;font-size: 20px;margin-bottom: 10px; }
             .title-box span { text-shadow: 0 10px 10px rgba(0, 0, 0, .15); font-weight: 800; color: #57585c; }
@@ -199,7 +207,7 @@
         background: white;
     }
 
-    @media only screen and (min-width: 1024px) and (max-width:1199px) { 
+    @media only screen and (min-width: 1024px) and (max-width:1199px) {
         .director-message .testimonials-two__image{
             width: 255px;
         }
@@ -671,6 +679,45 @@
     <!-- Core value end -->
     @endif
 
+    @if(count($latestdemands)>0)
+        <section class="similar-work">
+            <div class="container">
+                <div class="section-title text-center">
+                    <span class="section-title__tagline">Checkout more demand</span>
+                    <h2 class="section-title__title">Our Latest demand</h2>
+                </div>
+                <div class="swiper-container thm-swiper__slider"
+                     data-swiper-options='{"slidesPerView": 3, "spaceBetween": 30, "breakpoints": { "0": { "slidesPerView": 1, "spaceBetween": 30 }, "375": { "slidesPerView": 1, "spaceBetween": 30 }, "575": { "slidesPerView": 1, "spaceBetween": 30 }, "768": { "slidesPerView": 1, "spaceBetween": 30 }, "991": { "slidesPerView": 2, "spaceBetween": 30 }, "1199": { "slidesPerView": 2, "spaceBetween": 30 }, "1200": { "slidesPerView": 3, "spaceBetween": 30 } } }'>
+                    <div class="swiper-wrapper">
+
+                        @foreach(@$latestdemands as $demand)
+
+                            <div class="swiper-slide">
+                                <!--Portfolio One Single-->
+                                <div class="portfolio-one__single">
+                                    <div class="portfolio-one__img">
+                                        <img src="{{ @$demand->image ? asset('/images/job/'.@$demand->image): asset('assets/frontend/images/nms.png') }}" alt="">
+                                        <div class="portfolio-one__experience">
+                                            <div class="portfolio-one__fimlor">
+                                                <p class="portfolio-one__fimlor-title"><a
+                                                        href="{{route('demand.single',$demand->slug)}}">{{ @$demand->name }}</a></p>
+                                            </div>
+                                        </div>
+                                        <div class="portfolio-one__arrow">
+                                            <a href="{{route('demand.single',$demand->slug)}}"><span class="icon-right-arrow"></span></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+
+                    </div><!-- /.swiper-wrapper -->
+                </div>
+            </div>
+        </section>
+
+    @endif
+
     @if(count($directors) > 0)
 
     <section class="testimonials-two director-message">
@@ -736,19 +783,19 @@
                                                 @if(@$director->button)
                                                      <a href="{{@$director->link}}" class="thm-btn testimonial-one__btn"><span>{{@$director->button}}</span></a>
                                                 @endif
-                                           
+
                                             </div>
                                         </div>
-                                
+
                                     </div><!-- /.testimonials-two__meta -->
                                     <!-- /.testimonials-two__summery -->
                                 </div><!-- /.testimonials-two__card__inner -->
                             </div><!-- /.testimonials-two__card -->
                         </div>
-                    
+
                     @endforeach
                     <!-- /.swiper-slide -->
-                    
+
                 </div><!-- /.swiper-wrapper -->
                 <div class="swiper-pagination" id="testimonials-two-pagination"></div>
             </div><!-- /.thm-swiper__slider -->
@@ -758,7 +805,7 @@
     @endif
 
 
-        
+
     @if(count($testimonials) > 2)
 
         <!--Testimonial One Start-->
@@ -912,7 +959,7 @@
                                             <p><small>{{ucfirst(@$recruitment->icon_description)}} </small></p>
                                         </div>
                                     @endforeach
-                                
+
 
                                 </div>
 
@@ -923,7 +970,7 @@
                         <div class="reasons__right">
                             <div class="section-title text-left">
                                 <h2 class="section-title__title">
-                                    
+
                                     <span><?php
                                          $split = explode(" ", ucwords(@$recruitments[0]->heading));?> {{preg_replace('/\W\w+\s*(\W*)$/', '$1', ucwords(@$recruitments[0]->heading))."\n"}}</span>
                                     <span class="text-last">{{$split[count($split)-1]}}</span>
@@ -934,7 +981,7 @@
                                 @if(@$recruitments[0]->link)
                                     <a href="{{@$recruitments[0]->link}}" class="thm-btn reasons__btn"><span>Read More</span></a>
                                 @endif
-                     
+
                         </div>
                     </div>
                 </div>
@@ -943,7 +990,7 @@
     @endif
 
 
-    
+
     @if(count($clients) > 0)
 
         <!--Brand Two-->
@@ -1014,7 +1061,7 @@
                 <div class="col-md-12 col-lg-7">
                   <div class="about-two__content" style="padding: 50px;">
                     <div class="section-title text-left">
-                        
+
                           <h2 class="section-title__title">
                           <span><?php
                                          $split = explode(" ", ucwords(@$setting_data->grievance_heading));?> {{preg_replace('/\W\w+\s*(\W*)$/', '$1', ucwords(@$setting_data->grievance_heading))."\n"}}</span>
@@ -1072,24 +1119,24 @@
 			if(window.console) {
 				console.log($(this).text(), x, y);
 			}
-			
+
 			$(this).css({
 				left: x + 'px',
 				top: y + 'px'
 			});
 			angle += step;
 		});
-		
-		
+
+
 		$('.step-by').click(function(){
-			
+
 			var dataTab= $(this).data("tab");
 			$('.step-by').removeClass('active');
 			$(this).addClass('active');
 			$('.process-item').removeClass('active');
 			$( '.process-item'+ dataTab).addClass('active');
 			i=dataTab;
-			
+
 			$('.step-process').css({
 				"transform":"rotate("+(360-(i-1)*36)+"deg)",
 				"transition":"2s"
@@ -1098,10 +1145,10 @@
 				"transform":"rotate("+((i-1)*36)+"deg)",
 				"transition":"1s"
 			});
-			
-			
+
+
 		});
-		
+
 		setInterval(function(){
 			var dataTab= $('.step-by.active').data("tab");
             var total = "{{count(@$recruitments)}}"
@@ -1114,8 +1161,8 @@
 			$('.process-item').removeClass('active');
 			$( '.process-item'+i).addClass('active');
 			i++;
-			
-			
+
+
 			$('.step-process').css({
 				"transform":"rotate("+(360-(i-2)*36)+"deg)",
 				"transition":"2s"
@@ -1124,9 +1171,9 @@
 				"transform":"rotate("+((i-2)*36)+"deg)",
 				"transition":"1s"
 			});
-			
+
 			}, 5000);
-		
+
 	});
 </script>
 @endsection

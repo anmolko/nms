@@ -4,7 +4,7 @@
 <link rel="stylesheet" id="jssDefault" href="{{asset('assets/frontend/css/pagination.css')}}">
 
 <style>
-  
+
   .service-two__image img {
         width: 100%;
         height: 100%;
@@ -50,8 +50,8 @@
                     <div class="col-xl-8 col-lg-7">
                         <div class="blog-sidebar__left">
                             <div class="row">
-                           
-        
+
+
                             @if(count($alldemands) > 0)
 
                                 @foreach($alldemands as $demand)
@@ -59,7 +59,7 @@
                                     <div class="service-two__card">
                                         <div class="service-two__card__inner">
                                             <div class="service-two__image">
-                                                <img src="<?php if(@$demand->image){?>{{asset('/images/job/'.@$demand->image)}}<?php }?>" alt="">
+                                                <img src="{{ @$demand->image ? asset('/images/job/'.@$demand->image): asset('assets/frontend/images/nms.png') }}" alt="">
                                             </div><!-- /.service-two__image -->
                                             <div class="service-two__content">
                                                 <h3 class="service-two__title">{!! ucfirst(@$demand->name) !!}</h3><!-- /.service-two__title -->
@@ -84,24 +84,24 @@
                                             <h2 class="page-title">Nothing Found</h2>
                                         <div class="page-content">
                                             <p>It seems we can not find what you are looking for.</p>
-                                        
+
                                         </div>
                                     </section>
                             @endif
 
                             </div>
-                          
+
                         </div>
                     </div>
                     <div class="col-xl-4 col-lg-5">
                         @include('frontend.pages.demand.sidebar')
-                   
+
                     </div>
                 </div>
             </div>
         </section>
         <!--Blog Sidebar End-->
 
-    
+
 
 @endsection

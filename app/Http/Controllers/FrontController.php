@@ -100,8 +100,10 @@ class FrontController extends Controller
         $latestPosts = $this->blog->inRandomOrder()->take(3)->get();
         $recruitments =$this->recruitment_process->get();
         $directors =$this->director->orderBy('order', 'asc')->get();
+        $today              = date('Y-m-d');
+        $latestdemands   = Job::orderBy('created_at', 'DESC')->where('start_date','<=',$today)->take(3)->get();
 
-        return view('welcome',compact('directors','recruitments','testimonials','clients','latestPosts','latestServices','countries','homepage_info','sliders'));
+        return view('welcome',compact('directors','latestdemands','recruitments','testimonials','clients','latestPosts','latestServices','countries','homepage_info','sliders'));
     }
 
 
@@ -393,10 +395,10 @@ class FrontController extends Controller
 
     public function demands(){
         $today = date('Y-m-d');
-        $alldemands = $this->demand->orderBy('created_at', 'asc')->where('status','publish')->where('start_date','<=',$today)->where('end_date','>=',$today)->paginate(6);
-        $latestDemands = $this->demand->orderBy('created_at', 'DESC')->where('status','publish')->where('start_date','<=',$today)->where('end_date','>=',$today)->take(3)->get();
+        $alldemands = $this->demand->orderBy('created_at', 'asc')->where('status','publish')->where('start_date','<=',$today)->paginate(6);
+        $latestDemands = $this->demand->orderBy('created_at', 'DESC')->where('status','publish')->where('start_date','<=',$today)->take(3)->get();
 
-        return view('frontend.pages.demand.index',compact('alldemands','latestDemands'));
+        return view('frontend.pages.demand.index',compact('today','alldemands','latestDemands'));
     }
 
 
@@ -409,9 +411,9 @@ class FrontController extends Controller
 
         $today = date('Y-m-d');
 
-        $latestDemands = $this->demand->orderBy('created_at', 'DESC')->where('status','publish')->where('start_date','<=',$today)->where('end_date','>=',$today)->take(5)->get();
+        $latestDemands = $this->demand->orderBy('created_at', 'DESC')->where('status','publish')->where('start_date','<=',$today)->take(5)->get();
 
-        return view('frontend.pages.demand.single',compact('singleDemand','latestDemands'));
+        return view('frontend.pages.demand.single',compact('today','singleDemand','latestDemands'));
     }
 
 
@@ -420,10 +422,10 @@ class FrontController extends Controller
         $query = $request->s;
         $today = date('Y-m-d');
 
-        $alldemands = $this->demand->where('name', 'LIKE', '%' . $query . '%')->where('status','publish')->orderBy('name', 'asc')->where('start_date','<=',$today)->where('end_date','>=',$today)->paginate(6);
-        $latestDemands = $this->demand->orderBy('created_at', 'DESC')->where('status','publish')->where('start_date','<=',$today)->where('end_date','>=',$today)->take(3)->get();
+        $alldemands = $this->demand->where('name', 'LIKE', '%' . $query . '%')->where('status','publish')->orderBy('name', 'asc')->where('start_date','<=',$today)->paginate(6);
+        $latestDemands = $this->demand->orderBy('created_at', 'DESC')->where('status','publish')->where('start_date','<=',$today)->take(3)->get();
 
-        return view('frontend.pages.demand.search',compact('alldemands','query','latestDemands'));
+        return view('frontend.pages.demand.search',compact('today','alldemands','query','latestDemands'));
     }
 
 

@@ -68,7 +68,7 @@
                                             @foreach($jobs as  $job)
                                                 <tr id="job-individual-{{@$job->id}}">
                                                     <td >
-                                                        <img src="{{asset('/images/job/'.@$job->image)}}" alt="{{@$job->slug}}" class="figure-img rounded-circle avatar-lg">
+                                                        <img src="{{@$job->image ? asset('/images/job/'.@$job->image) : asset('/assets/frontend/images/nms.png') }}" alt="{{@$job->slug}}" class="figure-img rounded-circle avatar-lg">
                                                     </td>
                                                     <td>
                                                         {{ ucwords(@$job->name) }}
@@ -76,7 +76,7 @@
                                                     <td>
                                                         {{ @$job->slug }}
                                                     </td>
-                                                    <td>{{ucfirst(@$job->category->name)}}</td>
+                                                    <td>{{ucfirst($job->getJobCategories(@$job->category_ids))}}</td>
                                                     <td>
                                                         <div class="btn-group view-btn" id="job-status-button-{{$job->id}}">
                                                             <button class="btn btn-light dropdown-toggle" style="width: 10em;" type="button" id="dropdownMenuClickableInside" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">

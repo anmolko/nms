@@ -13,7 +13,7 @@
 
                 <li>
                     <div class="sidebar__post-image">
-                        <img src="<?php if(@$latest->image){?>{{asset('/images/job/thumb/thumb_'.@$latest->image)}}<?php }?>" alt="">
+                        <img src="{{ @$latest->image ? asset('/images/job/thumb/thumb_'.@$latest->image): asset('assets/frontend/images/nms.png') }}" alt="">
                     </div>
                     <div class="sidebar__post-content">
                         <h3>
@@ -22,7 +22,7 @@
                     </div>
                 </li>
             @endforeach
-                
+
             </ul>
         </div>
     @endif

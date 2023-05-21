@@ -21,7 +21,7 @@
     }
 
     .portfolio-one__img img {
-  
+
         height: 100%;
         object-fit: cover;
     }
@@ -56,7 +56,7 @@
                         <li><a href="/">Home</a></li>
                         <li><span>.</span></li>
                         <li><a href="{{route('demand.list')}}">Demand</a></li>
-                        
+
                     </ul>
                     <h2>{{ @$singleDemand->name }}</h2>
                 </div>
@@ -70,24 +70,41 @@
                 <div class="row">
                     <div class="col-xl-12">
                         <div class="portfolio-fullwidth__img-box">
-                            <img src="{{ asset('/images/job/'.@$singleDemand->image) }}" alt="">
+                            <img src="{{ @$singleDemand->image ? asset('/images/job/'.@$singleDemand->image): asset('assets/frontend/images/nms.png') }}" alt="">
                             <div class="portfolio-fullwidth__details-box">
                                 <ul class="portfolio-fullwidth__details-info list-unstyled">
-                                    <li>
-                                        <h5 class="portfolio-fullwidth__client">Demand Code:</h5>
-                                        <p class="portfolio-fullwidth__name">{{@$singleDemand->code}}</p>
-                                    </li>
+                                    @if(@$singleDemand->getJobCategories(@$singleDemand->category_ids) !== 'N/A')
+                                        <li>
+                                            <h5 class="portfolio-fullwidth__client">Category:</h5>
+                                            <p class="portfolio-fullwidth__name">{{ucwords(@$singleDemand->getJobCategories($singleDemand->category_ids))}}</p>
+                                        </li>
+                                    @endif
+                                    @if($singleDemand->min_qualification)
                                     <li>
                                         <h5 class="portfolio-fullwidth__client">Min. Qualification:</h5>
                                         <p class="portfolio-fullwidth__name">{{ucwords(@$singleDemand->min_qualification)}}</p>
                                     </li>
+                                    @endif
+                                    @if(@$singleDemand->extra_company)
+                                        <li>
+                                            <h5 class="portfolio-fullwidth__client">Company</h5>
+                                            <p class="portfolio-fullwidth__name">{{ucwords(@$singleDemand->extra_company)}}</p>
+                                        </li>
+                                    @endif
+                                    @if(@$singleDemand->salary || @$singleDemand->required_number)
+                                        <li>
+                                            <h5 class="portfolio-fullwidth__client">Salary / Required Num</h5>
+                                            <p class="portfolio-fullwidth__name">>{{@$singleDemand->salary ?? '-'}}/{{@$singleDemand->required_number ?? '-'}}</p>
+                                        </li>
+                                    @endif
+
                                     <li>
                                         <h5 class="portfolio-fullwidth__client">End Date:</h5>
                                         <p class="portfolio-fullwidth__name">{{date('j M,Y',strtotime(@$singleDemand->end_date))}}</p>
                                     </li>
                                     <li>
                                         <div class="portfolio-fullwidth__social-list">
-                                        
+
                                             <a href="#" class="clr-fb"><i onclick='fbShare("{{route('demand.single',$singleDemand->slug)}}")' class="fab fa-facebook-f"></i></a>
                                             <a href="#"><i  onclick='twitShare("{{route('demand.single',$singleDemand->slug)}}","{{ $singleDemand->name }}")' class="fab fa-twitter"></i></a>
                                             <a href="#" ><i class="fab fa-whatsapp" onclick='whatsappShare("{{route('demand.single',$singleDemand->slug)}}","{{ $singleDemand->name }}")'></i></a>
@@ -100,9 +117,9 @@
                             <div class="portfolio-fullwidth__text-1">
                             {!! $singleDemand->description !!}
                             </div>
-                          
+
                         </div>
-                    
+
                     </div>
                 </div>
             </div>
@@ -127,7 +144,7 @@
                                 <!--Portfolio One Single-->
                                 <div class="portfolio-one__single">
                                     <div class="portfolio-one__img">
-                                        <img src="<?php if(@$demand->image){?>{{asset('/images/job/'.@$demand->image)}}<?php }?>" alt="">
+                                        <img src="{{ @$demand->image ? asset('/images/job/'.@$demand->image): asset('assets/frontend/images/nms.png') }}" alt="">
                                         <div class="portfolio-one__experience">
                                             <div class="portfolio-one__fimlor">
                                                 <p class="portfolio-one__fimlor-title"><a
@@ -141,7 +158,7 @@
                                 </div>
                             </div>
                         @endforeach
-                       
+
                     </div><!-- /.swiper-wrapper -->
                 </div>
             </div>

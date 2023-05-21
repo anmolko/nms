@@ -55,12 +55,12 @@
                                     <div class="service-two__card">
                                         <div class="service-two__card__inner">
                                             <div class="service-two__image">
-                                                <img src="<?php if(@$demand->image){?>{{asset('/images/job/'.@$demand->image)}}<?php }?>" alt="">
+                                                <img src="{{ (@$demand->image !== null) ? asset('/images/job/'.@$demand->image): asset('assets/frontend/images/nms.png')}}" alt="">
                                             </div><!-- /.service-two__image -->
                                             <div class="service-two__content" style="padding:8px;">
                                                 <h3 class="service-two__title">{!! ucfirst(@$demand->name) !!}</h3><!-- /.service-two__title -->
-                                                </p><!-- /.service-two__summery -->
-                                                <a href="{{route('demand.single',$demand->slug)}}" class="service-two__link">
+
+                                                <a href="{{route('demand.single',@$demand->slug)}}" class="service-two__link">
                                                     <i class="icon-right-arrow"></i>
                                                 </a><!-- /.service-two__link -->
                                             </div><!-- /.service-two__content -->
