@@ -97,7 +97,7 @@ class JobController extends Controller
             $thumb        = 'thumb_'.$name;
             $path         = base_path().'/public/images/job/';
             $thumb_path   = base_path().'/public/images/job/thumb/';
-            $moved        = Image::make($image->getRealPath())->fit(1770, 536)->orientate()->save($path.$name);
+            $moved        = Image::make($image->getRealPath())->orientate()->save($path.$name);
             $thumb        = Image::make($image->getRealPath())->resize(62, 61)->orientate()->save($thumb_path.$thumb);
 
             if ($moved  && $thumb){
@@ -158,7 +158,7 @@ class JobController extends Controller
         $job                        = Job::find($id);
         $job->name                  = $request->input('name');
         $job->category_ids          = ($category_id !== null) ? implode(',', $category_id):null;
-        $job->slug                  = $request->input('slug');
+        $job->slug                  = $this->job->changeToSlug($request->input('name'));
         $job->title                  = $request->input('title');
         $job->lt_number             = $request->input('lt_number');
         $job->required_number       = $request->input('required_number');
@@ -182,7 +182,7 @@ class JobController extends Controller
             $thumb                = 'thumb_'.$name;
             $path                 = base_path().'/public/images/job/';
             $thumb_path           = base_path().'/public/images/job/thumb/';
-            $moved                = Image::make($image->getRealPath())->fit(1770, 536)->orientate()->save($path.$name);
+            $moved                = Image::make($image->getRealPath())->orientate()->save($path.$name);
             $thumb                = Image::make($image->getRealPath())->resize(62, 61)->orientate()->save($thumb_path.$thumb);
 
             if ($moved  && $thumb){
